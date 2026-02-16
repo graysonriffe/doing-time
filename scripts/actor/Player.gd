@@ -15,7 +15,7 @@ var recordingCurrently: bool
 var recordingCloneData: CloneData
 
 @onready var eyes: Node3D = $Head/Eyes
-@onready var viewModel: Node3D = $Head/Eyes/Camera3D/ViewModel
+@onready var viewModel: Node3D = $Head/Eyes/Camera3D/RemoteViewModel
 
 func _ready() -> void:
     Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

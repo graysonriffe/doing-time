@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cu7qupncvc5ym" path="res://scripts/CloneGame.gd" id="1_iok6x"]
 [ext_resource type="PackedScene" uid="uid://dxtr6nj2d74pw" path="res://scenes/actor/player.tscn" id="2_0ik2x"]
-[ext_resource type="PackedScene" uid="uid://dmgudqgytltyu" path="res://scenes/in_game_ui.tscn" id="2_2rhh6"]
+[ext_resource type="PackedScene" uid="uid://dmgudqgytltyu" path="res://scenes/ui/in_game_ui.tscn" id="2_2rhh6"]
 
 [node name="CloneGame" type="Node" unique_id=1202883684]
 script = ExtResource("1_iok6x")
