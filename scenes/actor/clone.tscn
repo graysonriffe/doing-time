@@ -13,7 +13,8 @@ height = 0.485
 [node name="Clone" unique_id=2013142565 instance=ExtResource("1_u05yx")]
 script = ExtResource("2_7cu5i")
 
-[node name="BodyMesh" type="MeshInstance3D" parent="BodyCollision" parent_id_path=PackedInt32Array(1399796085) index="0" unique_id=64485193]
+[node name="BodyMesh" type="MeshInstance3D" parent="." index="1" unique_id=64485193]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_u05yx")
 
 [node name="HeadMesh" type="MeshInstance3D" parent="Head" parent_id_path=PackedInt32Array(1119388618) index="0" unique_id=1299340255]

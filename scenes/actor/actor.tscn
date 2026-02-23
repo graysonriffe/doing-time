@@ -2,11 +2,12 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u4npu"]
 radius = 0.34
+height = 2.35
 
 [node name="Actor" type="CharacterBody3D" unique_id=2013142565]
 
 [node name="BodyCollision" type="CollisionShape3D" parent="." unique_id=1399796085]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1663818, 0)
 shape = SubResource("CapsuleShape3D_u4npu")
 
 [node name="Head" type="Node3D" parent="." unique_id=1119388618]

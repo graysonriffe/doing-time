@@ -12,6 +12,7 @@ var shouldReset: bool
 @onready var cloneGame: CloneGame = get_tree().root.find_child("CloneGame", true, false)
 
 func _ready() -> void:
+    hide() # Prevents the clone from briefly appearing at the world origin before reset() is called
     shouldReset = true
 
 
@@ -45,6 +46,7 @@ func _getInputDirection() -> Vector2:
 
 # Resets the clone to its initial state when time is reset
 func reset():
+    show()
     timeIndex = 0
     position = cloneData.initialPosition
     var firstLookVector: Vector2 = cloneData.getLookVector(0)
