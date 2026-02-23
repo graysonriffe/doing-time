@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://btnwfigmoo5k7"]
+
+[ext_resource type="PackedScene" uid="uid://d33xdndyn3afb" path="res://assets/lever.glb" id="1_bnjhb"]
+[ext_resource type="Material" uid="uid://dvhccpxkdey83" path="res://assets/materials/cartoony_lit.tres" id="2_xkgo7"]
+
+[node name="lever" unique_id=1888503780 instance=ExtResource("1_bnjhb")]
+
+[node name="Sphere" parent="." index="0" unique_id=987943619]
+material_override = ExtResource("2_xkgo7")
+instance_shader_parameters/instance_color = Color(0.7134, 0.74182665, 0.82, 1)
+
+[node name="Cylinder_002" parent="." index="1" unique_id=869574495]
+material_override = ExtResource("2_xkgo7")
+instance_shader_parameters/instance_color = Color(0.7052, 0.73581326, 0.82, 1)

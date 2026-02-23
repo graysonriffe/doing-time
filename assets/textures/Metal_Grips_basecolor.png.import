@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btcssvr54n0rc"
-path.s3tc="res://.godot/imported/steel_prototype.png-39778acd33792a8fd4c592be2dc47cc8.s3tc.ctex"
+uid="uid://71ak35ehg0bq"
+path.s3tc="res://.godot/imported/Metal_Grips_basecolor.png-9a57cf3ea984dfaed31cda2b7eac683b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/steel_prototype.png"
-dest_files=["res://.godot/imported/steel_prototype.png-39778acd33792a8fd4c592be2dc47cc8.s3tc.ctex"]
+source_file="res://assets/textures/Metal_Grips_basecolor.png"
+dest_files=["res://.godot/imported/Metal_Grips_basecolor.png-9a57cf3ea984dfaed31cda2b7eac683b.s3tc.ctex"]
 
 [params]
 

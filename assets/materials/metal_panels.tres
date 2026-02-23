@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://ychntj2cs7nm"]
+
+[ext_resource type="Texture2D" uid="uid://bnr56kbmde8bn" path="res://assets/textures/Metal_Panels_basecolor.png" id="1_g084j"]
+[ext_resource type="Texture2D" uid="uid://c5cfddxlixtdc" path="res://assets/textures/Metal_Panels_normal.png" id="2_2hao8"]
+[ext_resource type="Texture2D" uid="uid://bov1ojmo5748x" path="res://assets/textures/Metal_Panels_roughness.png" id="3_w80s5"]
+
+[resource]
+albedo_texture = ExtResource("1_g084j")
+metallic = 0.5
+metallic_specular = 0.3
+roughness_texture = ExtResource("3_w80s5")
+normal_enabled = true
+normal_texture = ExtResource("2_2hao8")
+uv1_scale = Vector3(0.15, 0.15, 0.15)
+uv1_triplanar = true
+uv1_world_triplanar = true
