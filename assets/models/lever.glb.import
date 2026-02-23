@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://d33xdndyn3afb"
-path="res://.godot/imported/lever.glb-695b596dcecf2fe13e272a9544f23d16.scn"
+path="res://.godot/imported/lever.glb-f29dc4fac52de8766e826acc87ac3f38.scn"
 
 [deps]
 
-source_file="res://assets/lever.glb"
-dest_files=["res://.godot/imported/lever.glb-695b596dcecf2fe13e272a9544f23d16.scn"]
+source_file="res://assets/models/lever.glb"
+dest_files=["res://.godot/imported/lever.glb-f29dc4fac52de8766e826acc87ac3f38.scn"]
 
 [params]
 

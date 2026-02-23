@@ -3,22 +3,20 @@
 [ext_resource type="Environment" uid="uid://crv4lyw10qeuq" path="res://assets/default_environment.tres" id="1_aghtr"]
 [ext_resource type="PackedScene" uid="uid://b25safc7q24uv" path="res://scenes/post_processing_mesh.tscn" id="2_amkgp"]
 [ext_resource type="Material" uid="uid://ychntj2cs7nm" path="res://assets/materials/metal_panels.tres" id="2_cvoia"]
-[ext_resource type="Texture2D" uid="uid://btcssvr54n0rc" path="res://assets/steel_prototype.png" id="2_eh4ds"]
 [ext_resource type="PackedScene" uid="uid://dxtr6nj2d74pw" path="res://scenes/actor/player.tscn" id="2_wcc6p"]
 [ext_resource type="PackedScene" uid="uid://dmgudqgytltyu" path="res://scenes/in_game_ui.tscn" id="3_wcc6p"]
-[ext_resource type="ArrayMesh" uid="uid://cfg1404s2ajgn" path="res://assets/bunny.obj" id="5_amkgp"]
+[ext_resource type="ArrayMesh" uid="uid://cfg1404s2ajgn" path="res://assets/models/bunny.obj" id="5_amkgp"]
 [ext_resource type="Material" uid="uid://dvhccpxkdey83" path="res://assets/materials/cartoony_lit.tres" id="5_uowj7"]
 [ext_resource type="LightmapGIData" uid="uid://mch85j7d2avb" path="res://scenes/bakes/art_test_scene.lmbake" id="8_aghtr"]
 [ext_resource type="Texture2D" uid="uid://bbmy0h5lau14q" path="res://assets/textures/Metal_Grips_normal.png" id="11_bp2dc"]
 [ext_resource type="Material" uid="uid://csunmo5r7lgvw" path="res://assets/materials/metal_grip_sheet.tres" id="11_cvoia"]
 [ext_resource type="Material" uid="uid://bm5oc0vuy5piw" path="res://assets/materials/metal_sheet.tres" id="12_cvoia"]
-[ext_resource type="PackedScene" uid="uid://bnkl0kkcmirjl" path="res://assets/button.tscn" id="13_v3o6k"]
-[ext_resource type="PackedScene" uid="uid://btnwfigmoo5k7" path="res://assets/lever.tscn" id="14_5hruw"]
+[ext_resource type="PackedScene" uid="uid://bnkl0kkcmirjl" path="res://assets/models/button.tscn" id="13_v3o6k"]
+[ext_resource type="PackedScene" uid="uid://btnwfigmoo5k7" path="res://assets/models/lever.tscn" id="14_5hruw"]
 [ext_resource type="PackedScene" uid="uid://b8ewuba6gfdu1" path="res://assets/materials/button1.glb" id="15_5hruw"]
-[ext_resource type="PackedScene" uid="uid://baq7o4rus3ioo" path="res://assets/lever2.glb" id="16_gih5q"]
+[ext_resource type="PackedScene" uid="uid://baq7o4rus3ioo" path="res://assets/models/lever2.glb" id="16_gih5q"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bp2dc"]
-albedo_texture = ExtResource("2_eh4ds")
 metallic = 0.7
 metallic_specular = 0.8
 roughness = 0.4
