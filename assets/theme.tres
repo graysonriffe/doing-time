@@ -6,3 +6,7 @@ font_names = PackedStringArray("Consolas")
 [resource]
 Label/font_sizes/font_size = 40
 Label/fonts/font = SubResource("SystemFont_y61vb")
+MarginContainer/constants/margin_bottom = 5
+MarginContainer/constants/margin_left = 5
+MarginContainer/constants/margin_right = 5
+MarginContainer/constants/margin_top = 5

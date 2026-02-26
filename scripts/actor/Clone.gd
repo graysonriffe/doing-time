@@ -7,6 +7,9 @@ var shouldReset: bool
 # The CloneData that describes the clone's movements
 @export var cloneData: CloneData
 
+# Index into CloneData
+var timeIndex: int
+
 # onready variables
 # TODO: Not a fan of how Clone accesses the timePassing variable
 @onready var cloneGame: CloneGame = get_tree().root.find_child("CloneGame", true, false)
@@ -28,7 +31,7 @@ func _physics_process(delta: float) -> void:
         head.global_rotation.x = nextLookVector.x
         
         if cloneData.getJumpButton(timeIndex):
-            jump()
+            _jump()
     
     super(delta)
     

@@ -10,13 +10,17 @@ const JUMP_VELOCITY = 4.5
 # Variables
 var movementDirectionSmoothed: Vector3
 
-# Index into CloneData
-var timeIndex: int
+# State variables
+# Pauses and unpauses the actor
+var enabled: bool
 
 # onready variables
 @onready var head: Node3D = $Head
 
 func _physics_process(delta: float) -> void:
+    if not enabled:
+        return
+
     # Add the gravity.
     if not is_on_floor():
         velocity += get_gravity() * delta
@@ -35,13 +39,27 @@ func _physics_process(delta: float) -> void:
     velocity.x = movementDirectionSmoothed.x * SPEED
     velocity.z = movementDirectionSmoothed.z * SPEED
     
+    # Apply collision forces to physics objects
+    for i in get_slide_collision_count():
+        var collision = get_slide_collision(i)
+        if collision.get_collider() is RigidBody3D and movementDirectionSmoothed.length() > 0.5:
+            collision.get_collider().apply_central_impulse(-collision.get_normal())
+    
     move_and_slide()
+
+
+func enable():
+    enabled = true
+
+
+func disable():
+    enabled = false
 
 
 @abstract
 func _getInputDirection() -> Vector2
 
 
-func jump():
+func _jump():
     if is_on_floor():
         velocity.y = JUMP_VELOCITY

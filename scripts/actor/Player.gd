@@ -18,8 +18,6 @@ var recordingCloneData: CloneData
 @onready var viewModel: Node3D = $Head/Eyes/Camera3D/RemoteViewModel
 
 func _ready() -> void:
-    Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-    
     recordingCurrently = false
     recordingCloneData = CloneData.new()
 
@@ -33,7 +31,7 @@ func _physics_process(delta: float) -> void:
         recordingCloneData.pushBackJump(Input.is_action_pressed("jump"))
     
     # Do headbobbing when walking, and reset when not
-    if velocity.length() > 2.0:
+    if velocity.length() > 2.0 and enabled:
         headBobbingTheta += 14.0 * delta
         headBobbingVector = Vector2(sin(headBobbingTheta / 2) + 0.5, sin(headBobbingTheta))
         eyes.position.x = lerp(eyes.position.x, headBobbingVector.x * 0.1, 10.0 * delta)
@@ -54,13 +52,8 @@ func _physics_process(delta: float) -> void:
 
 # Handle all other inputs
 func _unhandled_input(event: InputEvent) -> void:
-    if event.is_action_released("pause"):
-        Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-    
-    # Click -> capture mouse
-    if event is InputEventMouseButton:
-        if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-            Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+    if not enabled:
+        return
     
     # When mouse is captured, mouse movement -> FPS head movement
     if event is InputEventMouseMotion:
@@ -74,12 +67,14 @@ func _unhandled_input(event: InputEvent) -> void:
             viewModel.position.y += event.relative.y * 1e-4
     
     if event.is_action_pressed("jump"):
-        jump()
+        _jump()
 
 
 func teleport(newTransform: Transform3D):
     global_transform = newTransform
     head.rotation = Vector3.ZERO
+    velocity = Vector3.ZERO
+    movementDirectionSmoothed = Vector3.ZERO
     reset_physics_interpolation()
 
 

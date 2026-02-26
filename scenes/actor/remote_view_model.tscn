@@ -10,6 +10,8 @@ viewport_path = NodePath("RemotePlaceholder/SubViewport")
 resource_local_to_scene = true
 shading_mode = 0
 albedo_texture = SubResource("ViewportTexture_7mo3h")
+use_z_clip_scale = true
+z_clip_scale = 0.01
 
 [node name="RemoteViewModel" type="Node3D" unique_id=1236516252]
 
