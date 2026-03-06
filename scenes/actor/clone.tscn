@@ -11,6 +11,7 @@ radius = 0.21
 height = 0.485
 
 [node name="Clone" unique_id=2013142565 instance=ExtResource("1_u05yx")]
+collision_layer = 2
 script = ExtResource("2_7cu5i")
 
 [node name="BodyMesh" type="MeshInstance3D" parent="." index="1" unique_id=64485193]

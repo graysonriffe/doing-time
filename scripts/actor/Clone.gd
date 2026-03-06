@@ -2,59 +2,60 @@
 class_name Clone
 extends Actor
 
-var shouldReset: bool
+var shouldResetInterpolation: bool
+
+var initialPosition: Vector3
+var initialLookVector: Vector2
+var initialVelocity: Vector3
+var initialMovementDirectionSmoothed: Vector3
+
+# Who "created" this clone?
+var parentActor: Actor
+
+# If a clone is disabled, it is invisible and does not process (happens before it exists in the timeline)
+var enabled: bool
 
 # The CloneData that describes the clone's movements
 @export var cloneData: CloneData
 
-# Index into CloneData
-var timeIndex: int
-
-# onready variables
-# TODO: Not a fan of how Clone accesses the timePassing variable
 @onready var cloneGame: CloneGame = get_tree().root.find_child("CloneGame", true, false)
 
 func _ready() -> void:
-    hide() # Prevents the clone from briefly appearing at the world origin before reset() is called
-    shouldReset = true
+    paused = true
+    enabled = true
+    reset()
 
 
 func _physics_process(delta: float) -> void:
-    if shouldReset:
-        reset()
-        shouldReset = false
+    if shouldResetInterpolation:
+        reset_physics_interpolation()
+        shouldResetInterpolation = false
     
     # Set the look vector if time is passing
-    if cloneGame.timePassing:
-        var nextLookVector: Vector2 = cloneData.getLookVector(timeIndex)
+    if not paused:
+        var nextLookVector: Vector2 = cloneData.getLookVector(cloneGame.getTimeIndex())
         global_rotation.y = nextLookVector.y
         head.global_rotation.x = nextLookVector.x
         
-        if cloneData.getJumpButton(timeIndex):
+        if cloneData.getJumpButton(cloneGame.getTimeIndex()):
             _jump()
     
     super(delta)
-    
-    if cloneGame.timePassing:
-        timeIndex = cloneData.getNextTimeIndex(timeIndex)
 
 
-
-func _getInputDirection() -> Vector2:
-    if cloneGame.timePassing:
-        return cloneData.getMovementVector(timeIndex)
+func getInputDirection() -> Vector2:
+    if not paused:
+        return cloneData.getMovementVector(cloneGame.getTimeIndex())
     else:
         return Vector2.ZERO
 
 
-# Resets the clone to its initial state when time is reset
+# Resets the clone to its initial state when the clone begins its lifetime
 func reset():
-    show()
-    timeIndex = 0
-    position = cloneData.initialPosition
-    var firstLookVector: Vector2 = cloneData.getLookVector(0)
-    global_rotation.y = firstLookVector.y
-    head.global_rotation.x = firstLookVector.x
-    velocity = Vector3.ZERO
-    movementDirectionSmoothed = Vector3.ZERO
-    reset_physics_interpolation()
+    position = initialPosition
+    global_rotation.y = initialLookVector.y
+    head.global_rotation.x = initialLookVector.x
+    velocity = initialVelocity
+    movementDirectionSmoothed = initialMovementDirectionSmoothed
+    
+    shouldResetInterpolation = true

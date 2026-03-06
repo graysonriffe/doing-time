@@ -12,25 +12,33 @@ var movementDirectionSmoothed: Vector3
 
 # State variables
 # Pauses and unpauses the actor
-var enabled: bool
+var paused: bool
+
+var isOnFloor: bool
+var isOnFloorOverride: bool
 
 # onready variables
 @onready var head: Node3D = $Head
 
+func _init() -> void:
+    paused = true
+    isOnFloorOverride = false
+
+
 func _physics_process(delta: float) -> void:
-    if not enabled:
+    if paused:
         return
 
     # Add the gravity.
-    if not is_on_floor():
+    if not is_on_floor() or isOnFloorOverride:
         velocity += get_gravity() * delta
     
     # Get direction vector from either the Player or Clone
-    var inputDirection: Vector2 = _getInputDirection()
+    var inputDirection: Vector2 = getInputDirection()
     var direction: Vector3 = (transform.basis * Vector3(inputDirection.x, 0, inputDirection.y)).normalized()
     
     # Smooth the movement, and differently depending on if the actor is mid-air
-    if is_on_floor():
+    if is_on_floor() or isOnFloorOverride:
         movementDirectionSmoothed = lerp(movementDirectionSmoothed, direction, 10.0 * delta)
     elif inputDirection != Vector2.ZERO:
         movementDirectionSmoothed = lerp(movementDirectionSmoothed, direction, 3.0 * delta)
@@ -46,18 +54,21 @@ func _physics_process(delta: float) -> void:
             collision.get_collider().apply_central_impulse(-collision.get_normal())
     
     move_and_slide()
+    
+    isOnFloor = is_on_floor()
+    isOnFloorOverride = false
 
 
-func enable():
-    enabled = true
+func pause():
+    paused = true
 
 
-func disable():
-    enabled = false
+func unpause():
+    paused = false
 
 
 @abstract
-func _getInputDirection() -> Vector2
+func getInputDirection() -> Vector2
 
 
 func _jump():

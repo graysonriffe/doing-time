@@ -9,29 +9,19 @@ const MOUSE_SENSITIVITY = 0.3
 var headBobbingVector: Vector2
 var headBobbingTheta: float
 
-# Recording variables
-# TODO: Maybe move recording logic to CloneGame, but it makes sense to be here for now
-var recordingCurrently: bool
-var recordingCloneData: CloneData
-
 @onready var eyes: Node3D = $Head/Eyes
 @onready var viewModel: Node3D = $Head/Eyes/Camera3D/RemoteViewModel
 
-func _ready() -> void:
-    recordingCurrently = false
-    recordingCloneData = CloneData.new()
+# Process is used for jump so we can check it every frame instead of when key events happen
+func _process(_delta: float) -> void:
+    if not paused:
+        if getJumpButton():
+            _jump()
 
 
 func _physics_process(delta: float) -> void:
-    # Record input_dir if recording is enabled
-    if recordingCurrently:
-        recordingCloneData.pushBackMovementVector(_getInputDirection())
-        var currentLookVector = Vector2(head.global_rotation.x, global_rotation.y)
-        recordingCloneData.pushBackLookVector(currentLookVector)
-        recordingCloneData.pushBackJump(Input.is_action_pressed("jump"))
-    
     # Do headbobbing when walking, and reset when not
-    if velocity.length() > 2.0 and enabled:
+    if velocity.length() > 2.0 and not paused:
         headBobbingTheta += 14.0 * delta
         headBobbingVector = Vector2(sin(headBobbingTheta / 2) + 0.5, sin(headBobbingTheta))
         eyes.position.x = lerp(eyes.position.x, headBobbingVector.x * 0.1, 10.0 * delta)
@@ -50,11 +40,8 @@ func _physics_process(delta: float) -> void:
     super(delta)
 
 
-# Handle all other inputs
+# Handle mouse
 func _unhandled_input(event: InputEvent) -> void:
-    if not enabled:
-        return
-    
     # When mouse is captured, mouse movement -> FPS head movement
     if event is InputEventMouseMotion:
         if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
@@ -65,9 +52,6 @@ func _unhandled_input(event: InputEvent) -> void:
             # View model sway
             viewModel.position.x -= event.relative.x * 1e-4
             viewModel.position.y += event.relative.y * 1e-4
-    
-    if event.is_action_pressed("jump"):
-        _jump()
 
 
 func teleport(newTransform: Transform3D):
@@ -78,5 +62,13 @@ func teleport(newTransform: Transform3D):
     reset_physics_interpolation()
 
 
-func _getInputDirection() -> Vector2:
+func getInputDirection() -> Vector2:
     return Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
+
+
+func getLookVector() -> Vector2:
+    return Vector2(head.global_rotation.x, global_rotation.y)
+
+
+func getJumpButton() -> bool:
+    return Input.is_action_pressed("jump")

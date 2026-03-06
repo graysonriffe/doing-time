@@ -8,14 +8,14 @@ extends Resource
 
 # Predefined recorded properties of various classes
 const CLASS_RECORDED_PROPERTIES: Dictionary = {
-    "Actor":       [":global_transform", "/Head:global_transform", ":velocity", ":movementDirectionSmoothed"],
+    "Actor":       [":global_transform", "/Head:global_transform", ":velocity", ":movementDirectionSmoothed", ":isOnFloor"],
     "RigidBody3D": [":global_transform", ":linear_velocity", ":angular_velocity"],
 }
 
 # To get node references, we need access to the SceneTree
 var sceneTree : SceneTree
 
-# Data Dictionary - (Level object node path:property, Dictionary[physics timeIndex, value at that time])
+# Data Dictionary - ("node path:property", Dictionary[timeIndex, value at that time])
 # The inner Dictionary isn't an Array because clones will not have data starting at timeIndex of 0.
 # They are necessarily created after some time has passed, so a Dictionary prevents
 # needless memory usage.
@@ -39,6 +39,16 @@ func registerObjects(levelContainer: Node):
             _registerNode(node, className)
 
 
+func deregisterActor(actor: Actor):
+    var nodePath : String = actor.get_path()
+    var propertyArray : Array = CLASS_RECORDED_PROPERTIES["Actor"]
+    
+    for property : String in propertyArray:
+        var fullPropertyPath = "%s%s" % [nodePath, property]
+        
+        data.erase(NodePath(fullPropertyPath))
+
+
 func recordData(timeIndex : int):
     for nodePathAndProperty : NodePath in data.keys():
         var node : Node = sceneTree.root.get_node(nodePathAndProperty)
@@ -60,13 +70,10 @@ func setData(timeIndex : int):
         
         var property : String = nodePathAndProperty.get_concatenated_subnames()
         
-        var dataAfterSet = data[nodePathAndProperty][timeIndex]
+        var dataAfter = data[nodePathAndProperty].get(timeIndex)
         
-        tween.tween_property(node, property, dataAfterSet, 0.1)
-
-
-func clear():
-    data.clear()
+        if dataAfter != null:
+            tween.tween_property(node, property, dataAfter, 0.07)
 
 
 func _getAllChildren(node: Node, array: Array[Node] = []) -> Array[Node]:
