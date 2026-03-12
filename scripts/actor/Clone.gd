@@ -15,12 +15,16 @@ var parentActor: Actor
 # If a clone is disabled, it is invisible and does not process (happens before it exists in the timeline)
 var enabled: bool
 
+@onready var collisionDetector: Area3D = $CollisionDetector
+
 # The CloneData that describes the clone's movements
 @export var cloneData: CloneData
 
 @onready var cloneGame: CloneGame = get_tree().root.find_child("CloneGame", true, false)
 
 func _ready() -> void:
+    collisionDetector.body_exited.connect(_collisionDetectorExited)
+    
     paused = true
     enabled = true
     reset()
@@ -59,3 +63,10 @@ func reset():
     movementDirectionSmoothed = initialMovementDirectionSmoothed
     
     shouldResetInterpolation = true
+    
+    add_collision_exception_with(parentActor)
+
+
+func _collisionDetectorExited(node: Node):
+    if node == parentActor:
+        remove_collision_exception_with(node)

@@ -10,8 +10,11 @@ radius = 0.35
 radius = 0.21
 height = 0.485
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7cu5i"]
+radius = 0.34
+height = 2.35
+
 [node name="Clone" unique_id=2013142565 instance=ExtResource("1_u05yx")]
-collision_layer = 2
 script = ExtResource("2_7cu5i")
 
 [node name="BodyMesh" type="MeshInstance3D" parent="." index="1" unique_id=64485193]
@@ -21,3 +24,9 @@ mesh = SubResource("CapsuleMesh_u05yx")
 [node name="HeadMesh" type="MeshInstance3D" parent="Head" parent_id_path=PackedInt32Array(1119388618) index="0" unique_id=1299340255]
 transform = Transform3D(1, 0, 0, 0, 0.98116475, -0.19317274, 0, 0.19317274, 0.98116475, 0, 0.1400001, -0.083)
 mesh = SubResource("SphereMesh_7cu5i")
+
+[node name="CollisionDetector" type="Area3D" parent="." index="3" unique_id=854162658]
+
+[node name="CollisionDetectorShape" type="CollisionShape3D" parent="CollisionDetector" index="0" unique_id=918429912]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1663818, 0)
+shape = SubResource("CapsuleShape3D_7cu5i")

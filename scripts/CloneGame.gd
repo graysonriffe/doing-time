@@ -54,7 +54,7 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
-    if gamestate == Gamestate.Playing: # TODO: Move all Actor updates to inside this function
+    if gamestate == Gamestate.Playing:
         _enableNewClones() # Clones spawned by other clones, if any
         _record()
 
@@ -124,7 +124,7 @@ func getTimeIndex() -> int:
 
 func _record():
     timelineData.recordData(timeIndex)
-    _recordCloneData() # TODO: Query input only in CloneGame and give to player
+    _recordCloneData()
     
     timeIndex += 1
 
@@ -249,9 +249,6 @@ func _doBranch():
     newClone.isOnFloorOverride = player.isOnFloor
     
     newClone.parentActor = player
-    player.add_collision_exception_with(newClone)
-    # TODO: Change this to a timer or before they separate
-    # TODO: Collision between clones is currently off as well
     
     currentCloneData.setStartingTimeIndex(timeIndex)
     newClone.cloneData = currentCloneData.duplicate(true)
@@ -286,13 +283,13 @@ func _showOrHideClonesInPreview(previewTimeIndex: int):
 
 
 func _disableClone(clone: Clone):
-    clone.reset()
     clone.process_mode = Node.PROCESS_MODE_DISABLED
     timelineData.deregisterActor(clone)
     clone.enabled = false
 
 
 func _enableClone(clone: Clone):
+    clone.reset()
     clone.show()
     clone.process_mode = Node.PROCESS_MODE_INHERIT
     timelineData.registerActor(clone)
@@ -325,10 +322,6 @@ func _setTimelineTimeLabel(value: float):
 
 
 func _recordCloneData():
-    var currentPlayerInputDirection = player.getInputDirection()
-    var currentPlayerLookVector = player.getLookVector()
-    var currentPlayerJumpPressed = player.getJumpButton()
-    
-    currentCloneData.pushBackMovementVector(timeIndex, currentPlayerInputDirection)
-    currentCloneData.pushBackLookVector(timeIndex, currentPlayerLookVector)
-    currentCloneData.pushBackJump(timeIndex, currentPlayerJumpPressed)
+    currentCloneData.pushBackMovementVector(timeIndex, player.getInputDirection())
+    currentCloneData.pushBackLookVector(timeIndex, player.getLookVector())
+    currentCloneData.pushBackJump(timeIndex, player.getJumpButton())

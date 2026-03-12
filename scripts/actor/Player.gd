@@ -9,6 +9,9 @@ const MOUSE_SENSITIVITY = 0.3
 var headBobbingVector: Vector2
 var headBobbingTheta: float
 
+var currentFrameInputDirection: Vector2
+var currentFrameJumpButton: bool
+
 @onready var eyes: Node3D = $Head/Eyes
 @onready var viewModel: Node3D = $Head/Eyes/Camera3D/RemoteViewModel
 
@@ -20,6 +23,10 @@ func _process(_delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
+    # Get Player movement inputs
+    currentFrameInputDirection = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
+    currentFrameJumpButton = Input.is_action_pressed("jump")
+    
     # Do headbobbing when walking, and reset when not
     if velocity.length() > 2.0 and not paused:
         headBobbingTheta += 14.0 * delta
@@ -63,7 +70,7 @@ func teleport(newTransform: Transform3D):
 
 
 func getInputDirection() -> Vector2:
-    return Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
+    return currentFrameInputDirection
 
 
 func getLookVector() -> Vector2:
@@ -71,4 +78,4 @@ func getLookVector() -> Vector2:
 
 
 func getJumpButton() -> bool:
-    return Input.is_action_pressed("jump")
+    return currentFrameJumpButton
