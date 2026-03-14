@@ -12,8 +12,8 @@ var headBobbingTheta: float
 var currentFrameInputDirection: Vector2
 var currentFrameJumpButton: bool
 
-@onready var eyes: Node3D = $Head/Eyes
-@onready var viewModel: Node3D = $Head/Eyes/Camera3D/RemoteViewModel
+@onready var eyes: Node3D = $Head/EyesOffset/Eyes
+@onready var viewModel: Node3D = $Head/EyesOffset/Eyes/Camera3D/RemoteViewModel
 
 # Process is used for jump so we can check it every frame instead of when key events happen
 func _process(_delta: float) -> void:

@@ -302,12 +302,6 @@ func _disableHiddenClones():
             _disableClone(clone)
 
 
-func _enableShownClones():
-    for clone: Clone in cloneContainer.get_children():
-        if clone.visible:
-            _enableClone(clone)
-
-
 func _enableNewClones():
     for clone: Clone in cloneContainer.get_children():
         if not clone.enabled and timeIndex >= clone.cloneData.startingTimeIndex - 1:

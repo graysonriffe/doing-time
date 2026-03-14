@@ -18,7 +18,6 @@ z_clip_scale = 0.01
 [node name="RemotePlaceholder" type="MeshInstance3D" parent="." unique_id=1608608298]
 transform = Transform3D(0.9134603, 0, -0.406928, 0, 1, 0, 0.406928, 0, 0.9134603, 0.22703454, -0.20374486, -0.31154835)
 material_override = SubResource("StandardMaterial3D_acnp3")
-cast_shadow = 0
 mesh = ExtResource("1_7mo3h")
 
 [node name="SubViewport" type="SubViewport" parent="RemotePlaceholder" unique_id=773644612]
