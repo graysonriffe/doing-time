@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://d353brxs70bnx"]
+
+[ext_resource type="Shader" uid="uid://cia180g1ko22l" path="res://assets/shaders/cel_shading.gdshader" id="1_mo5r6"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_mo5r6")

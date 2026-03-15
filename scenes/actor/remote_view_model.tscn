@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://kuqrqwedb27y"]
 
-[ext_resource type="ArrayMesh" uid="uid://0v0a5aq3ijo8" path="res://assets/models/remote_placeholder_mesh.res" id="1_7mo3h"]
+[ext_resource type="ArrayMesh" uid="uid://cy1d6b53kxyjk" path="res://assets/models/remote_placeholder_mesh.tres" id="1_acnp3"]
 [ext_resource type="PackedScene" uid="uid://kawmhhp1i5k0" path="res://scenes/ui/remote_ui.tscn" id="2_acnp3"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_7mo3h"]
@@ -18,7 +18,7 @@ z_clip_scale = 0.01
 [node name="RemotePlaceholder" type="MeshInstance3D" parent="." unique_id=1608608298]
 transform = Transform3D(0.9134603, 0, -0.406928, 0, 1, 0, 0.406928, 0, 0.9134603, 0.22703454, -0.20374486, -0.31154835)
 material_override = SubResource("StandardMaterial3D_acnp3")
-mesh = ExtResource("1_7mo3h")
+mesh = ExtResource("1_acnp3")
 
 [node name="SubViewport" type="SubViewport" parent="RemotePlaceholder" unique_id=773644612]
 size = Vector2i(1000, 1000)

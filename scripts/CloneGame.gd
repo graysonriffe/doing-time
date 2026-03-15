@@ -148,6 +148,7 @@ func _doPause():
     player.pause()
     _pauseClones()
     _pausePhysicsObjects()
+    _pauseAnimations()
     
     var lastTimeIndex: int = timeIndex - 1 # Current timeIndex doesn't have data yet
     currentCloneData.setEndingTimeIndex(lastTimeIndex)
@@ -174,6 +175,7 @@ func _doUnpause():
     _disableHiddenClones()
     _pauseClones(false) # Unpause
     _pausePhysicsObjects(false) # Unpause
+    _pauseAnimations(false) # Unpause
     
     pauseUI.hide()
     tempRemoteLabel.text = "Level Name and Info"
@@ -181,10 +183,18 @@ func _doUnpause():
     Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
-func _pausePhysicsObjects(pause : bool = true):
-    var levelNodes : Array[Node] = _getAllChildren(levelContainer)
+func _pauseClones(pause: bool = true):
+    for clone: Clone in cloneContainer.get_children():
+        if pause:
+            clone.pause()
+        else:
+            clone.unpause()
+
+
+func _pausePhysicsObjects(pause: bool = true):
+    var levelNodes: Array[Node] = _getAllChildren(levelContainer)
     
-    for node : Node in levelNodes:
+    for node: Node in levelNodes:
         if node is RigidBody3D:
             node.process_mode = Node.PROCESS_MODE_DISABLED if pause else Node.PROCESS_MODE_INHERIT
 
@@ -199,12 +209,12 @@ func _getAllChildren(node: Node, array: Array[Node] = []) -> Array[Node]:
     return array
 
 
-func _pauseClones(pause: bool = true):
-    for clone: Clone in cloneContainer.get_children():
-        if pause:
-            clone.pause()
-        else:
-            clone.unpause()
+func _pauseAnimations(pause: bool = true):
+    var levelNodes: Array[Node] = _getAllChildren(levelContainer)
+    
+    for node: Node in levelNodes:
+        if node is AnimationPlayer:
+            node.active = not pause
 
 
 func _deleteClone(clone: Clone):

@@ -8,8 +8,9 @@ extends Resource
 
 # Predefined recorded properties of various classes
 const CLASS_RECORDED_PROPERTIES: Dictionary = {
-    "Actor":       [":global_transform", "/Head:global_transform", ":velocity", ":movementDirectionSmoothed", ":isOnFloor"],
-    "RigidBody3D": [":global_transform", ":linear_velocity", ":angular_velocity"],
+    "Actor":            [":global_transform", "/Head:global_transform", ":velocity", ":movementDirectionSmoothed", ":isOnFloor"],
+    "PhysicsObject":    [":global_transform", ":linear_velocity", ":angular_velocity"],
+    "WeightButton":     [":activated", "/AnimationPlayer:current_animation", ":animationTime"],
 }
 
 # To get node references, we need access to the SceneTree
@@ -33,9 +34,9 @@ func registerObjects(levelContainer: Node):
     var levelNodes: Array = _getAllChildren(levelContainer)
     
     for node : Node in levelNodes:
-        var className = node.get_class()
+        var className = node.get("CLASS_NAME")
         
-        if className in CLASS_RECORDED_PROPERTIES:
+        if className != null and className in CLASS_RECORDED_PROPERTIES:
             _registerNode(node, className)
 
 
@@ -73,7 +74,10 @@ func setData(timeIndex : int):
         var dataAfter = data[nodePathAndProperty].get(timeIndex)
         
         if dataAfter != null:
-            tween.tween_property(node, property, dataAfter, 0.07)
+            if property == "current_animation": # Don't tween a string!
+                node.set(property, dataAfter)
+            else:
+                tween.tween_property(node, property, dataAfter, 0.07)
 
 
 func _getAllChildren(node: Node, array: Array[Node] = []) -> Array[Node]:

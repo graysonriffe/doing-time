@@ -21,8 +21,7 @@ sky = SubResource("Sky_2k85p")
 ambient_light_source = 1
 tonemap_mode = 2
 glow_enabled = true
-glow_intensity = 0.54
-glow_strength = 0.17
+glow_intensity = 5.83
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ulyey"]
 render_priority = 0

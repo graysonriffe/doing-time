@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://y866jdy5i0hb"]
 
 [ext_resource type="PackedScene" uid="uid://ca08rf6sfv4gl" path="res://scenes/levels/level_template.tscn" id="1_j2425"]
+[ext_resource type="Script" uid="uid://d2bkuave81qbf" path="res://scripts/level_components/PhysicsObject.gd" id="2_g2h2n"]
+[ext_resource type="Material" uid="uid://d353brxs70bnx" path="res://assets/materials/cel_shading.tres" id="3_ra442"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j2425"]
 
@@ -9,277 +11,385 @@
 [node name="Level2" unique_id=1254966120 instance=ExtResource("1_j2425")]
 levelName = "Temp Level 2"
 
-[node name="PlayerStart" parent="." index="1" unique_id=1770252819]
+[node name="PlayerStart" parent="." index="2" unique_id=1770252819]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 5)
 
 [node name="Boxes" type="Node" parent="." index="4" unique_id=557704797]
 
 [node name="Box" type="RigidBody3D" parent="Boxes" index="0" unique_id=2117726272]
 transform = Transform3D(0.9572938, 0.20790699, -0.20090608, -0.23185098, 0.9671923, -0.103846766, 0.17272437, 0.14599216, 0.97409064, -8.366107, 2.660812, -0.34462583)
+script = ExtResource("2_g2h2n")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Boxes/Box" index="0" unique_id=106557494]
 shape = SubResource("BoxShape3D_j2425")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Boxes/Box" index="1" unique_id=1681957986]
+instance_shader_parameters/color = Color(1, 1, 1, 1)
+instance_shader_parameters/emission = 0.5
 mesh = SubResource("BoxMesh_g2h2n")
+surface_material_override/0 = ExtResource("3_ra442")
 
 [node name="Box2" type="RigidBody3D" parent="Boxes" index="1" unique_id=2052906645]
 transform = Transform3D(0.9572938, 0.20790699, -0.20090608, -0.23185098, 0.9671923, -0.103846766, 0.17272437, 0.14599216, 0.97409064, -7.408813, 2.4289608, -0.17190146)
+script = ExtResource("2_g2h2n")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Boxes/Box2" index="0" unique_id=783626175]
 shape = SubResource("BoxShape3D_j2425")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Boxes/Box2" index="1" unique_id=1534851585]
+instance_shader_parameters/color = Color(1, 1, 1, 1)
+instance_shader_parameters/emission = 0.5
 mesh = SubResource("BoxMesh_g2h2n")
+surface_material_override/0 = ExtResource("3_ra442")
 
 [node name="Box3" type="RigidBody3D" parent="Boxes" index="2" unique_id=263205770]
 transform = Transform3D(0.9572938, 0.20790699, -0.20090608, -0.23185098, 0.9671923, -0.103846766, 0.17272437, 0.14599216, 0.97409064, -8.165201, 2.7646587, -1.3187165)
+script = ExtResource("2_g2h2n")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Boxes/Box3" index="0" unique_id=1273469535]
 shape = SubResource("BoxShape3D_j2425")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Boxes/Box3" index="1" unique_id=12659853]
+instance_shader_parameters/color = Color(1, 1, 1, 1)
+instance_shader_parameters/emission = 0.5
 mesh = SubResource("BoxMesh_g2h2n")
+surface_material_override/0 = ExtResource("3_ra442")
 
 [node name="Box4" type="RigidBody3D" parent="Boxes" index="3" unique_id=1956136224]
 transform = Transform3D(0.9572938, 0.20790699, -0.20090608, -0.23185098, 0.9671923, -0.103846766, 0.17272437, 0.14599216, 0.97409064, -7.207907, 2.5328078, -1.1459922)
+script = ExtResource("2_g2h2n")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Boxes/Box4" index="0" unique_id=1849905896]
 shape = SubResource("BoxShape3D_j2425")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Boxes/Box4" index="1" unique_id=453843993]
+instance_shader_parameters/color = Color(1, 1, 1, 1)
+instance_shader_parameters/emission = 0.5
 mesh = SubResource("BoxMesh_g2h2n")
+surface_material_override/0 = ExtResource("3_ra442")
 
 [node name="Box5" type="RigidBody3D" parent="Boxes" index="4" unique_id=888950746]
 transform = Transform3D(0.9572938, 0.20790699, -0.20090608, -0.23185098, 0.9671923, -0.103846766, 0.17272437, 0.14599216, 0.97409064, -7.964295, 2.8685055, -2.292807)
+script = ExtResource("2_g2h2n")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Boxes/Box5" index="0" unique_id=1220520825]
 shape = SubResource("BoxShape3D_j2425")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Boxes/Box5" index="1" unique_id=1611088764]
+instance_shader_parameters/color = Color(1, 1, 1, 1)
+instance_shader_parameters/emission = 0.5
 mesh = SubResource("BoxMesh_g2h2n")
+surface_material_override/0 = ExtResource("3_ra442")
 
 [node name="Box6" type="RigidBody3D" parent="Boxes" index="5" unique_id=188450545]
 transform = Transform3D(0.9572938, 0.20790699, -0.20090608, -0.23185098, 0.9671923, -0.103846766, 0.17272437, 0.14599216, 0.97409064, -7.007001, 2.6366544, -2.1200829)
+script = ExtResource("2_g2h2n")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Boxes/Box6" index="0" unique_id=205396971]
 shape = SubResource("BoxShape3D_j2425")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Boxes/Box6" index="1" unique_id=331207414]
+instance_shader_parameters/color = Color(1, 1, 1, 1)
+instance_shader_parameters/emission = 0.5
 mesh = SubResource("BoxMesh_g2h2n")
+surface_material_override/0 = ExtResource("3_ra442")
 
 [node name="Box7" type="RigidBody3D" parent="Boxes" index="6" unique_id=1732309496]
 transform = Transform3D(0.9572938, 0.20790699, -0.20090608, -0.23185098, 0.9671923, -0.103846766, 0.17272437, 0.14599216, 0.97409064, -6.049707, 2.4048035, -1.9473585)
+script = ExtResource("2_g2h2n")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Boxes/Box7" index="0" unique_id=487363206]
 shape = SubResource("BoxShape3D_j2425")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Boxes/Box7" index="1" unique_id=747691715]
+instance_shader_parameters/color = Color(1, 1, 1, 1)
+instance_shader_parameters/emission = 0.5
 mesh = SubResource("BoxMesh_g2h2n")
+surface_material_override/0 = ExtResource("3_ra442")
 
 [node name="Box8" type="RigidBody3D" parent="Boxes" index="7" unique_id=355050044]
 transform = Transform3D(0.9572938, 0.20790699, -0.20090608, -0.23185098, 0.9671923, -0.103846766, 0.17272437, 0.14599216, 0.97409064, -6.250613, 2.3009567, -0.9732678)
+script = ExtResource("2_g2h2n")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Boxes/Box8" index="0" unique_id=1404287530]
 shape = SubResource("BoxShape3D_j2425")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Boxes/Box8" index="1" unique_id=89575761]
+instance_shader_parameters/color = Color(1, 1, 1, 1)
+instance_shader_parameters/emission = 0.5
 mesh = SubResource("BoxMesh_g2h2n")
+surface_material_override/0 = ExtResource("3_ra442")
 
 [node name="Box9" type="RigidBody3D" parent="Boxes" index="8" unique_id=1300820919]
 transform = Transform3D(0.9572938, 0.20790699, -0.20090608, -0.23185098, 0.9671923, -0.103846766, 0.17272437, 0.14599216, 0.97409064, -6.4515195, 2.19711, 0.0008229017)
+script = ExtResource("2_g2h2n")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Boxes/Box9" index="0" unique_id=1913885044]
 shape = SubResource("BoxShape3D_j2425")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Boxes/Box9" index="1" unique_id=1033251043]
+instance_shader_parameters/color = Color(1, 1, 1, 1)
+instance_shader_parameters/emission = 0.5
 mesh = SubResource("BoxMesh_g2h2n")
+surface_material_override/0 = ExtResource("3_ra442")
 
 [node name="Box10" type="RigidBody3D" parent="Boxes" index="9" unique_id=695771131]
 transform = Transform3D(0.9572938, 0.20790699, -0.20090608, -0.23185098, 0.9671923, -0.103846766, 0.17272437, 0.14599216, 0.97409064, -8.1582, 3.6280043, -0.19863367)
+script = ExtResource("2_g2h2n")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Boxes/Box10" index="0" unique_id=870446927]
 shape = SubResource("BoxShape3D_j2425")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Boxes/Box10" index="1" unique_id=2024850141]
+instance_shader_parameters/color = Color(1, 1, 1, 1)
+instance_shader_parameters/emission = 0.5
 mesh = SubResource("BoxMesh_g2h2n")
+surface_material_override/0 = ExtResource("3_ra442")
 
 [node name="Box11" type="RigidBody3D" parent="Boxes" index="10" unique_id=1055209928]
 transform = Transform3D(0.9572938, 0.20790699, -0.20090608, -0.23185098, 0.9671923, -0.103846766, 0.17272437, 0.14599216, 0.97409064, -7.2009063, 3.3961532, -0.025909305)
+script = ExtResource("2_g2h2n")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Boxes/Box11" index="0" unique_id=268573263]
 shape = SubResource("BoxShape3D_j2425")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Boxes/Box11" index="1" unique_id=268392982]
+instance_shader_parameters/color = Color(1, 1, 1, 1)
+instance_shader_parameters/emission = 0.5
 mesh = SubResource("BoxMesh_g2h2n")
+surface_material_override/0 = ExtResource("3_ra442")
 
 [node name="Box12" type="RigidBody3D" parent="Boxes" index="11" unique_id=1015146344]
 transform = Transform3D(0.9572938, 0.20790699, -0.20090608, -0.23185098, 0.9671923, -0.103846766, 0.17272437, 0.14599216, 0.97409064, -7.957294, 3.731851, -1.1727244)
+script = ExtResource("2_g2h2n")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Boxes/Box12" index="0" unique_id=1389705584]
 shape = SubResource("BoxShape3D_j2425")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Boxes/Box12" index="1" unique_id=930521470]
+instance_shader_parameters/color = Color(1, 1, 1, 1)
+instance_shader_parameters/emission = 0.5
 mesh = SubResource("BoxMesh_g2h2n")
+surface_material_override/0 = ExtResource("3_ra442")
 
 [node name="Box13" type="RigidBody3D" parent="Boxes" index="12" unique_id=1112745248]
 transform = Transform3D(0.9572938, 0.20790699, -0.20090608, -0.23185098, 0.9671923, -0.103846766, 0.17272437, 0.14599216, 0.97409064, -7, 3.5, -1)
+script = ExtResource("2_g2h2n")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Boxes/Box13" index="0" unique_id=511508239]
 shape = SubResource("BoxShape3D_j2425")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Boxes/Box13" index="1" unique_id=2085841283]
+instance_shader_parameters/color = Color(1, 1, 1, 1)
+instance_shader_parameters/emission = 0.5
 mesh = SubResource("BoxMesh_g2h2n")
+surface_material_override/0 = ExtResource("3_ra442")
 
 [node name="Box14" type="RigidBody3D" parent="Boxes" index="13" unique_id=613432608]
 transform = Transform3D(0.9572938, 0.20790699, -0.20090608, -0.23185098, 0.9671923, -0.103846766, 0.17272437, 0.14599216, 0.97409064, -7.7563877, 3.8356977, -2.146815)
+script = ExtResource("2_g2h2n")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Boxes/Box14" index="0" unique_id=1914291417]
 shape = SubResource("BoxShape3D_j2425")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Boxes/Box14" index="1" unique_id=484815004]
+instance_shader_parameters/color = Color(1, 1, 1, 1)
+instance_shader_parameters/emission = 0.5
 mesh = SubResource("BoxMesh_g2h2n")
+surface_material_override/0 = ExtResource("3_ra442")
 
 [node name="Box15" type="RigidBody3D" parent="Boxes" index="14" unique_id=195512243]
 transform = Transform3D(0.9572938, 0.20790699, -0.20090608, -0.23185098, 0.9671923, -0.103846766, 0.17272437, 0.14599216, 0.97409064, -6.7990937, 3.6038468, -1.9740907)
+script = ExtResource("2_g2h2n")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Boxes/Box15" index="0" unique_id=1579117857]
 shape = SubResource("BoxShape3D_j2425")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Boxes/Box15" index="1" unique_id=427518292]
+instance_shader_parameters/color = Color(1, 1, 1, 1)
+instance_shader_parameters/emission = 0.5
 mesh = SubResource("BoxMesh_g2h2n")
+surface_material_override/0 = ExtResource("3_ra442")
 
 [node name="Box16" type="RigidBody3D" parent="Boxes" index="15" unique_id=2041465903]
 transform = Transform3D(0.9572938, 0.20790699, -0.20090608, -0.23185098, 0.9671923, -0.103846766, 0.17272437, 0.14599216, 0.97409064, -5.8418, 3.3719957, -1.8013663)
+script = ExtResource("2_g2h2n")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Boxes/Box16" index="0" unique_id=2141456721]
 shape = SubResource("BoxShape3D_j2425")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Boxes/Box16" index="1" unique_id=721678288]
+instance_shader_parameters/color = Color(1, 1, 1, 1)
+instance_shader_parameters/emission = 0.5
 mesh = SubResource("BoxMesh_g2h2n")
+surface_material_override/0 = ExtResource("3_ra442")
 
 [node name="Box17" type="RigidBody3D" parent="Boxes" index="16" unique_id=1569272592]
 transform = Transform3D(0.9572938, 0.20790699, -0.20090608, -0.23185098, 0.9671923, -0.103846766, 0.17272437, 0.14599216, 0.97409064, -6.042706, 3.268149, -0.82727563)
+script = ExtResource("2_g2h2n")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Boxes/Box17" index="0" unique_id=413850493]
 shape = SubResource("BoxShape3D_j2425")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Boxes/Box17" index="1" unique_id=46252725]
+instance_shader_parameters/color = Color(1, 1, 1, 1)
+instance_shader_parameters/emission = 0.5
 mesh = SubResource("BoxMesh_g2h2n")
+surface_material_override/0 = ExtResource("3_ra442")
 
 [node name="Box18" type="RigidBody3D" parent="Boxes" index="17" unique_id=26659946]
 transform = Transform3D(0.9572938, 0.20790699, -0.20090608, -0.23185098, 0.9671923, -0.103846766, 0.17272437, 0.14599216, 0.97409064, -6.2436123, 3.1643023, 0.14681506)
+script = ExtResource("2_g2h2n")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Boxes/Box18" index="0" unique_id=1130061932]
 shape = SubResource("BoxShape3D_j2425")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Boxes/Box18" index="1" unique_id=1441292691]
+instance_shader_parameters/color = Color(1, 1, 1, 1)
+instance_shader_parameters/emission = 0.5
 mesh = SubResource("BoxMesh_g2h2n")
+surface_material_override/0 = ExtResource("3_ra442")
 
 [node name="Box19" type="RigidBody3D" parent="Boxes" index="18" unique_id=60876167]
 transform = Transform3D(0.9572938, 0.20790699, -0.20090608, -0.23185098, 0.9671923, -0.103846766, 0.17272437, 0.14599216, 0.97409064, -7.950293, 4.5951967, -0.05264151)
+script = ExtResource("2_g2h2n")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Boxes/Box19" index="0" unique_id=1312848785]
 shape = SubResource("BoxShape3D_j2425")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Boxes/Box19" index="1" unique_id=994689633]
+instance_shader_parameters/color = Color(1, 1, 1, 1)
+instance_shader_parameters/emission = 0.5
 mesh = SubResource("BoxMesh_g2h2n")
+surface_material_override/0 = ExtResource("3_ra442")
 
 [node name="Box20" type="RigidBody3D" parent="Boxes" index="19" unique_id=361434782]
 transform = Transform3D(0.9572938, 0.20790699, -0.20090608, -0.23185098, 0.9671923, -0.103846766, 0.17272437, 0.14599216, 0.97409064, -6.992999, 4.3633456, 0.120082855)
+script = ExtResource("2_g2h2n")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Boxes/Box20" index="0" unique_id=1874106304]
 shape = SubResource("BoxShape3D_j2425")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Boxes/Box20" index="1" unique_id=416907913]
+instance_shader_parameters/color = Color(1, 1, 1, 1)
+instance_shader_parameters/emission = 0.5
 mesh = SubResource("BoxMesh_g2h2n")
+surface_material_override/0 = ExtResource("3_ra442")
 
 [node name="Box21" type="RigidBody3D" parent="Boxes" index="20" unique_id=1883480532]
 transform = Transform3D(0.9572938, 0.20790699, -0.20090608, -0.23185098, 0.9671923, -0.103846766, 0.17272437, 0.14599216, 0.97409064, -7.749387, 4.6990433, -1.0267322)
+script = ExtResource("2_g2h2n")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Boxes/Box21" index="0" unique_id=352294964]
 shape = SubResource("BoxShape3D_j2425")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Boxes/Box21" index="1" unique_id=1028414721]
+instance_shader_parameters/color = Color(1, 1, 1, 1)
+instance_shader_parameters/emission = 0.5
 mesh = SubResource("BoxMesh_g2h2n")
+surface_material_override/0 = ExtResource("3_ra442")
 
 [node name="Box22" type="RigidBody3D" parent="Boxes" index="21" unique_id=1363366144]
 transform = Transform3D(0.9572938, 0.20790699, -0.20090608, -0.23185098, 0.9671923, -0.103846766, 0.17272437, 0.14599216, 0.97409064, -6.792093, 4.467192, -0.85400784)
+script = ExtResource("2_g2h2n")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Boxes/Box22" index="0" unique_id=1331050946]
 shape = SubResource("BoxShape3D_j2425")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Boxes/Box22" index="1" unique_id=1025908764]
+instance_shader_parameters/color = Color(1, 1, 1, 1)
+instance_shader_parameters/emission = 0.5
 mesh = SubResource("BoxMesh_g2h2n")
+surface_material_override/0 = ExtResource("3_ra442")
 
 [node name="Box23" type="RigidBody3D" parent="Boxes" index="22" unique_id=683659078]
 transform = Transform3D(0.9572938, 0.20790699, -0.20090608, -0.23185098, 0.9671923, -0.103846766, 0.17272437, 0.14599216, 0.97409064, -7.5484805, 4.80289, -2.000823)
+script = ExtResource("2_g2h2n")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Boxes/Box23" index="0" unique_id=418108184]
 shape = SubResource("BoxShape3D_j2425")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Boxes/Box23" index="1" unique_id=1308039435]
+instance_shader_parameters/color = Color(1, 1, 1, 1)
+instance_shader_parameters/emission = 0.5
 mesh = SubResource("BoxMesh_g2h2n")
+surface_material_override/0 = ExtResource("3_ra442")
 
 [node name="Box24" type="RigidBody3D" parent="Boxes" index="23" unique_id=1141668519]
 transform = Transform3D(0.9572938, 0.20790699, -0.20090608, -0.23185098, 0.9671923, -0.103846766, 0.17272437, 0.14599216, 0.97409064, -6.591187, 4.571039, -1.8280985)
+script = ExtResource("2_g2h2n")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Boxes/Box24" index="0" unique_id=439414115]
 shape = SubResource("BoxShape3D_j2425")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Boxes/Box24" index="1" unique_id=1658978485]
+instance_shader_parameters/color = Color(1, 1, 1, 1)
+instance_shader_parameters/emission = 0.5
 mesh = SubResource("BoxMesh_g2h2n")
+surface_material_override/0 = ExtResource("3_ra442")
 
 [node name="Box25" type="RigidBody3D" parent="Boxes" index="24" unique_id=1218555554]
 transform = Transform3D(0.9572938, 0.20790699, -0.20090608, -0.23185098, 0.9671923, -0.103846766, 0.17272437, 0.14599216, 0.97409064, -5.633893, 4.339188, -1.6553742)
+script = ExtResource("2_g2h2n")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Boxes/Box25" index="0" unique_id=1157499284]
 shape = SubResource("BoxShape3D_j2425")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Boxes/Box25" index="1" unique_id=102973068]
+instance_shader_parameters/color = Color(1, 1, 1, 1)
+instance_shader_parameters/emission = 0.5
 mesh = SubResource("BoxMesh_g2h2n")
+surface_material_override/0 = ExtResource("3_ra442")
 
 [node name="Box26" type="RigidBody3D" parent="Boxes" index="25" unique_id=1613901715]
 transform = Transform3D(0.9572938, 0.20790699, -0.20090608, -0.23185098, 0.9671923, -0.103846766, 0.17272437, 0.14599216, 0.97409064, -5.8347993, 4.235341, -0.6812835)
+script = ExtResource("2_g2h2n")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Boxes/Box26" index="0" unique_id=2026236791]
 shape = SubResource("BoxShape3D_j2425")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Boxes/Box26" index="1" unique_id=1755309877]
+instance_shader_parameters/color = Color(1, 1, 1, 1)
+instance_shader_parameters/emission = 0.5
 mesh = SubResource("BoxMesh_g2h2n")
+surface_material_override/0 = ExtResource("3_ra442")
 
 [node name="Box27" type="RigidBody3D" parent="Boxes" index="26" unique_id=451178988]
 transform = Transform3D(0.9572938, 0.20790699, -0.20090608, -0.23185098, 0.9671923, -0.103846766, 0.17272437, 0.14599216, 0.97409064, -6.035705, 4.1314945, 0.29280722)
+script = ExtResource("2_g2h2n")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Boxes/Box27" index="0" unique_id=152168056]
 shape = SubResource("BoxShape3D_j2425")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Boxes/Box27" index="1" unique_id=1951714030]
+instance_shader_parameters/color = Color(1, 1, 1, 1)
+instance_shader_parameters/emission = 0.5
 mesh = SubResource("BoxMesh_g2h2n")
+surface_material_override/0 = ExtResource("3_ra442")

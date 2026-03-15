@@ -67,6 +67,6 @@ func reset():
     add_collision_exception_with(parentActor)
 
 
-func _collisionDetectorExited(node: Node):
-    if node == parentActor:
-        remove_collision_exception_with(node)
+func _collisionDetectorExited(body: Node):
+    if body == parentActor:
+        remove_collision_exception_with(body)
