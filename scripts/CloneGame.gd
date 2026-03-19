@@ -28,6 +28,8 @@ var timelineData: TimelineData;
 
 var currentCloneData: CloneData
 
+var scrubTime: float
+
 # onready variables
 @onready var player: Player = $Player
 @onready var levelContainer: Node = $Level
@@ -53,32 +55,46 @@ func _ready() -> void:
     tempRemoteLabel.text = "Level Name and Info"
 
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
+    _handleInput(delta)
+    
     if gamestate == Gamestate.Playing:
         _enableNewClones() # Clones spawned by other clones, if any
         _record()
-
-
-func _unhandled_input(event: InputEvent) -> void:
-    if event is InputEventKey:
-        if event.keycode == KEY_O and not event.pressed and gamestate == Gamestate.Playing:
-            _changeLevel(1)
         
-        if event.keycode == KEY_P and not event.pressed and gamestate == Gamestate.Playing:
+        timeIndex += 1
+
+
+# Non-player action inputs
+func _handleInput(delta: float):
+    if Input.is_action_just_pressed("tempLoadLevel1"):
+        if gamestate == Gamestate.Playing:
+            _changeLevel(1)
+    
+    if Input.is_action_just_pressed("tempLoadLevel2"):
+        if gamestate == Gamestate.Playing:
             _changeLevel(2)
     
-    if event.is_action_released("pauseUnpause"):
+    if Input.is_action_just_released("pauseUnpause"):
         _attemptTogglePause()
     
-    if event.is_action("timelineScrubForward") and event.is_pressed():
-        if gamestate == Gamestate.Paused:
-            timelineSlider.value = timelineSlider.value + 5
+    var shouldScrubForward: bool = Input.is_action_pressed("timelineScrubForward")
+    var shouldScrubBackward: bool = Input.is_action_pressed("timelineScrubBackward")
     
-    if event.is_action("timelineScrubBackward") and event.is_pressed():
+    if shouldScrubForward:
         if gamestate == Gamestate.Paused:
-            timelineSlider.value = timelineSlider.value - 5
+            _scrub(true)
     
-    if event.is_action_released("branch"):
+    if shouldScrubBackward:
+        if gamestate == Gamestate.Paused:
+            _scrub(false)
+    
+    if shouldScrubForward or shouldScrubBackward:
+        scrubTime += delta
+    elif (not shouldScrubForward) and (not shouldScrubBackward):
+        scrubTime = 0
+    
+    if Input.is_action_just_released("branch"):
         _attemptBranch()
 
 
@@ -125,8 +141,6 @@ func getTimeIndex() -> int:
 func _record():
     timelineData.recordData(timeIndex)
     _recordCloneData()
-    
-    timeIndex += 1
 
 
 func _attemptTogglePause():
@@ -139,7 +153,12 @@ func _togglePause():
         _doPause()
     elif gamestate == Gamestate.Paused:
         _doUnpause()
-        _deleteDiscardedClones()
+        
+        # Exception for unpausing a the beginning of the timeline
+        if timeIndex == 1:
+            _deleteAllClones()
+        else:
+            _deleteDiscardedClones()
 
 
 func _doPause():
@@ -252,11 +271,12 @@ func _doBranch():
     newClone.get_node("BodyCollision").shape = newClone.get_node("BodyCollision").shape.duplicate()
     newClone.get_node("BodyMesh").mesh = newClone.get_node("BodyMesh").mesh.duplicate()
     
+    # TODO: Initial conditions might be better to be inherited from the parent in real time
+    # instead of being manually set once when the clone is first created
     newClone.initialPosition = player.position
     newClone.initialLookVector = player.getLookVector()
     newClone.initialVelocity = player.velocity
     newClone.initialMovementDirectionSmoothed = player.movementDirectionSmoothed
-    
     newClone.isOnFloorOverride = player.isOnFloor
     
     newClone.parentActor = player
@@ -273,6 +293,15 @@ func _doBranch():
     for clone: Clone in cloneContainer.get_children():
         if clone.parentActor == player and timeIndex < clone.cloneData.startingTimeIndex:
             clone.parentActor = newClone
+
+
+func _scrub(forward: bool):
+    var scrubDelta: int = 2
+    
+    if scrubTime > 1.5:
+        scrubDelta *= 5
+    
+    timelineSlider.value += scrubDelta if forward else -scrubDelta
 
 
 func _timelineSliderChanged(value: float):
