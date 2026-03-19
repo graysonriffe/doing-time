@@ -10,7 +10,7 @@ height = 2.35
 [node name="Clone" unique_id=2013142565 instance=ExtResource("1_u05yx")]
 script = ExtResource("2_7cu5i")
 
-[node name="CollisionDetector" type="Area3D" parent="." index="2" unique_id=854162658]
+[node name="CollisionDetector" type="Area3D" parent="." index="4" unique_id=854162658]
 
 [node name="CollisionDetectorShape" type="CollisionShape3D" parent="CollisionDetector" index="0" unique_id=918429912]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1663818, 0)

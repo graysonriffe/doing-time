@@ -81,18 +81,7 @@ func _handleInput(delta: float):
     var shouldScrubForward: bool = Input.is_action_pressed("timelineScrubForward")
     var shouldScrubBackward: bool = Input.is_action_pressed("timelineScrubBackward")
     
-    if shouldScrubForward:
-        if gamestate == Gamestate.Paused:
-            _scrub(true)
-    
-    if shouldScrubBackward:
-        if gamestate == Gamestate.Paused:
-            _scrub(false)
-    
-    if shouldScrubForward or shouldScrubBackward:
-        scrubTime += delta
-    elif (not shouldScrubForward) and (not shouldScrubBackward):
-        scrubTime = 0
+    _handleScrub(shouldScrubForward, shouldScrubBackward, delta)
     
     if Input.is_action_just_released("branch"):
         _attemptBranch()
@@ -293,6 +282,21 @@ func _doBranch():
     for clone: Clone in cloneContainer.get_children():
         if clone.parentActor == player and timeIndex < clone.cloneData.startingTimeIndex:
             clone.parentActor = newClone
+
+
+func _handleScrub(shouldScrubForward: bool, shouldScrubBackward: bool, delta: float):
+    if shouldScrubForward:
+        if gamestate == Gamestate.Paused:
+            _scrub(true)
+    
+    if shouldScrubBackward:
+        if gamestate == Gamestate.Paused:
+            _scrub(false)
+    
+    if (shouldScrubForward or shouldScrubBackward) and gamestate == Gamestate.Paused:
+        scrubTime += delta
+    elif ((not shouldScrubForward) and (not shouldScrubBackward)) or gamestate == Gamestate.Playing:
+        scrubTime = 0
 
 
 func _scrub(forward: bool):
