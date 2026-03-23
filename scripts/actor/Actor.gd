@@ -106,8 +106,8 @@ func _jump():
 
 func _crouch():
     crouching = true
-    animationPlayer.speed_scale = 1.0
     animationPlayer.play("crouch")
+    animationPlayer.queue("crouchHold")
 
 
 func _uncrouch():
@@ -115,8 +115,7 @@ func _uncrouch():
     # Also, add an exception for other actors, for boosting
     if not crouchRayCast.is_colliding():
         crouching = false
-        animationPlayer.speed_scale = -1.0
-        animationPlayer.play("crouch", -1.0, 1.0, true)
+        animationPlayer.play("uncrouch")
 
 
 func _interact():

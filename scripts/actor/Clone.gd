@@ -37,21 +37,23 @@ func _physics_process(delta: float) -> void:
         shouldResetInterpolation = false
     
     # Set the look vector if time is passing
-    if not paused:
-        var nextLookVector: Vector2 = cloneData.getLookVector(cloneGame.getTimeIndex())
-        global_rotation.y = nextLookVector.y
-        head.global_rotation.x = nextLookVector.x
-        
-        if cloneData.getJumpButton(cloneGame.getTimeIndex()):
-            _jump()
-        
-        if cloneData.getCrouchButton(cloneGame.getTimeIndex()) and not crouching:
-            _crouch()
-        elif not cloneData.getCrouchButton(cloneGame.getTimeIndex()) and crouching:
-            _uncrouch()
-        
-        if cloneData.getInteractButton(cloneGame.getTimeIndex()):
-            _interact()
+    if paused:
+        return
+    
+    var nextLookVector: Vector2 = cloneData.getLookVector(cloneGame.getTimeIndex())
+    global_rotation.y = nextLookVector.y
+    head.global_rotation.x = nextLookVector.x
+    
+    if cloneData.getJumpButton(cloneGame.getTimeIndex()):
+        _jump()
+    
+    if cloneData.getCrouchButton(cloneGame.getTimeIndex()) and not crouching:
+        _crouch()
+    elif not cloneData.getCrouchButton(cloneGame.getTimeIndex()) and crouching:
+        _uncrouch()
+    
+    if cloneData.getInteractButton(cloneGame.getTimeIndex()):
+        _interact()
     
     super(delta)
     

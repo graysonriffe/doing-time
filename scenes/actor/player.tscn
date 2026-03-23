@@ -21,6 +21,9 @@ shape = SubResource("CapsuleShape3D_pm1wa")
 cast_shadow = 3
 mesh = SubResource("CapsuleMesh_o5ntp")
 
+[node name="HeadMesh" parent="Head" parent_id_path=PackedInt32Array(1119388618) index="0" unique_id=878631315]
+cast_shadow = 3
+
 [node name="EyesOffset" type="Node3D" parent="Head" parent_id_path=PackedInt32Array(1119388618) index="1" unique_id=1196489979]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24093151, 0)
 
@@ -29,6 +32,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24093151, 0)
 [node name="Camera3D" type="Camera3D" parent="Head/EyesOffset/Eyes" index="0" unique_id=1414241960]
 
 [node name="RemoteViewModel" parent="Head/EyesOffset/Eyes/Camera3D" index="0" unique_id=1236516252 instance=ExtResource("3_pm1wa")]
-
-[node name="HeadMesh" parent="Head" parent_id_path=PackedInt32Array(1119388618) index="2" unique_id=878631315]
-cast_shadow = 3

@@ -9,7 +9,8 @@ extends Resource
 # Predefined recorded properties of various classes
 const CLASS_RECORDED_PROPERTIES: Dictionary = {
     "Actor":            [":global_transform", "/Head:rotation", ":velocity", ":movementDirectionSmoothed", ":isOnFloor",
-                        "/AnimationPlayer:current_animation", ":animationTime", "/AnimationPlayer:speed_scale"],
+                        ":crouching", "/AnimationPlayer:current_animation", ":animationTime"],
+    
     "PhysicsObject":    [":global_transform", ":linear_velocity", ":angular_velocity"],
     
     "WeightButton":     [":activated", "/AnimationPlayer:current_animation", ":animationTime", "/AnimationPlayer:speed_scale"],
@@ -65,23 +66,53 @@ func recordData(timeIndex : int):
         data[nodePathAndProperty][timeIndex] = currentData
 
 
-func setData(timeIndex : int):
-    var tween : Tween = sceneTree.create_tween()
+func setData(timeIndex: int):
+    var tween: Tween = sceneTree.create_tween()
     tween.set_trans(Tween.TRANS_SINE)
     tween.set_parallel()
     
-    for nodePathAndProperty : NodePath in data.keys():
-        var node : Node = sceneTree.root.get_node(nodePathAndProperty)
+    # Get list of before animations to know when they change
+    var beforeAnimations: Dictionary[AnimationPlayer, StringName]
+    
+    for nodePathAndProperty: NodePath in data.keys():
+        var property: String = nodePathAndProperty.get_concatenated_subnames()
+        if property != "current_animation":
+            continue
+        var animationPlayer: AnimationPlayer = sceneTree.root.get_node(nodePathAndProperty)
+        beforeAnimations[animationPlayer] = animationPlayer.current_animation
+    
+    for nodePathAndProperty: NodePath in data.keys():
+        var node: Node = sceneTree.root.get_node(nodePathAndProperty)
         
-        var property : String = nodePathAndProperty.get_concatenated_subnames()
+        var property: String = nodePathAndProperty.get_concatenated_subnames()
         
         var dataAfter = data[nodePathAndProperty].get(timeIndex)
         
+        
         if dataAfter != null:
-            if property == "current_animation": # Don't tween a string!
-                node.set(property, dataAfter)
-            else:
-                tween.tween_property(node, property, dataAfter, 0.07)
+            if property == "current_animation":
+                var animationPlayer: AnimationPlayer = node as AnimationPlayer
+                var dataBefore: StringName = animationPlayer.current_animation
+                # Reset when no animation is playing
+                if node.get_parent() is Actor:
+                    if dataAfter == &"" and dataBefore != dataAfter:
+                        node.active = true
+                        animationPlayer.play("RESET")
+                        animationPlayer.seek(0.0, true)
+                        node.active = false
+                animationPlayer.current_animation = dataAfter # Don't tween a string!
+                continue
+                
+            elif property == "animationTime" and node is Actor: # Don't tween animationTime when the animation is changed
+                var animationPlayer: AnimationPlayer = (node as Actor).animationPlayer
+                var beforeAnimation = beforeAnimations[animationPlayer]
+                var newNodePath: NodePath = "%s%s" % [node.get_path(), "/AnimationPlayer:current_animation"]
+                var afterAnimation = data[newNodePath].get(timeIndex)
+                if (afterAnimation != beforeAnimation):
+                    node.set(property, dataAfter)
+                    continue
+            
+            tween.tween_property(node, property, dataAfter, 0.07)
 
 
 func _getAllChildren(node: Node, array: Array[Node] = []) -> Array[Node]:
