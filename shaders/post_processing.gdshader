@@ -2,6 +2,8 @@
 shader_type spatial;
 render_mode unshaded;
 
+uniform sampler2D noise_texture;
+
 uniform sampler2D SCREEN_TEXTURE: hint_screen_texture, filter_linear_mipmap;
 uniform sampler2D NORMAL_TEXTURE : hint_normal_roughness_texture, filter_linear_mipmap;
 uniform sampler2D DEPTH_TEXTURE : hint_depth_texture, repeat_disable, filter_nearest;
@@ -36,6 +38,7 @@ void vertex(){
 
 void fragment() {
 	vec2 uv = SCREEN_UV;
+    
 	vec4 screen_color = texture(SCREEN_TEXTURE, uv);
 	vec3 normal = texture(NORMAL_TEXTURE, uv).rgb;
 	normal = normal * 2.0 - 1.0;
@@ -85,17 +88,28 @@ void fragment() {
 	// 4. Relative Thresholding
 	// Adjusting by lin_depth_center ensures the "sensitivity" scales with distance
 	float final_depth_edge = d_edge / (lin_depth_center);
+    
+    ALBEDO = texture(SCREEN_TEXTURE, uv).rgb;
+    float line = (pow(sin(mod(UV.y * -1.0 - TIME / 10.0, 1.0) * PI), 20.0) * 2.75);
+    float ins = sin(mod(UV.y * 100.0, 1.0)*PI) - line;
+    float dist = 1.0 - length((UV - vec2(0.5)) * 2.0);
+    
+    float t = TIME * 25.0;
+    vec2 uv2 = UV + vec2(0.5, 0.5);
+    vec2 uvnoise = vec2(uv2.x * cos(t) - uv2.y * sin(t), uv2.x * sin(t) + uv2.y * cos(t));
+    vec4 noise = texture(noise_texture, uvnoise);
+    
+    ALBEDO *= (dist + 0.4) * ((ins*0.25)+1.0) * (noise.r * 0.75 + 0.25);
 	
 	if (max(edge * 1.5, final_depth_edge * 2.0) > edge_threshold) {
-		ALBEDO = line_color;
-		ALPHA = 0.95;
+		ALBEDO *= line_color;
+		ALPHA = 1.0;
 	} else {
 		if (!edge_only){
 			//ALBEDO = background_color;
 		}
 		else{
-			ALBEDO = vec3(0.0);
-			ALPHA = 0.0;
+			ALPHA = 1.0;
 		}
 		
 	}

@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://co55g1c4uv4nw"]
 
+[ext_resource type="PackedScene" uid="uid://dq3u6v5nrfebp" path="res://scenes/ui/pause_text.tscn" id="1_kplmn"]
+
 [node name="InGameUI" type="Control" unique_id=1503801790]
 layout_mode = 3
 anchors_preset = 15
@@ -21,3 +23,11 @@ offset_right = 121.0
 offset_bottom = 101.0
 grow_horizontal = 2
 text = "Status Text"
+
+[node name="PauseText" parent="." unique_id=2108733780 instance=ExtResource("1_kplmn")]
+layout_mode = 1
+offset_left = 382.0
+offset_top = 158.0
+offset_right = 382.0
+offset_bottom = 158.0
+mouse_filter = 2

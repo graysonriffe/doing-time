@@ -3,16 +3,17 @@
 [ext_resource type="Shader" uid="uid://desisb31ax6ph" path="res://shaders/cartoony_lit.gdshader" id="1_7h7gs"]
 [ext_resource type="ArrayMesh" uid="uid://0v0a5aq3ijo8" path="res://assets/models/remote_placeholder_mesh.res" id="1_7mo3h"]
 [ext_resource type="PackedScene" uid="uid://kawmhhp1i5k0" path="res://scenes/ui/remote_ui.tscn" id="2_acnp3"]
+[ext_resource type="PackedScene" uid="uid://cdi28hu5xh5ju" path="res://assets/models/remote.tscn" id="4_2ubl6"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_2ubl6"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_7h7gs"]
 viewport_path = NodePath("RemotePlaceholder/SubViewport")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jxh4g"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("1_7h7gs")
-shader_parameter/albedo_color = SubResource("ViewportTexture_2ubl6")
-shader_parameter/color = Color(0.16685283, 0.16685283, 0.16685283, 1)
+shader_parameter/albedo = SubResource("ViewportTexture_7h7gs")
+shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/specular_strength = 0.1
 shader_parameter/shininess = 2.0
 
@@ -20,6 +21,7 @@ shader_parameter/shininess = 2.0
 
 [node name="RemotePlaceholder" type="MeshInstance3D" parent="." unique_id=1608608298]
 transform = Transform3D(0.9134603, 0, -0.406928, 0, 1, 0, 0.406928, 0, 0.9134603, 0.22703454, -0.20374486, -0.31154835)
+visible = false
 material_override = SubResource("ShaderMaterial_jxh4g")
 cast_shadow = 0
 mesh = ExtResource("1_7mo3h")
@@ -28,3 +30,6 @@ mesh = ExtResource("1_7mo3h")
 size = Vector2i(1000, 1000)
 
 [node name="RemoteUI" parent="RemotePlaceholder/SubViewport" unique_id=685619501 instance=ExtResource("2_acnp3")]
+
+[node name="remote" parent="." unique_id=784435524 instance=ExtResource("4_2ubl6")]
+transform = Transform3D(-2.1855698e-08, -0.5, 0.86602545, 1, -4.371139e-08, 0, 3.7855173e-08, 0.86602545, 0.5, 0.22703454, -0.20374486, -0.31154835)

@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://fjl4cndb2848"]
+
+[ext_resource type="Shader" uid="uid://c56sui4alj30i" path="res://shaders/time_wall.gdshader" id="1_gdatf"]
+
+[resource]
+resource_name = "TimeWallMat"
+render_priority = 0
+shader = ExtResource("1_gdatf")
+shader_parameter/color = Color(0.64, 0.64, 0.64, 1)
+shader_parameter/specular_strength = 1.0
+shader_parameter/shininess = 50.0

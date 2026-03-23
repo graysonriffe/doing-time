@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dpfkrc7q313a5"]
+
+[ext_resource type="Shader" uid="uid://c56sui4alj30i" path="res://shaders/time_wall.gdshader" id="1_ytyyb"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ytyyb")
+shader_parameter/specular_strength = 1.0
+shader_parameter/shininess = 50.0

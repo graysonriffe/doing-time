@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dftebt4xsqqnw"]
+
+[ext_resource type="Shader" uid="uid://desisb31ax6ph" path="res://shaders/cartoony_lit.gdshader" id="1_eudqr"]
+
+[resource]
+resource_name = "Material"
+render_priority = 0
+shader = ExtResource("1_eudqr")
+shader_parameter/color = Color(0.8146785, 0.8146786, 0.81467855, 1)
+shader_parameter/specular_strength = 1.0
+shader_parameter/shininess = 80.0

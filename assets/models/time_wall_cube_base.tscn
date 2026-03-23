@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dw7j1848wjoo2"]
+
+[ext_resource type="PackedScene" uid="uid://bt2dfck53q241" path="res://assets/models/time_wall_cube.blend" id="1_cfhit"]
+[ext_resource type="Material" uid="uid://fjl4cndb2848" path="res://assets/models/TimeWallMat.tres" id="2_s2e7h"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_l53uj"]
+lightmap_size_hint = Vector2i(7, 7)
+add_uv2 = true
+
+[node name="time_wall_cube" unique_id=440483094 instance=ExtResource("1_cfhit")]
+
+[node name="Cube" parent="." index="0" unique_id=97487257]
+mesh = SubResource("QuadMesh_l53uj")
+surface_material_override/0 = ExtResource("2_s2e7h")

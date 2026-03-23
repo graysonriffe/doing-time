@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cctgtoi6i6d8k"]
+
+[ext_resource type="PackedScene" uid="uid://dw7j1848wjoo2" path="res://assets/models/time_wall_cube_base.tscn" id="1_3qpm8"]
+[ext_resource type="Shader" uid="uid://c56sui4alj30i" path="res://shaders/time_wall.gdshader" id="2_mi3vh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4ppl3"]
+resource_name = "TimeWallMat"
+render_priority = 0
+shader = ExtResource("2_mi3vh")
+shader_parameter/color = Color(0.15221927, 0.6442212, 1.92523e-07, 1)
+shader_parameter/specular_strength = 1.0
+shader_parameter/shininess = 50.0
+
+[node name="time_wall_cube" unique_id=440483094 instance=ExtResource("1_3qpm8")]
+
+[node name="Cube" parent="." index="0" unique_id=97487257]
+surface_material_override/0 = SubResource("ShaderMaterial_4ppl3")

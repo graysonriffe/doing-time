@@ -10,11 +10,15 @@
 [ext_resource type="LightmapGIData" uid="uid://mch85j7d2avb" path="res://scenes/bakes/art_test_scene.lmbake" id="8_aghtr"]
 [ext_resource type="Texture2D" uid="uid://bbmy0h5lau14q" path="res://assets/textures/Metal_Grips_normal.png" id="11_bp2dc"]
 [ext_resource type="Material" uid="uid://csunmo5r7lgvw" path="res://assets/materials/metal_grip_sheet.tres" id="11_cvoia"]
+[ext_resource type="PackedScene" uid="uid://c4b8y77vylwhl" path="res://assets/models/button1.blend" id="12_bp2dc"]
 [ext_resource type="Material" uid="uid://bm5oc0vuy5piw" path="res://assets/materials/metal_sheet.tres" id="12_cvoia"]
-[ext_resource type="PackedScene" uid="uid://bnkl0kkcmirjl" path="res://assets/models/button.tscn" id="13_v3o6k"]
-[ext_resource type="PackedScene" uid="uid://btnwfigmoo5k7" path="res://assets/models/lever.tscn" id="14_5hruw"]
-[ext_resource type="PackedScene" uid="uid://b8ewuba6gfdu1" path="res://assets/materials/button1.glb" id="15_5hruw"]
-[ext_resource type="PackedScene" uid="uid://baq7o4rus3ioo" path="res://assets/models/lever2.glb" id="16_gih5q"]
+[ext_resource type="PackedScene" uid="uid://bqlr2gno8vrat" path="res://assets/models/door.blend" id="13_bp2dc"]
+[ext_resource type="Material" uid="uid://dpfkrc7q313a5" path="res://assets/materials/time_wall.tres" id="14_v3o6k"]
+[ext_resource type="Texture2D" uid="uid://bgtvdtbw13l27" path="res://assets/textures/white-noise.png" id="16_c16oy"]
+[ext_resource type="Shader" uid="uid://invve4j5msne" path="res://shaders/crt_lines.gdshader" id="16_gih5q"]
+[ext_resource type="PackedScene" uid="uid://cctgtoi6i6d8k" path="res://time_wall_cube_green.tscn" id="16_kgxxe"]
+[ext_resource type="PackedScene" uid="uid://ccs8aird717jx" path="res://time_wall_cube_red.tscn" id="17_uxrxm"]
+[ext_resource type="PackedScene" uid="uid://ciu1pf6bx4jin" path="res://assets/remote.blend" id="18_uxrxm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bp2dc"]
 metallic = 0.7
@@ -43,7 +47,7 @@ _surfaces = [{
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aghtr"]
 emission_enabled = true
 emission = Color(0.85057837, 0.96985334, 0.9999998, 1)
-emission_energy_multiplier = 16.0
+emission_energy_multiplier = 8.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_47icn"]
 lightmap_size_hint = Vector2i(9, 13)
@@ -51,9 +55,39 @@ material = SubResource("StandardMaterial3D_aghtr")
 add_uv2 = true
 size = Vector3(0.5, 0.5, 0.5)
 
-[sub_resource type="BoxMesh" id="BoxMesh_bp2dc"]
-lightmap_size_hint = Vector2i(14, 21)
-add_uv2 = true
+[sub_resource type="ArrayMesh" id="ArrayMesh_5hruw"]
+lightmap_size_hint = Vector2i(310, 358)
+_surfaces = [{
+"aabb": AABB(-5.191223, -0.5, -4.3503723, 10.382446, 1, 8.700745),
+"attribute_data": PackedByteArray("AACAPwAAgD9Mln8/p8kBPwAAgD8AAAAATJZ/P7PxTTwAAAAAAAAAAMM+bj+z8U08AACAPwAAgD8P1W08mBIBPwAAgD8AAAAAR08wP5gSAT8AAAAAAAAAAEdPMD94pH8/AACAPwAAgD/J8lc/n6sYPwAAgD8AAAAAQJtGP5+rGD8AAAAAAAAAAECbRj+z8U08AAAAAAAAgD/DPm4/p8kBPwAAgD8AAIA/f8kyP5+rGD8AAIA/AAAAAAghRD+fqxg/AAAAAAAAAAAIIUQ/s/FNPAAAAAAAAAAApwEtP9Ha/T4AAAAAAACAPw1o0zrR2v0+AACAPwAAgD8NaNM6uw+3OgAAAAAAAIA/D9VtPHikfz8AAAAAAACAP3/JMj+z8U08AACAPwAAgD+LxGs/Ocg8PQAAgD8AAAAAi8RrP2ReCj8AAAAAAAAAAAJtWj9kXgo/AAAAAAAAgD/J8lc/s/FNPAAAgD8AAAAApwEtP7sPtzoAAAAAAACAPwJtWj85yDw9"),
+"format": 34359742519,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAwAEAAUABgAHAAgAAgAJAAAACgALAAwADQAOAA8ABQAQAAMADAARAAoAEgATABQACAAVAAYADwAWAA0AFAAXABIA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("gB6mwAAAAL9ANotAgB6mwAAAAL9ANovAgB6mwAAAAD9ANovAgB6mQAAAAL9ANovAgB6mwAAAAL9ANovAgB6mwAAAAL9ANotAgB6mwAAAAD9ANovAgB6mwAAAAL9ANovAgB6mQAAAAL9ANovAgB6mwAAAAD9ANotAgB6mwAAAAL9ANotAgB6mwAAAAD9ANotAgB6mQAAAAD9ANotAgB6mQAAAAD9ANotAgB6mwAAAAD9ANotAgB6mwAAAAD9ANovAgB6mQAAAAL9ANotAgB6mQAAAAL9ANotAgB6mQAAAAL9ANovAgB6mQAAAAL9ANotAgB6mQAAAAD9ANotAgB6mQAAAAD9ANovAgB6mQAAAAD9ANovAgB6mQAAAAD9ANovAAAAAgP9//n8AAACA/3/+fwAAAID/f/5/AIAAAP//AAAAgAAA//8AAACAAAD//wAA/////wAA/z//////AAD/P/////8AAP8/AAAAgP9//n//f/9/AAD/P/9//38AAP8//3//fwAA/z8AgP////8AAACA/////wAAAID/////AAAAgAAA//8AAP9//38AAP8///8AgP9//n///wCA/3/+f///AID/f/5//////wAA/z8AgP////8AAP//AID/f/5/")
+}]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_gih5q"]
+lightmap_size_hint = Vector2i(310, 358)
+_surfaces = [{
+"aabb": AABB(-5.191223, -0.5, -4.3503723, 10.382446, 1, 8.700745),
+"attribute_data": PackedByteArray("AACAPwAAgD9Mln8/p8kBPwAAgD8AAAAATJZ/P7PxTTwAAAAAAAAAAMM+bj+z8U08AACAPwAAgD8P1W08mBIBPwAAgD8AAAAAR08wP5gSAT8AAAAAAAAAAEdPMD94pH8/AACAPwAAgD/J8lc/n6sYPwAAgD8AAAAAQJtGP5+rGD8AAAAAAAAAAECbRj+z8U08AAAAAAAAgD/DPm4/p8kBPwAAgD8AAIA/f8kyP5+rGD8AAIA/AAAAAAghRD+fqxg/AAAAAAAAAAAIIUQ/s/FNPAAAAAAAAAAApwEtP9Ha/T4AAAAAAACAPw1o0zrR2v0+AACAPwAAgD8NaNM6uw+3OgAAAAAAAIA/D9VtPHikfz8AAAAAAACAP3/JMj+z8U08AACAPwAAgD+LxGs/Ocg8PQAAgD8AAAAAi8RrP2ReCj8AAAAAAAAAAAJtWj9kXgo/AAAAAAAAgD/J8lc/s/FNPAAAgD8AAAAApwEtP7sPtzoAAAAAAACAPwJtWj85yDw9"),
+"format": 34359742519,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAwAEAAUABgAHAAgAAgAJAAAACgALAAwADQAOAA8ABQAQAAMADAARAAoAEgATABQACAAVAAYADwAWAA0AFAAXABIA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("gB6mwAAAAL9ANotAgB6mwAAAAL9ANovAgB6mwAAAAD9ANovAgB6mQAAAAL9ANovAgB6mwAAAAL9ANovAgB6mwAAAAL9ANotAgB6mwAAAAD9ANovAgB6mwAAAAL9ANovAgB6mQAAAAL9ANovAgB6mwAAAAD9ANotAgB6mwAAAAL9ANotAgB6mwAAAAD9ANotAgB6mQAAAAD9ANotAgB6mQAAAAD9ANotAgB6mwAAAAD9ANotAgB6mwAAAAD9ANovAgB6mQAAAAL9ANotAgB6mQAAAAL9ANotAgB6mQAAAAL9ANovAgB6mQAAAAL9ANotAgB6mQAAAAD9ANotAgB6mQAAAAD9ANovAgB6mQAAAAD9ANovAgB6mQAAAAD9ANovAAAAAgP9//n8AAACA/3/+fwAAAID/f/5/AIAAAP//AAAAgAAA//8AAACAAAD//wAA/////wAA/z//////AAD/P/////8AAP8/AAAAgP9//n//f/9/AAD/P/9//38AAP8//3//fwAA/z8AgP////8AAACA/////wAAAID/////AAAAgAAA//8AAP9//38AAP8///8AgP9//n///wCA/3/+f///AID/f/5//////wAA/z8AgP////8AAP//AID/f/5/")
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kgxxe"]
+render_priority = 0
+shader = ExtResource("16_gih5q")
+shader_parameter/lines = 90.0
+shader_parameter/noise_texture = ExtResource("16_c16oy")
 
 [node name="TempScene" type="Node3D" unique_id=2141939930]
 metadata/_edit_lock_ = true
@@ -111,6 +145,7 @@ material_override = ExtResource("2_cvoia")
 mesh = SubResource("ArrayMesh_cvoia")
 
 [node name="Player" parent="." unique_id=2013142565 instance=ExtResource("2_wcc6p")]
+transform = Transform3D(1, -4.2849704e-05, 2.4362038e-05, 4.2849042e-05, 1.0000001, -4.9439856e-05, -2.4363377e-05, 4.9439273e-05, 1.0000002, 0, 0, 0)
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1645088656]
 
@@ -123,11 +158,11 @@ light_energy = 2.0
 light_bake_mode = 1
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="." unique_id=963579447]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1838341, 1.608567, 1.2204483)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5165951, 2.155346, 0.061380625)
 light_energy = 3.0
 shadow_enabled = true
 omni_range = 20.0
-omni_attenuation = 2.0
+omni_attenuation = 1.5
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="OmniLight3D2" unique_id=1608145624]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.97129655, 2.1652024, 8.720426)
@@ -137,12 +172,13 @@ omni_range = 20.0
 omni_attenuation = 2.0
 
 [node name="Bunny" type="MeshInstance3D" parent="." unique_id=1214436863]
-transform = Transform3D(0.8325252, 0, -0.5539874, 0, 1, 0, 0.5539874, 0, 0.8325252, 6.6737776, 4.9011946, -0.8895122)
+transform = Transform3D(0.8325252, 0, -0.5539874, 0, 1, 0, 0.5539874, 0, 0.8325252, 2.691421, 0.9029546, -0.24878538)
 material_override = ExtResource("5_uowj7")
 gi_mode = 2
 mesh = ExtResource("5_amkgp")
 
 [node name="PostProcessingMesh" parent="." unique_id=1314059824 instance=ExtResource("2_amkgp")]
+sorting_offset = -1000.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1079684028]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 20, 7.744116, 9.237029, 0.002093454)
@@ -185,7 +221,10 @@ omni_range = 32.0
 omni_attenuation = 0.8
 
 [node name="LightmapGI" type="LightmapGI" parent="." unique_id=918074788]
+quality = 2
+bounces = 4
 directional = true
+shadowmask_mode = 2
 interior = true
 denoiser_strength = 0.15
 generate_probes_subdiv = 3
@@ -238,39 +277,54 @@ mesh = SubResource("BoxMesh_47icn")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 20, -8.269045, 0.040318966, 0.002093454)
 mesh = SubResource("BoxMesh_47icn")
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="." unique_id=1754887545]
-transform = Transform3D(9.536888, 0, 0, 0, 1, 0, 0, 0, 7.4240303, -0.8725276, 0.21371174, 0.78116536)
-mesh = SubResource("BoxMesh_bp2dc")
-surface_material_override/0 = ExtResource("11_cvoia")
-
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="." unique_id=320194387]
-transform = Transform3D(9.536888, 0, 0, 0, 0.88783145, 3.416307, 0, -0.46016875, 6.591287, -0.85323524, 1.2198973, 9.837697)
-mesh = SubResource("BoxMesh_bp2dc")
-surface_material_override/0 = ExtResource("12_cvoia")
-
 [node name="Bunny2" type="MeshInstance3D" parent="." unique_id=1658469661]
-transform = Transform3D(0.8325252, 0, -0.5539874, 0, 1, 0, 0.5539874, 0, 0.8325252, 6.292344, 5.0256186, 1.1637429)
+transform = Transform3D(0.8325252, 0, -0.5539874, 0, 1, 0, 0.5539874, 0, 0.8325252, 6.292344, 1.0273786, 1.1637429)
 material_override = ExtResource("12_cvoia")
 gi_mode = 2
 mesh = ExtResource("5_amkgp")
 
-[node name="button" parent="." unique_id=1114961393 instance=ExtResource("13_v3o6k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4458885, 0.69241446, 2.7578788)
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=59929522]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9879761, 0, 0.6203954)
+visible = false
+material_override = ExtResource("11_cvoia")
+size = Vector3(10.382446, 1, 8.700745)
 
-[node name="lever" parent="." unique_id=1888503780 instance=ExtResource("14_5hruw")]
-transform = Transform3D(-8.742278e-08, 2, 0, -2, -8.742278e-08, 0, 0, 0, 2, -8.35612, 2.4450448, 2.567813)
+[node name="CSGBakedMeshInstance3D2" type="MeshInstance3D" parent="." unique_id=2037415648]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9879761, 0, 0.6203954)
+material_override = ExtResource("11_cvoia")
+mesh = SubResource("ArrayMesh_5hruw")
 
-[node name="button2" parent="." unique_id=217117137 instance=ExtResource("13_v3o6k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9814186, 0.69241446, 0.86935496)
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1578036015]
+transform = Transform3D(1, 0, 0, 0, 0.8199721, 0.5724035, 0, -0.5724035, 0.8199721, -0.9879761, 1.9319367, 10.481086)
+visible = false
+material_override = ExtResource("12_cvoia")
+size = Vector3(10.382446, 1, 8.700745)
 
-[node name="lever2" parent="." unique_id=868193712 instance=ExtResource("14_5hruw")]
-transform = Transform3D(-8.742278e-08, 2, 0, -2, -8.742278e-08, 0, 0, 0, 2, -3.0925741, 2.4450448, 1.6488042)
+[node name="CSGBakedMeshInstance3D3" type="MeshInstance3D" parent="." unique_id=166799373]
+transform = Transform3D(1, 0, 0, 0, 0.8199721, 0.5724035, 0, -0.5724035, 0.8199721, -0.9879761, 1.9319367, 10.481086)
+material_override = ExtResource("12_cvoia")
+mesh = SubResource("ArrayMesh_gih5q")
 
-[node name="button1" parent="." unique_id=1186540342 instance=ExtResource("15_5hruw")]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -8.38745, 2.4545207, 3.8239686)
+[node name="button1" parent="." unique_id=1092882654 instance=ExtResource("12_bp2dc")]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -8.385431, 2.8491757, 3.029485)
 
-[node name="lever3" parent="." unique_id=884275033 instance=ExtResource("16_gih5q")]
-transform = Transform3D(-8.742278e-08, 2, 0, -2, -8.742278e-08, 0, 0, 0, 2, -8.325932, 2.0090568, 1.1411959)
+[node name="door" parent="." unique_id=189363516 instance=ExtResource("13_bp2dc")]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, -2.3228242, 0.42676306, -0.85955644)
 
-[node name="button3" parent="." unique_id=1138282033 instance=ExtResource("13_v3o6k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2695827, -0.0033779144, 3.2384737)
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="." unique_id=164787938]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.63114023, 0)
+material_override = ExtResource("14_v3o6k")
+mesh = ExtResource("5_amkgp")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=1381872646]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.2133207, 3.0655851, 1.400702)
+material = SubResource("ShaderMaterial_kgxxe")
+
+[node name="time_wall_cube" parent="." unique_id=440483094 instance=ExtResource("16_kgxxe")]
+transform = Transform3D(1.9303218, 0, -2.842171e-14, 0, -1.5862741, 0, 0, 0, -9.095164, 0, 4.0828314, 6.353343)
+
+[node name="time_wall_cube2" parent="." unique_id=1221927305 instance=ExtResource("17_uxrxm")]
+transform = Transform3D(-17.241673, 0, 8.772926e-07, 0, 10.752518, 0, -1.5073148e-06, 0, -10.035057, 0.16714787, 4.9933467, -7.389057)
+
+[node name="remote" parent="." unique_id=1095826783 instance=ExtResource("18_uxrxm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.92730665, 1.6337522, 0.66264844)
