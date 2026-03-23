@@ -8,7 +8,7 @@ const CLASS_NAME = "Actor"
 # Constants
 const WALKING_SPEED = 5.0
 const CROUCHING_SPEED = 3.0
-const JUMP_VELOCITY = 5.5
+const JUMP_VELOCITY = 6.7
 
 # Variables
 var movementDirectionSmoothed: Vector3
@@ -61,7 +61,7 @@ func _physics_process(delta: float) -> void:
     
     # Add the gravity.
     if not is_on_floor() or isOnFloorOverride:
-        velocity += get_gravity() * delta
+        velocity += get_gravity() * 1.5 * delta
     
     # Get direction vector from either the Player or Clone
     var inputDirection: Vector2 = getInputDirection()
@@ -108,9 +108,10 @@ func _jump():
 
 
 func _crouch():
-    crouching = true
-    animationPlayer.play("crouch")
-    animationPlayer.queue("crouchHold")
+    if is_on_floor():
+        crouching = true
+        animationPlayer.play("crouch")
+        animationPlayer.queue("crouchHold")
 
 
 func _uncrouch():
