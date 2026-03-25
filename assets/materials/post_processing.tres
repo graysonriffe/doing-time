@@ -1,12 +1,13 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://uecsjv8lvon8"]
 
-[ext_resource type="Shader" uid="uid://d31ua0arrf5tq" path="res://shaders/post_processing.gdshader" id="1_ksooi"]
+[ext_resource type="Shader" uid="uid://cj361jgwpvdt5" path="res://assets/shaders/post_processing.gdshader" id="1_djexw"]
 [ext_resource type="Texture2D" uid="uid://bgtvdtbw13l27" path="res://assets/textures/white-noise.png" id="2_djexw"]
 
 [resource]
 render_priority = 0
-shader = ExtResource("1_ksooi")
+shader = ExtResource("1_djexw")
 shader_parameter/noise_texture = ExtResource("2_djexw")
 shader_parameter/edge_only = true
+shader_parameter/pause_effect = false
 shader_parameter/line_color = Color(0, 0, 0, 1)
 shader_parameter/background_color = Color(0.408, 0.969, 0.694, 1)

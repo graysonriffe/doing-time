@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://chp051n436t3o"]
+
+[ext_resource type="PackedScene" uid="uid://cbn4xhra7pot3" path="res://assets/models/remote/remote.blend" id="1_m14kl"]
+[ext_resource type="Material" uid="uid://d353brxs70bnx" path="res://assets/materials/cel_shading.tres" id="2_c5mex"]
+[ext_resource type="Shader" uid="uid://cia180g1ko22l" path="res://assets/shaders/cel_shading.gdshader" id="3_g6wd6"]
+[ext_resource type="PackedScene" uid="uid://kawmhhp1i5k0" path="res://scenes/ui/remote_ui.tscn" id="4_v1tst"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_g6wd6"]
+viewport_path = NodePath("Plane/SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v1tst"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("3_g6wd6")
+shader_parameter/albedo = SubResource("ViewportTexture_g6wd6")
+shader_parameter/specular_strength = 1.0
+shader_parameter/shininess = 50.0
+
+[node name="remote" unique_id=429470484 instance=ExtResource("1_m14kl")]
+
+[node name="Remote" parent="." index="0" unique_id=1529861231]
+instance_shader_parameters/color = Color(0.568, 0.70526665, 0.71, 1)
+instance_shader_parameters/emission = 0.1
+surface_material_override/0 = ExtResource("2_c5mex")
+
+[node name="Plane" parent="." index="2" unique_id=788533735]
+instance_shader_parameters/emission = 0.8
+instance_shader_parameters/lighting_multiplier = 0.2
+surface_material_override/0 = SubResource("ShaderMaterial_v1tst")
+
+[node name="SubViewport" type="SubViewport" parent="Plane" index="0" unique_id=1129519318]
+size = Vector2i(1000, 1000)
+
+[node name="RemoteUI" parent="Plane/SubViewport" index="0" unique_id=685619501 instance=ExtResource("4_v1tst")]
+
+[node name="Antenna" parent="." index="3" unique_id=2066451165]
+instance_shader_parameters/color = Color(0.542318, 0.542318, 0.542318, 1)
+surface_material_override/0 = ExtResource("2_c5mex")
+
+[node name="Branch_Button" parent="." index="4" unique_id=640402621]
+instance_shader_parameters/color = Color(0.62181395, 0.6616434, 0.7763572, 1)
+surface_material_override/0 = ExtResource("2_c5mex")
+
+[node name="Forward_Button" parent="." index="5" unique_id=2000672873]
+instance_shader_parameters/color = Color(0.5621, 0.604075, 0.73, 1)
+surface_material_override/0 = ExtResource("2_c5mex")
+
+[node name="Rewind_Button" parent="." index="6" unique_id=379342182]
+instance_shader_parameters/color = Color(0.56078434, 0.6039216, 0.7294118, 1)
+surface_material_override/0 = ExtResource("2_c5mex")
+
+[node name="Play_Button" parent="." index="7" unique_id=254590254]
+instance_shader_parameters/color = Color(0.56078434, 0.6039216, 0.7294118, 1)
+surface_material_override/0 = ExtResource("2_c5mex")

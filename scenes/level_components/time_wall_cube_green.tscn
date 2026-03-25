@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cctgtoi6i6d8k"]
 
-[ext_resource type="PackedScene" uid="uid://dw7j1848wjoo2" path="res://assets/models/time_wall_cube_base.tscn" id="1_3qpm8"]
-[ext_resource type="Shader" uid="uid://c56sui4alj30i" path="res://shaders/time_wall.gdshader" id="2_mi3vh"]
+[ext_resource type="PackedScene" uid="uid://dw7j1848wjoo2" path="res://scenes/level_components/time_wall_cube_base.tscn" id="1_3qpm8"]
+[ext_resource type="Shader" uid="uid://c56sui4alj30i" path="res://assets/shaders/time_wall.gdshader" id="2_mi3vh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4ppl3"]
 resource_name = "TimeWallMat"

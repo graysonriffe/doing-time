@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bt2dfck53q241"
-path="res://.godot/imported/time_wall_cube.blend-9b4da44f14921485e15d97570e1629b0.scn"
+path="res://.godot/imported/time_wall_cube.blend-198a8591a8b48abfe299b6b81790f7ff.scn"
 
 [deps]
 
-source_file="res://assets/models/time_wall_cube.blend"
-dest_files=["res://.godot/imported/time_wall_cube.blend-9b4da44f14921485e15d97570e1629b0.scn"]
+source_file="res://assets/models/level_components/time_wall/time_wall_cube.blend"
+dest_files=["res://.godot/imported/time_wall_cube.blend-198a8591a8b48abfe299b6b81790f7ff.scn"]
 
 [params]
 

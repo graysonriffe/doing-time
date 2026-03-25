@@ -36,7 +36,7 @@ var scrubTime: float
 @onready var cloneContainer: Node = $Clones
 
 @onready var pauseUI: Control = find_child("PauseUI", true, false)
-@onready var tempRemoteLabel: Label = find_child("ScreenPlaceholderLabel", true, false)
+@onready var tempRemoteLabel: Label = find_child("ScreenLabel", true, false)
 @onready var timelineSlider: HSlider = find_child("TimelineSlider", true, false)
 @onready var timelineTimeLabel: Label = find_child("TimelineTimeLabel", true, false)
 
@@ -153,6 +153,8 @@ func _togglePause():
 func _doPause():
     gamestate = Gamestate.Paused
     
+    RenderingServer.global_shader_parameter_set("pause_effect", true);
+    
     player.pause()
     _pauseClones()
     _pausePhysicsObjects()
@@ -173,6 +175,8 @@ func _doPause():
 
 func _doUnpause():
     gamestate = Gamestate.Playing
+    
+    RenderingServer.global_shader_parameter_set("pause_effect", false);
     
     for tween in get_tree().get_processed_tweens():
         await tween.finished

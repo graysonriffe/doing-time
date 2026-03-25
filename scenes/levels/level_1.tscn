@@ -53,7 +53,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, -3)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
 activators = [NodePath("../WeightButton"), NodePath("../WeightButton2"), NodePath("../Lever")]
 
-[node name="Door" parent="World/Door/Door" parent_id_path=PackedInt32Array(712969499, 1030310965) index="0" unique_id=1288980360]
+[node name="Door" parent="World/Door/Door" parent_id_path=PackedInt32Array(712969499, 1030310965) index="0" unique_id=246176827]
 surface_material_override/0 = SubResource("StandardMaterial3D_dga24")
 
 [node name="Lever" parent="World" parent_id_path=PackedInt32Array(554948861) index="5" unique_id=470289266 instance=ExtResource("7_oc4kc")]

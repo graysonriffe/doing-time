@@ -10,7 +10,7 @@ void vertex() {
 }
 
 void fragment() {
-    float ins = sin(mod(UV.x * lines, 1.0)*PI) - (pow(sin(mod(UV.x * 1.0 - TIME / 10.0, 1.0) * PI), 20.0) * 2.75);
+    float ins = sin(mod(UV.y * lines, 1.0)*PI) - (pow(sin(mod(UV.y * 1.0 - TIME / 10.0, 1.0) * PI), 20.0) * 2.75);
     float dist = 1.0 - length((UV - vec2(0.5)) * 2.0);
 	ALBEDO = mix(vec3(0.8), vec3(1.0), ins) * vec3(1,0,0);
     float t = TIME * 25.0;

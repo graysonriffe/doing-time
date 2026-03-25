@@ -39,6 +39,9 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_wg4ti"]
+font_size = 100
+
 [node name="RemoteUI" type="Control" unique_id=685619501]
 layout_mode = 3
 anchors_preset = 0
@@ -47,6 +50,7 @@ offset_bottom = 1000.0
 metadata/_edit_lock_ = true
 
 [node name="RemoteBaseColor" type="ColorRect" parent="." unique_id=1392312330]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -56,12 +60,14 @@ grow_vertical = 2
 color = Color(0.16685298, 0.16685283, 0.1668528, 1)
 
 [node name="FrontBoundary" type="Control" parent="." unique_id=1233576751]
+visible = false
 layout_mode = 1
 anchors_preset = 0
 offset_right = 500.0
 offset_bottom = 1000.0
 
 [node name="RemoteBorder" type="ColorRect" parent="FrontBoundary" unique_id=289404765]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -71,6 +77,7 @@ grow_vertical = 2
 color = Color(0.7274283, 0.7274284, 0.7274283, 1)
 
 [node name="RemoteFontColor" type="ColorRect" parent="FrontBoundary" unique_id=1192281009]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -84,6 +91,7 @@ grow_vertical = 2
 color = Color(0.31431612, 0.31431612, 0.3143161, 1)
 
 [node name="RemoteName" type="Label" parent="FrontBoundary" unique_id=824325167]
+visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -98,6 +106,7 @@ text = "Time Remote"
 horizontal_alignment = 1
 
 [node name="ScreenTexture" type="TextureRect" parent="FrontBoundary" unique_id=191141378]
+visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -110,6 +119,7 @@ grow_horizontal = 2
 texture = SubResource("GradientTexture2D_gtj3a")
 
 [node name="ScreenPlaceholderLabel" type="Label" parent="FrontBoundary/ScreenTexture" unique_id=767032388]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -123,6 +133,7 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="Buttons" type="GridContainer" parent="FrontBoundary" unique_id=1041461394]
+visible = false
 layout_mode = 0
 offset_left = 37.0
 offset_top = 330.0
@@ -131,6 +142,7 @@ offset_bottom = 503.0
 columns = 3
 
 [node name="BackwardButton" type="TextureRect" parent="FrontBoundary/Buttons" unique_id=1135888562]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 texture = SubResource("GradientTexture2D_f8v7o")
@@ -138,6 +150,7 @@ expand_mode = 4
 stretch_mode = 4
 
 [node name="BackwardsIcon" type="TextureRect" parent="FrontBoundary/Buttons/BackwardButton" unique_id=2116892415]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -155,12 +168,14 @@ expand_mode = 4
 flip_h = true
 
 [node name="PauseButton" type="TextureRect" parent="FrontBoundary/Buttons" unique_id=451653927]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 texture = SubResource("GradientTexture2D_wg4ti")
 expand_mode = 4
 
 [node name="PauseIcon" type="TextureRect" parent="FrontBoundary/Buttons/PauseButton" unique_id=1943706200]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -177,6 +192,7 @@ texture = ExtResource("2_gtj3a")
 expand_mode = 4
 
 [node name="ForwardButton" type="TextureRect" parent="FrontBoundary/Buttons" unique_id=60689961]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 texture = SubResource("GradientTexture2D_f8v7o")
@@ -184,6 +200,7 @@ expand_mode = 4
 stretch_mode = 4
 
 [node name="ForwardIcon" type="TextureRect" parent="FrontBoundary/Buttons/ForwardButton" unique_id=1037907393]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -200,6 +217,7 @@ texture = ExtResource("1_wg4ti")
 expand_mode = 4
 
 [node name="BackwardLabel" type="Label" parent="FrontBoundary/Buttons" unique_id=916198426]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 30
@@ -207,6 +225,7 @@ text = "Backward"
 horizontal_alignment = 1
 
 [node name="PauseLabel" type="Label" parent="FrontBoundary/Buttons" unique_id=1810014957]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 30
@@ -214,8 +233,34 @@ text = "Pause"
 horizontal_alignment = 1
 
 [node name="ForwardLabel" type="Label" parent="FrontBoundary/Buttons" unique_id=1914884239]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 30
 text = "Forward"
 horizontal_alignment = 1
+
+[node name="ScreenTexture" type="TextureRect" parent="." unique_id=1600317344]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -500.0
+offset_right = 500.0
+offset_bottom = 1000.0
+grow_horizontal = 2
+texture = SubResource("GradientTexture2D_gtj3a")
+
+[node name="ScreenLabel" type="Label" parent="ScreenTexture" unique_id=1651287830]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 35
+text = "Status"
+label_settings = SubResource("LabelSettings_wg4ti")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

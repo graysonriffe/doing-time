@@ -4,8 +4,6 @@ render_mode ambient_light_disabled;
 render_mode cull_disabled;
 
 uniform vec3 color : source_color = vec3(1,1,1);
-uniform float specular_strength = 1.0;
-uniform float shininess = 50.0;
 
 varying vec3 worldPosition;
 
@@ -315,7 +313,7 @@ void fragment() {
 	// Called for every pixel the material is visible on.d
     float noise = sin(max(pow(cnoise(vec4(worldPosition * 0.75, TIME/5.0)) * 2.0, 2.0), 0.025) * PI);
     ALBEDO = max(0.5, noise) * mix(color, vec3(1,1,1), pow(noise,8.0) * 0.4);
-    EMISSION = color * 100.0;
+    EMISSION = color * 25.0;
     ALPHA = max(pow(noise, 2.0) * 0.15, 0.1);
 }
 

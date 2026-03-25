@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bqlr2gno8vrat"
-path="res://.godot/imported/door.blend-6b8fc0962338e1c83882df937dd479a9.scn"
+uid="uid://cbn4xhra7pot3"
+path="res://.godot/imported/remote.blend-8cff26f114a44b96177effc9a1a2d1b3.scn"
 
 [deps]
 
-source_file="res://assets/models/door.blend"
-dest_files=["res://.godot/imported/door.blend-6b8fc0962338e1c83882df937dd479a9.scn"]
+source_file="res://assets/models/remote/remote.blend"
+dest_files=["res://.godot/imported/remote.blend-8cff26f114a44b96177effc9a1a2d1b3.scn"]
 
 [params]
 
@@ -34,9 +34,9 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-materials/extract=1
+materials/extract=0
 materials/extract_format=0
-materials/extract_path="res://assets/materials"
+materials/extract_path=""
 _subresources={}
 blender/nodes/visible=0
 blender/nodes/active_collection_only=false

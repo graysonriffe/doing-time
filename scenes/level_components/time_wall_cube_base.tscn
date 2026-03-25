@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dw7j1848wjoo2"]
 
-[ext_resource type="PackedScene" uid="uid://bt2dfck53q241" path="res://assets/models/time_wall_cube.blend" id="1_cfhit"]
-[ext_resource type="Material" uid="uid://fjl4cndb2848" path="res://assets/models/TimeWallMat.tres" id="2_s2e7h"]
+[ext_resource type="PackedScene" uid="uid://bt2dfck53q241" path="res://assets/models/level_components/time_wall/time_wall_cube.blend" id="1_cfhit"]
+[ext_resource type="Material" uid="uid://fjl4cndb2848" path="res://assets/materials/TimeWallMat.tres" id="2_s2e7h"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_l53uj"]
 lightmap_size_hint = Vector2i(7, 7)
