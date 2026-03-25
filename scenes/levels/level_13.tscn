@@ -5,6 +5,10 @@
 [ext_resource type="Material" uid="uid://ychntj2cs7nm" path="res://assets/materials/metal_panels/metal_panels.tres" id="3_4habk"]
 [ext_resource type="Material" uid="uid://bm5oc0vuy5piw" path="res://assets/materials/metal_sheet/metal_sheet.tres" id="4_a8b8j"]
 [ext_resource type="MeshLibrary" uid="uid://de6pq7wccosnq" path="res://assets/models/world_blocks_mesh_library.meshlib" id="5_4sh85"]
+[ext_resource type="PackedScene" uid="uid://c2oilcemslf1l" path="res://scenes/level_components/door.tscn" id="5_tmfht"]
+[ext_resource type="Texture2D" uid="uid://cfomnjxws1df4" path="res://assets/materials/metal_panels/Metal_Panels_basecolor.png" id="6_g5tf4"]
+[ext_resource type="Texture2D" uid="uid://xekyk8sknnlj" path="res://assets/materials/metal_panels/Metal_Panels_normal.png" id="7_wyujn"]
+[ext_resource type="Texture2D" uid="uid://cpn7fwvir7abc" path="res://assets/materials/metal_panels/Metal_Panels_roughness.png" id="8_yje5r"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tmfht"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -33,6 +37,16 @@ shader_parameter/background_color = Color(0.408, 0.969, 0.694, 1)
 material = SubResource("ShaderMaterial_ulyey")
 flip_faces = true
 size = Vector2(2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0hwde"]
+albedo_texture = ExtResource("6_g5tf4")
+metallic = 1.0
+metallic_specular = 0.3
+roughness_texture = ExtResource("8_yje5r")
+normal_enabled = true
+normal_texture = ExtResource("7_wyujn")
+uv1_scale = Vector3(0.15, 0.15, 0.15)
+uv1_triplanar = true
 
 [node name="Level13" type="Node3D" unique_id=1330780621]
 
@@ -88,6 +102,30 @@ shadow_enabled = true
 omni_range = 20.0
 omni_attenuation = 2.0
 
+[node name="OmniLight_Hall_Back" type="OmniLight3D" parent="Lights" unique_id=119711060]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.754982, 4.466645, 25.66941)
+light_color = Color(0.8580337, 0.8394728, 0.7892842, 1)
+light_energy = 44.627
+shadow_enabled = true
+omni_range = 20.0
+omni_attenuation = 2.0
+
+[node name="OmniLight_Hall_Corner" type="OmniLight3D" parent="Lights" unique_id=1188201076]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.754982, 4.466645, 3.2824707)
+light_color = Color(0.8580337, 0.8394728, 0.7892842, 1)
+light_energy = 44.627
+shadow_enabled = true
+omni_range = 20.0
+omni_attenuation = 2.0
+
+[node name="OmniLight_Hall_Corner2" type="OmniLight3D" parent="Lights" unique_id=1520741449]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.248653, 4.466645, -1.004391)
+light_color = Color(0.8580337, 0.8394728, 0.7892842, 1)
+light_energy = 44.627
+shadow_enabled = true
+omni_range = 20.0
+omni_attenuation = 2.0
+
 [node name="World" type="Node" parent="." unique_id=137471716]
 
 [node name="Room" type="CSGCombiner3D" parent="World" unique_id=614137789]
@@ -134,28 +172,40 @@ material = ExtResource("4_a8b8j")
 transform = Transform3D(0.7, 0, 0, 0, 1, 0, 0, 0, 0.8, 0, 0, 0)
 use_collision = true
 
-[node name="Hall Entry" type="CSGBox3D" parent="World/Hall One" unique_id=722941578]
+[node name="Hall Entry Floor" type="CSGBox3D" parent="World/Hall One" unique_id=722941578]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.872414, -0.25, -0.49999988)
 use_collision = true
 size = Vector3(37, 0.5, 12)
 material = ExtResource("2_lj5c5")
 
-[node name="Hall Entry2" type="CSGBox3D" parent="World/Hall One" unique_id=986223418]
+[node name="Hall Back Floor" type="CSGBox3D" parent="World/Hall One" unique_id=986223418]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 64.658134, -0.25, 22)
 use_collision = true
 size = Vector3(37, 0.5, 15)
 material = ExtResource("2_lj5c5")
 
-[node name="Wall5" type="CSGBox3D" parent="World/Hall One" unique_id=858497754]
-transform = Transform3D(-4.371139e-08, 0, 0.5, 0, 1, 0, -1, 0, -2.1855694e-08, 38.500004, 5, 4.7499986)
+[node name="Hall Entry Wall 1" type="CSGBox3D" parent="World/Hall One" unique_id=858497754]
+transform = Transform3D(-4.371139e-08, 0, 0.5, 0, 1, 0, -1, 0, -2.1855694e-08, 39.08353, 5, 4.7499986)
+use_collision = true
+size = Vector3(0.5, 10, 76.33411)
+material = ExtResource("3_4habk")
+
+[node name="Hall Entry Wall 2" type="CSGBox3D" parent="World/Hall One" unique_id=789942567]
+transform = Transform3D(-4.371139e-08, 0, 0.5, 0, 1, 0, -1, 0, -2.1855694e-08, 38.500004, 5, -5.9226465)
 use_collision = true
 size = Vector3(0.5, 10, 74)
 material = ExtResource("3_4habk")
 
-[node name="Wall6" type="CSGBox3D" parent="World/Hall One" unique_id=789942567]
-transform = Transform3D(-4.371139e-08, 0, 0.5, 0, 1, 0, -1, 0, -2.1855694e-08, 38.500004, 5, -5.9226465)
+[node name="Hall Back Wall 1" type="CSGBox3D" parent="World/Hall One" unique_id=2128230265]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.5, 71.56311, 5, 23.881681)
 use_collision = true
 size = Vector3(0.5, 10, 74)
+material = ExtResource("3_4habk")
+
+[node name="Hall Back Wall 2" type="CSGBox3D" parent="World/Hall One" unique_id=1492500600]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.5, 57.9792, 5, 23.44601)
+use_collision = true
+size = Vector3(0.5, 10, 75.742676)
 material = ExtResource("3_4habk")
 
 [node name="Wall Corner" type="CSGBox3D" parent="World/Hall One" unique_id=810523331]
@@ -170,18 +220,40 @@ use_collision = true
 size = Vector3(0.5, 10, 23)
 material = ExtResource("3_4habk")
 
+[node name="Hall Corner Ceiling" type="CSGBox3D" parent="World/Hall One" unique_id=373397486]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 64.59034, 10.25, -0.4542179)
+use_collision = true
+size = Vector3(10.950562, 0.5, 13.936035)
+material = ExtResource("4_a8b8j")
+
 [node name="Hall Corner" type="CSGBox3D" parent="World/Hall One" unique_id=345601538]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.651375, -0.25, -0.49999988)
 use_collision = true
 size = Vector3(15, 0.5, 12)
 material = ExtResource("2_lj5c5")
 
-[node name="Ceiling" type="CSGBox3D" parent="World/Hall One" unique_id=1543215337]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.500004, 10.25, -0.6249997)
+[node name="Hall Entry Ceiling" type="CSGBox3D" parent="World/Hall One" unique_id=1543215337]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.610905, 10.25, -0.6249997)
 use_collision = true
-size = Vector3(38, 0.5, 11)
+size = Vector3(38.2218, 0.5, 11)
 material = ExtResource("4_a8b8j")
+
+[node name="Hall Back Ceiling" type="CSGBox3D" parent="World/Hall One" unique_id=1746228337]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 64.62232, 10.25, 24.67306)
+use_collision = true
+size = Vector3(40, 0.5, 14)
+material = ExtResource("4_a8b8j")
+
+[node name="Door" parent="World/Hall One" unique_id=712969499 node_paths=PackedStringArray("activators") instance=ExtResource("5_tmfht")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 20.104284, 0, -0.113695264)
+activators = [NodePath(""), NodePath(""), NodePath("")]
+
+[node name="Door" parent="World/Hall One/Door/Door" parent_id_path=PackedInt32Array(712969499, 1030310965) index="0" unique_id=1263032023]
+surface_material_override/0 = SubResource("StandardMaterial3D_0hwde")
 
 [node name="GridMap" type="GridMap" parent="World" unique_id=426356319]
 mesh_library = ExtResource("5_4sh85")
 metadata/_editor_floor_ = Vector3(0, 0, -5)
+
+[editable path="World/Hall One/Door"]
+[editable path="World/Hall One/Door/Door"]
