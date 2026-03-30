@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://fsecspfnyg2i"]
+
+[ext_resource type="Shader" uid="uid://invve4j5msne" path="res://assets/shaders/crt_lines.gdshader" id="1_g3ewn"]
+[ext_resource type="Texture2D" uid="uid://bgtvdtbw13l27" path="res://assets/textures/white-noise.png" id="2_lts4c"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_g3ewn")
+shader_parameter/lines = 90.0
+shader_parameter/vignette = true
+shader_parameter/noise_texture = ExtResource("2_lts4c")

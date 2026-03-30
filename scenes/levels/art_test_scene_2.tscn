@@ -20,6 +20,9 @@
 [ext_resource type="PackedScene" uid="uid://ciu1pf6bx4jin" path="res://assets/remote.blend" id="18_0ri0e"]
 [ext_resource type="Texture2D" uid="uid://cw8y8k4wif01o" path="res://assets/textures/Hex_Grate_Wall_normal.png" id="18_e83kc"]
 [ext_resource type="Texture2D" uid="uid://lvpdxatfbmxv" path="res://assets/textures/Hex_Grate_Wall_roughness.png" id="19_7xxbd"]
+[ext_resource type="Material" uid="uid://fsecspfnyg2i" path="res://assets/materials/crt_shader.tres" id="21_7xxbd"]
+[ext_resource type="Shader" uid="uid://n0o3iki4ol2y" path="res://assets/shaders/laser.gdshader" id="22_pyq47"]
+[ext_resource type="Texture2D" uid="uid://6h4wmegtidog" path="res://assets/materials/laser_spots/Laser_Spots_basecolor.png" id="23_ndqaf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xojot"]
 metallic = 0.7
@@ -97,6 +100,7 @@ _surfaces = [{
 render_priority = 0
 shader = ExtResource("14_c8kg8")
 shader_parameter/lines = 90.0
+shader_parameter/vignette = true
 shader_parameter/noise_texture = ExtResource("15_sy45w")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x01qd"]
@@ -108,6 +112,14 @@ roughness_texture = ExtResource("19_7xxbd")
 normal_enabled = true
 normal_texture = ExtResource("18_e83kc")
 uv1_scale = Vector3(3, 3, 3)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_am6tk"]
+render_priority = 0
+shader = ExtResource("22_pyq47")
+shader_parameter/lines = 90.0
+shader_parameter/laser_spots = ExtResource("23_ndqaf")
+shader_parameter/vignette = true
+shader_parameter/noise_texture = ExtResource("15_sy45w")
 
 [node name="CloneGame" unique_id=1202883684 instance=ExtResource("1_8halj")]
 
@@ -345,9 +357,71 @@ light_energy = 3.0
 shadow_enabled = true
 omni_range = 20.0
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="OmniLight3D3" index="0" unique_id=865342250]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.97129655, 2.1652024, 8.720426)
-visible = false
-light_energy = 3.0
-omni_range = 20.0
-omni_attenuation = 2.0
+[node name="CSGBox3D5" type="CSGBox3D" parent="." index="29" unique_id=935009264]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.480607, 2.57928, 0)
+material_override = ExtResource("21_7xxbd")
+instance_shader_parameters/color = Color(0, 0.44, 0.4106667, 0.4509804)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." index="30" unique_id=642587279]
+transform = Transform3D(8.495986e-10, -7.9108663, 0, -0.01943655, -3.4579492e-07, 0, 0, 0, 0.044456832, -1.2192631, 2.0689862, 4.679021)
+material = SubResource("ShaderMaterial_am6tk")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="." index="31" unique_id=72780503]
+transform = Transform3D(8.495986e-10, -7.9108663, 0, -0.01943655, -3.4579492e-07, 0, 0, 0, 0.044456832, -1.2192631, 2.1976357, 4.679021)
+material = SubResource("ShaderMaterial_am6tk")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="." index="32" unique_id=233452711]
+transform = Transform3D(8.495986e-10, -7.9108663, 0, -0.01943655, -3.4579492e-07, 0, 0, 0, 0.044456832, -1.2192631, 2.3283806, 4.679021)
+material = SubResource("ShaderMaterial_am6tk")
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="." index="33" unique_id=2057923320]
+transform = Transform3D(8.495986e-10, -7.9108663, 0, -0.01943655, -3.4579492e-07, 0, 0, 0, 0.044456832, -1.2192631, 2.45703, 4.679021)
+material = SubResource("ShaderMaterial_am6tk")
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="." index="34" unique_id=1431788566]
+transform = Transform3D(8.495986e-10, -7.9108663, 0, -0.01943655, -3.4579492e-07, 0, 0, 0, 0.044456832, -1.2192631, 2.601372, 4.679021)
+material = SubResource("ShaderMaterial_am6tk")
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="." index="35" unique_id=1916194089]
+transform = Transform3D(8.495986e-10, -7.9108663, 0, -0.01943655, -3.4579492e-07, 0, 0, 0, 0.044456832, -1.2192631, 2.7300215, 4.679021)
+material = SubResource("ShaderMaterial_am6tk")
+
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="." index="36" unique_id=1646695401]
+transform = Transform3D(8.495986e-10, -7.9108663, 0, -0.01943655, -3.4579492e-07, 0, 0, 0, 0.044456832, -1.2192631, 2.8607664, 4.679021)
+material = SubResource("ShaderMaterial_am6tk")
+
+[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="." index="37" unique_id=1842248148]
+transform = Transform3D(8.495986e-10, -7.9108663, 0, -0.01943655, -3.4579492e-07, 0, 0, 0, 0.044456832, -1.2192631, 2.989416, 4.679021)
+material = SubResource("ShaderMaterial_am6tk")
+
+[node name="CSGCylinder3D9" type="CSGCylinder3D" parent="." index="38" unique_id=2057120799]
+transform = Transform3D(8.495986e-10, -7.9108663, 0, -0.01943655, -3.4579492e-07, 0, 0, 0, 0.044456832, -1.2192631, 3.132572, 4.679021)
+material = SubResource("ShaderMaterial_am6tk")
+
+[node name="CSGCylinder3D10" type="CSGCylinder3D" parent="." index="39" unique_id=1690160721]
+transform = Transform3D(8.495986e-10, -7.9108663, 0, -0.01943655, -3.4579492e-07, 0, 0, 0, 0.044456832, -1.2192631, 3.2612214, 4.679021)
+material = SubResource("ShaderMaterial_am6tk")
+
+[node name="CSGCylinder3D11" type="CSGCylinder3D" parent="." index="40" unique_id=733606676]
+transform = Transform3D(8.495986e-10, -7.9108663, 0, -0.01943655, -3.4579492e-07, 0, 0, 0, 0.044456832, -1.2192631, 3.3919663, 4.679021)
+material = SubResource("ShaderMaterial_am6tk")
+
+[node name="CSGCylinder3D12" type="CSGCylinder3D" parent="." index="41" unique_id=1431146561]
+transform = Transform3D(8.495986e-10, -7.9108663, 0, -0.01943655, -3.4579492e-07, 0, 0, 0, 0.044456832, -1.2192631, 3.5206158, 4.679021)
+material = SubResource("ShaderMaterial_am6tk")
+
+[node name="CSGCylinder3D13" type="CSGCylinder3D" parent="." index="42" unique_id=437080063]
+transform = Transform3D(8.495986e-10, -7.9108663, 0, -0.01943655, -3.4579492e-07, 0, 0, 0, 0.044456832, -1.2192631, 3.6649578, 4.679021)
+material = SubResource("ShaderMaterial_am6tk")
+
+[node name="CSGCylinder3D14" type="CSGCylinder3D" parent="." index="43" unique_id=1530102386]
+transform = Transform3D(8.495986e-10, -7.9108663, 0, -0.01943655, -3.4579492e-07, 0, 0, 0, 0.044456832, -1.2192631, 3.7936072, 4.679021)
+material = SubResource("ShaderMaterial_am6tk")
+
+[node name="CSGCylinder3D15" type="CSGCylinder3D" parent="." index="44" unique_id=395028582]
+transform = Transform3D(8.495986e-10, -7.9108663, 0, -0.01943655, -3.4579492e-07, 0, 0, 0, 0.044456832, -1.2192631, 3.9243522, 4.679021)
+material = SubResource("ShaderMaterial_am6tk")
+
+[node name="CSGCylinder3D16" type="CSGCylinder3D" parent="." index="45" unique_id=1431472287]
+transform = Transform3D(8.495986e-10, -7.9108663, 0, -0.01943655, -3.4579492e-07, 0, 0, 0, 0.044456832, -1.2192631, 4.053002, 4.679021)
+material = SubResource("ShaderMaterial_am6tk")
