@@ -14,8 +14,12 @@
 [ext_resource type="Shader" uid="uid://invve4j5msne" path="res://assets/shaders/crt_lines.gdshader" id="14_c8kg8"]
 [ext_resource type="Texture2D" uid="uid://bgtvdtbw13l27" path="res://assets/textures/white-noise.png" id="15_sy45w"]
 [ext_resource type="PackedScene" uid="uid://cctgtoi6i6d8k" path="res://scenes/level_components/time_wall_cube_green.tscn" id="16_8ls8d"]
+[ext_resource type="Texture2D" uid="uid://bheob0ydaj6rk" path="res://assets/textures/Hex_Grate_Wall_basecolor.png" id="17_1k160"]
+[ext_resource type="Material" uid="uid://rww82eiyjstt" path="res://assets/materials/hex_grate/hex_grate.tres" id="17_e83kc"]
 [ext_resource type="PackedScene" uid="uid://ccs8aird717jx" path="res://scenes/level_components/time_wall_cube_red.tscn" id="17_f5wmt"]
 [ext_resource type="PackedScene" uid="uid://ciu1pf6bx4jin" path="res://assets/remote.blend" id="18_0ri0e"]
+[ext_resource type="Texture2D" uid="uid://cw8y8k4wif01o" path="res://assets/textures/Hex_Grate_Wall_normal.png" id="18_e83kc"]
+[ext_resource type="Texture2D" uid="uid://lvpdxatfbmxv" path="res://assets/textures/Hex_Grate_Wall_roughness.png" id="19_7xxbd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xojot"]
 metallic = 0.7
@@ -95,6 +99,16 @@ shader = ExtResource("14_c8kg8")
 shader_parameter/lines = 90.0
 shader_parameter/noise_texture = ExtResource("15_sy45w")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x01qd"]
+transparency = 2
+alpha_scissor_threshold = 0.05
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("17_1k160")
+roughness_texture = ExtResource("19_7xxbd")
+normal_enabled = true
+normal_texture = ExtResource("18_e83kc")
+uv1_scale = Vector3(3, 3, 3)
+
 [node name="CloneGame" unique_id=1202883684 instance=ExtResource("1_8halj")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="4" unique_id=160790665]
@@ -160,7 +174,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5165951, 2.155346, 0.061380
 light_energy = 3.0
 shadow_enabled = true
 omni_range = 20.0
-omni_attenuation = 1.5
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="OmniLight3D2" index="0" unique_id=1201961266]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.97129655, 2.1652024, 8.720426)
@@ -320,3 +333,21 @@ transform = Transform3D(-17.241673, 0, 8.772926e-07, 0, 10.752518, 0, -1.5073148
 
 [node name="remote" parent="." index="26" unique_id=784435524 instance=ExtResource("18_0ri0e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.92730665, 1.6337522, 0.66264844)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="." index="27" unique_id=1749622690]
+transform = Transform3D(8.554915, 0, 0.42989662, 0, 9.475161, 0, -4.0733395, 0, 0.9028781, 3.2359252, 1.2221518, 6.1915946)
+material_override = ExtResource("17_e83kc")
+material = SubResource("StandardMaterial3D_x01qd")
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="." index="28" unique_id=529985850]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1632476, 2.155346, 9.580412)
+light_energy = 3.0
+shadow_enabled = true
+omni_range = 20.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="OmniLight3D3" index="0" unique_id=865342250]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.97129655, 2.1652024, 8.720426)
+visible = false
+light_energy = 3.0
+omni_range = 20.0
+omni_attenuation = 2.0
