@@ -86,7 +86,8 @@ func _unhandled_input(event: InputEvent) -> void:
             viewModel.position.y += event.relative.y * 1e-4
 
 
-func teleport(newTransform: Transform3D):
+# Called when seting up a new level
+func reset(newTransform: Transform3D):
     global_transform = newTransform
     head.rotation = Vector3.ZERO
     velocity = Vector3.ZERO
@@ -94,6 +95,8 @@ func teleport(newTransform: Transform3D):
     eyes.position = Vector3.ZERO
     viewModel.position = Vector3.ZERO
     reset_physics_interpolation()
+    
+    color = ActorColor.White
 
 
 func getInputDirection() -> Vector2:

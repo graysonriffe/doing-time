@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://gccqsvfgoywy"]
 
-[ext_resource type="Material" uid="uid://d353brxs70bnx" path="res://assets/materials/cel_shading.tres" id="1_0jpl5"]
+[ext_resource type="Material" uid="uid://cah8aejnp801s" path="res://assets/materials/cel_shading_actor.tres" id="1_7vwln"]
+[ext_resource type="Material" uid="uid://dw4sjmbxh0s54" path="res://assets/materials/actor_outline.tres" id="1_703dr"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u4npu"]
 radius = 0.35
@@ -492,9 +493,11 @@ shape = SubResource("CapsuleShape3D_u4npu")
 
 [node name="BodyMesh" type="MeshInstance3D" parent="." unique_id=325760260]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = ExtResource("1_7vwln")
+material_overlay = ExtResource("1_703dr")
 instance_shader_parameters/color = Color(1, 1, 1, 1)
+instance_shader_parameters/outline_color = Color(0, 0, 0, 1)
 mesh = SubResource("CapsuleMesh_u4npu")
-surface_material_override/0 = ExtResource("1_0jpl5")
 
 [node name="CrouchRayCast" type="RayCast3D" parent="." unique_id=1932106787]
 target_position = Vector3(0, 2.3, 0)
@@ -504,9 +507,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
 [node name="HeadMesh" type="MeshInstance3D" parent="Head" unique_id=878631315]
 transform = Transform3D(1, 0, 0, 0, 0.98116475, -0.19317274, 0, 0.19317274, 0.98116475, 0, 0.14, -0.083)
+material_override = ExtResource("1_7vwln")
+material_overlay = ExtResource("1_703dr")
 instance_shader_parameters/color = Color(1, 1, 1, 1)
+instance_shader_parameters/outline_color = Color(0, 0, 0, 1)
 mesh = SubResource("SphereMesh_0jpl5")
-surface_material_override/0 = ExtResource("1_0jpl5")
 
 [node name="InteractRayCast" type="RayCast3D" parent="Head" unique_id=2009332292]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.241, 0)

@@ -9,7 +9,7 @@ extends Resource
 # Predefined recorded properties of various classes
 const CLASS_RECORDED_PROPERTIES: Dictionary = {
     "Actor":            [":global_transform", "/Head:rotation", ":velocity", ":movementDirectionSmoothed", ":isOnFloor",
-                        ":crouching", "/AnimationPlayer:current_animation", ":animationTime"],
+                        ":crouching", "/AnimationPlayer:current_animation", ":animationTime", ":color"],
     
     "PhysicsObject":    [":global_transform", ":linear_velocity", ":angular_velocity"],
     
@@ -19,7 +19,7 @@ const CLASS_RECORDED_PROPERTIES: Dictionary = {
 }
 
 # To get node references, we need access to the SceneTree
-var sceneTree : SceneTree
+var sceneTree: SceneTree
 
 # Data Dictionary - ("node path:property", Dictionary[timeIndex, value at that time])
 # The inner Dictionary isn't an Array because clones will not have data starting at timeIndex of 0.
@@ -38,7 +38,7 @@ func registerObjects(levelContainer: Node):
     
     var levelNodes: Array = _getAllChildren(levelContainer)
     
-    for node : Node in levelNodes:
+    for node: Node in levelNodes:
         var className = node.get("CLASS_NAME")
         
         if className != null and className in CLASS_RECORDED_PROPERTIES:
@@ -46,20 +46,20 @@ func registerObjects(levelContainer: Node):
 
 
 func deregisterActor(actor: Actor):
-    var nodePath : String = actor.get_path()
-    var propertyArray : Array = CLASS_RECORDED_PROPERTIES["Actor"]
+    var nodePath: String = actor.get_path()
+    var propertyArray: Array = CLASS_RECORDED_PROPERTIES["Actor"]
     
-    for property : String in propertyArray:
+    for property: String in propertyArray:
         var fullPropertyPath = "%s%s" % [nodePath, property]
         
         data.erase(NodePath(fullPropertyPath))
 
 
-func recordData(timeIndex : int):
-    for nodePathAndProperty : NodePath in data.keys():
-        var node : Node = sceneTree.root.get_node(nodePathAndProperty)
+func recordData(timeIndex: int):
+    for nodePathAndProperty: NodePath in data.keys():
+        var node: Node = sceneTree.root.get_node(nodePathAndProperty)
         
-        var property : String = nodePathAndProperty.get_concatenated_subnames()
+        var property: String = nodePathAndProperty.get_concatenated_subnames()
         
         var currentData = node.get(property)
         
@@ -88,7 +88,6 @@ func setData(timeIndex: int):
         
         var dataAfter = data[nodePathAndProperty].get(timeIndex)
         
-        
         if dataAfter != null:
             if property == "current_animation":
                 var animationPlayer: AnimationPlayer = node as AnimationPlayer
@@ -112,6 +111,10 @@ func setData(timeIndex: int):
                     node.set(property, dataAfter)
                     continue
             
+            elif property == "color":
+                node.set(property, dataAfter)
+                continue
+            
             tween.tween_property(node, property, dataAfter, 0.07)
 
 
@@ -125,11 +128,11 @@ func _getAllChildren(node: Node, array: Array[Node] = []) -> Array[Node]:
     return array
 
 
-func _registerNode(node: Node, className : String):
-    var nodePath : String = node.get_path()
-    var propertyArray : Array = CLASS_RECORDED_PROPERTIES[className]
+func _registerNode(node: Node, className: String):
+    var nodePath: String = node.get_path()
+    var propertyArray: Array = CLASS_RECORDED_PROPERTIES[className]
     
-    for property : String in propertyArray:
+    for property: String in propertyArray:
         var fullPropertyPath = "%s%s" % [nodePath, property]
         
         data[NodePath(fullPropertyPath)] = Dictionary()

@@ -5,6 +5,13 @@ extends CharacterBody3D
 
 const CLASS_NAME = "Actor"
 
+enum ActorColor {
+    White,
+    Green,
+    Yellow,
+    Red
+}
+
 # Constants
 const WALKING_SPEED = 5.0
 const CROUCHING_SPEED = 3.0
@@ -16,6 +23,24 @@ var movementDirectionSmoothed: Vector3
 # State variables
 # Pauses and unpauses the actor
 var paused: bool
+
+var color: ActorColor:
+    set(value):
+        color = value
+    
+        var outlineColor: Color
+        match color:
+            ActorColor.White:
+                outlineColor = Color.WHITE
+            ActorColor.Green:
+                outlineColor = Color.GREEN
+            ActorColor.Yellow:
+                outlineColor = Color.YELLOW
+            ActorColor.Red:
+                outlineColor = Color.RED
+        
+        bodyMesh.set_instance_shader_parameter("outline_color", outlineColor)
+        headMesh.set_instance_shader_parameter("outline_color", outlineColor)
 
 var isOnFloor: bool
 var isOnFloorOverride: bool
@@ -39,9 +64,12 @@ var animationTime: float:
 @onready var crouchRayCast: RayCast3D = $CrouchRayCast
 @onready var interactRayCast: RayCast3D = $Head/InteractRayCast
 @onready var animationPlayer: AnimationPlayer = $AnimationPlayer
+@onready var bodyMesh: MeshInstance3D = $BodyMesh
+@onready var headMesh: MeshInstance3D = $Head/HeadMesh
 
 func _ready() -> void:
     paused = true
+    color = ActorColor.White
     isOnFloorOverride = false
     crouching = false
     
@@ -96,6 +124,10 @@ func _physics_process(delta: float) -> void:
 func pause(shouldPause: bool = true):
     paused = shouldPause
     animationPlayer.active = not shouldPause
+
+
+func getColor() -> ActorColor:
+    return color
 
 
 @abstract
