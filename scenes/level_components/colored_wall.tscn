@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cotbrqkiy4tru"]
+
+[ext_resource type="Script" uid="uid://cphndeb2q20x3" path="res://scripts/level_components/ColoredWall.gd" id="1_01qxe"]
+
+[node name="ColoredWall" type="CSGBox3D" unique_id=1483795033]
+use_collision = true
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_01qxe")

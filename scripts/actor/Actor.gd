@@ -13,6 +13,12 @@ enum ActorColor {
 }
 
 # Constants
+const COLOR_COLLISION_LAYERS: Dictionary[ActorColor, int] = {
+    ActorColor.Green:    5,
+    ActorColor.Yellow:   6,
+    ActorColor.Red:      7
+}
+
 const WALKING_SPEED = 5.0
 const CROUCHING_SPEED = 3.0
 const JUMP_VELOCITY = 7.0
@@ -42,6 +48,13 @@ var color: ActorColor:
         
         bodyMesh.set_instance_shader_parameter("outline_color", outlineColor)
         headMesh.set_instance_shader_parameter("outline_color", outlineColor)
+        
+        set_collision_mask_value(COLOR_COLLISION_LAYERS[ActorColor.Green], false)
+        set_collision_mask_value(COLOR_COLLISION_LAYERS[ActorColor.Yellow], false)
+        set_collision_mask_value(COLOR_COLLISION_LAYERS[ActorColor.Red], false)
+        
+        if color != ActorColor.White:
+            set_collision_mask_value(COLOR_COLLISION_LAYERS[color], true)
 
 var isOnFloor: bool
 var isOnFloorOverride: bool
