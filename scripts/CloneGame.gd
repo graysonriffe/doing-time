@@ -72,7 +72,7 @@ func _handleInput(delta: float):
     
     if Input.is_action_just_pressed("tempLoadLevel2"):
         if gamestate == Gamestate.Playing:
-            _changeLevel(2)
+            _changeLevel(4)
     
     if Input.is_action_just_released("pauseUnpause"):
         _attemptTogglePause()

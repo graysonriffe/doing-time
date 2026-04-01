@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://y866jdy5i0hb"]
+
+[ext_resource type="PackedScene" uid="uid://ca08rf6sfv4gl" path="res://scenes/levels/level_template.tscn" id="1_j2425"]
+[ext_resource type="PackedScene" uid="uid://c2oilcemslf1l" path="res://scenes/level_components/door.tscn" id="4_l37oo"]
+[ext_resource type="PackedScene" uid="uid://dqt20bav1urf8" path="res://scenes/level_components/weight_button.tscn" id="5_qpwj6"]
+
+[node name="Level2" unique_id=1254966120 instance=ExtResource("1_j2425")]
+levelName = "Temp Level 2"
+
+[node name="PlayerStart" parent="." index="2" unique_id=1770252819]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 5)
+
+[node name="GridMap" parent="World" parent_id_path=PackedInt32Array(554948861) index="1" unique_id=1447304026]
+metadata/_editor_floor_ = Vector3(0, 2, -5)
+
+[node name="greendoor" parent="World" parent_id_path=PackedInt32Array(554948861) index="2" unique_id=712969499 node_paths=PackedStringArray("activators") instance=ExtResource("4_l37oo")]
+transform = Transform3D(1.809, 0, 0, 0, 0.594, 0, 0, 0, 1.594, 7.6437397, 3.959, 0.151515)
+activators = [NodePath("../greenbutton")]
+
+[node name="greendoor2" parent="World" parent_id_path=PackedInt32Array(554948861) index="3" unique_id=536537592 node_paths=PackedStringArray("activators") instance=ExtResource("4_l37oo")]
+transform = Transform3D(1.9005249, 0, 2.06841, 0, 0.594, 0, -2.6634545, 0, 1.4759271, 0.136, 3.959, 5.802)
+activators = [NodePath("../greenbutton")]
+
+[node name="reddoor" parent="World" parent_id_path=PackedInt32Array(554948861) index="4" unique_id=856941624 node_paths=PackedStringArray("activators") instance=ExtResource("4_l37oo")]
+transform = Transform3D(1.809, 0, 0, 0, 0.594, 0, 0, 0, 1.594, -3.152632, 3.959, 0.54104614)
+activators = [NodePath("../redbutton")]
+
+[node name="reddoor2" parent="World" parent_id_path=PackedInt32Array(554948861) index="5" unique_id=1287793952 node_paths=PackedStringArray("activators") instance=ExtResource("4_l37oo")]
+transform = Transform3D(0.9511959, 0, -1.3558563, 0, 0.5939999, 0, 1.5387354, 0, 0.8381461, 2.4054422, 3.959, 3.6194267)
+activators = [NodePath("../redbutton")]
+
+[node name="yellowdoor" parent="World" parent_id_path=PackedInt32Array(554948861) index="6" unique_id=803785652 node_paths=PackedStringArray("activators") instance=ExtResource("4_l37oo")]
+transform = Transform3D(2.4891572, 0, 1.1919532, 0, 0.594, 0, -2.8034081, 0, 1.05834, -0.7618501, 3.959, -1.2334862)
+activators = [NodePath("../yellowbutton")]
+
+[node name="redbutton" parent="World" parent_id_path=PackedInt32Array(554948861) index="7" unique_id=1910623683 instance=ExtResource("5_qpwj6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7622974, -1.4305115e-06, -3.6185827)
+
+[node name="yellowbutton" parent="World" parent_id_path=PackedInt32Array(554948861) index="8" unique_id=1617616829 instance=ExtResource("5_qpwj6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.601859, -2.861023e-06, 6.2960744)
+
+[node name="greenbutton" parent="World" parent_id_path=PackedInt32Array(554948861) index="9" unique_id=1916899191 instance=ExtResource("5_qpwj6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9252186, -1.9073486e-06, 5.755091)

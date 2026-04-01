@@ -1,0 +1,249 @@
+[gd_scene format=3 uid="uid://c74i4usejoekr"]
+
+[ext_resource type="PackedScene" uid="uid://ca08rf6sfv4gl" path="res://scenes/levels/level_template.tscn" id="1_06474"]
+[ext_resource type="Texture2D" uid="uid://bci0oj36yaoce" path="res://assets/materials/metal_sheet/Metal_Sheet_basecolor.png" id="2_anwe6"]
+[ext_resource type="Texture2D" uid="uid://cfomnjxws1df4" path="res://assets/materials/metal_panels/Metal_Panels_basecolor.png" id="2_ts8eg"]
+[ext_resource type="Texture2D" uid="uid://dhn41akbn8mqe" path="res://assets/materials/metal_sheet/Metal_Sheet_normal.png" id="3_rej77"]
+[ext_resource type="Texture2D" uid="uid://xekyk8sknnlj" path="res://assets/materials/metal_panels/Metal_Panels_normal.png" id="3_um320"]
+[ext_resource type="Texture2D" uid="uid://bnm7m0hvvu4vy" path="res://assets/materials/metal_sheet/Metal_Sheet_roughness.png" id="4_5vn0v"]
+[ext_resource type="Texture2D" uid="uid://cpn7fwvir7abc" path="res://assets/materials/metal_panels/Metal_Panels_roughness.png" id="4_glw47"]
+[ext_resource type="PackedScene" uid="uid://dqt20bav1urf8" path="res://scenes/level_components/weight_button.tscn" id="5_ts8eg"]
+[ext_resource type="PackedScene" uid="uid://c2oilcemslf1l" path="res://scenes/level_components/door.tscn" id="9_um320"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_um320"]
+transparency = 1
+blend_mode = 1
+albedo_texture = ExtResource("2_anwe6")
+metallic = 1.0
+roughness = 0.8
+roughness_texture = ExtResource("4_5vn0v")
+normal_enabled = true
+normal_texture = ExtResource("3_rej77")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_glw47"]
+transparency = 1
+blend_mode = 1
+albedo_color = Color(1, 0, 0, 1)
+albedo_texture = ExtResource("2_anwe6")
+metallic = 1.0
+roughness = 0.8
+roughness_texture = ExtResource("4_5vn0v")
+normal_enabled = true
+normal_texture = ExtResource("3_rej77")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4wsov"]
+transparency = 1
+blend_mode = 1
+albedo_color = Color(0, 1, 0, 1)
+albedo_texture = ExtResource("2_anwe6")
+metallic = 1.0
+roughness = 0.8
+roughness_texture = ExtResource("4_5vn0v")
+normal_enabled = true
+normal_texture = ExtResource("3_rej77")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qvnao"]
+transparency = 1
+blend_mode = 1
+albedo_texture = ExtResource("2_ts8eg")
+metallic = 1.0
+metallic_specular = 0.3
+roughness_texture = ExtResource("4_glw47")
+normal_enabled = true
+normal_texture = ExtResource("3_um320")
+uv1_scale = Vector3(0.15, 0.15, 0.15)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[node name="LevelTemplate" unique_id=1254966120 instance=ExtResource("1_06474")]
+
+[node name="PlayerStart" parent="." index="2" unique_id=1770252819]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15.96608)
+
+[node name="OmniLight3D" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="0" unique_id=1834058416]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0)
+
+[node name="OmniLight3D8" type="OmniLight3D" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="2" unique_id=875281104]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.016, 2.467, 0)
+light_color = Color(0.8580337, 0.8394728, 0.7892842, 1)
+light_energy = 44.627
+shadow_enabled = true
+omni_range = 20.0
+omni_attenuation = 2.0
+
+[node name="OmniLight3D10" type="OmniLight3D" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="4" unique_id=1577969590]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.747875, 10.554741, 4.5436907)
+light_color = Color(0.8580337, 0.8394728, 0.7892842, 1)
+light_energy = 44.627
+shadow_enabled = true
+omni_range = 20.0
+omni_attenuation = 2.0
+
+[node name="OmniLight3D11" type="OmniLight3D" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="5" unique_id=1957084684]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 10.555, 4.5439997)
+light_color = Color(0.8580337, 0.8394728, 0.7892842, 1)
+light_energy = 44.627
+shadow_enabled = true
+omni_range = 20.0
+omni_attenuation = 2.0
+
+[node name="OmniLight3D9" type="OmniLight3D" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="7" unique_id=713031376]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.467, 15.544)
+light_color = Color(0.8580337, 0.8394728, 0.7892842, 1)
+light_energy = 44.627
+shadow_enabled = true
+omni_range = 20.0
+omni_attenuation = 2.0
+
+[node name="OmniLight3D7" type="OmniLight3D" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="9" unique_id=1412051653]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.4069996, 2.467, 0)
+light_color = Color(0.8580337, 0.8394728, 0.7892842, 1)
+light_energy = 44.627
+shadow_enabled = true
+omni_range = 20.0
+omni_attenuation = 2.0
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="10" unique_id=818747922]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.467, -13.74)
+light_color = Color(0.8580337, 0.8394728, 0.7892842, 1)
+light_energy = 44.627
+shadow_enabled = true
+omni_range = 20.0
+omni_attenuation = 2.0
+
+[node name="Ceiling" parent="World/Room" parent_id_path=PackedInt32Array(1882725468) index="5" unique_id=613614166]
+visible = false
+
+[node name="Ceiling2" type="CSGBox3D" parent="World" parent_id_path=PackedInt32Array(554948861) index="1" unique_id=126409562]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.25, 2)
+visible = false
+use_collision = true
+size = Vector3(12, 0.5, 20)
+material = SubResource("StandardMaterial3D_um320")
+
+[node name="RedBarrier" type="CSGBox3D" parent="World" parent_id_path=PackedInt32Array(554948861) index="2" unique_id=783860908]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 14.25, 4)
+use_collision = true
+size = Vector3(8, 0.5, 8)
+material = SubResource("StandardMaterial3D_glw47")
+
+[node name="RedBarrier2" type="CSGBox3D" parent="World" parent_id_path=PackedInt32Array(554948861) index="3" unique_id=1912522332]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 14.25, 4)
+use_collision = true
+size = Vector3(8, 0.5, 8)
+material = SubResource("StandardMaterial3D_glw47")
+
+[node name="GreenBarrier" type="CSGBox3D" parent="World" parent_id_path=PackedInt32Array(554948861) index="4" unique_id=1505687639]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 6.25, -4)
+use_collision = true
+size = Vector3(8, 0.5, 8)
+material = SubResource("StandardMaterial3D_4wsov")
+
+[node name="GreenBarrier2" type="CSGBox3D" parent="World" parent_id_path=PackedInt32Array(554948861) index="5" unique_id=1976863600]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 6.25, -4)
+use_collision = true
+size = Vector3(8, 0.5, 8)
+material = SubResource("StandardMaterial3D_4wsov")
+
+[node name="Wall7" type="CSGBox3D" parent="World" parent_id_path=PackedInt32Array(554948861) index="6" unique_id=642966347]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1.5, -7.75)
+use_collision = true
+size = Vector3(0.5, 5, 28)
+material = SubResource("StandardMaterial3D_qvnao")
+
+[node name="Wall8" type="CSGBox3D" parent="World" parent_id_path=PackedInt32Array(554948861) index="7" unique_id=537704161]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 5, -7.7500005)
+use_collision = true
+size = Vector3(0.5, 2, 12)
+material = SubResource("StandardMaterial3D_qvnao")
+
+[node name="Wall9" type="CSGBox3D" parent="World" parent_id_path=PackedInt32Array(554948861) index="8" unique_id=1747016735]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 5.75, 8.5, -4)
+use_collision = true
+size = Vector3(0.5, 5, 8)
+material = SubResource("StandardMaterial3D_qvnao")
+
+[node name="Wall10" type="CSGBox3D" parent="World" parent_id_path=PackedInt32Array(554948861) index="9" unique_id=580513117]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -5.75, 8.5, -4)
+use_collision = true
+size = Vector3(0.5, 5, 8)
+material = SubResource("StandardMaterial3D_qvnao")
+
+[node name="Wall11" type="CSGBox3D" parent="World" parent_id_path=PackedInt32Array(554948861) index="10" unique_id=1669766027]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4, 8.5, -7.7500005)
+use_collision = true
+size = Vector3(0.5, 5, 4)
+material = SubResource("StandardMaterial3D_qvnao")
+
+[node name="Wall12" type="CSGBox3D" parent="World" parent_id_path=PackedInt32Array(554948861) index="11" unique_id=525414016]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4, 8.5, -7.7500005)
+use_collision = true
+size = Vector3(0.5, 5, 4)
+material = SubResource("StandardMaterial3D_qvnao")
+
+[node name="Wall13" type="CSGBox3D" parent="World" parent_id_path=PackedInt32Array(554948861) index="12" unique_id=579105180]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 10.5, -7.7500005)
+use_collision = true
+size = Vector3(0.5, 1, 4)
+material = SubResource("StandardMaterial3D_qvnao")
+
+[node name="GridMap" parent="World" parent_id_path=PackedInt32Array(554948861) index="13" unique_id=1447304026]
+data = {
+"cells": PackedInt32Array(65529, 3, 196608, 131065, 3, 196608, 65530, 3, 196608, 131066, 3, 196608, 65531, 3, 196608, 131067, 3, 196608, 65532, 3, 327680, 131068, 3, 327680, 196601, 65534, 458752, 196601, 65535, 458752, 196601, 0, 458752, 196601, 1, 458752, 196602, 65534, 458752, 196602, 65535, 458752, 196602, 0, 458752, 196602, 1, 458752, 196603, 65534, 1376256, 196603, 65535, 1376256, 196603, 0, 1376256, 196603, 1, 1376256, 196604, 65534, 524292, 196604, 65535, 524292, 196604, 0, 524292, 196604, 1, 524292, 196601, 2, 1441792, 196602, 2, 1441792, 196603, 2, 786432, 196604, 2, 524292, 196601, 3, 1441792, 196602, 3, 1441792, 196603, 3, 1441792, 196604, 3, 1441792, 131075, 0, 131076, 131075, 1, 131076, 131075, 2, 131076, 131075, 3, 851968, 131076, 65533, 1376256, 131076, 65534, 1376256, 131076, 65535, 1376256, 131076, 0, 1376256, 131076, 2, 851968, 131076, 3, 851968, 131077, 65533, 1376256, 131077, 65534, 1376256, 131077, 65535, 1376256, 131077, 0, 1376256, 131077, 2, 851968, 131077, 3, 851968, 131078, 65533, 1376256, 131078, 65534, 1376256, 131078, 65535, 1376256, 131078, 0, 1376256, 131078, 1, 1376256, 131078, 2, 851968, 131078, 3, 851968, 3, 3, 196608, 65539, 3, 196608, 4, 3, 196608, 65540, 3, 196608, 5, 3, 196608, 65541, 3, 196608, 6, 3, 196608, 65542, 3, 196608, 131075, 65532, 524288, 131076, 65532, 524288, 131077, 65532, 524288, 131078, 65532, 524288, 196611, 0, 524288, 196614, 0, 524288, 196611, 3, 720896, 196614, 3, 720896, 262147, 0, 720896, 262147, 3, 720896, 262150, 0, 720896, 262150, 3, 720896, 196601, 65532, 720896, 196601, 65533, 720896, 196602, 65532, 720896, 196602, 65533, 720896, 196603, 65532, 720896, 196603, 65533, 1441792, 196604, 65532, 720896, 196604, 65533, 524292, 262137, 0, 655360, 262137, 3, 655360, 262140, 0, 655360, 262140, 3, 655360, 327673, 0, 655360, 327673, 3, 655360, 327676, 0, 655360, 327676, 3, 655360, 131076, 1, 917504, 131077, 1, 917504, 65526, 65526, 327680, 131062, 65526, 327680, 196598, 65526, 327680, 262134, 65526, 327680, 327670, 65526, 327680, 65527, 65526, 327680, 131063, 65526, 327680, 196599, 65526, 327680, 262135, 65526, 327680, 327671, 65526, 327680, 65528, 65526, 327680, 131064, 65526, 327680, 196600, 65526, 327680, 262136, 65526, 327680, 327672, 65526, 327680, 65529, 65526, 327680, 131065, 65526, 327680, 196601, 65526, 327680, 262137, 65526, 327680, 327673, 65526, 327680, 65530, 65526, 327680, 131066, 65526, 327680, 196602, 65526, 327680, 262138, 65526, 327680, 327674, 65526, 327680, 65531, 65526, 327680, 131067, 65526, 327680, 196603, 65526, 327680, 262139, 65526, 327680, 327675, 65526, 327680, 65532, 65526, 327680, 131068, 65526, 327680, 196604, 65526, 327680, 262140, 65526, 327680, 327676, 65526, 327680, 65533, 65526, 327680, 131069, 65526, 327680, 196605, 65526, 327680, 262141, 65526, 327680, 327677, 65526, 327680, 65534, 65526, 327680, 131070, 65526, 327680, 196606, 65526, 327680, 262142, 65526, 327680, 327678, 65526, 327680, 196607, 65526, 327680, 262143, 65526, 327680, 327679, 65526, 327680, 131072, 65526, 327680, 196608, 65526, 327680, 262144, 65526, 327680, 1, 65526, 327680, 65537, 65526, 327680, 131073, 65526, 327680, 196609, 65526, 327680, 262145, 65526, 327680, 2, 65526, 327680, 65538, 65526, 327680, 131074, 65526, 327680, 196610, 65526, 327680, 262146, 65526, 327680, 3, 65526, 327680, 65539, 65526, 327680, 131075, 65526, 327680, 196611, 65526, 327680, 262147, 65526, 327680, 4, 65526, 327680, 65540, 65526, 327680, 131076, 65526, 327680, 196612, 65526, 327680, 262148, 65526, 327680, 5, 65526, 327680, 65541, 65526, 327680, 131077, 65526, 327680, 196613, 65526, 327680, 262149, 65526, 327680, 6, 65526, 327680, 65542, 65526, 327680, 131078, 65526, 327680, 196614, 65526, 327680, 262150, 65526, 327680, 7, 65526, 327680, 65543, 65526, 327680, 131079, 65526, 327680, 196615, 65526, 327680, 262151, 65526, 327680, 8, 65526, 327680, 65544, 65526, 327680, 131080, 65526, 327680, 196616, 65526, 327680, 262152, 65526, 327680, 9, 65526, 327680, 65545, 65526, 327680, 131081, 65526, 327680, 196617, 65526, 327680, 262153, 65526, 327680, 65532, 4, 327680, 65532, 5, 327680, 3, 4, 262144, 3, 5, 262144, 65539, 4, 262144, 65539, 5, 1441796, 65533, 6, 4, 65533, 7, 4, 65533, 8, 4, 65533, 9, 4, 65529, 6, 524288, 65529, 7, 524288, 65529, 8, 524288, 65529, 9, 524288, 65530, 6, 524288, 65530, 7, 524288, 65530, 8, 524288, 65530, 9, 524288, 65531, 6, 524288, 65531, 7, 524288, 65531, 8, 524288, 65531, 9, 524288, 65532, 6, 524288, 65532, 7, 524288, 65532, 8, 524288, 65532, 9, 524288, 196601, 4, 1441796, 196602, 4, 1441796, 196603, 4, 1441796, 131065, 5, 1441796, 131066, 5, 1441796, 131067, 5, 1441796, 131068, 5, 327684, 196604, 4, 327684, 131069, 5, 393216, 131070, 5, 393216, 65533, 5, 393216, 65534, 5, 393216, 1, 5, 393216, 2, 5, 393216, 65537, 5, 393216, 65538, 5, 393216, 131075, 4, 1441796, 131076, 4, 1441796, 131077, 4, 1441796, 131078, 4, 327684, 65540, 5, 1441796, 65541, 5, 1441796, 65542, 5, 327684, 3, 6, 524288, 3, 7, 524288, 3, 8, 524288, 3, 9, 655360, 4, 6, 524288, 4, 7, 524288, 4, 8, 524288, 4, 9, 524288, 5, 6, 524288, 5, 7, 524288, 5, 8, 524288, 5, 9, 524288, 6, 6, 524288, 6, 7, 524288, 6, 8, 524288, 6, 9, 524288, 2, 6, 655364, 2, 7, 655364, 2, 8, 655364, 2, 9, 655364, 458745, 0, 655360, 458745, 1, 655360, 458745, 2, 655360, 458745, 3, 655360, 458746, 0, 655360, 458746, 1, 655360, 458746, 2, 655360, 458746, 3, 655360, 458747, 0, 655360, 458747, 1, 655360, 458747, 2, 655360, 458747, 3, 655360, 458748, 0, 655360, 458748, 1, 655360, 458748, 2, 655360, 458748, 3, 655360, 393219, 0, 720896, 393219, 1, 720896, 393219, 2, 720896, 393219, 3, 720896, 393220, 0, 720896, 393220, 1, 720896, 393220, 2, 720896, 393220, 3, 720896, 393221, 0, 720896, 393221, 1, 720896, 393221, 2, 720896, 393221, 3, 720896, 393222, 0, 720896, 393222, 1, 720896, 393222, 2, 720896, 393222, 3, 720896, 196611, 1, 4, 196611, 2, 4, 262140, 2, 655364, 262140, 1, 655364, 262141, 1, 655360, 262141, 2, 655360, 262142, 1, 655360, 262142, 2, 655360, 262143, 1, 655360, 262143, 2, 655360, 196608, 1, 655360, 196608, 2, 655360, 196609, 1, 655360, 196609, 2, 655360, 196610, 1, 655360, 196610, 2, 655360, 196607, 65532, 655360, 131072, 65532, 655360, 131073, 65532, 1441792, 131074, 65532, 1441792, 65535, 65535, 1441796, 131071, 65534, 1441796, 196607, 65533, 1441796, 0, 65535, 1441796, 65536, 65534, 1441796, 131072, 65533, 1441796, 196605, 65532, 1441792, 196606, 65532, 1441792, 131068, 4, 1441792, 131075, 65533, 131076, 131075, 65534, 131076, 131075, 65535, 131076, 0, 65534, 983041, 65536, 65533, 983041, 131071, 65533, 983041, 65535, 65534, 983041)
+}
+metadata/_editor_floor_ = Vector3(-1, 0, -4)
+
+[node name="WeightButton" parent="World" parent_id_path=PackedInt32Array(554948861) index="14" unique_id=1910623683 instance=ExtResource("5_ts8eg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 6, -4)
+
+[node name="WeightButton2" parent="World" parent_id_path=PackedInt32Array(554948861) index="15" unique_id=604727060 instance=ExtResource("5_ts8eg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.049866, 6, -4)
+
+[node name="WeightButton3" parent="World" parent_id_path=PackedInt32Array(554948861) index="16" unique_id=1176240013 instance=ExtResource("5_ts8eg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 14, 4)
+
+[node name="WeightButton4" parent="World" parent_id_path=PackedInt32Array(554948861) index="17" unique_id=888376459 instance=ExtResource("5_ts8eg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.05, 14, 4)
+
+[node name="WeightButton5" parent="World" parent_id_path=PackedInt32Array(554948861) index="18" unique_id=707403275 instance=ExtResource("5_ts8eg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 3)
+
+[node name="WeightButton6" parent="World" parent_id_path=PackedInt32Array(554948861) index="19" unique_id=1696294579 instance=ExtResource("5_ts8eg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 3)
+
+[node name="TunnelDoor3" parent="World" parent_id_path=PackedInt32Array(554948861) index="20" unique_id=2028766485 node_paths=PackedStringArray("activators") instance=ExtResource("9_um320")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12)
+activators = [NodePath("../WeightButton4"), NodePath("../WeightButton3")]
+
+[node name="ExitDoor" parent="World" parent_id_path=PackedInt32Array(554948861) index="21" unique_id=1948824225 node_paths=PackedStringArray("activators") instance=ExtResource("9_um320")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18)
+activators = [NodePath("../WeightButton6")]
+
+[node name="Door" parent="World" parent_id_path=PackedInt32Array(554948861) index="22" unique_id=507366486 node_paths=PackedStringArray("activators") instance=ExtResource("9_um320")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 6, -8)
+activators = [NodePath("../WeightButton5")]
+
+[node name="RightDoor" parent="World" parent_id_path=PackedInt32Array(554948861) index="23" unique_id=712969499 node_paths=PackedStringArray("activators") instance=ExtResource("9_um320")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -10, 6, 0)
+activators = [NodePath("../WeightButton")]
+
+[node name="RightDoor2" parent="World" parent_id_path=PackedInt32Array(554948861) index="24" unique_id=113128653 node_paths=PackedStringArray("activators") instance=ExtResource("9_um320")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -6, 8, 4)
+activators = [NodePath("../WeightButton")]
+
+[node name="LeftDoor" parent="World" parent_id_path=PackedInt32Array(554948861) index="25" unique_id=316907647 node_paths=PackedStringArray("activators") instance=ExtResource("9_um320")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 10, 6, 0)
+activators = [NodePath("../WeightButton2")]
+
+[node name="LeftDoor2" parent="World" parent_id_path=PackedInt32Array(554948861) index="26" unique_id=564612175 node_paths=PackedStringArray("activators") instance=ExtResource("9_um320")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 6, 8, 4)
+activators = [NodePath("../WeightButton2")]
