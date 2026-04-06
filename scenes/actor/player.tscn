@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://gccqsvfgoywy" path="res://scenes/actor/actor.tscn" id="1_4ykpa"]
 [ext_resource type="Script" uid="uid://dkdsm0hbdflds" path="res://scripts/actor/Player.gd" id="2_xw35t"]
 [ext_resource type="PackedScene" uid="uid://kuqrqwedb27y" path="res://scenes/actor/remote_view_model.tscn" id="3_pm1wa"]
+[ext_resource type="Script" uid="uid://j4gpb56um88h" path="res://scripts/actor/footsteps.gd" id="4_o5ntp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pm1wa"]
 radius = 0.35
@@ -32,3 +33,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24093151, 0)
 [node name="Camera3D" type="Camera3D" parent="Head/EyesOffset/Eyes" index="0" unique_id=1414241960]
 
 [node name="RemoteViewModel" parent="Head/EyesOffset/Eyes/Camera3D" index="0" unique_id=1236516252 instance=ExtResource("3_pm1wa")]
+
+[node name="GroundRay" type="RayCast3D" parent="." index="5" unique_id=1162144504]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="6" unique_id=281055296]
+max_polyphony = 2
+bus = &"SFX"
+script = ExtResource("4_o5ntp")

@@ -12,15 +12,15 @@ var open: bool
 var noSetter: bool
 
 var animationTime: float:
-    set(value):
-        if noSetter:
-            animationTime = value
-            return
-        
-        animationPlayer.active = true
-        animationPlayer.seek(value, true)
-        animationPlayer.active = false
-        animationTime = value
+	set(value):
+		if noSetter:
+			animationTime = value
+			return
+		
+		animationPlayer.active = true
+		animationPlayer.seek(value, true)
+		animationPlayer.active = false
+		animationTime = value
 
 @export var type: ActivatableType
 @export var activators: Array[Activator]
@@ -28,47 +28,47 @@ var animationTime: float:
 @onready var animationPlayer: AnimationPlayer = $AnimationPlayer
 
 func _ready() -> void:
-    open = false
-    noSetter = true
-    animationTime = 0.0
-    noSetter = false
+	open = false
+	noSetter = true
+	animationTime = 0.0
+	noSetter = false
 
 
 func _physics_process(_delta: float) -> void:
-    if not animationPlayer.active:
-        return
-    
-    _checkActivators()
-    
-    if animationPlayer.is_playing():
-        noSetter = true
-        animationTime = animationPlayer.current_animation_position
-        noSetter = false
+	if not animationPlayer.active:
+		return
+	
+	_checkActivators()
+	
+	if animationPlayer.is_playing():
+		noSetter = true
+		animationTime = animationPlayer.current_animation_position
+		noSetter = false
 
 
 func _checkActivators():
-    var shouldBeOpen: bool = true
-    
-    for activator: Activator in activators:
-        if activator.isActivated() and type == ActivatableType.AnyActivator:
-            shouldBeOpen = true
-            break
-            
-        shouldBeOpen = shouldBeOpen and activator.isActivated()
-    
-    if shouldBeOpen and not open:
-        _open()
-    elif not shouldBeOpen and open:
-        _close()
+	var shouldBeOpen: bool = true
+	
+	for activator: Activator in activators:
+		if activator.isActivated() and type == ActivatableType.AnyActivator:
+			shouldBeOpen = true
+			break
+			
+		shouldBeOpen = shouldBeOpen and activator.isActivated()
+	
+	if shouldBeOpen and not open:
+		_open()
+	elif not shouldBeOpen and open:
+		_close()
 
 
 func _open():
-    open = true
-    animationPlayer.speed_scale = 1.0
-    animationPlayer.play("open")
+	open = true
+	animationPlayer.speed_scale = 1.0
+	animationPlayer.play("open")
 
 
 func _close():
-    open = false
-    animationPlayer.speed_scale = -1.0
-    animationPlayer.play("open", -1.0, 1.0, true)
+	open = false
+	animationPlayer.speed_scale = -1.0
+	animationPlayer.play("open", -1.0, 1.0, true)

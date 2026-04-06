@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cjl06mo0w1qps"
+path="res://.godot/imported/Warden's Prison (mix master 1).wav-a9fea5344bd04512e9303125d8f18497.sample"
+
+[deps]
+
+source_file="res://assets/Audio/music/Warden's Prison (mix master 1).wav"
+dest_files=["res://.godot/imported/Warden's Prison (mix master 1).wav-a9fea5344bd04512e9303125d8f18497.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

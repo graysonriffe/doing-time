@@ -1,68 +1,31 @@
-[gd_scene format=3 uid="uid://dw1xqkiq3orrq"]
+[gd_scene format=3 uid="uid://0yuj3oiuyuqm"]
 
-[ext_resource type="Shader" uid="uid://cj361jgwpvdt5" path="res://assets/shaders/post_processing.gdshader" id="1_pkyvj"]
+[ext_resource type="PackedScene" uid="uid://ca08rf6sfv4gl" path="res://scenes/levels/level_template.tscn" id="1_lj5c5"]
 [ext_resource type="Material" uid="uid://csunmo5r7lgvw" path="res://assets/materials/metal_grip_sheet/metal_grip_sheet.tres" id="2_lj5c5"]
 [ext_resource type="Material" uid="uid://ychntj2cs7nm" path="res://assets/materials/metal_panels/metal_panels.tres" id="3_4habk"]
 [ext_resource type="Material" uid="uid://bm5oc0vuy5piw" path="res://assets/materials/metal_sheet/metal_sheet.tres" id="4_a8b8j"]
 [ext_resource type="MeshLibrary" uid="uid://de6pq7wccosnq" path="res://assets/models/world_blocks_mesh_library.meshlib" id="5_4sh85"]
-[ext_resource type="PackedScene" uid="uid://c2oilcemslf1l" path="res://scenes/level_components/door.tscn" id="5_tmfht"]
-[ext_resource type="Texture2D" uid="uid://cfomnjxws1df4" path="res://assets/materials/metal_panels/Metal_Panels_basecolor.png" id="6_g5tf4"]
-[ext_resource type="Texture2D" uid="uid://xekyk8sknnlj" path="res://assets/materials/metal_panels/Metal_Panels_normal.png" id="7_wyujn"]
-[ext_resource type="Texture2D" uid="uid://cpn7fwvir7abc" path="res://assets/materials/metal_panels/Metal_Panels_roughness.png" id="8_yje5r"]
+[ext_resource type="PackedScene" uid="uid://dqt20bav1urf8" path="res://scenes/level_components/weight_button.tscn" id="9_tmfht"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tmfht"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+[node name="LevelTemplate" unique_id=1254966120 instance=ExtResource("1_lj5c5")]
+levelName = "13"
 
-[sub_resource type="Sky" id="Sky_2k85p"]
-sky_material = SubResource("ProceduralSkyMaterial_tmfht")
+[node name="OmniLight3D" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="0" unique_id=1834058416]
+visible = false
 
-[sub_resource type="Environment" id="Environment_g5tf4"]
-background_mode = 1
-background_energy_multiplier = 0.0
-sky = SubResource("Sky_2k85p")
-ambient_light_source = 1
-tonemap_mode = 2
-glow_enabled = true
+[node name="OmniLight3D2" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="1" unique_id=593210828]
+visible = false
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ulyey"]
-render_priority = 0
-shader = ExtResource("1_pkyvj")
-shader_parameter/edge_only = true
-shader_parameter/edge_threshold = 1.5
-shader_parameter/line_color = Color(0, 0, 0, 1)
-shader_parameter/background_color = Color(0.408, 0.969, 0.694, 1)
+[node name="OmniLight3D3" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="2" unique_id=266228197]
+visible = false
 
-[sub_resource type="QuadMesh" id="QuadMesh_wyujn"]
-material = SubResource("ShaderMaterial_ulyey")
-flip_faces = true
-size = Vector2(2, 2)
+[node name="OmniLight3D4" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="3" unique_id=657344719]
+visible = false
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0hwde"]
-albedo_texture = ExtResource("6_g5tf4")
-metallic = 1.0
-metallic_specular = 0.3
-roughness_texture = ExtResource("8_yje5r")
-normal_enabled = true
-normal_texture = ExtResource("7_wyujn")
-uv1_scale = Vector3(0.15, 0.15, 0.15)
-uv1_triplanar = true
+[node name="OmniLight3D5" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="4" unique_id=977711390]
+visible = false
 
-[node name="Level13" type="Node3D" unique_id=1330780621]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1300834398]
-environment = SubResource("Environment_g5tf4")
-
-[node name="PostProcessingMesh" type="MeshInstance3D" parent="." unique_id=1351031490]
-extra_cull_margin = 16384.0
-mesh = SubResource("QuadMesh_wyujn")
-
-[node name="PlayerStart" type="Marker3D" parent="." unique_id=812534972]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
-
-[node name="Lights" type="Node" parent="." unique_id=759390463]
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Lights" unique_id=1774315258]
+[node name="Main Room Center" type="OmniLight3D" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="5" unique_id=2126428705]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.466645, 0)
 light_color = Color(0.8580337, 0.8394728, 0.7892842, 1)
 light_energy = 44.627
@@ -70,7 +33,7 @@ shadow_enabled = true
 omni_range = 20.0
 omni_attenuation = 2.0
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="Lights" unique_id=1575983515]
+[node name="Main Room Corner 1" type="OmniLight3D" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="6" unique_id=315393439]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.01589, 4.466645, -13.482394)
 light_color = Color(0.8580337, 0.8394728, 0.7892842, 1)
 light_energy = 44.627
@@ -78,7 +41,7 @@ shadow_enabled = true
 omni_range = 20.0
 omni_attenuation = 2.0
 
-[node name="OmniLight3D3" type="OmniLight3D" parent="Lights" unique_id=1046091674]
+[node name="Main Room Corner 2" type="OmniLight3D" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="7" unique_id=1875078123]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.747875, 4.466645, 12.543691)
 light_color = Color(0.8580337, 0.8394728, 0.7892842, 1)
 light_energy = 44.627
@@ -86,7 +49,7 @@ shadow_enabled = true
 omni_range = 20.0
 omni_attenuation = 2.0
 
-[node name="OmniLight3D4" type="OmniLight3D" parent="Lights" unique_id=1855326599]
+[node name="Main Room Corner 3" type="OmniLight3D" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="8" unique_id=129650405]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.238407, 4.466645, 12.543691)
 light_color = Color(0.8580337, 0.8394728, 0.7892842, 1)
 light_energy = 44.627
@@ -94,7 +57,7 @@ shadow_enabled = true
 omni_range = 20.0
 omni_attenuation = 2.0
 
-[node name="OmniLight3D5" type="OmniLight3D" parent="Lights" unique_id=1165879575]
+[node name="Main Room Corner 4" type="OmniLight3D" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="9" unique_id=2122967113]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.406857, 4.466645, -13.739951)
 light_color = Color(0.8580337, 0.8394728, 0.7892842, 1)
 light_energy = 44.627
@@ -102,7 +65,7 @@ shadow_enabled = true
 omni_range = 20.0
 omni_attenuation = 2.0
 
-[node name="OmniLight_Hall_Back" type="OmniLight3D" parent="Lights" unique_id=119711060]
+[node name="OmniLight_Hall_X_Back" type="OmniLight3D" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="10" unique_id=1530078425]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.754982, 4.466645, 25.66941)
 light_color = Color(0.8580337, 0.8394728, 0.7892842, 1)
 light_energy = 44.627
@@ -110,7 +73,7 @@ shadow_enabled = true
 omni_range = 20.0
 omni_attenuation = 2.0
 
-[node name="OmniLight_Hall_Corner" type="OmniLight3D" parent="Lights" unique_id=1188201076]
+[node name="OmniLight_Hall_X_Corner" type="OmniLight3D" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="11" unique_id=1365341986]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.754982, 4.466645, 3.2824707)
 light_color = Color(0.8580337, 0.8394728, 0.7892842, 1)
 light_energy = 44.627
@@ -118,7 +81,7 @@ shadow_enabled = true
 omni_range = 20.0
 omni_attenuation = 2.0
 
-[node name="OmniLight_Hall_Corner2" type="OmniLight3D" parent="Lights" unique_id=1520741449]
+[node name="OmniLight_Hall_X_Entry" type="OmniLight3D" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="12" unique_id=270394789]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.248653, 4.466645, -1.004391)
 light_color = Color(0.8580337, 0.8394728, 0.7892842, 1)
 light_energy = 44.627
@@ -126,134 +89,194 @@ shadow_enabled = true
 omni_range = 20.0
 omni_attenuation = 2.0
 
-[node name="World" type="Node" parent="." unique_id=137471716]
+[node name="OmniLight_Hall_Y_Back" type="OmniLight3D" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="13" unique_id=1951218396]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7737303, 4.466645, -30.452333)
+light_color = Color(0.8580337, 0.8394728, 0.7892842, 1)
+light_energy = 44.627
+shadow_enabled = true
+omni_range = 20.0
+omni_attenuation = 2.0
 
-[node name="Room" type="CSGCombiner3D" parent="World" unique_id=614137789]
+[node name="OmniLight_Hall_Y_Entry" type="OmniLight3D" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="14" unique_id=1966538206]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3570337, 4.1069517, -16.600735)
+light_color = Color(0.8580337, 0.8394728, 0.7892842, 1)
+light_energy = 44.627
+shadow_enabled = true
+omni_range = 5.5327063
+omni_attenuation = 2.0
+
+[node name="Room" parent="World" parent_id_path=PackedInt32Array(554948861) index="0" unique_id=1882725468]
+transform = Transform3D(1.6455808, 0, 0, 0, 1, 0, 0, 0, 1.8378875, 18.376457, 0, -2.4234972)
+visible = false
+
+[node name="Room2" type="CSGCombiner3D" parent="World" parent_id_path=PackedInt32Array(554948861) index="2" unique_id=1029507590]
 transform = Transform3D(0.7, 0, 0, 0, 1, 0, 0, 0, 0.8, 0, 0, 0)
 use_collision = true
 
-[node name="Floor" type="CSGBox3D" parent="World/Room" unique_id=423173105]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+[node name="Floor" type="CSGBox3D" parent="World/Room2" index="0" unique_id=179373806]
 use_collision = true
 size = Vector3(41, 0.5, 41)
 material = ExtResource("2_lj5c5")
 
-[node name="Wall1" type="CSGBox3D" parent="World/Room" unique_id=899414249]
+[node name="Wall1" type="CSGBox3D" parent="World/Room2" index="1" unique_id=486254109]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.25, 5, 0)
 use_collision = true
 size = Vector3(0.5, 10, 41)
 material = ExtResource("3_4habk")
 
-[node name="Wall2" type="CSGBox3D" parent="World/Room" unique_id=666651260]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.25, 5, 0)
-use_collision = true
-size = Vector3(0.5, 10, 41)
-material = ExtResource("3_4habk")
-
-[node name="Wall3" type="CSGBox3D" parent="World/Room" unique_id=1882810904]
+[node name="Wall3" type="CSGBox3D" parent="World/Room2" index="2" unique_id=1629089405]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 5, 20.25)
 use_collision = true
 size = Vector3(0.5, 10, 40)
 material = ExtResource("3_4habk")
 
-[node name="Wall4" type="CSGBox3D" parent="World/Room" unique_id=1499160807]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 5, -20.25)
+[node name="Wall4" type="CSGBox3D" parent="World/Room2" index="3" unique_id=1280014270]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 5, -52.374084)
+visible = false
 use_collision = true
 size = Vector3(0.5, 10, 40)
 material = ExtResource("3_4habk")
 
-[node name="Ceiling" type="CSGBox3D" parent="World/Room" unique_id=1972681221]
+[node name="Ceiling" type="CSGBox3D" parent="World/Room2" index="4" unique_id=2049527781]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.25, 0)
 use_collision = true
 size = Vector3(41, 0.5, 41)
 material = ExtResource("4_a8b8j")
 
-[node name="Hall One" type="CSGCombiner3D" parent="World" unique_id=274334274]
+[node name="GridMap - Hall X Wall" type="GridMap" parent="World/Room2" index="5" unique_id=1120736278]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 12, 0, 0)
+mesh_library = ExtResource("5_4sh85")
+data = {
+"cells": PackedInt32Array(3, 65531, 196608, 4, 65531, 196608, 65539, 65531, 196608, 65540, 65531, 196608, 65532, 65531, 393216, 131068, 65531, 393216, 131067, 65531, 393216, 131066, 65531, 393216, 65530, 65531, 393216, 65531, 65531, 393216, 65529, 65531, 393216, 65528, 65531, 393216, 65527, 65531, 393216, 65526, 65531, 393216, 131062, 65531, 393216, 131063, 65531, 393216, 131064, 65531, 393216, 131065, 65531, 393216, 196602, 65531, 393216, 196603, 65531, 393216, 196604, 65531, 393216, 196601, 65531, 393216, 196600, 65531, 393216, 196599, 65531, 393216, 196598, 65531, 393216, 262140, 65531, 393216, 262139, 65531, 393216, 262138, 65531, 393216, 262137, 65531, 393216, 262136, 65531, 393216, 262135, 65531, 393216, 262134, 65531, 393216, 327670, 65531, 393216, 327671, 65531, 393216, 327672, 65531, 393216, 327673, 65531, 393216, 327674, 65531, 393216, 327675, 65531, 393216, 327676, 65531, 393216, 327677, 65531, 393216, 327678, 65531, 393216, 262142, 65531, 393216, 262141, 65531, 393216, 196610, 65531, 393216, 196609, 65531, 393216, 262145, 65531, 393216, 262144, 65531, 393216, 327679, 65531, 393216, 196608, 65531, 393216, 262143, 65531, 393216, 262146, 65531, 393216, 262147, 65531, 393216, 196611, 65531, 393216, 196612, 65531, 393216, 131076, 65531, 393216, 131075, 65531, 393216, 196613, 65531, 393216, 131078, 65531, 393216, 65542, 65531, 393216, 6, 65531, 393216, 5, 65531, 393216, 65541, 65531, 393216, 131077, 65531, 393216, 262148, 65531, 393216, 262149, 65531, 393216, 262150, 65531, 393216, 196614, 65531, 393216, 262151, 65531, 393216, 262152, 65531, 393216, 196616, 65531, 393216, 131080, 65531, 393216, 65544, 65531, 393216, 196615, 65531, 393216, 131079, 65531, 393216, 8, 65531, 393216, 65543, 65531, 393216, 7, 65531, 393216, 9, 65531, 393216, 65545, 65531, 393216, 131081, 65531, 393216, 196617, 65531, 393216, 262153, 65531, 393216, 2, 65531, 196608, 65538, 65531, 196608, 131074, 65531, 393216)
+}
+metadata/_editor_floor_ = Vector3(0, 0, -5)
+
+[node name="GridMap - Hall Y Wall" type="GridMap" parent="World/Room2" index="6" unique_id=912507096]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
+mesh_library = ExtResource("5_4sh85")
+data = {
+"cells": PackedInt32Array(3, 65531, 196608, 4, 65531, 196608, 65539, 65531, 196608, 65540, 65531, 196608, 65533, 65531, 393216, 65532, 65531, 393216, 131069, 65531, 393216, 131068, 65531, 393216, 131067, 65531, 393216, 131066, 65531, 393216, 65530, 65531, 393216, 65531, 65531, 393216, 65529, 65531, 393216, 65528, 65531, 393216, 65527, 65531, 393216, 65526, 65531, 393216, 131062, 65531, 393216, 131063, 65531, 393216, 131064, 65531, 393216, 131065, 65531, 393216, 196602, 65531, 393216, 196603, 65531, 393216, 196604, 65531, 393216, 196601, 65531, 393216, 196600, 65531, 393216, 196599, 65531, 393216, 196598, 65531, 393216, 262140, 65531, 393216, 262139, 65531, 393216, 262138, 65531, 393216, 262137, 65531, 393216, 262136, 65531, 393216, 262135, 65531, 393216, 262134, 65531, 393216, 327670, 65531, 393216, 327671, 65531, 393216, 327672, 65531, 393216, 327673, 65531, 393216, 327674, 65531, 393216, 327675, 65531, 393216, 327676, 65531, 393216, 327677, 65531, 393216, 327678, 65531, 393216, 262142, 65531, 393216, 262141, 65531, 393216, 196605, 65531, 393216, 196610, 65531, 393216, 196609, 65531, 393216, 262145, 65531, 393216, 262144, 65531, 393216, 327679, 65531, 393216, 196608, 65531, 393216, 262143, 65531, 393216, 262146, 65531, 393216, 262147, 65531, 393216, 196611, 65531, 393216, 196612, 65531, 393216, 131076, 65531, 393216, 131075, 65531, 393216, 196613, 65531, 393216, 131078, 65531, 393216, 65542, 65531, 393216, 6, 65531, 393216, 5, 65531, 393216, 65541, 65531, 393216, 131077, 65531, 393216, 262148, 65531, 393216, 262149, 65531, 393216, 262150, 65531, 393216, 196614, 65531, 393216, 262151, 65531, 393216, 262152, 65531, 393216, 196616, 65531, 393216, 131080, 65531, 393216, 65544, 65531, 393216, 196615, 65531, 393216, 131079, 65531, 393216, 8, 65531, 393216, 65543, 65531, 393216, 7, 65531, 393216, 9, 65531, 393216, 65545, 65531, 393216, 131081, 65531, 393216, 196617, 65531, 393216, 262153, 65531, 393216, -65535, 65531, 393216, 131070, 65531, 393216, 196606, 65531, 393216, 65534, 65531, 393216)
+}
+metadata/_editor_floor_ = Vector3(0, 0, -5)
+
+[node name="Hall X" type="CSGCombiner3D" parent="World" parent_id_path=PackedInt32Array(554948861) index="3" unique_id=66628038]
 transform = Transform3D(0.7, 0, 0, 0, 1, 0, 0, 0, 0.8, 0, 0, 0)
 use_collision = true
 
-[node name="Hall Entry Floor" type="CSGBox3D" parent="World/Hall One" unique_id=722941578]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.872414, -0.25, -0.49999988)
+[node name="Hall Entry Floor" type="CSGBox3D" parent="World/Hall X" index="0" unique_id=225879453]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.872, 0, -0.5)
 use_collision = true
 size = Vector3(37, 0.5, 12)
 material = ExtResource("2_lj5c5")
 
-[node name="Hall Back Floor" type="CSGBox3D" parent="World/Hall One" unique_id=986223418]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 64.658134, -0.25, 22)
+[node name="Hall Back Floor" type="CSGBox3D" parent="World/Hall X" index="1" unique_id=659885898]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 64.658, 0, 22.991)
 use_collision = true
-size = Vector3(37, 0.5, 15)
+size = Vector3(38.981323, 0.5, 15)
 material = ExtResource("2_lj5c5")
 
-[node name="Hall Entry Wall 1" type="CSGBox3D" parent="World/Hall One" unique_id=858497754]
+[node name="Hall Entry Wall 1" type="CSGBox3D" parent="World/Hall X" index="2" unique_id=492411347]
 transform = Transform3D(-4.371139e-08, 0, 0.5, 0, 1, 0, -1, 0, -2.1855694e-08, 39.08353, 5, 4.7499986)
 use_collision = true
 size = Vector3(0.5, 10, 76.33411)
 material = ExtResource("3_4habk")
 
-[node name="Hall Entry Wall 2" type="CSGBox3D" parent="World/Hall One" unique_id=789942567]
+[node name="Hall Entry Wall 2" type="CSGBox3D" parent="World/Hall X" index="3" unique_id=1277812630]
 transform = Transform3D(-4.371139e-08, 0, 0.5, 0, 1, 0, -1, 0, -2.1855694e-08, 38.500004, 5, -5.9226465)
 use_collision = true
 size = Vector3(0.5, 10, 74)
 material = ExtResource("3_4habk")
 
-[node name="Hall Back Wall 1" type="CSGBox3D" parent="World/Hall One" unique_id=2128230265]
+[node name="Hall Back Wall 1" type="CSGBox3D" parent="World/Hall X" index="4" unique_id=671182512]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.5, 71.56311, 5, 23.881681)
 use_collision = true
 size = Vector3(0.5, 10, 74)
 material = ExtResource("3_4habk")
 
-[node name="Hall Back Wall 2" type="CSGBox3D" parent="World/Hall One" unique_id=1492500600]
+[node name="Hall Back Wall 2" type="CSGBox3D" parent="World/Hall X" index="5" unique_id=1851759085]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.5, 57.9792, 5, 23.44601)
 use_collision = true
 size = Vector3(0.5, 10, 75.742676)
 material = ExtResource("3_4habk")
 
-[node name="Wall Corner" type="CSGBox3D" parent="World/Hall One" unique_id=810523331]
+[node name="Hall Back Wall 3" type="CSGBox3D" parent="World/Hall X" index="6" unique_id=1816485868]
+transform = Transform3D(-4.371139e-08, 0, 0.5, 0, 1, 0, -1, 0, -2.1855694e-08, 64.39287, 5, 40.66425)
+use_collision = true
+size = Vector3(0.5, 10, 29)
+material = ExtResource("3_4habk")
+
+[node name="Hall Corner Wall 1" type="CSGBox3D" parent="World/Hall X" index="7" unique_id=654061691]
 transform = Transform3D(-4.371139e-08, 0, 0.5, 0, 1, 0, -1, 0, -2.1855694e-08, 64.39287, 5, -5.922646)
 use_collision = true
 size = Vector3(0.5, 10, 29)
 material = ExtResource("3_4habk")
 
-[node name="Wall Corner2" type="CSGBox3D" parent="World/Hall One" unique_id=319769670]
+[node name="Hall Corner Wall 2" type="CSGBox3D" parent="World/Hall X" index="8" unique_id=1566992425]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.5, 71.535736, 5, 0.077354014)
 use_collision = true
 size = Vector3(0.5, 10, 23)
 material = ExtResource("3_4habk")
 
-[node name="Hall Corner Ceiling" type="CSGBox3D" parent="World/Hall One" unique_id=373397486]
+[node name="Hall Corner Ceiling" type="CSGBox3D" parent="World/Hall X" index="9" unique_id=268985031]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 64.59034, 10.25, -0.4542179)
 use_collision = true
 size = Vector3(10.950562, 0.5, 13.936035)
 material = ExtResource("4_a8b8j")
 
-[node name="Hall Corner" type="CSGBox3D" parent="World/Hall One" unique_id=345601538]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.651375, -0.25, -0.49999988)
+[node name="Hall Corner Floor" type="CSGBox3D" parent="World/Hall X" index="10" unique_id=1743361922]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.651, 0, -0.5)
 use_collision = true
 size = Vector3(15, 0.5, 12)
 material = ExtResource("2_lj5c5")
 
-[node name="Hall Entry Ceiling" type="CSGBox3D" parent="World/Hall One" unique_id=1543215337]
+[node name="Hall Entry Ceiling" type="CSGBox3D" parent="World/Hall X" index="11" unique_id=1128690089]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.610905, 10.25, -0.6249997)
 use_collision = true
 size = Vector3(38.2218, 0.5, 11)
 material = ExtResource("4_a8b8j")
 
-[node name="Hall Back Ceiling" type="CSGBox3D" parent="World/Hall One" unique_id=1746228337]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 64.62232, 10.25, 24.67306)
+[node name="Hall Back Ceiling" type="CSGBox3D" parent="World/Hall X" index="12" unique_id=1912112725]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 64.62232, 10.25, 23.60592)
 use_collision = true
-size = Vector3(40, 0.5, 14)
+size = Vector3(37.865723, 0.5, 14)
 material = ExtResource("4_a8b8j")
 
-[node name="Door" parent="World/Hall One" unique_id=712969499 node_paths=PackedStringArray("activators") instance=ExtResource("5_tmfht")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 20.104284, 0, -0.113695264)
-activators = [NodePath(""), NodePath(""), NodePath("")]
+[node name="Button X" parent="World/Hall X" index="13" unique_id=1910623683 instance=ExtResource("9_tmfht")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.726, 0.25421882, 30.666)
 
-[node name="Door" parent="World/Hall One/Door/Door" parent_id_path=PackedInt32Array(712969499, 1030310965) index="0" unique_id=1263032023]
-surface_material_override/0 = SubResource("StandardMaterial3D_0hwde")
+[node name="Hall Y" type="CSGCombiner3D" parent="World" parent_id_path=PackedInt32Array(554948861) index="4" unique_id=56973179]
+transform = Transform3D(0.7, 0, 0, 0, 1, 0, 0, 0, 0.8, 0, 0, 0)
+use_collision = true
 
-[node name="GridMap" type="GridMap" parent="World" unique_id=426356319]
-mesh_library = ExtResource("5_4sh85")
-metadata/_editor_floor_ = Vector3(0, 0, -5)
+[node name="Hall Entry Floor" type="CSGBox3D" parent="World/Hall Y" index="0" unique_id=758840492]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.3978863, 0, -33.95907)
+use_collision = true
+size = Vector3(26.910278, 0.5, 12)
+material = ExtResource("2_lj5c5")
 
-[editable path="World/Hall One/Door"]
-[editable path="World/Hall One/Door/Door"]
+[node name="Hall Entry Wall 1" type="CSGBox3D" parent="World/Hall Y" index="1" unique_id=1945323275]
+transform = Transform3D(-1, 0, -4.371139e-08, 0, 1, 0, 8.742278e-08, 0, -0.5, -3.6317856, 5, -35.540276)
+use_collision = true
+size = Vector3(0.5, 10, 60.4859)
+material = ExtResource("3_4habk")
+
+[node name="Hall Entry Wall 2" type="CSGBox3D" parent="World/Hall Y" index="2" unique_id=217079022]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.5, 8.01218, 5, -35.705353)
+use_collision = true
+size = Vector3(0.5, 10, 60.328552)
+material = ExtResource("3_4habk")
+
+[node name="Hall Back Wall" type="CSGBox3D" parent="World/Hall Y" index="3" unique_id=195209787]
+transform = Transform3D(-4.371139e-08, 0, 0.5, 0, 1, 0, -1, 0, -2.1855694e-08, 2.2407355, 5, -50.21389)
+use_collision = true
+size = Vector3(7.059082, 10, 26.763153)
+material = ExtResource("3_4habk")
+
+[node name="Hall Entry Ceiling" type="CSGBox3D" parent="World/Hall Y" index="4" unique_id=1434886644]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.229892, 10.25, -35.506306)
+use_collision = true
+size = Vector3(30.638245, 0.5, 11.800781)
+material = ExtResource("4_a8b8j")
+
+[node name="Button Y" parent="World/Hall Y" index="5" unique_id=653420030 instance=ExtResource("9_tmfht")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1769633, 0.25421882, -38.595356)
