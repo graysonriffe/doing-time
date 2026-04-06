@@ -16,5 +16,5 @@ const COLOR_COLLISION_LAYERS: Dictionary[WallColor, int] = {
 
 @export var color: WallColor
 
-func _init() -> void:
+func _ready() -> void:
     set_collision_layer_value(COLOR_COLLISION_LAYERS[color], true)
