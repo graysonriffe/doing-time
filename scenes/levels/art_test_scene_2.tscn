@@ -23,6 +23,9 @@
 [ext_resource type="Material" uid="uid://fsecspfnyg2i" path="res://assets/materials/crt_shader.tres" id="21_7xxbd"]
 [ext_resource type="Shader" uid="uid://n0o3iki4ol2y" path="res://assets/shaders/laser.gdshader" id="22_pyq47"]
 [ext_resource type="Texture2D" uid="uid://6h4wmegtidog" path="res://assets/materials/laser_spots/Laser_Spots_basecolor.png" id="23_ndqaf"]
+[ext_resource type="Texture2D" uid="uid://b3kyhum6swu3c" path="res://assets/materials/concrete/Concrete_basecolor.png" id="24_kg5qj"]
+[ext_resource type="Texture2D" uid="uid://b3m83dqdbouvs" path="res://assets/materials/concrete/Concrete_normal.png" id="25_yw3qn"]
+[ext_resource type="Texture2D" uid="uid://b3bo8oekhcohj" path="res://assets/materials/concrete/Concrete_roughness.png" id="26_wx50g"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xojot"]
 metallic = 0.7
@@ -113,6 +116,16 @@ normal_enabled = true
 normal_texture = ExtResource("18_e83kc")
 uv1_scale = Vector3(3, 3, 3)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bngwf"]
+albedo_texture = ExtResource("24_kg5qj")
+roughness = 0.9
+roughness_texture = ExtResource("26_wx50g")
+normal_enabled = true
+normal_texture = ExtResource("25_yw3qn")
+uv1_scale = Vector3(0.3, 0.3, 0.3)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_am6tk"]
 render_priority = 0
 shader = ExtResource("22_pyq47")
@@ -171,7 +184,7 @@ size = Vector3(10.080078, 0.5, 10)
 material = SubResource("StandardMaterial3D_xojot")
 
 [node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="." index="7" unique_id=2109026955]
-transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, -0.035191774, -0.2533754, -0.026504755)
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, -0.03521079, -0.25287044, -0.026500463)
 material_override = ExtResource("3_caswl")
 mesh = SubResource("ArrayMesh_h5pns")
 
@@ -182,7 +195,7 @@ light_energy = 2.0
 light_bake_mode = 1
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="." index="9" unique_id=725372562]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5165951, 2.155346, 0.061380625)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5165951, 2.155346, 0.8349271)
 light_energy = 3.0
 shadow_enabled = true
 omni_range = 20.0
@@ -196,6 +209,7 @@ omni_attenuation = 2.0
 
 [node name="Bunny" type="MeshInstance3D" parent="." index="10" unique_id=216771915]
 transform = Transform3D(0.8325252, 0, -0.5539874, 0, 1, 0, 0.5539874, 0, 0.8325252, 2.691421, 0.9029546, -0.24878538)
+visible = false
 material_override = ExtResource("5_yg1y3")
 gi_mode = 2
 mesh = ExtResource("6_4pces")
@@ -302,6 +316,7 @@ mesh = SubResource("BoxMesh_nxnft")
 
 [node name="Bunny2" type="MeshInstance3D" parent="." index="17" unique_id=344003388]
 transform = Transform3D(0.8325252, 0, -0.5539874, 0, 1, 0, 0.5539874, 0, 0.8325252, 6.292344, 1.0273786, 1.1637429)
+visible = false
 material_override = ExtResource("9_tyjsq")
 gi_mode = 2
 mesh = ExtResource("6_4pces")
@@ -330,15 +345,16 @@ mesh = SubResource("ArrayMesh_7la1m")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="." index="22" unique_id=660282643]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.63114023, 0)
+visible = false
 material_override = ExtResource("13_lbldb")
 mesh = ExtResource("6_4pces")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="." index="23" unique_id=1924450385]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.2133207, 3.0655851, 1.400702)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -6.2133207, 3.0655851, 1.400702)
 material = SubResource("ShaderMaterial_mt4tq")
 
 [node name="time_wall_cube" parent="." index="24" unique_id=440483094 instance=ExtResource("16_8ls8d")]
-transform = Transform3D(1.9303218, 0, -2.842171e-14, 0, -1.5862741, 0, 0, 0, -9.095164, 0, 4.0828314, 6.353343)
+transform = Transform3D(1.9303218, 0, -2.842171e-14, 0, -1.5862741, 0, 0, 0, -9.095164, -4.60003, 4.433986, 6.353343)
 
 [node name="time_wall_cube2" parent="." index="25" unique_id=490020220 instance=ExtResource("17_f5wmt")]
 transform = Transform3D(-17.241673, 0, 8.772926e-07, 0, 10.752518, 0, -1.5073148e-06, 0, -10.035057, 0.16714787, 4.9933467, -7.389057)
@@ -347,12 +363,12 @@ transform = Transform3D(-17.241673, 0, 8.772926e-07, 0, 10.752518, 0, -1.5073148
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.92730665, 1.6337522, 0.66264844)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="." index="27" unique_id=1749622690]
-transform = Transform3D(8.554915, 0, 0.42989662, 0, 9.475161, 0, -4.0733395, 0, 0.9028781, 3.2359252, 1.2221518, 6.1915946)
+transform = Transform3D(3.9351532, 0, 0.9096787, 0, 9.475161, 0, -8.619352, 0, 0.41531253, 6.3346386, 1.2244666, 5.5929527)
 material_override = ExtResource("17_e83kc")
 material = SubResource("StandardMaterial3D_x01qd")
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="." index="28" unique_id=529985850]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1632476, 2.155346, 9.580412)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.6649046, 2.6675756, 5.605979)
 light_energy = 3.0
 shadow_enabled = true
 omni_range = 20.0
@@ -362,66 +378,77 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.480607, 2.57928, 0)
 material_override = ExtResource("21_7xxbd")
 instance_shader_parameters/color = Color(0, 0.44, 0.4106667, 0.4509804)
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." index="30" unique_id=642587279]
+[node name="CSGBox3D6" type="CSGBox3D" parent="." index="30" unique_id=901391118]
+transform = Transform3D(11.006969, 0, 0, 0, 1, 0, 0, 0, 9.282129, -0.92641497, -0.25114465, 6.5181136)
+material = SubResource("StandardMaterial3D_bngwf")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="." index="31" unique_id=868559592]
+transform = Transform3D(-7.5581074, 0, 0, 0, 3.422939, 0, 0, 0, 9.288317, -2.2400558, -0.3215344, 2.915159)
+material = SubResource("StandardMaterial3D_bngwf")
+
+[node name="Lasers" type="Node3D" parent="." index="32" unique_id=1800229592]
+visible = false
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Lasers" index="0" unique_id=642587279]
 transform = Transform3D(8.495986e-10, -7.9108663, 0, -0.01943655, -3.4579492e-07, 0, 0, 0, 0.044456832, -1.2192631, 2.0689862, 4.679021)
 material = SubResource("ShaderMaterial_am6tk")
 
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="." index="31" unique_id=72780503]
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Lasers" index="1" unique_id=72780503]
 transform = Transform3D(8.495986e-10, -7.9108663, 0, -0.01943655, -3.4579492e-07, 0, 0, 0, 0.044456832, -1.2192631, 2.1976357, 4.679021)
 material = SubResource("ShaderMaterial_am6tk")
 
-[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="." index="32" unique_id=233452711]
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Lasers" index="2" unique_id=233452711]
 transform = Transform3D(8.495986e-10, -7.9108663, 0, -0.01943655, -3.4579492e-07, 0, 0, 0, 0.044456832, -1.2192631, 2.3283806, 4.679021)
 material = SubResource("ShaderMaterial_am6tk")
 
-[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="." index="33" unique_id=2057923320]
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Lasers" index="3" unique_id=2057923320]
 transform = Transform3D(8.495986e-10, -7.9108663, 0, -0.01943655, -3.4579492e-07, 0, 0, 0, 0.044456832, -1.2192631, 2.45703, 4.679021)
 material = SubResource("ShaderMaterial_am6tk")
 
-[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="." index="34" unique_id=1431788566]
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Lasers" index="4" unique_id=1431788566]
 transform = Transform3D(8.495986e-10, -7.9108663, 0, -0.01943655, -3.4579492e-07, 0, 0, 0, 0.044456832, -1.2192631, 2.601372, 4.679021)
 material = SubResource("ShaderMaterial_am6tk")
 
-[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="." index="35" unique_id=1916194089]
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="Lasers" index="5" unique_id=1916194089]
 transform = Transform3D(8.495986e-10, -7.9108663, 0, -0.01943655, -3.4579492e-07, 0, 0, 0, 0.044456832, -1.2192631, 2.7300215, 4.679021)
 material = SubResource("ShaderMaterial_am6tk")
 
-[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="." index="36" unique_id=1646695401]
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="Lasers" index="6" unique_id=1646695401]
 transform = Transform3D(8.495986e-10, -7.9108663, 0, -0.01943655, -3.4579492e-07, 0, 0, 0, 0.044456832, -1.2192631, 2.8607664, 4.679021)
 material = SubResource("ShaderMaterial_am6tk")
 
-[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="." index="37" unique_id=1842248148]
+[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="Lasers" index="7" unique_id=1842248148]
 transform = Transform3D(8.495986e-10, -7.9108663, 0, -0.01943655, -3.4579492e-07, 0, 0, 0, 0.044456832, -1.2192631, 2.989416, 4.679021)
 material = SubResource("ShaderMaterial_am6tk")
 
-[node name="CSGCylinder3D9" type="CSGCylinder3D" parent="." index="38" unique_id=2057120799]
+[node name="CSGCylinder3D9" type="CSGCylinder3D" parent="Lasers" index="8" unique_id=2057120799]
 transform = Transform3D(8.495986e-10, -7.9108663, 0, -0.01943655, -3.4579492e-07, 0, 0, 0, 0.044456832, -1.2192631, 3.132572, 4.679021)
 material = SubResource("ShaderMaterial_am6tk")
 
-[node name="CSGCylinder3D10" type="CSGCylinder3D" parent="." index="39" unique_id=1690160721]
+[node name="CSGCylinder3D10" type="CSGCylinder3D" parent="Lasers" index="9" unique_id=1690160721]
 transform = Transform3D(8.495986e-10, -7.9108663, 0, -0.01943655, -3.4579492e-07, 0, 0, 0, 0.044456832, -1.2192631, 3.2612214, 4.679021)
 material = SubResource("ShaderMaterial_am6tk")
 
-[node name="CSGCylinder3D11" type="CSGCylinder3D" parent="." index="40" unique_id=733606676]
+[node name="CSGCylinder3D11" type="CSGCylinder3D" parent="Lasers" index="10" unique_id=733606676]
 transform = Transform3D(8.495986e-10, -7.9108663, 0, -0.01943655, -3.4579492e-07, 0, 0, 0, 0.044456832, -1.2192631, 3.3919663, 4.679021)
 material = SubResource("ShaderMaterial_am6tk")
 
-[node name="CSGCylinder3D12" type="CSGCylinder3D" parent="." index="41" unique_id=1431146561]
+[node name="CSGCylinder3D12" type="CSGCylinder3D" parent="Lasers" index="11" unique_id=1431146561]
 transform = Transform3D(8.495986e-10, -7.9108663, 0, -0.01943655, -3.4579492e-07, 0, 0, 0, 0.044456832, -1.2192631, 3.5206158, 4.679021)
 material = SubResource("ShaderMaterial_am6tk")
 
-[node name="CSGCylinder3D13" type="CSGCylinder3D" parent="." index="42" unique_id=437080063]
+[node name="CSGCylinder3D13" type="CSGCylinder3D" parent="Lasers" index="12" unique_id=437080063]
 transform = Transform3D(8.495986e-10, -7.9108663, 0, -0.01943655, -3.4579492e-07, 0, 0, 0, 0.044456832, -1.2192631, 3.6649578, 4.679021)
 material = SubResource("ShaderMaterial_am6tk")
 
-[node name="CSGCylinder3D14" type="CSGCylinder3D" parent="." index="43" unique_id=1530102386]
+[node name="CSGCylinder3D14" type="CSGCylinder3D" parent="Lasers" index="13" unique_id=1530102386]
 transform = Transform3D(8.495986e-10, -7.9108663, 0, -0.01943655, -3.4579492e-07, 0, 0, 0, 0.044456832, -1.2192631, 3.7936072, 4.679021)
 material = SubResource("ShaderMaterial_am6tk")
 
-[node name="CSGCylinder3D15" type="CSGCylinder3D" parent="." index="44" unique_id=395028582]
+[node name="CSGCylinder3D15" type="CSGCylinder3D" parent="Lasers" index="14" unique_id=395028582]
 transform = Transform3D(8.495986e-10, -7.9108663, 0, -0.01943655, -3.4579492e-07, 0, 0, 0, 0.044456832, -1.2192631, 3.9243522, 4.679021)
 material = SubResource("ShaderMaterial_am6tk")
 
-[node name="CSGCylinder3D16" type="CSGCylinder3D" parent="." index="45" unique_id=1431472287]
+[node name="CSGCylinder3D16" type="CSGCylinder3D" parent="Lasers" index="15" unique_id=1431472287]
 transform = Transform3D(8.495986e-10, -7.9108663, 0, -0.01943655, -3.4579492e-07, 0, 0, 0, 0.044456832, -1.2192631, 4.053002, 4.679021)
 material = SubResource("ShaderMaterial_am6tk")

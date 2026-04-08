@@ -11,7 +11,3 @@ center_offset = Vector3(0, 0, 1)
 [node name="PostProcessingMesh" type="MeshInstance3D" unique_id=1314059824]
 extra_cull_margin = 16384.0
 mesh = SubResource("QuadMesh_6t3sc")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=480817211]
-visible = false
-mesh = SubResource("QuadMesh_6t3sc")
