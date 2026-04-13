@@ -34,7 +34,7 @@ var paused: bool
 var color: ActorColor:
     set(value):
         color = value
-    
+        
         var outlineColor: Color
         match color:
             ActorColor.White:
@@ -154,6 +154,10 @@ func boost():
 
 @abstract
 func getInputDirection() -> Vector2
+
+
+@abstract
+func getLookVector() -> Vector2
 
 
 func _jump():

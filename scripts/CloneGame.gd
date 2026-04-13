@@ -273,12 +273,6 @@ func _doBranch():
     
     # TODO: Initial conditions might be better to be inherited from the parent in real time
     # instead of being manually set once when the clone is first created
-    newClone.initialPosition = player.position
-    newClone.initialLookVector = player.getLookVector()
-    newClone.initialVelocity = player.velocity
-    newClone.initialMovementDirectionSmoothed = player.movementDirectionSmoothed
-    newClone.isOnFloorOverride = player.isOnFloor
-    
     newClone.parentActor = player
     
     currentCloneData.setStartingTimeIndex(timeIndex)
@@ -298,16 +292,19 @@ func _doBranch():
         if clone.parentActor == player and timeIndex < clone.cloneData.startingTimeIndex:
             clone.parentActor = newClone
     
-    # Increment player color
-    match playerColor:
-        Actor.ActorColor.White:
-            player.color = Actor.ActorColor.Green
-        Actor.ActorColor.Green:
-            player.color = Actor.ActorColor.Yellow
-        Actor.ActorColor.Yellow:
-            player.color = Actor.ActorColor.Red
+    _incrementColor(player)
     
     _updateRemoteLabel()
+
+
+func _incrementColor(actor: Actor):
+    match actor.color:
+        Actor.ActorColor.White:
+            actor.color = Actor.ActorColor.Green
+        Actor.ActorColor.Green:
+            actor.color = Actor.ActorColor.Yellow
+        Actor.ActorColor.Yellow:
+            actor.color = Actor.ActorColor.Red
 
 
 func _handleScrub(shouldScrubForward: bool, shouldScrubBackward: bool, delta: float):
@@ -377,8 +374,9 @@ func _disableHiddenClones():
 func _enableNewClones():
     for clone: Clone in cloneContainer.get_children():
         if not clone.enabled and timeIndex >= clone.cloneData.startingTimeIndex - 1:
-            clone.parentActor.color = clone.parentActor.getColor() + 1
+            _incrementColor(clone.parentActor)
             _enableClone(clone)
+            clone.reset_physics_interpolation()
 
 
 func _setTimelineTimeLabel(value: float):

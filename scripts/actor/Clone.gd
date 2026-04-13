@@ -2,8 +2,6 @@
 class_name Clone
 extends Actor
 
-var shouldResetInterpolation: bool
-
 var initialPosition: Vector3
 var initialLookVector: Vector2
 var initialVelocity: Vector3
@@ -35,10 +33,6 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-    if shouldResetInterpolation:
-        reset_physics_interpolation()
-        shouldResetInterpolation = false
-    
     # Set the look vector if time is passing
     if paused:
         return
@@ -77,15 +71,21 @@ func getInputDirection() -> Vector2:
         return Vector2.ZERO
 
 
+func getLookVector() -> Vector2:
+    if not paused:
+        return cloneData.getLookVector(cloneGame.getTimeIndex())
+    else:
+        return Vector2.ZERO
+
+
 # Resets the clone to its initial state when the clone begins its lifetime
 func reset():
-    position = initialPosition
-    global_rotation.y = initialLookVector.y
-    head.global_rotation.x = initialLookVector.x
-    velocity = initialVelocity
-    movementDirectionSmoothed = initialMovementDirectionSmoothed
-    
-    shouldResetInterpolation = true
+    position = parentActor.position
+    global_rotation.y = parentActor.getLookVector().y
+    head.global_rotation.x = parentActor.getLookVector().x
+    velocity = parentActor.velocity
+    movementDirectionSmoothed = parentActor.movementDirectionSmoothed
+    isOnFloorOverride = parentActor.isOnFloor
     
     collisionsEnabled = false
 
