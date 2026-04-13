@@ -12,6 +12,12 @@ var initialMovementDirectionSmoothed: Vector3
 # Who "created" this clone?
 var parentActor: Actor
 
+# Collisions between Actors
+var collisionsEnabled: bool:
+    set(value):
+        collisionsEnabled = value
+        _enableCollisions(value)
+
 # If a clone is disabled, it is invisible and does not process (happens before it exists in the timeline)
 var enabled: bool
 
@@ -20,13 +26,10 @@ var cloneData: CloneData
 
 @onready var cloneGame: CloneGame = get_tree().root.find_child("CloneGame", true, false)
 
-@onready var collisionDetector: Area3D = $CollisionDetector
-
 func _ready() -> void:
     super()
-    collisionDetector.body_exited.connect(_collisionDetectorExited)
     
-    paused = true
+    collisionsEnabled = false
     enabled = true
     reset()
 
@@ -62,6 +65,9 @@ func _physics_process(delta: float) -> void:
             animationPlayer.play("idle")
     elif animationPlayer.current_animation == "idle":
         animationPlayer.stop()
+    
+    if not collisionsEnabled:
+        _checkCollisions()
 
 
 func getInputDirection() -> Vector2:
@@ -81,9 +87,19 @@ func reset():
     
     shouldResetInterpolation = true
     
-    add_collision_exception_with(parentActor)
+    collisionsEnabled = false
 
 
-func _collisionDetectorExited(body: Node):
-    if body == parentActor:
-        remove_collision_exception_with(body)
+func _checkCollisions():
+    var bodies: Array[Node3D] = collisionDetector.get_overlapping_bodies()
+    
+    for eachBody: Node3D in bodies:
+        if eachBody is Actor and eachBody != self:
+            return
+    
+    _enableCollisions()
+
+
+func _enableCollisions(shouldEnable: bool = true):
+    set_collision_layer_value(3, shouldEnable)
+    set_collision_mask_value(3, shouldEnable)

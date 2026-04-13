@@ -12,6 +12,10 @@ size = Vector3(0.5, 0.351, 0.5)
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_u4npu"]
 radius = 0.35
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_703dr"]
+radius = 0.4
+height = 2.2
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_7vwln"]
 size = Vector3(0.5, 0.2, 0.5)
 
@@ -231,6 +235,28 @@ tracks/18/keys = {
 "points": PackedFloat32Array(2.2, -0.1, 0, 0.1, 0),
 "times": PackedFloat32Array(0)
 }
+tracks/19/type = "bezier"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("CollisionDetector/CollisionDetectorShape:position:y")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1.1, -0.1, 0, 0.1, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/20/type = "bezier"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("CollisionDetector/CollisionDetectorShape:shape:height")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(2.2, -0.1, 0, 0.1, 0),
+"times": PackedFloat32Array(0)
+}
 
 [sub_resource type="Animation" id="Animation_703dr"]
 resource_name = "crouch"
@@ -297,6 +323,28 @@ tracks/5/path = NodePath("BodyCollision2:position:y")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(2.2, -0.1, 0, 0.1, 0, 1.6, -0.1, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.2)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CollisionDetector/CollisionDetectorShape:position:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1.1, -0.1, 0, 0.1, 0, 0.8, -0.1, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.2)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CollisionDetector/CollisionDetectorShape:shape:height")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
 "handle_modes": PackedInt32Array(0, 2),
 "points": PackedFloat32Array(2.2, -0.1, 0, 0.1, 0, 1.6, -0.1, 0, 0, 0),
 "times": PackedFloat32Array(0, 0.2)
@@ -368,6 +416,28 @@ tracks/5/path = NodePath("BodyCollision2:position:y")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1.6, -0.0005, 0, 0.0005, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CollisionDetector/CollisionDetectorShape:position:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.8, -0.0005, 0, 0.0005, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CollisionDetector/CollisionDetectorShape:shape:height")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
 "handle_modes": PackedInt32Array(0),
 "points": PackedFloat32Array(1.6, -0.0005, 0, 0.0005, 0),
 "times": PackedFloat32Array(0)
@@ -524,6 +594,28 @@ tracks/5/keys = {
 "points": PackedFloat32Array(1.6, 0, 0, 0.1, 0, 2.2, -0.1, 0, 0, 0),
 "times": PackedFloat32Array(0, 0.2)
 }
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CollisionDetector/CollisionDetectorShape:position:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0.8, -0.1, 0, 0.1, 0, 1.1, -0.1, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.2)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CollisionDetector/CollisionDetectorShape:shape:height")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1.6, -0.1, 0, 0.1, 0, 2.2, -0.1, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.2)
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7vwln"]
 _data = {
@@ -535,6 +627,8 @@ _data = {
 }
 
 [node name="Actor" type="CharacterBody3D" unique_id=2013142565]
+collision_layer = 6
+collision_mask = 5
 
 [node name="BodyCollision1" type="CollisionShape3D" parent="." unique_id=1399796085]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -555,7 +649,15 @@ mesh = SubResource("CapsuleMesh_u4npu")
 [node name="CrouchRayCast" type="RayCast3D" parent="." unique_id=1932106787]
 target_position = Vector3(0, 2.3, 0)
 
+[node name="CollisionDetector" type="Area3D" parent="." unique_id=1869772980]
+collision_mask = 2
+
+[node name="CollisionDetectorShape" type="CollisionShape3D" parent="CollisionDetector" unique_id=1920876479]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+shape = SubResource("CapsuleShape3D_703dr")
+
 [node name="CrouchActorDectector" type="Area3D" parent="." unique_id=1331031448]
+collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CrouchActorDectector" unique_id=2114378717]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)

@@ -101,9 +101,12 @@ tempLoadLevel2={
 
 [layer_names]
 
-3d_physics/layer_5="Green"
-3d_physics/layer_6="Yellow"
-3d_physics/layer_7="Red"
+3d_physics/layer_1="World"
+3d_physics/layer_2="Actors"
+3d_physics/layer_3="Actors With Collisions"
+3d_physics/layer_5="Green Walls"
+3d_physics/layer_6="Yellow Walls"
+3d_physics/layer_7="Red Walls"
 
 [physics]
 

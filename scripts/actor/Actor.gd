@@ -81,6 +81,7 @@ var animationTime: float:
 @onready var bodyMesh: MeshInstance3D = $BodyMesh
 @onready var headMesh: MeshInstance3D = $Head/HeadMesh
 @onready var crouchActorDetector: Area3D = $CrouchActorDectector
+@onready var collisionDetector: Area3D = $CollisionDetector
 
 func _ready() -> void:
     paused = true
