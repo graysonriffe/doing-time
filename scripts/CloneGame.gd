@@ -36,7 +36,7 @@ var scrubTime: float
 @onready var cloneContainer: Node = $Clones
 
 @onready var pauseUI: Control = find_child("PauseUI", true, false)
-@onready var tempRemoteLabel: Label = find_child("ScreenLabel", true, false)
+@onready var remoteLabel: RichTextLabel = find_child("ScreenLabel", true, false)
 @onready var timelineSlider: HSlider = find_child("TimelineSlider", true, false)
 @onready var timelineTimeLabel: Label = find_child("TimelineTimeLabel", true, false)
 
@@ -52,7 +52,6 @@ func _ready() -> void:
     Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
     
     player.pause(false) # Unpause
-    tempRemoteLabel.text = "Level Name and Info"
 
 
 func _physics_process(delta: float) -> void:
@@ -108,7 +107,7 @@ func _changeLevel(newLevelNumber: int):
     # Teleport player to PlayerStart marker
     # TODO: Probably move this later to another function
     var playerStart: Node3D = levelSceneInstance.find_child("PlayerStart")
-    player.teleport(playerStart.global_transform)
+    player.reset(playerStart.global_transform)
     
     timeIndex = 0
     timelineData = TimelineData.new()
@@ -121,6 +120,8 @@ func _changeLevel(newLevelNumber: int):
     _record()
     
     gamestate = Gamestate.Playing
+    
+    _updateRemoteLabel()
 
 
 func getTimeIndex() -> int:
@@ -141,13 +142,12 @@ func _togglePause():
     if gamestate == Gamestate.Playing:
         _doPause()
     elif gamestate == Gamestate.Paused:
-        _doUnpause()
-        
-        # Exception for unpausing a the beginning of the timeline
-        if timeIndex == 1:
-            _deleteAllClones()
-        else:
-            _deleteDiscardedClones()
+        if _doUnpause():
+            # Exception for unpausing a the beginning of the timeline
+            if timeIndex == 1:
+                _deleteAllClones()
+            else:
+                _deleteDiscardedClones()
 
 
 func _doPause():
@@ -168,18 +168,16 @@ func _doPause():
     _setTimelineTimeLabel(lastTimeIndex)
     
     pauseUI.show()
-    tempRemoteLabel.text = "Pause Menu"
+    _updateRemoteLabel()
     
     Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 
-func _doUnpause():
+func _doUnpause() -> bool:
+    if get_tree().get_processed_tweens().size() > 0:
+        return false
+    
     gamestate = Gamestate.Playing
-    
-    RenderingServer.global_shader_parameter_set("pause_effect", false);
-    
-    for tween in get_tree().get_processed_tweens():
-        await tween.finished
     
     timeIndex = int(timelineSlider.value) + 1 # Resume recording on the next timeIndex, not the one paused on
     
@@ -190,9 +188,11 @@ func _doUnpause():
     _pauseAnimations(false) # Unpause
     
     pauseUI.hide()
-    tempRemoteLabel.text = "Level Name and Info"
+    _updateRemoteLabel()
     
     Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+    
+    return true
 
 
 func _pauseClones(pause: bool = true):
@@ -252,16 +252,25 @@ func _deleteCloneAndChildren(clone: Clone):
 
 func _attemptBranch():
     if gamestate == Gamestate.Paused:
-        _doBranch()
+        if _playerIsNotRed():
+            _doBranch()
+        else:
+            # Some sort of feedback
+            pass
+
+
+func _playerIsNotRed():
+    return player.getColor() != Actor.ActorColor.Red
 
 
 func _doBranch():
-    _doUnpause()
+    if not _doUnpause():
+        return
     
     var newClone: Clone = CLONE_SCENE.instantiate()
     
-    # TODO: Remove this later
-    newClone.get_node("BodyCollision").shape = newClone.get_node("BodyCollision").shape.duplicate()
+    # TODO: Remove this later with new crouching animations
+    newClone.get_node("BodyCollision1").shape = newClone.get_node("BodyCollision1").shape.duplicate()
     newClone.get_node("BodyMesh").mesh = newClone.get_node("BodyMesh").mesh.duplicate()
     
     # TODO: Initial conditions might be better to be inherited from the parent in real time
@@ -278,6 +287,10 @@ func _doBranch():
     newClone.cloneData = currentCloneData.duplicate(true)
     
     cloneContainer.add_child(newClone)
+    
+    var playerColor: Actor.ActorColor = player.getColor()
+    newClone.color = playerColor
+    
     timelineData.registerActor(newClone)
     
     newClone.pause(false) # Unpause
@@ -286,6 +299,17 @@ func _doBranch():
     for clone: Clone in cloneContainer.get_children():
         if clone.parentActor == player and timeIndex < clone.cloneData.startingTimeIndex:
             clone.parentActor = newClone
+    
+    # Increment player color
+    match playerColor:
+        Actor.ActorColor.White:
+            player.color = Actor.ActorColor.Green
+        Actor.ActorColor.Green:
+            player.color = Actor.ActorColor.Yellow
+        Actor.ActorColor.Yellow:
+            player.color = Actor.ActorColor.Red
+    
+    _updateRemoteLabel()
 
 
 func _handleScrub(shouldScrubForward: bool, shouldScrubBackward: bool, delta: float):
@@ -320,6 +344,8 @@ func _timelineSliderChanged(value: float):
     _showOrHideClonesInPreview(previewTimeIndex)
     
     _setTimelineTimeLabel(value)
+    
+    _updateRemoteLabel()
 
 
 func _showOrHideClonesInPreview(previewTimeIndex: int):
@@ -353,6 +379,7 @@ func _disableHiddenClones():
 func _enableNewClones():
     for clone: Clone in cloneContainer.get_children():
         if not clone.enabled and timeIndex >= clone.cloneData.startingTimeIndex - 1:
+            clone.parentActor.color = clone.parentActor.getColor() + 1
             _enableClone(clone)
 
 
@@ -369,3 +396,21 @@ func _recordCloneData():
     currentCloneData.pushBackJump(timeIndex, player.getJumpButton())
     currentCloneData.pushBackCrouch(timeIndex, player.getCrouchButton())
     currentCloneData.pushBackInteract(timeIndex, player.getInteractButton())
+
+
+func _updateRemoteLabel():
+    match gamestate:
+        Gamestate.Playing, Gamestate.Paused:
+            var playerColor: Actor.ActorColor = player.getColor()
+            var colorString: String
+            match playerColor:
+                Actor.ActorColor.White:
+                    colorString = "[color=white]WHITE[/color]"
+                Actor.ActorColor.Green:
+                    colorString = "[color=green]GREEN[/color]"
+                Actor.ActorColor.Yellow:
+                    colorString = "[color=yellow]YELLOW[/color]"
+                Actor.ActorColor.Red:
+                    colorString = "[color=red]RED[/color]"
+            
+            remoteLabel.text = "You are:\n" + colorString

@@ -5,10 +5,24 @@ extends CharacterBody3D
 
 const CLASS_NAME = "Actor"
 
+enum ActorColor {
+    White,
+    Green,
+    Yellow,
+    Red
+}
+
 # Constants
+const COLOR_COLLISION_LAYERS: Dictionary[ActorColor, int] = {
+    ActorColor.Green:    5,
+    ActorColor.Yellow:   6,
+    ActorColor.Red:      7
+}
+
 const WALKING_SPEED = 5.0
 const CROUCHING_SPEED = 3.0
-const JUMP_VELOCITY = 6.7
+const JUMP_VELOCITY = 7.0
+const BOOST_VELOCITY = 11.5
 
 # Variables
 var movementDirectionSmoothed: Vector3
@@ -16,6 +30,31 @@ var movementDirectionSmoothed: Vector3
 # State variables
 # Pauses and unpauses the actor
 var paused: bool
+
+var color: ActorColor:
+    set(value):
+        color = value
+    
+        var outlineColor: Color
+        match color:
+            ActorColor.White:
+                outlineColor = Color.WHITE
+            ActorColor.Green:
+                outlineColor = Color.GREEN
+            ActorColor.Yellow:
+                outlineColor = Color.YELLOW
+            ActorColor.Red:
+                outlineColor = Color.RED
+        
+        bodyMesh.set_instance_shader_parameter("outline_color", outlineColor)
+        headMesh.set_instance_shader_parameter("outline_color", outlineColor)
+        
+        set_collision_mask_value(COLOR_COLLISION_LAYERS[ActorColor.Green], false)
+        set_collision_mask_value(COLOR_COLLISION_LAYERS[ActorColor.Yellow], false)
+        set_collision_mask_value(COLOR_COLLISION_LAYERS[ActorColor.Red], false)
+        
+        if color != ActorColor.White:
+            set_collision_mask_value(COLOR_COLLISION_LAYERS[color], true)
 
 var isOnFloor: bool
 var isOnFloorOverride: bool
@@ -39,9 +78,13 @@ var animationTime: float:
 @onready var crouchRayCast: RayCast3D = $CrouchRayCast
 @onready var interactRayCast: RayCast3D = $Head/InteractRayCast
 @onready var animationPlayer: AnimationPlayer = $AnimationPlayer
+@onready var bodyMesh: MeshInstance3D = $BodyMesh
+@onready var headMesh: MeshInstance3D = $Head/HeadMesh
+@onready var crouchActorDetector: Area3D = $CrouchActorDectector
 
 func _ready() -> void:
     paused = true
+    color = ActorColor.White
     isOnFloorOverride = false
     crouching = false
     
@@ -78,7 +121,9 @@ func _physics_process(delta: float) -> void:
     velocity.x = movementDirectionSmoothed.x * speed
     velocity.z = movementDirectionSmoothed.z * speed
     
-    if not crouching and crouchRayCast.is_colliding() and crouchRayCast.get_collider() is not Actor:
+    if not crouching and crouchRayCast.is_colliding() and \
+    (crouchRayCast.get_collider() is CSGShape3D \
+    or crouchRayCast.get_collider() is GridMap):
         _crouch()
     
     # Apply collision forces to physics objects
@@ -98,6 +143,14 @@ func pause(shouldPause: bool = true):
     animationPlayer.active = not shouldPause
 
 
+func getColor() -> ActorColor:
+    return color
+
+
+func boost():
+    velocity.y = BOOST_VELOCITY
+
+
 @abstract
 func getInputDirection() -> Vector2
 
@@ -115,11 +168,24 @@ func _crouch():
 
 
 func _uncrouch():
-    # TODO: You can currently get stuck when uncrouching after quickly going under something
-    # Also, add an exception for other actors, for boosting
-    if not crouchRayCast.is_colliding() or (crouchRayCast.get_collider() is Actor):
+    var collidingWith: Node = crouchRayCast.get_collider()
+    
+    var detectedActor: Actor
+    
+    for body: Node in crouchActorDetector.get_overlapping_bodies():
+        if body == self:
+            continue
+        
+        if body is Actor:
+            detectedActor = body
+            break
+    
+    if not collidingWith or (collidingWith is Actor):
         crouching = false
         animationPlayer.play("uncrouch")
+        
+        if detectedActor: # Crouch boost
+            detectedActor.boost()
 
 
 func _interact():

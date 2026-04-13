@@ -6,7 +6,6 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pm1wa"]
 radius = 0.35
-height = 2.35
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_o5ntp"]
 radius = 0.35
@@ -14,10 +13,10 @@ radius = 0.35
 [node name="Player" unique_id=2013142565 instance=ExtResource("1_4ykpa")]
 script = ExtResource("2_xw35t")
 
-[node name="BodyCollision" parent="." index="0" unique_id=1399796085]
+[node name="BodyCollision1" parent="." index="0" unique_id=1399796085]
 shape = SubResource("CapsuleShape3D_pm1wa")
 
-[node name="BodyMesh" parent="." index="1" unique_id=325760260]
+[node name="BodyMesh" parent="." index="2" unique_id=325760260]
 cast_shadow = 3
 mesh = SubResource("CapsuleMesh_o5ntp")
 

@@ -5,13 +5,13 @@
 [ext_resource type="PackedScene" uid="uid://chp051n436t3o" path="res://scenes/remote.tscn" id="3_7h7gs"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_7mo3h"]
-viewport_path = NodePath("RemotePlaceholder/SubViewport")
+viewport_path = NodePath("Remote/SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_acnp3"]
 resource_local_to_scene = true
+no_depth_test = true
 shading_mode = 0
 albedo_texture = SubResource("ViewportTexture_7mo3h")
-use_z_clip_scale = true
 z_clip_scale = 0.01
 
 [node name="RemoteViewModel" type="Node3D" unique_id=1236516252]
@@ -25,7 +25,7 @@ visible = false
 material_override = SubResource("StandardMaterial3D_acnp3")
 mesh = ExtResource("1_acnp3")
 
-[node name="SubViewport" type="SubViewport" parent="RemotePlaceholder" unique_id=773644612]
+[node name="SubViewport" type="SubViewport" parent="Remote" unique_id=773644612]
 size = Vector2i(1000, 1000)
 
-[node name="RemoteUI" parent="RemotePlaceholder/SubViewport" unique_id=685619501 instance=ExtResource("2_acnp3")]
+[node name="RemoteUI" parent="Remote/SubViewport" unique_id=685619501 instance=ExtResource("2_acnp3")]

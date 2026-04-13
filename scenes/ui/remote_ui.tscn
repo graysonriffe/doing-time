@@ -39,9 +39,6 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_wg4ti"]
-font_size = 100
-
 [node name="RemoteUI" type="Control" unique_id=685619501]
 layout_mode = 3
 anchors_preset = 0
@@ -118,7 +115,7 @@ offset_bottom = 306.0
 grow_horizontal = 2
 texture = SubResource("GradientTexture2D_gtj3a")
 
-[node name="ScreenPlaceholderLabel" type="Label" parent="FrontBoundary/ScreenTexture" unique_id=767032388]
+[node name="ScreenPlaceholderLabel" type="RichTextLabel" parent="FrontBoundary/ScreenTexture" unique_id=507175261]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -126,11 +123,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 35
-text = "Status"
+theme_override_font_sizes/normal_font_size = 35
+bbcode_enabled = true
+text = "You are:
+Color"
+autowrap_mode = 2
 horizontal_alignment = 1
 vertical_alignment = 1
-autowrap_mode = 2
 
 [node name="Buttons" type="GridContainer" parent="FrontBoundary" unique_id=1041461394]
 visible = false
@@ -251,16 +250,21 @@ offset_bottom = 1000.0
 grow_horizontal = 2
 texture = SubResource("GradientTexture2D_gtj3a")
 
-[node name="ScreenLabel" type="Label" parent="ScreenTexture" unique_id=1651287830]
+[node name="ScreenLabel" type="RichTextLabel" parent="ScreenTexture" unique_id=2017070074]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = 76.0
+offset_right = -62.0
+offset_bottom = -87.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 35
-text = "Status"
-label_settings = SubResource("LabelSettings_wg4ti")
+theme_override_font_sizes/normal_font_size = 35
+bbcode_enabled = true
+text = "[font_size=180]You are:
+Color[/font_size]"
+autowrap_mode = 2
 horizontal_alignment = 1
 vertical_alignment = 1
-autowrap_mode = 2

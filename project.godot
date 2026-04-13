@@ -103,6 +103,12 @@ tempLoadLevel2={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_5="Green"
+3d_physics/layer_6="Yellow"
+3d_physics/layer_7="Red"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
