@@ -19,7 +19,7 @@ const COLOR_COLLISION_LAYERS: Dictionary[ActorColor, int] = {
     ActorColor.Red:      7
 }
 
-const WALKING_SPEED = 5.0
+const WALKING_SPEED = 6.0
 const CROUCHING_SPEED = 3.0
 const JUMP_VELOCITY = 7.0
 const BOOST_VELOCITY = 11.5
