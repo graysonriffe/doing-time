@@ -30,6 +30,9 @@ var currentCloneData: CloneData
 
 var scrubTime: float
 
+# Keeps track of available clones of each clone
+var availableClonesHistory: Dictionary[int, int]
+
 # onready variables
 @onready var player: Player = $Player
 @onready var levelContainer: Node = $Level
@@ -62,6 +65,8 @@ func _physics_process(delta: float) -> void:
         timeIndex += 1
     
     _handleInput(delta)
+    
+    _updateRemoteLabel()
 
 
 # Non-player action inputs
@@ -119,9 +124,10 @@ func _changeLevel(newLevelNumber: int):
     # Record timeIndex = 0 as the initial state of the level
     _record()
     
-    gamestate = Gamestate.Playing
+    availableClonesHistory.clear()
+    availableClonesHistory[0] = 2
     
-    _updateRemoteLabel()
+    gamestate = Gamestate.Playing
 
 
 func getTimeIndex() -> int:
@@ -166,7 +172,6 @@ func _doPause():
     _setTimelineTimeLabel(lastTimeIndex)
     
     pauseUI.show()
-    _updateRemoteLabel()
     
     Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
@@ -186,7 +191,6 @@ func _doUnpause() -> bool:
     _pauseAnimations(false) # Unpause
     
     pauseUI.hide()
-    _updateRemoteLabel()
     
     Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
     
@@ -238,6 +242,9 @@ func _deleteDiscardedClones():
     for clone: Clone in cloneContainer.get_children():
         if not clone.enabled and clone.parentActor == player:
             _deleteCloneAndChildren(clone)
+            
+            availableClonesHistory[_getCurrentCloneIndex(timeIndex)] = 2
+            _removeFutureAvailableCloneEntries()
 
 
 func _deleteCloneAndChildren(clone: Clone):
@@ -250,15 +257,28 @@ func _deleteCloneAndChildren(clone: Clone):
 
 func _attemptBranch():
     if gamestate == Gamestate.Paused:
-        if _playerIsNotRed():
+        if _clonesAvailable():
             _doBranch()
         else:
             # Some sort of feedback
             pass
 
 
-func _playerIsNotRed():
-    return player.getColor() != Actor.ActorColor.Red
+func _clonesAvailable():
+    var timelineTimeIndex = timelineSlider.value # + 1?
+    
+    var currentClone: int = _getCurrentCloneIndex(timelineTimeIndex)
+    
+    return availableClonesHistory.get(currentClone, 0) > 0
+
+
+func _getCurrentCloneIndex(currentTimeIndex: int) -> int:
+    var returnVal: int = -1
+    for index in availableClonesHistory.keys():
+        if index <= currentTimeIndex:
+            returnVal = index
+    
+    return returnVal
 
 
 func _doBranch():
@@ -271,8 +291,6 @@ func _doBranch():
     newClone.get_node("BodyCollision1").shape = newClone.get_node("BodyCollision1").shape.duplicate()
     newClone.get_node("BodyMesh").mesh = newClone.get_node("BodyMesh").mesh.duplicate()
     
-    # TODO: Initial conditions might be better to be inherited from the parent in real time
-    # instead of being manually set once when the clone is first created
     newClone.parentActor = player
     
     currentCloneData.setStartingTimeIndex(timeIndex)
@@ -294,7 +312,7 @@ func _doBranch():
     
     _incrementColor(player)
     
-    _updateRemoteLabel()
+    _updateAvailableCloneHistory()
 
 
 func _incrementColor(actor: Actor):
@@ -305,6 +323,32 @@ func _incrementColor(actor: Actor):
             actor.color = Actor.ActorColor.Yellow
         Actor.ActorColor.Yellow:
             actor.color = Actor.ActorColor.Red
+
+
+func _updateAvailableCloneHistory():
+    # Subtract 1 from current clone
+    # Add new clone to history with 2
+    # Remove all future entries
+    var currentClone: int = _getCurrentCloneIndex(timeIndex)
+    
+    availableClonesHistory[currentClone] -= 1
+    
+    if not _isPlayerRed():
+        availableClonesHistory[timeIndex] = 2
+    else:
+        availableClonesHistory[timeIndex] = 0
+    
+    _removeFutureAvailableCloneEntries()
+
+
+func _removeFutureAvailableCloneEntries():
+    for index in availableClonesHistory.keys():
+        if index > timeIndex:
+            availableClonesHistory.erase(index)
+
+
+func _isPlayerRed() -> bool:
+    return player.getColor() == Actor.ActorColor.Red
 
 
 func _handleScrub(shouldScrubForward: bool, shouldScrubBackward: bool, delta: float):
@@ -339,8 +383,6 @@ func _timelineSliderChanged(value: float):
     _showOrHideClonesInPreview(previewTimeIndex)
     
     _setTimelineTimeLabel(value)
-    
-    _updateRemoteLabel()
 
 
 func _showOrHideClonesInPreview(previewTimeIndex: int):
@@ -410,3 +452,6 @@ func _updateRemoteLabel():
                     colorString = "[color=red]RED[/color]"
             
             remoteLabel.text = "You are:\n" + colorString
+            
+            var sourceTimeIndex: int = timeIndex if gamestate == Gamestate.Playing else (timelineSlider.value as int)
+            remoteLabel.text += "\n\n%d\nAvailable Clones" % availableClonesHistory[_getCurrentCloneIndex(sourceTimeIndex)]
