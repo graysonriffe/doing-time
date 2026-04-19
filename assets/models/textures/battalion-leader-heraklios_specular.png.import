@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cv36lv7bjn1e3"
-valid=false
+uid="uid://c0tb3gq2hv8ey"
+path="res://.godot/imported/battalion-leader-heraklios_specular.png-cf0656df95a2fc06b0a67a501fabea66.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://assets/ui_textures/remote_forward.png"
+source_file="res://assets/models/textures/battalion-leader-heraklios_specular.png"
+dest_files=["res://.godot/imported/battalion-leader-heraklios_specular.png-cf0656df95a2fc06b0a67a501fabea66.ctex"]
 
 [params]
 

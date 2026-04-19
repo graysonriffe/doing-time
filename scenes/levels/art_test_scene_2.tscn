@@ -26,6 +26,9 @@
 [ext_resource type="Texture2D" uid="uid://b3kyhum6swu3c" path="res://assets/materials/concrete/Concrete_basecolor.png" id="24_kg5qj"]
 [ext_resource type="Texture2D" uid="uid://b3m83dqdbouvs" path="res://assets/materials/concrete/Concrete_normal.png" id="25_yw3qn"]
 [ext_resource type="Texture2D" uid="uid://b3bo8oekhcohj" path="res://assets/materials/concrete/Concrete_roughness.png" id="26_wx50g"]
+[ext_resource type="PackedScene" uid="uid://n2hagxwm1nmd" path="res://scenes/actor/john_d_time.tscn" id="27_yw3qn"]
+[ext_resource type="PackedScene" uid="uid://d3q2whq45hq2q" path="res://scenes/actor/warden.tscn" id="28_wx50g"]
+[ext_resource type="PackedScene" uid="uid://bs2dxj4eo0uue" path="res://scenes/level_components/no_branch_box.tscn" id="29_wx50g"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xojot"]
 metallic = 0.7
@@ -195,7 +198,7 @@ light_energy = 2.0
 light_bake_mode = 1
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="." index="9" unique_id=725372562]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5165951, 2.155346, 0.8349271)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0576451, 2.9635909, 1.2333394)
 light_energy = 3.0
 shadow_enabled = true
 omni_range = 20.0
@@ -387,7 +390,6 @@ transform = Transform3D(-7.5581074, 0, 0, 0, 3.422939, 0, 0, 0, 9.288317, -2.240
 material = SubResource("StandardMaterial3D_bngwf")
 
 [node name="Lasers" type="Node3D" parent="." index="32" unique_id=1800229592]
-visible = false
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Lasers" index="0" unique_id=642587279]
 transform = Transform3D(8.495986e-10, -7.9108663, 0, -0.01943655, -3.4579492e-07, 0, 0, 0, 0.044456832, -1.2192631, 2.0689862, 4.679021)
@@ -452,3 +454,12 @@ material = SubResource("ShaderMaterial_am6tk")
 [node name="CSGCylinder3D16" type="CSGCylinder3D" parent="Lasers" index="15" unique_id=1431472287]
 transform = Transform3D(8.495986e-10, -7.9108663, 0, -0.01943655, -3.4579492e-07, 0, 0, 0, 0.044456832, -1.2192631, 4.053002, 4.679021)
 material = SubResource("ShaderMaterial_am6tk")
+
+[node name="JohnDTime" parent="." index="33" unique_id=1774147759 instance=ExtResource("27_yw3qn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9473169, 1.7982665, 0.27746296)
+
+[node name="Warden" parent="." index="34" unique_id=242602301 instance=ExtResource("28_wx50g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7625445, 1.9586996, 0.022611372)
+
+[node name="NoBranchBox" parent="." index="35" unique_id=1270449758 instance=ExtResource("29_wx50g")]
+transform = Transform3D(3.3446918, 0, 0, 0, 1.9652307, 0, 0, 0, 2.8410962, -1.476033, 4.7679825, -1.6758156)

@@ -2,6 +2,7 @@ shader_type spatial;
 render_mode ambient_light_disabled;
 
 uniform sampler2D albedo : hint_default_white;
+uniform vec3 material_color : source_color = vec3(1,1,1);
 instance uniform vec3 color : source_color = vec3(1,1,1);
 instance uniform float lighting_multiplier = 1.0;
 instance uniform float emission = 0.0;
@@ -14,9 +15,9 @@ void vertex() {
 
 void fragment() {
 	// Called for every pixel the material is visible on.
-    ALBEDO = texture(albedo, UV).rgb * color * lighting_multiplier;
+    ALBEDO = texture(albedo, UV).rgb * material_color * color * lighting_multiplier;
     //EMISSION = vec3(0);
-    EMISSION = texture(albedo, UV).rgb * color * emission;
+    EMISSION = texture(albedo, UV).rgb * material_color * color * emission;
 }
 
 void light() {

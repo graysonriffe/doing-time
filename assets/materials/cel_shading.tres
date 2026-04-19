@@ -5,3 +5,6 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_mo5r6")
+shader_parameter/material_color = Color(1, 1, 1, 1)
+shader_parameter/specular_strength = 0.1
+shader_parameter/shininess = 5.0

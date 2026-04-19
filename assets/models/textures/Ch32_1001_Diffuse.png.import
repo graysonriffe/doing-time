@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cv36lv7bjn1e3"
-valid=false
+uid="uid://b6uccriqx352g"
+path="res://.godot/imported/Ch32_1001_Diffuse.png-328d978cb0062724f212cfc22965d1c9.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://assets/ui_textures/remote_forward.png"
+source_file="res://assets/models/textures/Ch32_1001_Diffuse.png"
+dest_files=["res://.godot/imported/Ch32_1001_Diffuse.png-328d978cb0062724f212cfc22965d1c9.ctex"]
 
 [params]
 

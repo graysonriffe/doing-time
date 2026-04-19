@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cv36lv7bjn1e3"
-valid=false
+uid="uid://brq2orf7xaatp"
+path="res://.godot/imported/Ch32_1001_Glossiness.png-2615f14f8c2a1fb3b895647f647f0be7.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://assets/ui_textures/remote_forward.png"
+source_file="res://assets/models/textures/Ch32_1001_Glossiness.png"
+dest_files=["res://.godot/imported/Ch32_1001_Glossiness.png-2615f14f8c2a1fb3b895647f647f0be7.ctex"]
 
 [params]
 

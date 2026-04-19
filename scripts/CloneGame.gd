@@ -178,6 +178,7 @@ func _doUnpause() -> bool:
         return false
     
     gamestate = Gamestate.Playing
+    RenderingServer.global_shader_parameter_set("pause_effect", false);
     
     timeIndex = int(timelineSlider.value) + 1 # Resume recording on the next timeIndex, not the one paused on
     
@@ -413,4 +414,4 @@ func _updateRemoteLabel():
                 Actor.ActorColor.Red:
                     colorString = "[color=red]RED[/color]"
             
-            remoteLabel.text = "You are:\n" + colorString
+            remoteLabel.text = "[font_size=180]You are:\n" + colorString + "[/font_size]"

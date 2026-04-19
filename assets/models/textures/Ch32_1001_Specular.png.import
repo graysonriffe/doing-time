@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cv36lv7bjn1e3"
-valid=false
+uid="uid://vjhfo6psl8w6"
+path="res://.godot/imported/Ch32_1001_Specular.png-9e5c4cccf69b34c15293fec0bc52da0b.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://assets/ui_textures/remote_forward.png"
+source_file="res://assets/models/textures/Ch32_1001_Specular.png"
+dest_files=["res://.godot/imported/Ch32_1001_Specular.png-9e5c4cccf69b34c15293fec0bc52da0b.ctex"]
 
 [params]
 

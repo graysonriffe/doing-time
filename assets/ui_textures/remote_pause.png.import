@@ -3,15 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bqwuyyjho23lt"
-path="res://.godot/imported/remote_pause.png-d20a45dacded67c1818e7dd53a76602a.ctex"
-metadata={
-"vram_texture": false
-}
+valid=false
 
 [deps]
 
 source_file="res://assets/ui_textures/remote_pause.png"
-dest_files=["res://.godot/imported/remote_pause.png-d20a45dacded67c1818e7dd53a76602a.ctex"]
 
 [params]
 

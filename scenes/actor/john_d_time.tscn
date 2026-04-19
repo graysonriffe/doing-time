@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://n2hagxwm1nmd"]
+
+[ext_resource type="PackedScene" uid="uid://cq6b80ialg3l0" path="res://assets/models/JohnDTime.blend" id="1_h2vyj"]
+[ext_resource type="Shader" uid="uid://cia180g1ko22l" path="res://assets/shaders/cel_shading.gdshader" id="2_3kojd"]
+[ext_resource type="Material" uid="uid://cah8aejnp801s" path="res://assets/materials/cel_shading_actor.tres" id="3_bpojm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wrce0"]
+render_priority = 0
+shader = ExtResource("2_3kojd")
+shader_parameter/material_color = Color(0.99999994, 0.92108417, 0.7305666, 1)
+shader_parameter/specular_strength = 1.0
+shader_parameter/shininess = 50.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h2vyj"]
+render_priority = 0
+shader = ExtResource("2_3kojd")
+shader_parameter/material_color = Color(0.99250966, 0.91154385, 0.83991677, 1)
+shader_parameter/specular_strength = 1.0
+shader_parameter/shininess = 50.0
+
+[node name="JohnDTime" unique_id=1774147759 instance=ExtResource("1_h2vyj")]
+
+[node name="John_002" parent="rig/Skeleton3D" parent_id_path=PackedInt32Array(972098120) index="0" unique_id=313443556]
+surface_material_override/0 = SubResource("ShaderMaterial_wrce0")
+surface_material_override/1 = ExtResource("3_bpojm")
+surface_material_override/2 = SubResource("ShaderMaterial_h2vyj")

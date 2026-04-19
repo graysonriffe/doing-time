@@ -1,9 +1,13 @@
 [gd_scene format=3 uid="uid://b25safc7q24uv"]
 
-[ext_resource type="Material" uid="uid://uecsjv8lvon8" path="res://assets/materials/post_processing.tres" id="1_wwqff"]
+[ext_resource type="Shader" uid="uid://cj361jgwpvdt5" path="res://assets/shaders/post_processing.gdshader" id="1_q55t0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ib8rf"]
+render_priority = 0
+shader = ExtResource("1_q55t0")
 
 [sub_resource type="QuadMesh" id="QuadMesh_6t3sc"]
-material = ExtResource("1_wwqff")
+material = SubResource("ShaderMaterial_ib8rf")
 flip_faces = true
 size = Vector2(2, 2)
 center_offset = Vector3(0, 0, 1)
