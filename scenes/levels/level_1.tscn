@@ -54,15 +54,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, -3)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
 activators = [NodePath("../WeightButton"), NodePath("../WeightButton2"), NodePath("../Lever")]
 
-[node name="Door" parent="World/Door/Door" parent_id_path=PackedInt32Array(712969499, 1030310965) index="0" unique_id=1288980360]
+[node name="Door" parent="World/Door/Door" parent_id_path=PackedInt32Array(712969499, 1030310965) index="0" unique_id=758645340]
 surface_material_override/0 = SubResource("StandardMaterial3D_dga24")
 
 [node name="Lever" parent="World" parent_id_path=PackedInt32Array(554948861) index="5" unique_id=470289266 instance=ExtResource("7_oc4kc")]
 transform = Transform3D(-1, -3.821371e-15, -8.742278e-08, -8.742278e-08, 4.371139e-08, 1, 0, 1, -4.371139e-08, 3, 1.75, -8)
 
-[node name="ColoredWall" parent="World" parent_id_path=PackedInt32Array(554948861) index="6" unique_id=1483795033 instance=ExtResource("8_s8va5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 6.5)
-size = Vector3(5, 3, 0.1)
+[node name="ColoredWall" parent="." index="5" unique_id=1483795033 instance=ExtResource("8_s8va5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 7)
+instance_shader_parameters/color = Color(0, 1, 0, 1)
+collision_layer = 16
 
 [editable path="World/Door"]
 [editable path="World/Door/Door"]

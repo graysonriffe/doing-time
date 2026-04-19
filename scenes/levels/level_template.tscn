@@ -23,7 +23,7 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ulyey"]
-render_priority = 0
+render_priority = 1
 shader = ExtResource("2_eokde")
 shader_parameter/edge_only = true
 shader_parameter/edge_threshold = 1.5
