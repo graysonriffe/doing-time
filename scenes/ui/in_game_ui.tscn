@@ -6,6 +6,7 @@ content_margin_top = 0.0
 content_margin_right = 0.0
 content_margin_bottom = 0.0
 bg_color = Color(0.7079665, 0.7079665, 0.7079664, 0.6)
+corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
@@ -89,6 +90,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_mhy8o")
 
 [node name="TimelineMargin" type="MarginContainer" parent="PauseUI/TimelinePanel" unique_id=1098808111]
 layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
 
 [node name="TimelineSlider" type="HSlider" parent="PauseUI/TimelinePanel/TimelineMargin" unique_id=265941474]
 layout_mode = 2
