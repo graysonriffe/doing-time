@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://ca08rf6sfv4gl" path="res://scenes/levels/level_template.tscn" id="1_m1v5p"]
 [ext_resource type="PackedScene" uid="uid://bsiew2uhh705e" path="res://scenes/level_components/lever.tscn" id="2_pfx17"]
 [ext_resource type="PackedScene" uid="uid://c2oilcemslf1l" path="res://scenes/level_components/door.tscn" id="3_ajlgv"]
+[ext_resource type="PackedScene" uid="uid://dqh7qjcvou74b" path="res://scenes/level_components/no_branch_zone.tscn" id="4_rsfbf"]
 
 [node name="LevelTemplate" unique_id=1254966120 instance=ExtResource("1_m1v5p")]
 
@@ -35,9 +36,6 @@ light_energy = 44.627
 shadow_enabled = true
 omni_range = 20.0
 omni_attenuation = 2.0
-
-[node name="Ceiling" parent="World/Room" parent_id_path=PackedInt32Array(1882725468) index="5" unique_id=613614166]
-visible = false
 
 [node name="GridMap" parent="World" parent_id_path=PackedInt32Array(554948861) index="1" unique_id=1447304026]
 data = {
@@ -90,3 +88,9 @@ activators = [NodePath("../Lever")]
 [node name="Door2" parent="World" parent_id_path=PackedInt32Array(554948861) index="10" unique_id=1330383392 node_paths=PackedStringArray("activators") instance=ExtResource("3_ajlgv")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -14, 6, 0.99999994)
 activators = [NodePath("../Lever")]
+
+[node name="NoBranchZone" parent="." index="5" unique_id=1166222031 instance=ExtResource("4_rsfbf")]
+transform = Transform3D(12.33, 0, 0, 0, 10.275, 0, 0, 0, 10.275, 0, 5, 1)
+
+[node name="NoBranchZone2" parent="." index="6" unique_id=1880826986 instance=ExtResource("4_rsfbf")]
+transform = Transform3D(8, 0, 0, 0, 4, 0, 0, 0, 6, -10.001773, 2.0043736, 1.0025952)

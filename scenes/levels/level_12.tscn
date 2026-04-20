@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c2oilcemslf1l" path="res://scenes/level_components/door.tscn" id="3_ewkot"]
 [ext_resource type="Texture2D" uid="uid://xekyk8sknnlj" path="res://assets/materials/metal_panels/Metal_Panels_normal.png" id="3_fakti"]
 [ext_resource type="Texture2D" uid="uid://cpn7fwvir7abc" path="res://assets/materials/metal_panels/Metal_Panels_roughness.png" id="4_aj8n2"]
+[ext_resource type="PackedScene" uid="uid://dqh7qjcvou74b" path="res://scenes/level_components/no_branch_zone.tscn" id="7_fakti"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yd7i6"]
 transparency = 1
@@ -158,3 +159,6 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 5, 9
 [node name="Door" parent="World" parent_id_path=PackedInt32Array(554948861) index="15" unique_id=712969499 node_paths=PackedStringArray("activators") instance=ExtResource("3_ewkot")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 8, -2)
 activators = [NodePath("../Lever"), NodePath("../Lever5"), NodePath("../Lever7")]
+
+[node name="NoBranchZone" parent="." index="5" unique_id=1166222031 instance=ExtResource("7_fakti")]
+transform = Transform3D(27, 0, 0, 0, 27, 0, 0, 0, 27, 1, 7, 7)
