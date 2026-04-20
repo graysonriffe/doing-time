@@ -5,7 +5,7 @@ content_margin_left = 0.0
 content_margin_top = 0.0
 content_margin_right = 0.0
 content_margin_bottom = 0.0
-bg_color = Color(0.1, 0.1, 0.1, 0.6)
+bg_color = Color(0.7079665, 0.7079665, 0.7079664, 0.6)
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
@@ -37,7 +37,7 @@ content_margin_left = 0.0
 content_margin_top = 0.0
 content_margin_right = 0.0
 content_margin_bottom = 0.0
-bg_color = Color(0.1, 0.1, 0.1, 0.6)
+bg_color = Color(0.70980394, 0.70980394, 0.70980394, 0.6)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_detail = 5
@@ -93,6 +93,7 @@ layout_mode = 2
 [node name="TimelineSlider" type="HSlider" parent="PauseUI/TimelinePanel/TimelineMargin" unique_id=265941474]
 layout_mode = 2
 size_flags_vertical = 4
+focus_mode = 0
 theme_override_icons/grabber = SubResource("DPITexture_mhy8o")
 theme_override_icons/grabber_highlight = SubResource("DPITexture_uyty4")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_4db6k")
@@ -121,29 +122,4 @@ theme_override_constants/margin_bottom = 4
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "Timeline"
-horizontal_alignment = 1
-
-[node name="TimelineTimePanel" type="PanelContainer" parent="PauseUI" unique_id=199142920]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 801.0
-offset_top = -134.0
-offset_right = 880.0
-offset_bottom = -99.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_uyty4")
-
-[node name="TimelineTimeMargin" type="MarginContainer" parent="PauseUI/TimelineTimePanel" unique_id=222627881]
-layout_mode = 2
-theme_override_constants/margin_bottom = 4
-
-[node name="TimelineTimeLabel" type="Label" parent="PauseUI/TimelineTimePanel/TimelineTimeMargin" unique_id=687939072]
-layout_mode = 2
-theme_override_font_sizes/font_size = 25
-text = "00:00"
 horizontal_alignment = 1

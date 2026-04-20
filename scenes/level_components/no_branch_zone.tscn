@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://dqh7qjcvou74b"]
+
+[ext_resource type="Material" uid="uid://btdxxahuhlo56" path="res://assets/materials/no_branch_zone/no_branch_zone.tres" id="1_gbu8c"]
+[ext_resource type="Script" uid="uid://bnw0s0g0rfe6b" path="res://scripts/level_components/NoBranchZone.gd" id="1_sm0jv"]
+[ext_resource type="Texture2D" uid="uid://t3kxbcpb53dt" path="res://assets/materials/no_branch_zone/no_entry.png" id="2_ty64k"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ty64k"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_gbu8c"]
+
+[sub_resource type="Curve" id="Curve_ty64k"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.15397632, 1), 0.0, 0.0, 0, 0, Vector2(0.8612522, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_sm0jv"]
+curve = SubResource("Curve_ty64k")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sm0jv"]
+lifetime_randomness = 0.4
+emission_shape = 3
+emission_box_extents = Vector3(0.5, 0.5, 0.5)
+spread = 180.0
+initial_velocity_min = -0.01
+initial_velocity_max = 0.01
+gravity = Vector3(0, 0, 0)
+scale_min = 0.099999994
+scale_max = 0.099999994
+scale_curve = SubResource("CurveTexture_sm0jv")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oia14"]
+transparency = 1
+albedo_texture = ExtResource("2_ty64k")
+emission_enabled = true
+emission = Color(0.011764706, 0.4392157, 1, 1)
+emission_energy_multiplier = 5.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_gqgyt"]
+material = SubResource("StandardMaterial3D_oia14")
+
+[node name="NoBranchZone" type="Area3D" unique_id=1166222031]
+collision_mask = 2
+script = ExtResource("1_sm0jv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1004971660]
+shape = SubResource("BoxShape3D_ty64k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=981904835]
+mesh = SubResource("BoxMesh_gbu8c")
+surface_material_override/0 = ExtResource("1_gbu8c")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1049708469]
+amount = 100
+lifetime = 15.0
+preprocess = 15.0
+fixed_fps = 0
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_sm0jv")
+draw_pass_1 = SubResource("QuadMesh_gqgyt")

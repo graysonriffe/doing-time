@@ -19,7 +19,7 @@ const COLOR_COLLISION_LAYERS: Dictionary[ActorColor, int] = {
     ActorColor.Red:      7
 }
 
-const WALKING_SPEED = 5.0
+const WALKING_SPEED = 6.0
 const CROUCHING_SPEED = 3.0
 const JUMP_VELOCITY = 7.0
 const BOOST_VELOCITY = 11.5
@@ -31,10 +31,11 @@ var movementDirectionSmoothed: Vector3
 # Pauses and unpauses the actor
 var paused: bool
 
+# The active color of the Actor
 var color: ActorColor:
     set(value):
         color = value
-    
+        
         var outlineColor: Color
         match color:
             ActorColor.White:
@@ -154,6 +155,10 @@ func boost():
 
 @abstract
 func getInputDirection() -> Vector2
+
+
+@abstract
+func getLookVector() -> Vector2
 
 
 func _jump():

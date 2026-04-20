@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://btdxxahuhlo56"]
+
+[ext_resource type="Shader" uid="uid://b6ngkrblc2blr" path="res://assets/shaders/no_branch_zone.gdshader" id="1_vsrpw"]
+[ext_resource type="Texture2D" uid="uid://yo4jwmmtbef0" path="res://assets/materials/post_processing/white-noise.png" id="2_86hui"]
+
+[resource]
+render_priority = 5
+shader = ExtResource("1_vsrpw")
+shader_parameter/lines = 30.0
+shader_parameter/color = Color(0, 0.6313726, 0.96862745, 0.15294118)
+shader_parameter/noise_texture = ExtResource("2_86hui")

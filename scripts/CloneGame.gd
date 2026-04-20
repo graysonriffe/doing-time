@@ -30,6 +30,12 @@ var currentCloneData: CloneData
 
 var scrubTime: float
 
+# Keeps track of available clones of each clone
+var availableClonesHistory: Dictionary[int, int]
+
+# All NoBranchZones in the current level
+var noBranchZones: Array[Area3D]
+
 # onready variables
 @onready var player: Player = $Player
 @onready var levelContainer: Node = $Level
@@ -38,7 +44,6 @@ var scrubTime: float
 @onready var pauseUI: Control = find_child("PauseUI", true, false)
 @onready var remoteLabel: RichTextLabel = find_child("ScreenLabel", true, false)
 @onready var timelineSlider: HSlider = find_child("TimelineSlider", true, false)
-@onready var timelineTimeLabel: Label = find_child("TimelineTimeLabel", true, false)
 
 func _ready() -> void:
     process_physics_priority = 1 # Makes CloneGame update after other stuff like Actors each physics process
@@ -62,6 +67,8 @@ func _physics_process(delta: float) -> void:
         timeIndex += 1
     
     _handleInput(delta)
+    
+    _updateRemote()
 
 
 # Non-player action inputs
@@ -119,9 +126,20 @@ func _changeLevel(newLevelNumber: int):
     # Record timeIndex = 0 as the initial state of the level
     _record()
     
+    availableClonesHistory.clear()
+    availableClonesHistory[0] = 2
+    
+    # Get all NoBranchZones
+    noBranchZones.clear()
+    var allNodes: Array[Node] = _getAllChildren(levelContainer)
+    
+    for node: Node in allNodes:
+        if node is Area3D and node.get("CLASS_NAME") == "NoBranchZone":
+            noBranchZones.append(node)
+    
     gamestate = Gamestate.Playing
     
-    _updateRemoteLabel()
+    _updateRemote()
 
 
 func getTimeIndex() -> int:
@@ -153,6 +171,8 @@ func _togglePause():
 func _doPause():
     gamestate = Gamestate.Paused
     
+    RenderingServer.global_shader_parameter_set("pause_effect", true);
+    
     player.pause()
     _pauseClones()
     _pausePhysicsObjects()
@@ -162,11 +182,8 @@ func _doPause():
     currentCloneData.setEndingTimeIndex(lastTimeIndex)
     timelineSlider.max_value = lastTimeIndex
     timelineSlider.set_value_no_signal(lastTimeIndex)
-    timelineSlider.grab_focus()
-    _setTimelineTimeLabel(lastTimeIndex)
     
     pauseUI.show()
-    _updateRemoteLabel()
     
     Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
@@ -177,6 +194,8 @@ func _doUnpause() -> bool:
     
     gamestate = Gamestate.Playing
     
+    RenderingServer.global_shader_parameter_set("pause_effect", false);
+    
     timeIndex = int(timelineSlider.value) + 1 # Resume recording on the next timeIndex, not the one paused on
     
     player.pause(false) # Unpause
@@ -186,7 +205,6 @@ func _doUnpause() -> bool:
     _pauseAnimations(false) # Unpause
     
     pauseUI.hide()
-    _updateRemoteLabel()
     
     Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
     
@@ -238,6 +256,9 @@ func _deleteDiscardedClones():
     for clone: Clone in cloneContainer.get_children():
         if not clone.enabled and clone.parentActor == player:
             _deleteCloneAndChildren(clone)
+            
+            availableClonesHistory[_getCurrentCloneIndex(timeIndex)] = 2
+            _removeFutureAvailableCloneEntries()
 
 
 func _deleteCloneAndChildren(clone: Clone):
@@ -250,15 +271,36 @@ func _deleteCloneAndChildren(clone: Clone):
 
 func _attemptBranch():
     if gamestate == Gamestate.Paused:
-        if _playerIsNotRed():
+        if _clonesAvailable() and not _inNoBranchZone():
             _doBranch()
         else:
             # Some sort of feedback
             pass
 
 
-func _playerIsNotRed():
-    return player.getColor() != Actor.ActorColor.Red
+func _clonesAvailable():
+    var timelineTimeIndex = timelineSlider.value # + 1?
+    
+    var currentClone: int = _getCurrentCloneIndex(timelineTimeIndex)
+    
+    return availableClonesHistory.get(currentClone, 0) > 0
+
+
+func _getCurrentCloneIndex(currentTimeIndex: int) -> int:
+    var returnVal: int = -1
+    for index in availableClonesHistory.keys():
+        if index <= currentTimeIndex:
+            returnVal = index
+    
+    return returnVal
+
+
+func _inNoBranchZone() -> bool:
+    for noBranchZone: Area3D in noBranchZones:
+        if noBranchZone.get_overlapping_bodies().find(player) != -1:
+            return true
+    
+    return false
 
 
 func _doBranch():
@@ -271,23 +313,15 @@ func _doBranch():
     newClone.get_node("BodyCollision1").shape = newClone.get_node("BodyCollision1").shape.duplicate()
     newClone.get_node("BodyMesh").mesh = newClone.get_node("BodyMesh").mesh.duplicate()
     
-    # TODO: Initial conditions might be better to be inherited from the parent in real time
-    # instead of being manually set once when the clone is first created
-    newClone.initialPosition = player.position
-    newClone.initialLookVector = player.getLookVector()
-    newClone.initialVelocity = player.velocity
-    newClone.initialMovementDirectionSmoothed = player.movementDirectionSmoothed
-    newClone.isOnFloorOverride = player.isOnFloor
-    
     newClone.parentActor = player
     
     currentCloneData.setStartingTimeIndex(timeIndex)
     newClone.cloneData = currentCloneData.duplicate(true)
     
-    cloneContainer.add_child(newClone)
-    
     var playerColor: Actor.ActorColor = player.getColor()
-    newClone.color = playerColor
+    newClone.defaultColor = playerColor
+    
+    cloneContainer.add_child(newClone)
     
     timelineData.registerActor(newClone)
     
@@ -298,16 +332,45 @@ func _doBranch():
         if clone.parentActor == player and timeIndex < clone.cloneData.startingTimeIndex:
             clone.parentActor = newClone
     
-    # Increment player color
-    match playerColor:
-        Actor.ActorColor.White:
-            player.color = Actor.ActorColor.Green
-        Actor.ActorColor.Green:
-            player.color = Actor.ActorColor.Yellow
-        Actor.ActorColor.Yellow:
-            player.color = Actor.ActorColor.Red
+    _incrementColor(player)
     
-    _updateRemoteLabel()
+    _updateAvailableCloneHistory()
+
+
+func _incrementColor(actor: Actor):
+    match actor.color:
+        Actor.ActorColor.White:
+            actor.color = Actor.ActorColor.Green
+        Actor.ActorColor.Green:
+            actor.color = Actor.ActorColor.Yellow
+        Actor.ActorColor.Yellow:
+            actor.color = Actor.ActorColor.Red
+
+
+func _updateAvailableCloneHistory():
+    # Subtract 1 from current clone
+    # Add new clone to history with 2
+    # Remove all future entries
+    var currentClone: int = _getCurrentCloneIndex(timeIndex)
+    
+    availableClonesHistory[currentClone] -= 1
+    
+    if not _isPlayerRed():
+        availableClonesHistory[timeIndex] = 2
+    else:
+        availableClonesHistory[timeIndex] = 0
+    
+    _removeFutureAvailableCloneEntries()
+
+
+func _removeFutureAvailableCloneEntries():
+    for index in availableClonesHistory.keys():
+        if index > timeIndex:
+            availableClonesHistory.erase(index)
+
+
+func _isPlayerRed() -> bool:
+    return player.getColor() == Actor.ActorColor.Red
 
 
 func _handleScrub(shouldScrubForward: bool, shouldScrubBackward: bool, delta: float):
@@ -340,10 +403,6 @@ func _timelineSliderChanged(value: float):
     timelineData.setData(int(previewTimeIndex))
     
     _showOrHideClonesInPreview(previewTimeIndex)
-    
-    _setTimelineTimeLabel(value)
-    
-    _updateRemoteLabel()
 
 
 func _showOrHideClonesInPreview(previewTimeIndex: int):
@@ -377,15 +436,16 @@ func _disableHiddenClones():
 func _enableNewClones():
     for clone: Clone in cloneContainer.get_children():
         if not clone.enabled and timeIndex >= clone.cloneData.startingTimeIndex - 1:
-            clone.parentActor.color = clone.parentActor.getColor() + 1
+            _incrementColor(clone.parentActor)
             _enableClone(clone)
+            clone.reset_physics_interpolation()
 
 
-func _setTimelineTimeLabel(value: float):
+func _getTimeString(value: float) -> String:
     var physicsTicksPerSecond: float = ProjectSettings.get_setting("physics/common/physics_ticks_per_second")
     var minutes: int = int(value / (60 * physicsTicksPerSecond))
     var seconds: int = int(float(int(value) % int(60 * physicsTicksPerSecond)) / physicsTicksPerSecond)
-    timelineTimeLabel.text = "%d:%02d" % [minutes, seconds]
+    return "%d:%02d" % [minutes, seconds]
 
 
 func _recordCloneData():
@@ -396,19 +456,29 @@ func _recordCloneData():
     currentCloneData.pushBackInteract(timeIndex, player.getInteractButton())
 
 
-func _updateRemoteLabel():
+func _updateRemote():
     match gamestate:
         Gamestate.Playing, Gamestate.Paused:
             var playerColor: Actor.ActorColor = player.getColor()
-            var colorString: String
+            var bulbColor: Color
             match playerColor:
                 Actor.ActorColor.White:
-                    colorString = "[color=white]WHITE[/color]"
+                    bulbColor = Color.WHITE
                 Actor.ActorColor.Green:
-                    colorString = "[color=green]GREEN[/color]"
+                    bulbColor = Color.GREEN
                 Actor.ActorColor.Yellow:
-                    colorString = "[color=yellow]YELLOW[/color]"
+                    bulbColor = Color.YELLOW
                 Actor.ActorColor.Red:
-                    colorString = "[color=red]RED[/color]"
+                    bulbColor = Color.RED
             
-            remoteLabel.text = "You are:\n" + colorString
+            RenderingServer.global_shader_parameter_set("remote_bulb_color", bulbColor)
+            
+            var sourceTimeIndex: int = timeIndex if gamestate == Gamestate.Playing else (timelineSlider.value as int)
+            
+            remoteLabel.text = _getTimeString(sourceTimeIndex)
+            
+            remoteLabel.text += "\n\n%d\nAvailable Clones\n\n\n\n" % availableClonesHistory[_getCurrentCloneIndex(sourceTimeIndex)]
+            
+            if _inNoBranchZone():
+                remoteLabel.text = remoteLabel.text.substr(0, remoteLabel.text.length() - 2)
+                remoteLabel.text += "In No-Branch\nZone!"

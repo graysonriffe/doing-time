@@ -3,5 +3,5 @@
 [ext_resource type="Shader" uid="uid://dpbu1ibrouccy" path="res://assets/shaders/cel_shading_actor.gdshader" id="1_7qms6"]
 
 [resource]
-render_priority = 0
+render_priority = 4
 shader = ExtResource("1_7qms6")

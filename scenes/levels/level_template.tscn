@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c3g3qngf332hl" path="res://scripts/Level.gd" id="1_7hipx"]
 [ext_resource type="Material" uid="uid://csunmo5r7lgvw" path="res://assets/materials/metal_grip_sheet/metal_grip_sheet.tres" id="2_4s5u3"]
-[ext_resource type="Shader" uid="uid://cj361jgwpvdt5" path="res://assets/shaders/post_processing.gdshader" id="2_eokde"]
+[ext_resource type="Material" uid="uid://k31nnausch81" path="res://assets/materials/post_processing/post_processing.tres" id="2_eokde"]
 [ext_resource type="Material" uid="uid://ychntj2cs7nm" path="res://assets/materials/metal_panels/metal_panels.tres" id="3_eokde"]
 [ext_resource type="Material" uid="uid://bm5oc0vuy5piw" path="res://assets/materials/metal_sheet/metal_sheet.tres" id="4_ulyey"]
 [ext_resource type="MeshLibrary" uid="uid://de6pq7wccosnq" path="res://assets/models/world_blocks_mesh_library.meshlib" id="5_4s5u3"]
@@ -22,16 +22,8 @@ ambient_light_source = 1
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ulyey"]
-render_priority = 0
-shader = ExtResource("2_eokde")
-shader_parameter/edge_only = true
-shader_parameter/edge_threshold = 1.5
-shader_parameter/line_color = Color(0, 0, 0, 1)
-shader_parameter/background_color = Color(0.408, 0.969, 0.694, 1)
-
 [sub_resource type="QuadMesh" id="QuadMesh_j81xe"]
-material = SubResource("ShaderMaterial_ulyey")
+material = ExtResource("2_eokde")
 flip_faces = true
 size = Vector2(2, 2)
 

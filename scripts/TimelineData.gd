@@ -51,6 +51,10 @@ func deregisterActor(actor: Actor):
     var nodePath: String = actor.get_path()
     var propertyArray: Array = CLASS_RECORDED_PROPERTIES["Actor"]
     
+    if actor is Clone:
+        propertyArray = propertyArray.duplicate(true)
+        propertyArray.append_array(CLASS_RECORDED_PROPERTIES["Clone"])
+    
     for property: String in propertyArray:
         var fullPropertyPath = "%s%s" % [nodePath, property]
         

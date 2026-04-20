@@ -1,26 +1,11 @@
 shader_type spatial;
-render_mode cull_disabled, ambient_light_disabled, depth_prepass_alpha;
+render_mode ambient_light_disabled, depth_test_disabled;
 
 instance uniform vec3 color: source_color;
 instance uniform float emission;
 
-instance uniform vec4 outline_color : source_color, instance_index(2);
-
-const vec3 ign = vec3(0.02f, 0.004f, 120.006f);
-
 void fragment() {
     ALBEDO = color;
-    
-    if (!FRONT_FACING) {
-        ALBEDO = outline_color.rgb;
-        
-        if (0.01 < 0.001 || 0.01 < fract(ign.z * fract(dot(FRAGCOORD.xy, ign.xy)))) {
-            discard;
-        } else {
-            ALPHA = 0.9;
-        }
-    }
-    
     EMISSION = color * emission;
 }
 
@@ -38,10 +23,4 @@ void light() {
     float specularIntensity = pow(specularDot, 50.0);
     
     SPECULAR_LIGHT += SPECULAR_AMOUNT * step(0.5, specularIntensity) * (ATTENUATION / PI) * LIGHT_COLOR;
-    
-    if (abs(ALPHA - 0.9) < 0.001) {
-        DIFFUSE_LIGHT = outline_color.rgb;
-    }
-    
-    ALPHA = 1.0;
 }
