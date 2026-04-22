@@ -60,6 +60,7 @@ surface_material_override/0 = ExtResource("2_s038d")
 transform = Transform3D(0.295, 2.4815418e-24, -1.3504177e-08, 0, 5.6365215e-16, -0.2949999, 0, 0.295, 5.6365225e-16, 0, -2.322, 0)
 flip_h = true
 flip_v = true
+no_depth_test = true
 render_priority = 100
 texture = ExtResource("3_o5mf1")
 
@@ -76,6 +77,7 @@ surface_material_override/0 = ExtResource("2_s038d")
 
 [node name="ForwardSprite" type="Sprite3D" parent="Remote/Remote/ForwardButton" index="0" unique_id=1729940755]
 transform = Transform3D(0.295, 1.6543612e-24, -1.2572855e-08, 0, 5.6365215e-16, -0.29499993, 0, 0.295, 5.6365225e-16, 0.07, -2.322, 0)
+no_depth_test = true
 render_priority = 100
 texture = ExtResource("4_o5mf1")
 
@@ -86,11 +88,13 @@ surface_material_override/0 = ExtResource("2_s038d")
 
 [node name="PauseSprite" type="Sprite3D" parent="Remote/Remote/PausePlayButton" index="0" unique_id=1984584886]
 transform = Transform3D(0.295, 8.271806e-25, -1.2572855e-08, 0, 5.6365215e-16, -0.29499996, 0, 0.295, 5.6365225e-16, 0, -2.322, 0)
+no_depth_test = true
 render_priority = 100
 texture = ExtResource("4_s038d")
 
 [node name="PlaySprite" type="Sprite3D" parent="Remote/Remote/PausePlayButton" index="1" unique_id=1486051527]
 transform = Transform3D(0.295, 8.271806e-25, -1.2572855e-08, 0, 5.6365215e-16, -0.29499996, 0, 0.295, 5.6365225e-16, 0.07, -2.322, 0)
+no_depth_test = true
 render_priority = 100
 texture = ExtResource("7_1ut60")
 
@@ -102,6 +106,7 @@ surface_material_override/0 = ExtResource("2_s038d")
 [node name="ReverseSprite" type="Sprite3D" parent="Remote/Remote/ReverseButton" index="0" unique_id=2082207876]
 transform = Transform3D(0.295, 2.4815418e-24, -1.3038516e-08, 0, 5.6365215e-16, -0.2949999, 0, 0.295, 5.6365225e-16, -0.07, -2.322, 0)
 flip_h = true
+no_depth_test = true
 render_priority = 100
 texture = ExtResource("4_o5mf1")
 
