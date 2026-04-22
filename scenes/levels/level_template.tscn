@@ -5,7 +5,7 @@
 [ext_resource type="Material" uid="uid://k31nnausch81" path="res://assets/materials/post_processing/post_processing.tres" id="2_eokde"]
 [ext_resource type="Material" uid="uid://ychntj2cs7nm" path="res://assets/materials/metal_panels/metal_panels.tres" id="3_eokde"]
 [ext_resource type="Material" uid="uid://bm5oc0vuy5piw" path="res://assets/materials/metal_sheet/metal_sheet.tres" id="4_ulyey"]
-[ext_resource type="MeshLibrary" uid="uid://de6pq7wccosnq" path="res://assets/models/world_blocks_mesh_library.meshlib" id="5_4s5u3"]
+[ext_resource type="MeshLibrary" uid="uid://de6pq7wccosnq" path="res://assets/models/world_blocks/world_blocks_mesh_library.meshlib" id="5_4s5u3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_77iqg"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)

@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://k31nnausch81"]
 
-[ext_resource type="Shader" uid="uid://cj361jgwpvdt5" path="res://assets/shaders/post_processing.gdshader" id="1_ehttt"]
+[ext_resource type="Shader" uid="uid://cj361jgwpvdt5" path="res://assets/materials/post_processing.gdshader" id="1_ehttt"]
 [ext_resource type="Texture2D" uid="uid://yo4jwmmtbef0" path="res://assets/materials/post_processing/white-noise.png" id="2_ehttt"]
 
 [resource]

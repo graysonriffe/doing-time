@@ -2,17 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://bwc4qx6iq4vyg" path="res://assets/models/remote.glb" id="1_2ubl6"]
 [ext_resource type="PackedScene" uid="uid://kawmhhp1i5k0" path="res://scenes/ui/remote_ui.tscn" id="2_acnp3"]
-[ext_resource type="Shader" uid="uid://bdcfkujuxp2qc" path="res://assets/shaders/cel_shading_remote.gdshader" id="2_o5mf1"]
-[ext_resource type="Material" uid="uid://c05li443wa151" path="res://assets/materials/cel_shading_remote.tres" id="2_s038d"]
-[ext_resource type="Shader" uid="uid://0iqdtfq5t6rl" path="res://assets/shaders/bulb.gdshader" id="3_jxh4g"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5f2kl"]
-render_priority = 7
-shader = ExtResource("2_o5mf1")
+[ext_resource type="Material" uid="uid://c05li443wa151" path="res://assets/materials/remote/cel_shading_remote.tres" id="2_s038d"]
+[ext_resource type="Shader" uid="uid://3o3iooil1ctu" path="res://assets/materials/remote/bulb.gdshader" id="4_jxh4g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s038d"]
 render_priority = 6
-shader = ExtResource("3_jxh4g")
+shader = ExtResource("4_jxh4g")
 shader_parameter/albedo = Color(0.34781694, 0.34781697, 0.3478169, 1)
 shader_parameter/albedo_texture_size = Vector2i(0, 0)
 shader_parameter/point_size = 0.0
@@ -26,61 +21,61 @@ shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(0, 0, 0)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_1ut60"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_s038d"]
 viewport_path = NodePath("../SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_120rq"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o5mf1"]
 resource_local_to_scene = true
 render_priority = 7
 no_depth_test = true
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_1ut60")
+albedo_texture = SubResource("ViewportTexture_s038d")
 
 [node name="RemoteViewModel" type="Node3D" unique_id=1236516252]
 
 [node name="Remote" parent="." unique_id=829241162 instance=ExtResource("1_2ubl6")]
 transform = Transform3D(0.960958, 0, -0.27669415, 0, 1, 0, 0.27669415, 0, 0.960958, 0.24106646, -0.20374486, -0.31154835)
 
-[node name="Remote" parent="Remote" index="0" unique_id=991841250]
+[node name="Remote" parent="Remote" index="0" unique_id=1324354556]
 layers = 2
 instance_shader_parameters/color = Color(0.5686275, 0.7058824, 0.70980394, 1)
 instance_shader_parameters/emission = 0.1
 surface_material_override/0 = ExtResource("2_s038d")
 
-[node name="Antenna" parent="Remote/Remote" index="0" unique_id=1612662746]
+[node name="Antenna" parent="Remote/Remote" index="0" unique_id=627975218]
 layers = 2
 instance_shader_parameters/color = Color(0.5330367, 0.5330367, 0.5330367, 1)
 surface_material_override/0 = ExtResource("2_s038d")
 
-[node name="BranchButton" parent="Remote/Remote" index="1" unique_id=981982863]
+[node name="BranchButton" parent="Remote/Remote" index="1" unique_id=2072051897]
 layers = 2
 instance_shader_parameters/color = Color(0.89492244, 0.89492244, 0.8949224, 1)
-surface_material_override/0 = SubResource("ShaderMaterial_5f2kl")
+surface_material_override/0 = ExtResource("2_s038d")
 
-[node name="Bulb" parent="Remote/Remote" index="2" unique_id=1931365781]
+[node name="Bulb" parent="Remote/Remote" index="2" unique_id=984203544]
 layers = 2
 instance_shader_parameters/color = Color(0.47788018, 0.47788012, 0.47788012, 1)
 surface_material_override/0 = ExtResource("2_s038d")
 surface_material_override/1 = SubResource("ShaderMaterial_s038d")
 
-[node name="ForwardButton" parent="Remote/Remote" index="3" unique_id=1269696920]
+[node name="ForwardButton" parent="Remote/Remote" index="3" unique_id=1002017018]
 layers = 2
 instance_shader_parameters/color = Color(0.89492244, 0.89492244, 0.8949224, 1)
-surface_material_override/0 = SubResource("ShaderMaterial_5f2kl")
+surface_material_override/0 = ExtResource("2_s038d")
 
-[node name="PausePlayButton" parent="Remote/Remote" index="4" unique_id=643144950]
+[node name="PausePlayButton" parent="Remote/Remote" index="4" unique_id=1554427214]
 layers = 2
 instance_shader_parameters/color = Color(0.89492244, 0.89492244, 0.8949224, 1)
-surface_material_override/0 = SubResource("ShaderMaterial_5f2kl")
+surface_material_override/0 = ExtResource("2_s038d")
 
-[node name="ReverseButton" parent="Remote/Remote" index="5" unique_id=765497356]
+[node name="ReverseButton" parent="Remote/Remote" index="5" unique_id=1154947501]
 layers = 2
 instance_shader_parameters/color = Color(0.89492244, 0.89492244, 0.8949224, 1)
-surface_material_override/0 = SubResource("ShaderMaterial_5f2kl")
+surface_material_override/0 = ExtResource("2_s038d")
 
-[node name="Screen" parent="Remote/Remote" index="6" unique_id=761513766]
+[node name="Screen" parent="Remote/Remote" index="6" unique_id=1252234344]
 layers = 2
-surface_material_override/0 = SubResource("StandardMaterial3D_120rq")
+surface_material_override/0 = SubResource("StandardMaterial3D_o5mf1")
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=773644612]
 size = Vector2i(1000, 1000)

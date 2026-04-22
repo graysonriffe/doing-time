@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bysww6ouwy2lv"]
+
+[ext_resource type="PackedScene" uid="uid://md6roym4ttp6" path="res://assets/models/world_blocks/world_blocks.glb" id="1_k6wec"]
+[ext_resource type="Material" uid="uid://ychntj2cs7nm" path="res://assets/materials/metal_panels/metal_panels.tres" id="2_grioo"]
+[ext_resource type="Material" uid="uid://bm5oc0vuy5piw" path="res://assets/materials/metal_sheet/metal_sheet.tres" id="3_spmbx"]
+[ext_resource type="Material" uid="uid://d0ko31x2g51q5" path="res://assets/materials/concrete/concrete.tres" id="4_grioo"]
+
+[node name="world_blocks" unique_id=648199412 instance=ExtResource("1_k6wec")]
+
+[node name="Block" parent="." index="0" unique_id=751304675]
+surface_material_override/0 = ExtResource("2_grioo")
+
+[node name="HalfRamp1" parent="." index="1" unique_id=23615452]
+surface_material_override/0 = ExtResource("3_spmbx")
+
+[node name="HalfBlockLow" parent="." index="2" unique_id=1845502356]
+surface_material_override/0 = ExtResource("3_spmbx")
+
+[node name="HalfRamp2" parent="." index="3" unique_id=550129759]
+surface_material_override/0 = ExtResource("3_spmbx")
+
+[node name="Ramp" parent="." index="4" unique_id=194218481]
+surface_material_override/0 = ExtResource("3_spmbx")
+
+[node name="HalfBlockHigh" parent="." index="5" unique_id=1091901255]
+surface_material_override/0 = ExtResource("3_spmbx")
+
+[node name="DoorFrameBlock" parent="." index="6" unique_id=1919704345]
+surface_material_override/0 = ExtResource("2_grioo")
+
+[node name="BlockConcrete" parent="." index="7" unique_id=1035999831]
+surface_material_override/0 = ExtResource("4_grioo")

@@ -2,29 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://ca08rf6sfv4gl" path="res://scenes/levels/level_template.tscn" id="1_ksju7"]
 [ext_resource type="PackedScene" uid="uid://dqt20bav1urf8" path="res://scenes/level_components/weight_button.tscn" id="2_6iamk"]
+[ext_resource type="Material" uid="uid://rww82eiyjstt" path="res://assets/materials/hex_grate/hex_grate.tres" id="2_oc4kc"]
 [ext_resource type="PackedScene" uid="uid://c2oilcemslf1l" path="res://scenes/level_components/door.tscn" id="3_nsrm0"]
-[ext_resource type="Texture2D" uid="uid://cfomnjxws1df4" path="res://assets/materials/metal_panels/Metal_Panels_basecolor.png" id="4_sk5k4"]
-[ext_resource type="Texture2D" uid="uid://xekyk8sknnlj" path="res://assets/materials/metal_panels/Metal_Panels_normal.png" id="5_oc4kc"]
-[ext_resource type="Texture2D" uid="uid://cpn7fwvir7abc" path="res://assets/materials/metal_panels/Metal_Panels_roughness.png" id="6_s8va5"]
 [ext_resource type="PackedScene" uid="uid://bsiew2uhh705e" path="res://scenes/level_components/lever.tscn" id="7_oc4kc"]
 [ext_resource type="PackedScene" uid="uid://cotbrqkiy4tru" path="res://scenes/level_components/colored_wall.tscn" id="8_s8va5"]
 [ext_resource type="PackedScene" uid="uid://dqh7qjcvou74b" path="res://scenes/level_components/no_branch_zone.tscn" id="9_dga24"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dga24"]
-albedo_texture = ExtResource("4_sk5k4")
-metallic = 1.0
-metallic_specular = 0.3
-roughness_texture = ExtResource("6_s8va5")
-normal_enabled = true
-normal_texture = ExtResource("5_oc4kc")
-uv1_scale = Vector3(0.15, 0.15, 0.15)
-uv1_triplanar = true
-
 [node name="Level1" unique_id=2141939930 instance=ExtResource("1_ksju7")]
 levelName = "Temp Level"
-
-[node name="PostProcessingMesh" parent="." index="1" unique_id=712186095]
-visible = false
 
 [node name="OmniLight3D6" type="OmniLight3D" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="5" unique_id=1768375677]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.01589, 4.466645, -3.8830757)
@@ -42,11 +27,15 @@ shadow_enabled = true
 omni_range = 20.0
 omni_attenuation = 2.0
 
+[node name="Grate" type="CSGBox3D" parent="World/Room" parent_id_path=PackedInt32Array(1882725468) index="6" unique_id=268046270]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.499, 2.5, 12)
+size = Vector3(0.001, 5, 9)
+material = ExtResource("2_oc4kc")
+
 [node name="GridMap" parent="World" parent_id_path=PackedInt32Array(554948861) index="1" unique_id=1447304026]
 data = {
-"cells": PackedInt32Array(65526, 65531, 0, 131062, 65531, 0, 196598, 65531, 0, 262134, 65531, 0, 327670, 65531, 0, 65527, 65531, 0, 131063, 65531, 0, 196599, 65531, 0, 262135, 65531, 0, 327671, 65531, 0, 65528, 65531, 0, 131064, 65531, 0, 196600, 65531, 0, 262136, 65531, 0, 327672, 65531, 0, 65529, 65531, 0, 131065, 65531, 0, 196601, 65531, 0, 262137, 65531, 0, 327673, 65531, 0, 65530, 65531, 0, 131066, 65531, 0, 196602, 65531, 0, 262138, 65531, 0, 327674, 65531, 0, 65531, 65531, 0, 131067, 65531, 0, 196603, 65531, 0, 262139, 65531, 0, 327675, 65531, 0, 65532, 65531, 0, 131068, 65531, 0, 196604, 65531, 0, 262140, 65531, 0, 327676, 65531, 0, 65533, 65531, 0, 131069, 65531, 0, 196605, 65531, 0, 262141, 65531, 0, 327677, 65531, 0, 65534, 65531, 0, 131070, 65531, 0, 196606, 65531, 0, 262142, 65531, 0, 327678, 65531, 0, 196607, 65531, 0, 262143, 65531, 0, 327679, 65531, 0, 131072, 65531, 0, 196608, 65531, 0, 262144, 65531, 0, 1, 65531, 0, 65537, 65531, 0, 131073, 65531, 0, 196609, 65531, 0, 262145, 65531, 0, 2, 65531, 0, 65538, 65531, 0, 131074, 65531, 0, 196610, 65531, 0, 262146, 65531, 0, 3, 65531, 0, 65539, 65531, 0, 131075, 65531, 0, 196611, 65531, 0, 262147, 65531, 0, 4, 65531, 0, 65540, 65531, 0, 131076, 65531, 0, 196612, 65531, 0, 262148, 65531, 0, 5, 65531, 0, 65541, 65531, 0, 131077, 65531, 0, 196613, 65531, 0, 262149, 65531, 0, 6, 65531, 0, 65542, 65531, 0, 131078, 65531, 0, 196614, 65531, 0, 262150, 65531, 0, 7, 65531, 0, 65543, 65531, 0, 131079, 65531, 0, 196615, 65531, 0, 262151, 65531, 0, 8, 65531, 0, 65544, 65531, 0, 131080, 65531, 0, 196616, 65531, 0, 262152, 65531, 0, 9, 65531, 0, 65545, 65531, 0, 131081, 65531, 0, 196617, 65531, 0, 262153, 65531, 0, 65533, 65534, 2, 65533, 65535, 1441795, 65534, 65534, 2, 65534, 65535, 1441795)
+"cells": PackedInt32Array(65526, 65531, 0, 131062, 65531, 0, 196598, 65531, 0, 262134, 65531, 0, 327670, 65531, 0, 65527, 65531, 0, 131063, 65531, 0, 196599, 65531, 0, 262135, 65531, 0, 327671, 65531, 0, 65528, 65531, 0, 131064, 65531, 0, 196600, 65531, 0, 262136, 65531, 0, 327672, 65531, 0, 196601, 65531, 0, 262137, 65531, 0, 327673, 65531, 0, 196602, 65531, 0, 262138, 65531, 0, 327674, 65531, 0, 65531, 65531, 0, 131067, 65531, 0, 196603, 65531, 0, 262139, 65531, 0, 327675, 65531, 0, 65532, 65531, 0, 131068, 65531, 0, 196604, 65531, 0, 262140, 65531, 0, 327676, 65531, 0, 65533, 65531, 0, 196605, 65531, 0, 262141, 65531, 0, 327677, 65531, 0, 65534, 65531, 0, 131070, 65531, 0, 196606, 65531, 0, 262142, 65531, 0, 327678, 65531, 0, 196607, 65531, 0, 262143, 65531, 0, 327679, 65531, 0, 131072, 65531, 0, 196608, 65531, 0, 262144, 65531, 0, 1, 65531, 0, 65537, 65531, 0, 131073, 65531, 0, 196609, 65531, 0, 262145, 65531, 0, 2, 65531, 0, 65538, 65531, 0, 131074, 65531, 0, 196610, 65531, 0, 262146, 65531, 0, 3, 65531, 0, 65539, 65531, 0, 131075, 65531, 0, 196611, 65531, 0, 262147, 65531, 0, 4, 65531, 0, 65540, 65531, 0, 131076, 65531, 0, 196612, 65531, 0, 262148, 65531, 0, 5, 65531, 0, 65541, 65531, 0, 131077, 65531, 0, 196613, 65531, 0, 262149, 65531, 0, 6, 65531, 0, 65542, 65531, 0, 131078, 65531, 0, 196614, 65531, 0, 262150, 65531, 0, 7, 65531, 0, 65543, 65531, 0, 131079, 65531, 0, 196615, 65531, 0, 262151, 65531, 0, 8, 65531, 0, 65544, 65531, 0, 131080, 65531, 0, 196616, 65531, 0, 262152, 65531, 0, 9, 65531, 0, 65545, 65531, 0, 131081, 65531, 0, 196617, 65531, 0, 262153, 65531, 0, 65533, 65534, 2, 65533, 65535, 1441795, 65534, 65534, 2, 65534, 65535, 1441795, 131069, 65531, 0, 65536, 65531, 6, 0, 65531, 524294, 65530, 65531, 983040, 65529, 65531, 983040, 131066, 65531, 983040, 131065, 65531, 983040, 9, 3, 1376263, 9, 4, 1376263, 9, 2, 1376263, 9, 1, 1376263)
 }
-metadata/_editor_floor_ = Vector3(0, 1, -5)
 
 [node name="WeightButton" parent="World" parent_id_path=PackedInt32Array(554948861) index="2" unique_id=1910623683 instance=ExtResource("2_6iamk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, -3)
@@ -55,11 +44,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, -3)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, -3)
 
 [node name="Door" parent="World" parent_id_path=PackedInt32Array(554948861) index="4" unique_id=712969499 node_paths=PackedStringArray("activators") instance=ExtResource("3_nsrm0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -9)
 activators = [NodePath("../WeightButton"), NodePath("../WeightButton2"), NodePath("../Lever")]
-
-[node name="Door" parent="World/Door/Door" parent_id_path=PackedInt32Array(712969499, 1030310965) index="0" unique_id=1100168823]
-surface_material_override/0 = SubResource("StandardMaterial3D_dga24")
 
 [node name="Lever" parent="World" parent_id_path=PackedInt32Array(554948861) index="5" unique_id=470289266 instance=ExtResource("7_oc4kc")]
 transform = Transform3D(-1, -3.821371e-15, -8.742278e-08, -8.742278e-08, 4.371139e-08, 1, 0, 1, -4.371139e-08, 3, 1.75, -8)
@@ -74,4 +60,5 @@ transform = Transform3D(8.79, 0, 0, 0, 3.255, 0, 0, 0, 3.6091022, -9.773926, 1.6
 transform = Transform3D(10.29, 0, 0, 0, 4.84, 0, 0, 0, 10.830001, 6.643509, 2.4706442, 0)
 
 [editable path="World/Door"]
+[editable path="World/Door/Frame"]
 [editable path="World/Door/Door"]

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://gccqsvfgoywy"]
 
-[ext_resource type="Material" uid="uid://cah8aejnp801s" path="res://assets/materials/cel_shading_actor.tres" id="1_7vwln"]
-[ext_resource type="Material" uid="uid://dw4sjmbxh0s54" path="res://assets/materials/actor_outline.tres" id="1_703dr"]
+[ext_resource type="Material" uid="uid://cah8aejnp801s" path="res://assets/materials/actor/cel_shading_actor.tres" id="1_7vwln"]
+[ext_resource type="Material" uid="uid://dw4sjmbxh0s54" path="res://assets/materials/actor/actor_outline.tres" id="1_703dr"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u4npu"]
 radius = 0.35

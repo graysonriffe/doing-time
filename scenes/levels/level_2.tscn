@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ca08rf6sfv4gl" path="res://scenes/levels/level_template.tscn" id="1_j2425"]
 [ext_resource type="Script" uid="uid://d2bkuave81qbf" path="res://scripts/level_components/PhysicsObject.gd" id="2_g2h2n"]
-[ext_resource type="Material" uid="uid://d353brxs70bnx" path="res://assets/materials/cel_shading.tres" id="3_ra442"]
+[ext_resource type="Material" uid="uid://d353brxs70bnx" path="res://assets/materials/cel_shading/cel_shading.tres" id="3_ra442"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j2425"]
 

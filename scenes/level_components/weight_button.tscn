@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b2qndtmjm5woi" path="res://assets/models/level_components/weight_button/weight_button.glb" id="1_7p8wg"]
 [ext_resource type="Script" uid="uid://brulr6sqgg1nf" path="res://scripts/level_components/WeightButton.gd" id="2_7cg28"]
 [ext_resource type="Shape3D" uid="uid://djy1iawpxmc3f" path="res://assets/models/level_components/weight_button/weight_button_collision.tres" id="2_bkdw1"]
-[ext_resource type="Material" uid="uid://d353brxs70bnx" path="res://assets/materials/cel_shading.tres" id="2_ofi5p"]
+[ext_resource type="Material" uid="uid://d353brxs70bnx" path="res://assets/materials/cel_shading/cel_shading.tres" id="2_ofi5p"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_bkdw1"]
 height = 0.25256348

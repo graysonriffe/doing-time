@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://2xxbqo8hbifw" path="res://assets/models/level_components/lever/lever.glb" id="1_7rqxw"]
 [ext_resource type="Script" uid="uid://v7ax8o7606lf" path="res://scripts/level_components/Lever.gd" id="2_bsmy2"]
-[ext_resource type="Material" uid="uid://d353brxs70bnx" path="res://assets/materials/cel_shading.tres" id="2_vv8ox"]
+[ext_resource type="Material" uid="uid://d353brxs70bnx" path="res://assets/materials/cel_shading/cel_shading.tres" id="2_vv8ox"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vv8ox"]
 size = Vector3(0.84, 0.5, 0.84)

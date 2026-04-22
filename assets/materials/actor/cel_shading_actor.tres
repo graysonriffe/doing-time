@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cah8aejnp801s"]
+
+[ext_resource type="Shader" uid="uid://dpbu1ibrouccy" path="res://assets/materials/actor/cel_shading_actor.gdshader" id="1_a8iiq"]
+
+[resource]
+render_priority = 4
+shader = ExtResource("1_a8iiq")

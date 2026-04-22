@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dw4sjmbxh0s54"]
+
+[ext_resource type="Material" uid="uid://d3gffauc6yxu4" path="res://assets/materials/actor/actor_xray.tres" id="1_0uhnv"]
+[ext_resource type="Shader" uid="uid://chltcwfisljb1" path="res://assets/materials/actor/actor_outline.gdshader" id="2_l7alx"]
+
+[resource]
+render_priority = 2
+next_pass = ExtResource("1_0uhnv")
+shader = ExtResource("2_l7alx")
+shader_parameter/outline_width = 10.0

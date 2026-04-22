@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cotbrqkiy4tru"]
 
 [ext_resource type="Script" uid="uid://cphndeb2q20x3" path="res://scripts/level_components/ColoredWall.gd" id="1_01qxe"]
-[ext_resource type="Material" uid="uid://cfqypehi60lv3" path="res://assets/materials/colored_wall.tres" id="1_fkhv4"]
+[ext_resource type="Material" uid="uid://cfqypehi60lv3" path="res://assets/materials/colored_wall/colored_wall.tres" id="1_fkhv4"]
 
 [node name="ColoredWall" type="CSGBox3D" unique_id=1483795033]
 instance_shader_parameters/color = Color(0, 1, 0, 1)

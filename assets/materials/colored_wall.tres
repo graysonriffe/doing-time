@@ -1,7 +1,0 @@
-[gd_resource type="ShaderMaterial" format=3 uid="uid://cfqypehi60lv3"]
-
-[ext_resource type="Shader" uid="uid://qyj61tm5g7ly" path="res://assets/shaders/colored_wall.gdshader" id="1_0x3mi"]
-
-[resource]
-render_priority = 5
-shader = ExtResource("1_0x3mi")

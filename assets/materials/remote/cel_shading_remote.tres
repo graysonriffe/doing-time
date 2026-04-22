@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://c05li443wa151"]
+
+[ext_resource type="Shader" uid="uid://diq0bqe1otgkj" path="res://assets/materials/remote/cel_shading_remote.gdshader" id="1_q85do"]
+
+[resource]
+render_priority = 6
+shader = ExtResource("1_q85do")
