@@ -1,0 +1,29 @@
+[gd_resource type="AudioStreamRandomizer" format=3 uid="uid://ea27g47p4yud"]
+
+[ext_resource type="AudioStream" uid="uid://bxsccngr61n7" path="res://assets/audio/sfx/footsteps/metal_steps_one.mp3" id="1_bleyb"]
+[ext_resource type="AudioStream" uid="uid://dqgq626g6qiey" path="res://assets/audio/sfx/footsteps/metal_steps_two.mp3" id="2_aobmy"]
+[ext_resource type="AudioStream" uid="uid://m08dab0vmkk1" path="res://assets/audio/sfx/footsteps/metal_steps_eleven.mp3" id="3_nnffy"]
+[ext_resource type="AudioStream" uid="uid://ct7j313qgub2b" path="res://assets/audio/sfx/footsteps/metal_steps_twelve.mp3" id="4_p4ed5"]
+[ext_resource type="AudioStream" uid="uid://btx1qu078b71n" path="res://assets/audio/sfx/footsteps/metal_steps_three.mp3" id="5_j4x26"]
+[ext_resource type="AudioStream" uid="uid://bw2tfkwm2u80d" path="res://assets/audio/sfx/footsteps/metal_steps_four.mp3" id="6_2ulhf"]
+[ext_resource type="AudioStream" uid="uid://dpu3hkuk6xkrf" path="res://assets/audio/sfx/footsteps/metal_steps_five.mp3" id="7_bvkaa"]
+[ext_resource type="AudioStream" uid="uid://cssjk6ta2lwi4" path="res://assets/audio/sfx/footsteps/metal_steps_six.mp3" id="8_lp8mh"]
+[ext_resource type="AudioStream" uid="uid://dicjg38d2ctof" path="res://assets/audio/sfx/footsteps/metal_steps_seven.mp3" id="9_t6yn0"]
+[ext_resource type="AudioStream" uid="uid://pclcyos4iaoo" path="res://assets/audio/sfx/footsteps/metal_steps_eight.mp3" id="10_3ncns"]
+[ext_resource type="AudioStream" uid="uid://wq8v5ahtg0to" path="res://assets/audio/sfx/footsteps/metal_steps_nine.mp3" id="11_hn3cj"]
+[ext_resource type="AudioStream" uid="uid://7m261an75ov6" path="res://assets/audio/sfx/footsteps/metal_steps_ten.mp3" id="12_uego5"]
+
+[resource]
+streams_count = 12
+stream_0/stream = ExtResource("1_bleyb")
+stream_1/stream = ExtResource("2_aobmy")
+stream_2/stream = ExtResource("5_j4x26")
+stream_3/stream = ExtResource("6_2ulhf")
+stream_4/stream = ExtResource("7_bvkaa")
+stream_5/stream = ExtResource("8_lp8mh")
+stream_6/stream = ExtResource("9_t6yn0")
+stream_7/stream = ExtResource("10_3ncns")
+stream_8/stream = ExtResource("11_hn3cj")
+stream_9/stream = ExtResource("12_uego5")
+stream_10/stream = ExtResource("3_nnffy")
+stream_11/stream = ExtResource("4_p4ed5")

@@ -179,6 +179,7 @@ func getLookVector() -> Vector2
 func _jump():
     if is_on_floor() and not crouching:
         velocity.y = JUMP_VELOCITY
+        footstepsPlayer.play()
 
 
 func _crouch():

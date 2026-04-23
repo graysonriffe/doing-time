@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cphndeb2q20x3" path="res://scripts/level_components/ColoredWall.gd" id="1_01qxe"]
 [ext_resource type="Material" uid="uid://cfqypehi60lv3" path="res://assets/materials/colored_wall/colored_wall.tres" id="1_fkhv4"]
+[ext_resource type="AudioStream" uid="uid://cps2m2avm88jc" path="res://assets/audio/sfx/colored_wall.mp3" id="3_5ax2m"]
 
 [node name="ColoredWall" type="CSGBox3D" unique_id=1483795033]
 instance_shader_parameters/color = Color(0, 1, 0, 1)
@@ -11,3 +12,37 @@ collision_mask = 0
 size = Vector3(6, 4, 0)
 material = ExtResource("1_fkhv4")
 script = ExtResource("1_01qxe")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=839460203]
+stream = ExtResource("3_5ax2m")
+autoplay = true
+max_distance = 3.0
+bus = &"SFX"
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="." unique_id=2039788306]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, 0)
+stream = ExtResource("3_5ax2m")
+autoplay = true
+max_distance = 3.0
+bus = &"SFX"
+
+[node name="AudioStreamPlayer3D3" type="AudioStreamPlayer3D" parent="." unique_id=172136880]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, 0)
+stream = ExtResource("3_5ax2m")
+autoplay = true
+max_distance = 3.0
+bus = &"SFX"
+
+[node name="AudioStreamPlayer3D4" type="AudioStreamPlayer3D" parent="." unique_id=1085986513]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -2, 0)
+stream = ExtResource("3_5ax2m")
+autoplay = true
+max_distance = 3.0
+bus = &"SFX"
+
+[node name="AudioStreamPlayer3D5" type="AudioStreamPlayer3D" parent="." unique_id=1675524198]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -2, 0)
+stream = ExtResource("3_5ax2m")
+autoplay = true
+max_distance = 3.0
+bus = &"SFX"
