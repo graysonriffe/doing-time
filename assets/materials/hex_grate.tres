@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cjgmwi4bxpjhq"]
+
+[ext_resource type="Texture2D" uid="uid://ddkrovbegi3ph" path="res://assets/materials/hex_grate/Hex_Grate_Wall_basecolor.png" id="1_uobly"]
+[ext_resource type="Texture2D" uid="uid://cu5h0syhpst2l" path="res://assets/materials/hex_grate/Hex_Grate_Wall_normal.png" id="2_rpxvm"]
+[ext_resource type="Texture2D" uid="uid://c06k5u8p27gmr" path="res://assets/materials/hex_grate/Hex_Grate_Wall_roughness.png" id="3_cng4s"]
+
+[resource]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("1_uobly")
+roughness_texture = ExtResource("3_cng4s")
+normal_enabled = true
+normal_texture = ExtResource("2_rpxvm")
+uv1_scale = Vector3(3, 3, 3)

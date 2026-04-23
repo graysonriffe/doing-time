@@ -2,9 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://bs8b0rrc2sy1n" path="res://scenes/clone_game.tscn" id="1_8halj"]
 [ext_resource type="Environment" uid="uid://crv4lyw10qeuq" path="res://assets/default_environment.tres" id="2_20afe"]
-[ext_resource type="Material" uid="uid://ychntj2cs7nm" path="res://assets/materials/metal_panels.tres" id="3_caswl"]
 [ext_resource type="Material" uid="uid://d353brxs70bnx" path="res://assets/materials/cel_shading.tres" id="5_yg1y3"]
-[ext_resource type="Material" uid="uid://ychntj2cs7nm" path="res://assets/materials/metal_panels/metal_panels.tres" id="5_yw3qn"]
+[ext_resource type="Material" uid="uid://ychntj2cs7nm" path="res://assets/materials/metal_panels.tres" id="5_yw3qn"]
 [ext_resource type="ArrayMesh" uid="uid://cfg1404s2ajgn" path="res://assets/models/bunny.obj" id="6_4pces"]
 [ext_resource type="PackedScene" uid="uid://b25safc7q24uv" path="res://scenes/fx/post_processing_mesh.tscn" id="7_mesoc"]
 [ext_resource type="LightmapGIData" uid="uid://mch85j7d2avb" path="res://scenes/bakes/art_test_scene.lmbake" id="8_v77dj"]
@@ -14,9 +13,10 @@
 [ext_resource type="Shader" uid="uid://invve4j5msne" path="res://assets/shaders/crt_lines.gdshader" id="14_c8kg8"]
 [ext_resource type="Texture2D" uid="uid://bgtvdtbw13l27" path="res://assets/textures/white-noise.png" id="15_sy45w"]
 [ext_resource type="PackedScene" uid="uid://cctgtoi6i6d8k" path="res://scenes/level_components/time_wall_cube_green.tscn" id="16_8ls8d"]
+[ext_resource type="Material" uid="uid://cjgmwi4bxpjhq" path="res://assets/materials/hex_grate.tres" id="16_yigfd"]
 [ext_resource type="PackedScene" uid="uid://ccs8aird717jx" path="res://scenes/level_components/time_wall_cube_red.tscn" id="17_f5wmt"]
 [ext_resource type="PackedScene" uid="uid://ciu1pf6bx4jin" path="res://assets/remote.blend" id="18_0ri0e"]
-[ext_resource type="Texture2D" uid="uid://cu5h0syhpst2l" path="res://assets/materials/hex_grate/Hex_Grate_Wall_normal.png" id="18_wx50g"]
+[ext_resource type="Material" uid="uid://ccmuqmdix2nti" path="res://assets/materials/copper_metal_sheet.tres" id="18_ndqaf"]
 [ext_resource type="Material" uid="uid://fsecspfnyg2i" path="res://assets/materials/crt_shader.tres" id="21_7xxbd"]
 [ext_resource type="Shader" uid="uid://n0o3iki4ol2y" path="res://assets/shaders/laser.gdshader" id="22_pyq47"]
 [ext_resource type="Texture2D" uid="uid://6h4wmegtidog" path="res://assets/materials/laser_spots/Laser_Spots_basecolor.png" id="23_ndqaf"]
@@ -26,7 +26,6 @@
 [ext_resource type="PackedScene" uid="uid://bs2dxj4eo0uue" path="res://scenes/level_components/no_branch_box.tscn" id="29_wx50g"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kg5qj"]
-load_path = "res://.godot/imported/Metal_Grips_normal.png-b77c1fe38643a7399d63b8950fa9aa70.s3tc.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xojot"]
 metallic = 0.7
@@ -107,40 +106,6 @@ shader_parameter/lines = 90.0
 shader_parameter/vignette = true
 shader_parameter/noise_texture = ExtResource("15_sy45w")
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wx50g"]
-load_path = "res://.godot/imported/Hex_Grate_Wall_basecolor.png-6bfb325b272d0fc5e1214044a496dc22.s3tc.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_asapa"]
-load_path = "res://.godot/imported/Hex_Grate_Wall_roughness.png-685b36ce005a2777b3ce8a885507d72f.s3tc.ctex"
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x01qd"]
-transparency = 2
-alpha_scissor_threshold = 0.5
-alpha_antialiasing_mode = 0
-albedo_texture = SubResource("CompressedTexture2D_wx50g")
-roughness_texture = SubResource("CompressedTexture2D_asapa")
-normal_enabled = true
-normal_texture = ExtResource("18_wx50g")
-uv1_scale = Vector3(3, 3, 3)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ndqaf"]
-load_path = "res://.godot/imported/Metal_Sheet_Copper_basecolor.png-fbe93cb052c0cf82342721a06c2461fc.s3tc.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_am6tk"]
-load_path = "res://.godot/imported/Metal_Sheet_Copper_normal.png-ce13b7ceaeef98347fee65871f358884.s3tc.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yigfd"]
-load_path = "res://.godot/imported/Metal_Sheet_Copper_roughness.png-e34955acb814de49ec22aaa108fdf280.s3tc.ctex"
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_53jat"]
-albedo_texture = SubResource("CompressedTexture2D_ndqaf")
-roughness_texture = SubResource("CompressedTexture2D_yigfd")
-normal_enabled = true
-normal_texture = SubResource("CompressedTexture2D_am6tk")
-uv1_scale = Vector3(0.1, 0.1, 0.1)
-uv1_triplanar = true
-uv1_world_triplanar = true
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_am6tk"]
 render_priority = 0
 shader = ExtResource("22_pyq47")
@@ -163,7 +128,7 @@ shadow_enabled = true
 [node name="Floor" type="CSGBox3D" parent="." index="6" unique_id=219967587]
 transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, -0.035191774, -0.2533754, -0.026504755)
 visible = false
-material_override = ExtResource("3_caswl")
+material_override = ExtResource("5_yw3qn")
 use_collision = true
 size = Vector3(10, 0.5, 10)
 material = SubResource("StandardMaterial3D_xojot")
@@ -379,7 +344,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.92730665, 1.6337522, 0.662
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="." index="27" unique_id=1749622690]
 transform = Transform3D(3.9351532, 0, 0.9096787, 0, 9.475161, 0, -8.619352, 0, 0.41531253, 2.449505, -1.961232, 7.264819)
-material = SubResource("StandardMaterial3D_x01qd")
+material = ExtResource("16_yigfd")
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="." index="28" unique_id=529985850]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3015705, 2.415401, 8.181155)
@@ -394,7 +359,7 @@ instance_shader_parameters/color = Color(0, 0.44, 0.4106667, 0.4509804)
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="." index="30" unique_id=901391118]
 transform = Transform3D(11.006969, 0, 0, 0, 1, 0, 0, 0, 9.282129, -0.92641497, 0.897583, 6.5181136)
-material = SubResource("StandardMaterial3D_53jat")
+material = ExtResource("18_ndqaf")
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="." index="31" unique_id=868559592]
 transform = Transform3D(-7.5581074, 0, 0, 0, 3.422939, 0, 0, 0, 9.288317, -2.2400558, -0.3215344, 2.915159)

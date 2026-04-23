@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://ccmuqmdix2nti"]
+
+[ext_resource type="Texture2D" uid="uid://dkmvmwxblswad" path="res://assets/materials/copper_metal_sheet/Metal_Sheet_Copper_basecolor.png" id="1_frjlk"]
+[ext_resource type="Texture2D" uid="uid://xp770d6siby1" path="res://assets/materials/copper_metal_sheet/Metal_Sheet_Copper_normal.png" id="2_o837s"]
+[ext_resource type="Texture2D" uid="uid://s1l53odmmv47" path="res://assets/materials/copper_metal_sheet/Metal_Sheet_Copper_roughness.png" id="3_pbaml"]
+
+[resource]
+albedo_texture = ExtResource("1_frjlk")
+roughness_texture = ExtResource("3_pbaml")
+normal_enabled = true
+normal_texture = ExtResource("2_o837s")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true
+uv1_world_triplanar = true

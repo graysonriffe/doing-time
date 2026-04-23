@@ -1,7 +1,7 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://bm5oc0vuy5piw"]
 
-[ext_resource type="Texture2D" uid="uid://cs5nqyqguw1d4" path="res://assets/textures/Metal_Sheet_basecolor.png" id="1_we6ya"]
-[ext_resource type="Texture2D" uid="uid://cg01owys03b1q" path="res://assets/textures/Metal_Sheet_normal.png" id="2_vatfw"]
+[ext_resource type="Texture2D" uid="uid://bci0oj36yaoce" path="res://assets/materials/metal_sheet/Metal_Sheet_basecolor.png" id="1_we6ya"]
+[ext_resource type="Texture2D" uid="uid://dhn41akbn8mqe" path="res://assets/materials/metal_sheet/Metal_Sheet_normal.png" id="2_vatfw"]
 [ext_resource type="Texture2D" uid="uid://bnm7m0hvvu4vy" path="res://assets/materials/metal_sheet/Metal_Sheet_roughness.png" id="3_we6ya"]
 
 [resource]
