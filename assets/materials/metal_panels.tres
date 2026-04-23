@@ -1,8 +1,8 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://ychntj2cs7nm"]
 
-[ext_resource type="Texture2D" uid="uid://bnr56kbmde8bn" path="res://assets/textures/Metal_Panels_basecolor.png" id="1_g084j"]
-[ext_resource type="Texture2D" uid="uid://c5cfddxlixtdc" path="res://assets/textures/Metal_Panels_normal.png" id="2_2hao8"]
-[ext_resource type="Texture2D" uid="uid://bov1ojmo5748x" path="res://assets/textures/Metal_Panels_roughness.png" id="3_w80s5"]
+[ext_resource type="Texture2D" uid="uid://cfomnjxws1df4" path="res://assets/materials/metal_panels/Metal_Panels_basecolor.png" id="1_g084j"]
+[ext_resource type="Texture2D" uid="uid://xekyk8sknnlj" path="res://assets/materials/metal_panels/Metal_Panels_normal.png" id="2_2hao8"]
+[ext_resource type="Texture2D" uid="uid://cpn7fwvir7abc" path="res://assets/materials/metal_panels/Metal_Panels_roughness.png" id="3_w80s5"]
 
 [resource]
 albedo_texture = ExtResource("1_g084j")

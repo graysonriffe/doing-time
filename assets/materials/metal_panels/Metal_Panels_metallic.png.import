@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5cfddxlixtdc"
-path.s3tc="res://.godot/imported/Metal_Panels_normal.png-a0a96af57bef9816d5ee993cf4998ff8.s3tc.ctex"
+uid="uid://dgqa3024xsk7c"
+path.s3tc="res://.godot/imported/Metal_Panels_metallic.png-654df8cf267e49322631fa456ee5b9d3.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/textures/Metal_Panels_normal.png"
-dest_files=["res://.godot/imported/Metal_Panels_normal.png-a0a96af57bef9816d5ee993cf4998ff8.s3tc.ctex"]
+source_file="res://assets/materials/metal_panels/Metal_Panels_metallic.png"
+dest_files=["res://.godot/imported/Metal_Panels_metallic.png-654df8cf267e49322631fa456ee5b9d3.s3tc.ctex"]
 
 [params]
 
@@ -22,7 +22,7 @@ compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1

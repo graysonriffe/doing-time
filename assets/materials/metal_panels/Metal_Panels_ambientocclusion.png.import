@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlfg08y1lcb1x"
-path="res://.godot/imported/Metal_Sheet_Copper_metallic.png-145d669b6298680798d5e0246ac6db67.ctex"
+uid="uid://t4qo84w4ipqm"
+path="res://.godot/imported/Metal_Panels_ambientocclusion.png-89d1cd4043c03a9716b4239e778e916a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/Metal_Sheet_Copper_metallic.png"
-dest_files=["res://.godot/imported/Metal_Sheet_Copper_metallic.png-145d669b6298680798d5e0246ac6db67.ctex"]
+source_file="res://assets/materials/metal_panels/Metal_Panels_ambientocclusion.png"
+dest_files=["res://.godot/imported/Metal_Panels_ambientocclusion.png-89d1cd4043c03a9716b4239e778e916a.ctex"]
 
 [params]
 

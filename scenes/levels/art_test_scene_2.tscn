@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://bs8b0rrc2sy1n" path="res://scenes/clone_game.tscn" id="1_8halj"]
 [ext_resource type="Environment" uid="uid://crv4lyw10qeuq" path="res://assets/default_environment.tres" id="2_20afe"]
 [ext_resource type="Material" uid="uid://ychntj2cs7nm" path="res://assets/materials/metal_panels.tres" id="3_caswl"]
-[ext_resource type="Texture2D" uid="uid://bbmy0h5lau14q" path="res://assets/textures/Metal_Grips_normal.png" id="4_n25hq"]
 [ext_resource type="Material" uid="uid://d353brxs70bnx" path="res://assets/materials/cel_shading.tres" id="5_yg1y3"]
+[ext_resource type="Material" uid="uid://ychntj2cs7nm" path="res://assets/materials/metal_panels/metal_panels.tres" id="5_yw3qn"]
 [ext_resource type="ArrayMesh" uid="uid://cfg1404s2ajgn" path="res://assets/models/bunny.obj" id="6_4pces"]
 [ext_resource type="PackedScene" uid="uid://b25safc7q24uv" path="res://scenes/fx/post_processing_mesh.tscn" id="7_mesoc"]
 [ext_resource type="LightmapGIData" uid="uid://mch85j7d2avb" path="res://scenes/bakes/art_test_scene.lmbake" id="8_v77dj"]
@@ -14,28 +14,26 @@
 [ext_resource type="Shader" uid="uid://invve4j5msne" path="res://assets/shaders/crt_lines.gdshader" id="14_c8kg8"]
 [ext_resource type="Texture2D" uid="uid://bgtvdtbw13l27" path="res://assets/textures/white-noise.png" id="15_sy45w"]
 [ext_resource type="PackedScene" uid="uid://cctgtoi6i6d8k" path="res://scenes/level_components/time_wall_cube_green.tscn" id="16_8ls8d"]
-[ext_resource type="Texture2D" uid="uid://bheob0ydaj6rk" path="res://assets/textures/Hex_Grate_Wall_basecolor.png" id="17_1k160"]
 [ext_resource type="PackedScene" uid="uid://ccs8aird717jx" path="res://scenes/level_components/time_wall_cube_red.tscn" id="17_f5wmt"]
 [ext_resource type="PackedScene" uid="uid://ciu1pf6bx4jin" path="res://assets/remote.blend" id="18_0ri0e"]
 [ext_resource type="Texture2D" uid="uid://cu5h0syhpst2l" path="res://assets/materials/hex_grate/Hex_Grate_Wall_normal.png" id="18_wx50g"]
-[ext_resource type="Texture2D" uid="uid://lvpdxatfbmxv" path="res://assets/textures/Hex_Grate_Wall_roughness.png" id="19_7xxbd"]
 [ext_resource type="Material" uid="uid://fsecspfnyg2i" path="res://assets/materials/crt_shader.tres" id="21_7xxbd"]
-[ext_resource type="Texture2D" uid="uid://doqquoymhaqvy" path="res://assets/textures/Metal_Sheet_Copper_basecolor.png" id="22_asapa"]
 [ext_resource type="Shader" uid="uid://n0o3iki4ol2y" path="res://assets/shaders/laser.gdshader" id="22_pyq47"]
-[ext_resource type="Texture2D" uid="uid://cybe6446t7qwx" path="res://assets/textures/Metal_Sheet_Copper_normal.png" id="23_bngwf"]
 [ext_resource type="Texture2D" uid="uid://6h4wmegtidog" path="res://assets/materials/laser_spots/Laser_Spots_basecolor.png" id="23_ndqaf"]
-[ext_resource type="Texture2D" uid="uid://cgu4u0i576omw" path="res://assets/textures/Metal_Sheet_Copper_roughness.png" id="24_ipy7d"]
 [ext_resource type="Material" uid="uid://b5y7t5ra1rw08" path="res://assets/materials/concrete.tres" id="25_4fr1e"]
 [ext_resource type="PackedScene" uid="uid://n2hagxwm1nmd" path="res://scenes/actor/john_d_time.tscn" id="27_yw3qn"]
 [ext_resource type="PackedScene" uid="uid://d3q2whq45hq2q" path="res://scenes/actor/warden.tscn" id="28_wx50g"]
 [ext_resource type="PackedScene" uid="uid://bs2dxj4eo0uue" path="res://scenes/level_components/no_branch_box.tscn" id="29_wx50g"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kg5qj"]
+load_path = "res://.godot/imported/Metal_Grips_normal.png-b77c1fe38643a7399d63b8950fa9aa70.s3tc.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xojot"]
 metallic = 0.7
 metallic_specular = 0.8
 roughness = 0.4
 normal_enabled = true
-normal_texture = ExtResource("4_n25hq")
+normal_texture = SubResource("CompressedTexture2D_kg5qj")
 uv1_triplanar = true
 uv1_world_triplanar = true
 
@@ -44,7 +42,7 @@ metallic = 0.7
 metallic_specular = 0.8
 roughness = 0.4
 normal_enabled = true
-normal_texture = ExtResource("4_n25hq")
+normal_texture = SubResource("CompressedTexture2D_kg5qj")
 uv1_triplanar = true
 uv1_world_triplanar = true
 
@@ -109,21 +107,39 @@ shader_parameter/lines = 90.0
 shader_parameter/vignette = true
 shader_parameter/noise_texture = ExtResource("15_sy45w")
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wx50g"]
+load_path = "res://.godot/imported/Hex_Grate_Wall_basecolor.png-6bfb325b272d0fc5e1214044a496dc22.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_asapa"]
+load_path = "res://.godot/imported/Hex_Grate_Wall_roughness.png-685b36ce005a2777b3ce8a885507d72f.s3tc.ctex"
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x01qd"]
 transparency = 2
 alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
-albedo_texture = ExtResource("17_1k160")
-roughness_texture = ExtResource("19_7xxbd")
+albedo_texture = SubResource("CompressedTexture2D_wx50g")
+roughness_texture = SubResource("CompressedTexture2D_asapa")
 normal_enabled = true
 normal_texture = ExtResource("18_wx50g")
 uv1_scale = Vector3(3, 3, 3)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ndqaf"]
+load_path = "res://.godot/imported/Metal_Sheet_Copper_basecolor.png-fbe93cb052c0cf82342721a06c2461fc.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_am6tk"]
+load_path = "res://.godot/imported/Metal_Sheet_Copper_normal.png-ce13b7ceaeef98347fee65871f358884.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yigfd"]
+load_path = "res://.godot/imported/Metal_Sheet_Copper_roughness.png-e34955acb814de49ec22aaa108fdf280.s3tc.ctex"
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_53jat"]
-albedo_texture = ExtResource("22_asapa")
-roughness_texture = ExtResource("24_ipy7d")
+albedo_texture = SubResource("CompressedTexture2D_ndqaf")
+roughness_texture = SubResource("CompressedTexture2D_yigfd")
 normal_enabled = true
-normal_texture = ExtResource("23_bngwf")
+normal_texture = SubResource("CompressedTexture2D_am6tk")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true
+uv1_world_triplanar = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_am6tk"]
 render_priority = 0
@@ -184,7 +200,7 @@ material = SubResource("StandardMaterial3D_xojot")
 
 [node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="." index="7" unique_id=2109026955]
 transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, -0.03521079, -0.25287044, -0.026500463)
-material_override = ExtResource("3_caswl")
+material_override = ExtResource("5_yw3qn")
 mesh = SubResource("ArrayMesh_h5pns")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." index="8" unique_id=546432340]
