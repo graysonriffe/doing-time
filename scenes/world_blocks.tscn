@@ -3,30 +3,34 @@
 [ext_resource type="PackedScene" uid="uid://md6roym4ttp6" path="res://assets/models/world_blocks/world_blocks.glb" id="1_k6wec"]
 [ext_resource type="Material" uid="uid://ychntj2cs7nm" path="res://assets/materials/metal_panels/metal_panels.tres" id="2_grioo"]
 [ext_resource type="Material" uid="uid://bm5oc0vuy5piw" path="res://assets/materials/metal_sheet/metal_sheet.tres" id="3_spmbx"]
-[ext_resource type="Material" uid="uid://d0ko31x2g51q5" path="res://assets/materials/concrete/concrete.tres" id="4_grioo"]
+[ext_resource type="Material" uid="uid://b5y7t5ra1rw08" path="res://assets/materials/concrete/concrete.tres" id="4_grioo"]
+[ext_resource type="Material" uid="uid://ccmuqmdix2nti" path="res://assets/materials/copper/copper.tres" id="5_spmbx"]
 
-[node name="world_blocks" unique_id=648199412 instance=ExtResource("1_k6wec")]
+[node name="world_blocks" unique_id=650547522 instance=ExtResource("1_k6wec")]
 
-[node name="Block" parent="." index="0" unique_id=751304675]
+[node name="BlockMetalPanels" parent="." index="0" unique_id=1345359277]
 surface_material_override/0 = ExtResource("2_grioo")
 
-[node name="HalfRamp1" parent="." index="1" unique_id=23615452]
+[node name="HalfRamp1" parent="." index="1" unique_id=1894233940]
 surface_material_override/0 = ExtResource("3_spmbx")
 
-[node name="HalfBlockLow" parent="." index="2" unique_id=1845502356]
+[node name="HalfBlockLow" parent="." index="2" unique_id=166676324]
 surface_material_override/0 = ExtResource("3_spmbx")
 
-[node name="HalfRamp2" parent="." index="3" unique_id=550129759]
+[node name="HalfRamp2" parent="." index="3" unique_id=817326226]
 surface_material_override/0 = ExtResource("3_spmbx")
 
-[node name="Ramp" parent="." index="4" unique_id=194218481]
+[node name="Ramp" parent="." index="4" unique_id=1756797706]
 surface_material_override/0 = ExtResource("3_spmbx")
 
-[node name="HalfBlockHigh" parent="." index="5" unique_id=1091901255]
+[node name="HalfBlockHigh" parent="." index="5" unique_id=449306116]
 surface_material_override/0 = ExtResource("3_spmbx")
 
-[node name="DoorFrameBlock" parent="." index="6" unique_id=1919704345]
+[node name="DoorFrameBlock" parent="." index="6" unique_id=477585227]
 surface_material_override/0 = ExtResource("2_grioo")
 
-[node name="BlockConcrete" parent="." index="7" unique_id=1035999831]
+[node name="BlockConcrete" parent="." index="7" unique_id=1052674960]
 surface_material_override/0 = ExtResource("4_grioo")
+
+[node name="BlockCopper" parent="." index="8" unique_id=2033748586]
+surface_material_override/0 = ExtResource("5_spmbx")

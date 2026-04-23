@@ -86,8 +86,7 @@ omni_attenuation = 2.0
 
 [node name="World" type="Node" parent="." unique_id=554948861]
 
-[node name="Room" type="CSGCombiner3D" parent="World" unique_id=1882725468]
-use_collision = true
+[node name="Room" type="Node3D" parent="World" unique_id=1478904478]
 
 [node name="Floor" type="CSGBox3D" parent="World/Room" unique_id=464194791]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
