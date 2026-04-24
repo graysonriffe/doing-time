@@ -44,20 +44,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, -3)
 [node name="WeightButton2" parent="World" parent_id_path=PackedInt32Array(554948861) index="4" unique_id=102215703 instance=ExtResource("2_6iamk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, -3)
 
-[node name="Door" parent="World" parent_id_path=PackedInt32Array(554948861) index="5" unique_id=712969499 node_paths=PackedStringArray("activators") instance=ExtResource("3_nsrm0")]
+[node name="Door" parent="World" parent_id_path=PackedInt32Array(554948861) index="5" unique_id=712969499 node_paths=PackedStringArray("activators", "deactivators") instance=ExtResource("3_nsrm0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -9)
 activators = [NodePath("../WeightButton"), NodePath("../WeightButton2"), NodePath("../Lever")]
+deactivators = [NodePath("../Lever2")]
 
 [node name="Lever" parent="World" parent_id_path=PackedInt32Array(554948861) index="6" unique_id=470289266 instance=ExtResource("7_oc4kc")]
 transform = Transform3D(-1, -3.821371e-15, -8.742278e-08, -8.742278e-08, 4.371139e-08, 1, 0, 1, -4.371139e-08, 3, 1.75, -8)
 
-[node name="ColoredWall" parent="World" parent_id_path=PackedInt32Array(554948861) index="7" unique_id=1483795033 instance=ExtResource("8_s8va5")]
+[node name="Lever2" parent="World" parent_id_path=PackedInt32Array(554948861) index="7" unique_id=164143129 instance=ExtResource("7_oc4kc")]
+transform = Transform3D(-1, -3.821371e-15, -8.742278e-08, -8.742278e-08, 4.371139e-08, 1, 0, 1, -4.371139e-08, -4, 1.75, -8)
+
+[node name="ColoredWall" parent="World" parent_id_path=PackedInt32Array(554948861) index="8" unique_id=1483795033 instance=ExtResource("8_s8va5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 7)
 
-[node name="NoBranchZone" parent="World" parent_id_path=PackedInt32Array(554948861) index="8" unique_id=799290473 instance=ExtResource("9_dga24")]
+[node name="NoBranchZone" parent="World" parent_id_path=PackedInt32Array(554948861) index="9" unique_id=799290473 instance=ExtResource("9_dga24")]
 transform = Transform3D(8.79, 0, 0, 0, 3.255, 0, 0, 0, 3.6091022, -9.773926, 1.6738157, 4)
 
-[node name="NoBranchZone2" parent="World" parent_id_path=PackedInt32Array(554948861) index="9" unique_id=1166222031 instance=ExtResource("9_dga24")]
+[node name="NoBranchZone2" parent="World" parent_id_path=PackedInt32Array(554948861) index="10" unique_id=1166222031 instance=ExtResource("9_dga24")]
 transform = Transform3D(10.29, 0, 0, 0, 4.84, 0, 0, 0, 10.830001, 6.643509, 2.4706442, 0)
 
 [editable path="World/Door"]

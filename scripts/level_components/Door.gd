@@ -24,6 +24,7 @@ var animationTime: float:
 
 @export var type: ActivatableType
 @export var activators: Array[Activator]
+@export var deactivators: Array[Activator]
 
 @onready var animationPlayer: AnimationPlayer = $AnimationPlayer
 
@@ -49,12 +50,19 @@ func _physics_process(_delta: float) -> void:
 func _checkActivators():
     var shouldBeOpen: bool = true
     
+    # Check activators
     for activator: Activator in activators:
         if activator.isActivated() and type == ActivatableType.AnyActivator:
             shouldBeOpen = true
             break
             
         shouldBeOpen = shouldBeOpen and activator.isActivated()
+    
+    # Check deactivators
+    for deactivator: Activator in deactivators:
+        if deactivator.isActivated():
+            shouldBeOpen = false
+            break
     
     if shouldBeOpen and not open:
         _open()
