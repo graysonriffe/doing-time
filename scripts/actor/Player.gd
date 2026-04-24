@@ -68,8 +68,9 @@ func _physics_process(delta: float) -> void:
         headBobbingTheta = 0.0
     
     # View model bobbing and sway - always tend toward home position
+    var viewModelHomeY: float = 0.0 if not paused else 0.04
     viewModel.position.x = lerp(viewModel.position.x, 0.0, 5.0 * delta)
-    viewModel.position.y = lerp(viewModel.position.y, 0.0, 5.0 * delta)
+    viewModel.position.y = lerp(viewModel.position.y, viewModelHomeY, 5.0 * delta)
     
     super(delta)
 

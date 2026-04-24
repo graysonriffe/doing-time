@@ -56,6 +56,11 @@ var lastMousePosition: Vector2i
 @onready var remoteViewport: SubViewport = find_child("RemoteViewport", true, false)
 @onready var remotePauseMenu: PanelContainer = find_child("PauseMenu", true, false)
 @onready var remotePauseQuitButton: Button = find_child("PauseQuitButton", true, false)
+@onready var remotePauseUnpauseKeyLabel: Label3D = find_child("PauseUnpauseKeyLabel", true, false)
+@onready var remoteReverseKeyLabel: Label3D = find_child("ReverseKeyLabel", true, false)
+@onready var remoteForwardKeyLabel: Label3D = find_child("ForwardKeyLabel", true, false)
+@onready var remoteBranchKeyLabel: Label3D = find_child("BranchKeyLabel", true, false)
+@onready var remoteAnimationPlayer: AnimationPlayer = find_child("RemoteAnimationPlayer", true, false)
 
 func _ready() -> void:
     process_physics_priority = 1 # Makes CloneGame update after other stuff like Actors each physics process
@@ -68,6 +73,9 @@ func _ready() -> void:
     remotePauseMenu.hide()
     
     timelineSlider.value_changed.connect(_timelineSliderChanged)
+    
+    _setKeyLabels()
+    _showKeyLabels(false) # Hide
     
     remoteMouseArea.input_event.connect(_remoteInputEvent)
     
@@ -105,8 +113,8 @@ func _handleInput(delta: float):
     if Input.is_action_just_released("pauseUnpause"):
         _attemptTogglePause()
     
-    var shouldScrubForward: bool = Input.is_action_pressed("timelineScrubForward")
-    var shouldScrubBackward: bool = Input.is_action_pressed("timelineScrubBackward")
+    var shouldScrubForward: bool = Input.is_action_pressed("timelineForward")
+    var shouldScrubBackward: bool = Input.is_action_pressed("timelineReverse")
     
     _handleScrub(shouldScrubForward, shouldScrubBackward, delta)
     
@@ -195,6 +203,8 @@ func _doPause():
     RenderingServer.global_shader_parameter_set("pause_effect", true);
     MusicPlayer.pauseEffect()
     
+    remoteAnimationPlayer.play("pauseUnpausePress")
+    
     player.pause()
     _pauseClones()
     _pausePhysicsObjects()
@@ -207,6 +217,8 @@ func _doPause():
     
     timelineUI.show()
     remotePauseMenu.show()
+    
+    _showKeyLabels()
     
     Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
     
@@ -228,6 +240,8 @@ func _doUnpause() -> bool:
     RenderingServer.global_shader_parameter_set("pause_effect", false);
     MusicPlayer.pauseEffect(false) # Unpause
     
+    remoteAnimationPlayer.play("pauseUnpausePress")
+    
     timeIndex = int(timelineSlider.value) + 1 # Resume recording on the next timeIndex, not the one paused on
     
     player.pause(false) # Unpause
@@ -238,6 +252,8 @@ func _doUnpause() -> bool:
     
     timelineUI.hide()
     remotePauseMenu.hide()
+    
+    _showKeyLabels(false)
     
     lastMousePosition = get_viewport().get_mouse_position()
     
@@ -342,6 +358,8 @@ func _doBranch():
     if not _doUnpause():
         return
     
+    remoteAnimationPlayer.play("branchPress")
+    
     var newClone: Clone = CLONE_SCENE.instantiate()
     
     # TODO: Remove this later with new crouching animations
@@ -409,13 +427,24 @@ func _isPlayerRed() -> bool:
 
 
 func _handleScrub(shouldScrubForward: bool, shouldScrubBackward: bool, delta: float):
-    if shouldScrubForward:
-        if gamestate == Gamestate.Paused:
+    if gamestate == Gamestate.Paused:
+        if shouldScrubForward:
+            if not remoteAnimationPlayer.current_animation.contains("forward"):
+                remoteAnimationPlayer.play("RESET")
+                remoteAnimationPlayer.play("forwardPress")
+                remoteAnimationPlayer.queue("forwardHold")
             _scrub(true)
+        elif remoteAnimationPlayer.current_animation == "forwardHold":
+            remoteAnimationPlayer.play("forwardRelease")
     
-    if shouldScrubBackward:
-        if gamestate == Gamestate.Paused:
+        if shouldScrubBackward:
+            if not remoteAnimationPlayer.current_animation.contains("reverse"):
+                remoteAnimationPlayer.play("RESET")
+                remoteAnimationPlayer.play("reversePress")
+                remoteAnimationPlayer.queue("reverseHold")
             _scrub(false)
+        elif remoteAnimationPlayer.current_animation == "reverseHold":
+            remoteAnimationPlayer.play("reverseRelease")
     
     if (shouldScrubForward or shouldScrubBackward) and gamestate == Gamestate.Paused:
         scrubTime += delta
@@ -565,3 +594,16 @@ func _remoteInputEvent(_camera: Node, event: InputEvent, eventPosition: Vector3,
     event.position = mousePos2D
     
     remoteViewport.push_input(event)
+
+
+func _setKeyLabels():
+    remotePauseUnpauseKeyLabel.text = (InputMap.action_get_events("pauseUnpause")[0] as InputEventKey).as_text_physical_keycode()
+    remoteReverseKeyLabel.text = (InputMap.action_get_events("timelineReverse")[0] as InputEventKey).as_text_physical_keycode()
+    remoteForwardKeyLabel.text = (InputMap.action_get_events("timelineForward")[0] as InputEventKey).as_text_physical_keycode()
+    remoteBranchKeyLabel.text = (InputMap.action_get_events("branch")[0] as InputEventKey).as_text_physical_keycode()
+
+
+func _showKeyLabels(shouldShow: bool = true):
+    remoteReverseKeyLabel.visible = shouldShow
+    remoteForwardKeyLabel.visible = shouldShow
+    remoteBranchKeyLabel.visible = shouldShow
