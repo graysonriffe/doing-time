@@ -46,7 +46,7 @@ func _physics_process(delta: float) -> void:
             _uncrouch()
             
         if getInteractButton():
-            _interact()
+            _attemptInteract()
     
     # Do headbobbing when walking on a floor, and reset when not
     if not paused and (velocity.length() > 2.0 and isOnFloor) or velocity.length() > WALKING_SPEED * 2:

@@ -50,10 +50,10 @@ activators = [NodePath("../WeightButton"), NodePath("../WeightButton2"), NodePat
 deactivators = [NodePath("../Lever2")]
 
 [node name="Lever" parent="World" parent_id_path=PackedInt32Array(554948861) index="6" unique_id=470289266 instance=ExtResource("7_oc4kc")]
-transform = Transform3D(-1, -3.821371e-15, -8.742278e-08, -8.742278e-08, 4.371139e-08, 1, 0, 1, -4.371139e-08, 3, 1.75, -8)
+transform = Transform3D(-1, -3.821371e-15, -8.742278e-08, -8.742278e-08, 4.371139e-08, 1, 0, 1, -4.371139e-08, 3, 2, -8)
 
 [node name="Lever2" parent="World" parent_id_path=PackedInt32Array(554948861) index="7" unique_id=164143129 instance=ExtResource("7_oc4kc")]
-transform = Transform3D(-1, -3.821371e-15, -8.742278e-08, -8.742278e-08, 4.371139e-08, 1, 0, 1, -4.371139e-08, -4, 1.75, -8)
+transform = Transform3D(-1, -3.821371e-15, -8.742278e-08, -8.742278e-08, 4.371139e-08, 1, 0, 1, -4.371139e-08, -4, 2, -8)
 
 [node name="ColoredWall" parent="World" parent_id_path=PackedInt32Array(554948861) index="8" unique_id=1483795033 instance=ExtResource("8_s8va5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 7)

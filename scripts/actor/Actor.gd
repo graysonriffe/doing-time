@@ -210,8 +210,16 @@ func _uncrouch():
             detectedActor.boost()
 
 
-func _interact():
+func canInteract():
     if interactRayCast.is_colliding():
         var collider: Node = interactRayCast.get_collider()
         if collider is Activator and collider.interactable:
-            collider.toggleActivate()
+            return true
+    
+    return false
+
+
+func _attemptInteract():
+    if canInteract():
+        var collider: Node = interactRayCast.get_collider()
+        collider.toggleActivate()

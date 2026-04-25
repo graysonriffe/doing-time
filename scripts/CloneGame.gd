@@ -52,6 +52,10 @@ var inputMethod: InputMethod
 
 @onready var timelineUI: Control = find_child("TimelineUI", true, false)
 @onready var timelineSlider: HSlider = find_child("TimelineSlider", true, false)
+@onready var interactPrompt: PanelContainer = find_child("InteractPrompt", true, false)
+@onready var interactKeyHint: MarginContainer = find_child("InteractKeyLabelMargin", true, false)
+@onready var interactGamepadHint: MarginContainer = find_child("InteractGamepadIconMargin", true, false)
+
 
 @onready var remoteTimeLabel: RichTextLabel = find_child("RemoteTimeLabel", true, false)
 @onready var remotePaused: PanelContainer = find_child("RemotePaused", true, false)
@@ -109,7 +113,8 @@ func _physics_process(delta: float) -> void:
     
     _handleInput(delta)
     
-    _updateRemote()
+    _updateUI()
+
 
 
 # Non-player movement inputs
@@ -179,8 +184,6 @@ func _changeLevel(newLevelNumber: int):
             noBranchZones.append(node)
     
     gamestate = Gamestate.Playing
-    
-    _updateRemote()
 
 
 func getTimeIndex() -> int:
@@ -529,7 +532,7 @@ func _recordCloneData():
     currentCloneData.pushBackInteract(timeIndex, player.getInteractButton())
 
 
-func _updateRemote():
+func _updateUI():
     if gamestate == Gamestate.Loading:
         return
     
@@ -580,31 +583,41 @@ func _updateRemote():
         remotePlaySprite.hide()
         remotePauseSprite.show()
     
+    # Interact prompt
+    interactPrompt.visible = gamestate == Gamestate.Playing and player.canInteract()
+    
     # Update button hints
     var shouldShow: bool = gamestate == Gamestate.Paused
     
-    remotePauseUnpauseKeyLabel.visible = false
-    remoteReverseKeyLabel.visible = false
-    remoteForwardKeyLabel.visible = false
-    remoteBranchKeyLabel.visible = false
+    remotePauseUnpauseKeyLabel.hide()
+    remoteReverseKeyLabel.hide()
+    remoteForwardKeyLabel.hide()
+    remoteBranchKeyLabel.hide()
     
-    remotePauseUnpauseGamepadSprite.visible = false
-    remoteReverseGamepadSprite.visible = false
-    remoteForwardGamepadSprite.visible = false
-    remoteBranchGamepadSprite.visible = false
+    remotePauseUnpauseGamepadSprite.hide()
+    remoteReverseGamepadSprite.hide()
+    remoteForwardGamepadSprite.hide()
+    remoteBranchGamepadSprite.hide()
+    
+    interactKeyHint.hide()
+    interactGamepadHint.hide()
     
     match inputMethod:
         InputMethod.MouseAndKeyboard:
-            remotePauseUnpauseKeyLabel.visible = true
+            remotePauseUnpauseKeyLabel.show()
             remoteReverseKeyLabel.visible = shouldShow
             remoteForwardKeyLabel.visible = shouldShow
             remoteBranchKeyLabel.visible = shouldShow
+            
+            interactKeyHint.show()
         
         InputMethod.Gamepad:
-            remotePauseUnpauseGamepadSprite.visible = true
+            remotePauseUnpauseGamepadSprite.show()
             remoteReverseGamepadSprite.visible = shouldShow
             remoteForwardGamepadSprite.visible = shouldShow
             remoteBranchGamepadSprite.visible = shouldShow
+            
+            interactGamepadHint.show()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -612,7 +625,7 @@ func _unhandled_input(event: InputEvent) -> void:
     if event is InputEventJoypadButton or (event is InputEventJoypadMotion and abs(event.axis_value) > 0.1):
         inputMethod = InputMethod.Gamepad
     
-    if event is InputEventKey or (event is InputEventMouseMotion and gamestate == Gamestate.Playing) or\
+    if event is InputEventKey or (event is InputEventMouseMotion and gamestate == Gamestate.Playing) or \
     (event is InputEventMouseButton):
         inputMethod = InputMethod.MouseAndKeyboard
     
@@ -644,3 +657,5 @@ func _setKeyLabels():
     remoteReverseKeyLabel.text = (InputMap.action_get_events("timelineReverse")[0] as InputEventKey).as_text_physical_keycode()
     remoteForwardKeyLabel.text = (InputMap.action_get_events("timelineForward")[0] as InputEventKey).as_text_physical_keycode()
     remoteBranchKeyLabel.text = (InputMap.action_get_events("branch")[0] as InputEventKey).as_text_physical_keycode()
+    
+    interactKeyHint.get_child(0).text =(InputMap.action_get_events("interact")[0] as InputEventKey).as_text_physical_keycode()

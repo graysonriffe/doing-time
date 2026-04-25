@@ -53,7 +53,7 @@ func _physics_process(delta: float) -> void:
         _uncrouch()
     
     if cloneData.getInteractButton(cloneGame.getTimeIndex()):
-        _interact()
+        _attemptInteract()
     
     super(delta)
     
