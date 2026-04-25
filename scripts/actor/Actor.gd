@@ -51,12 +51,12 @@ var color: ActorColor:
         bodyMesh.set_instance_shader_parameter("outline_color", outlineColor)
         headMesh.set_instance_shader_parameter("outline_color", outlineColor)
         
-        set_collision_mask_value(COLOR_COLLISION_LAYERS[ActorColor.Green], false)
-        set_collision_mask_value(COLOR_COLLISION_LAYERS[ActorColor.Yellow], false)
-        set_collision_mask_value(COLOR_COLLISION_LAYERS[ActorColor.Red], false)
+        set_collision_mask_value(COLOR_COLLISION_LAYERS[ActorColor.Green], true)
+        set_collision_mask_value(COLOR_COLLISION_LAYERS[ActorColor.Yellow], true)
+        set_collision_mask_value(COLOR_COLLISION_LAYERS[ActorColor.Red], true)
         
         if color != ActorColor.White:
-            set_collision_mask_value(COLOR_COLLISION_LAYERS[color], true)
+            set_collision_mask_value(COLOR_COLLISION_LAYERS[color], false)
 
 var isOnFloor: bool
 var isOnFloorOverride: bool
