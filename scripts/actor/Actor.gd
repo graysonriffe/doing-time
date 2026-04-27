@@ -87,6 +87,7 @@ var stepProgress: float
 @onready var crouchActorDetector: Area3D = $CrouchActorDectector
 @onready var collisionDetector: Area3D = $CollisionDetector
 @onready var footstepsPlayer: AudioStreamPlayer3D = $FootstepsPlayer
+@onready var branchPlayer: AudioStreamPlayer3D = $BranchPlayer
 
 @onready var cloneGame: CloneGame = get_tree().root.find_child("CloneGame", true, false)
 

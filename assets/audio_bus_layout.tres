@@ -6,6 +6,7 @@ cutoff_hz = 20500.0
 
 [sub_resource type="AudioEffectReverb" id="AudioEffectReverb_vpslo"]
 resource_name = "Reverb"
+hipass = 0.1
 wet = 0.3
 
 [resource]

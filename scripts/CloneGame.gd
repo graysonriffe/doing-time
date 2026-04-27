@@ -17,7 +17,7 @@ enum InputMethod {
 }
 
 # Constants
-const NUM_LEVELS: int = 2
+const NUM_LEVELS: int = 4
 const LEVEL_PATH: String = "res://scenes/levels/"
 
 const CLONE_SCENE: PackedScene = preload("res://scenes/actor/clone.tscn")
@@ -71,6 +71,8 @@ var mainMenuPause: PanelContainer
 # SFX
 var pauseSFX: AudioStream = preload("res://assets/audio/sfx/pause.mp3")
 var unpauseSFX: AudioStream = preload("res://assets/audio/sfx/unpause.mp3")
+var branchSFX: AudioStream = preload("res://assets/audio/sfx/branch.mp3")
+var branchFailSFX: AudioStream = preload("res://assets/audio/sfx/branch_fail.mp3")
 
 var levelEndSFX: AudioStream = preload("res://assets/audio/sfx/level_end.mp3")
 var gameWinSFX: AudioStream = preload("res://assets/audio/sfx/game_win.mp3")
@@ -195,10 +197,15 @@ func _setupMainMenu():
         RenderingServer.global_shader_parameter_set("pause_effect", false);
         MusicPlayer.pauseEffect(false) # Unpause
         timelineUI.hide()
+        
+        noBranchZoneSFXPlayer.stop()
     
     gamestate = Gamestate.MainMenu
     
     player.hide()
+    
+    RenderingServer.global_shader_parameter_set("remote_bulb_color", Color.WHITE)
+    
     player.process_mode = Node.PROCESS_MODE_DISABLED
     
     await _changeScene("res://scenes/main_menu_scene.tscn")
@@ -300,8 +307,7 @@ func _setupLevel(newLevelNumber: int):
     # Record timeIndex = 0 as the initial state of the level
     _record()
     
-    availableClonesHistory.clear()
-    availableClonesHistory[0] = 2
+    _resetAvailableClonesHistory()
     
     goal = sceneContainer.find_child("Goal", true, false)
     goal.body_entered.connect(_goalEntered)
@@ -322,11 +328,16 @@ func _setupLevel(newLevelNumber: int):
     remoteSettingsMasterVolume.value = AudioServer.get_bus_volume_linear(AudioServer.get_bus_index("Master"))
     remoteSettingsMusicVolume.value = AudioServer.get_bus_volume_linear(AudioServer.get_bus_index("Music")) * 4
     
-    Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-    
     player.pause(false) # Unpause
     
+    Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+    
     gamestate = Gamestate.Playing
+
+
+func _resetAvailableClonesHistory():
+    availableClonesHistory.clear()
+    availableClonesHistory[0] = 2
 
 
 func _changeScene(scene: String):
@@ -366,6 +377,7 @@ func _togglePause():
             # Exception for unpausing a the beginning of the timeline
             if timeIndex == 1:
                 _deleteAllClones()
+                _resetAvailableClonesHistory()
             else:
                 _deleteDiscardedClones()
 
@@ -500,8 +512,8 @@ func _attemptBranch():
         if _clonesAvailable() and not _inNoBranchZone():
             _doBranch()
         else:
-            # Some sort of feedback
-            pass
+            remoteSFXPlayer.stream = branchFailSFX
+            remoteSFXPlayer.play()
 
 
 func _clonesAvailable():
@@ -534,6 +546,8 @@ func _doBranch():
         return
     
     remoteAnimationPlayer.play("branchPress")
+    
+    player.branchPlayer.play()
     
     var newClone: Clone = CLONE_SCENE.instantiate()
     
@@ -676,6 +690,7 @@ func _enableNewClones():
     for clone: Clone in cloneContainer.get_children():
         if not clone.enabled and timeIndex >= clone.cloneData.startingTimeIndex - 1:
             _incrementColor(clone.parentActor)
+            clone.parentActor.branchPlayer.play()
             _enableClone(clone)
             clone.reset_physics_interpolation()
 
@@ -696,7 +711,7 @@ func _recordCloneData():
 
 
 func _goalEntered(body: Node3D):
-    if gamestate == Gamestate.Playing and body == player and timeIndex != 0:
+    if gamestate == Gamestate.Playing and body == player and timeIndex > 10:
         _endLevel()
 
 
@@ -814,6 +829,8 @@ func _updateUI():
     interactKeyHint.hide()
     interactGamepadHint.hide()
     
+    var allNodes: Array[Node] = _getAllChildren(sceneContainer)
+    
     match inputMethod:
         InputMethod.MouseAndKeyboard:
             remotePauseUnpauseKeyLabel.show()
@@ -822,6 +839,13 @@ func _updateUI():
             remoteBranchKeyLabel.visible = isPaused
             
             interactKeyHint.show()
+            
+            for node: Node in allNodes:
+                if node is Label3D and node.name.contains("KM"):
+                    node.show()
+                
+                if node is Label3D and node.name.contains("Gamepad"):
+                    node.hide()
         
         InputMethod.Gamepad:
             remotePauseUnpauseGamepadSprite.show()
@@ -830,6 +854,13 @@ func _updateUI():
             remoteBranchGamepadSprite.visible = isPaused
             
             interactGamepadHint.show()
+            
+            for node: Node in allNodes:
+                if node is Label3D and node.name.contains("KM"):
+                    node.hide()
+                
+                if node is Label3D and node.name.contains("Gamepad"):
+                    node.show()
 
 
 func _unhandled_input(event: InputEvent) -> void:

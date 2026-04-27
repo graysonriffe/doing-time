@@ -3,6 +3,7 @@
 [ext_resource type="Material" uid="uid://cah8aejnp801s" path="res://assets/materials/actor/cel_shading_actor.tres" id="1_7vwln"]
 [ext_resource type="Material" uid="uid://dw4sjmbxh0s54" path="res://assets/materials/actor/actor_outline.tres" id="1_703dr"]
 [ext_resource type="AudioStream" uid="uid://ea27g47p4yud" path="res://assets/audio/sfx/footsteps/footsteps.tres" id="3_7vwln"]
+[ext_resource type="AudioStream" uid="uid://c8cloyjqq8w0d" path="res://assets/audio/sfx/branch.mp3" id="4_v5pdg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u4npu"]
 radius = 0.35
@@ -683,6 +684,12 @@ target_position = Vector3(0, 0, -1.5)
 stream = ExtResource("3_7vwln")
 volume_db = -22.0
 max_polyphony = 2
+bus = &"WorldSFX"
+
+[node name="BranchPlayer" type="AudioStreamPlayer3D" parent="." unique_id=1023545028]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+stream = ExtResource("4_v5pdg")
+volume_db = -8.0
 bus = &"WorldSFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1749631694]

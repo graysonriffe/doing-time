@@ -1,68 +1,233 @@
-[gd_scene format=3 uid="uid://dwaidov0612vx"]
+[gd_scene format=3 uid="uid://og33ayna6r3n"]
 
-[ext_resource type="PackedScene" uid="uid://ca08rf6sfv4gl" path="res://scenes/levels/level_template.tscn" id="1_ksju7"]
-[ext_resource type="PackedScene" uid="uid://dqt20bav1urf8" path="res://scenes/level_components/weight_button.tscn" id="2_6iamk"]
-[ext_resource type="Material" uid="uid://cjgmwi4bxpjhq" path="res://assets/materials/hex_grate/hex_grate.tres" id="2_oc4kc"]
-[ext_resource type="PackedScene" uid="uid://c2oilcemslf1l" path="res://scenes/level_components/door.tscn" id="3_nsrm0"]
-[ext_resource type="PackedScene" uid="uid://bsiew2uhh705e" path="res://scenes/level_components/lever.tscn" id="7_oc4kc"]
-[ext_resource type="PackedScene" uid="uid://cotbrqkiy4tru" path="res://scenes/level_components/colored_wall.tscn" id="8_s8va5"]
-[ext_resource type="PackedScene" uid="uid://dqh7qjcvou74b" path="res://scenes/level_components/no_branch_zone.tscn" id="9_dga24"]
+[ext_resource type="PackedScene" uid="uid://ca08rf6sfv4gl" path="res://scenes/levels/level_template.tscn" id="1_omyjc"]
+[ext_resource type="PackedScene" uid="uid://bsiew2uhh705e" path="res://scenes/level_components/lever.tscn" id="2_yoc1f"]
+[ext_resource type="PackedScene" uid="uid://c2oilcemslf1l" path="res://scenes/level_components/door.tscn" id="3_df4wt"]
+[ext_resource type="PackedScene" uid="uid://dqh7qjcvou74b" path="res://scenes/level_components/no_branch_zone.tscn" id="4_jogk6"]
+[ext_resource type="Texture2D" uid="uid://c21k8ilw0h6sy" path="res://assets/textures/gamepad_right_stick.png" id="5_vhkef"]
+[ext_resource type="Texture2D" uid="uid://3rhuddx76bmo" path="res://assets/textures/gamepad_left_stick.png" id="6_8gu5g"]
+[ext_resource type="Texture2D" uid="uid://dax5nvm04lx5k" path="res://assets/textures/gamepad_button_bottom.png" id="7_625t8"]
+[ext_resource type="Texture2D" uid="uid://b6v1pefmln3gq" path="res://assets/textures/gamepad_button_left.png" id="8_8hwef"]
+[ext_resource type="Texture2D" uid="uid://d2ve2ume1eqcp" path="res://assets/textures/gamepad_button_right.png" id="9_sk3fw"]
+[ext_resource type="Texture2D" uid="uid://74o483t8jq0g" path="res://assets/textures/gamepad_left_stick_left.png" id="10_ytkkp"]
+[ext_resource type="Texture2D" uid="uid://dhbdknhk074hj" path="res://assets/textures/gamepad_left_stick_right.png" id="11_h25j0"]
 
-[node name="Level1" unique_id=2141939930 instance=ExtResource("1_ksju7")]
-levelName = "Temp Level"
+[sub_resource type="SystemFont" id="SystemFont_x42e6"]
+font_names = PackedStringArray("Consolas")
+
+[node name="Level1" unique_id=1254966120 instance=ExtResource("1_omyjc")]
+levelName = "Remote Control"
+
+[node name="PlayerStart" parent="." index="2" unique_id=1770252819]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -11, 4, 16)
 
 [node name="Goal" parent="." index="3" unique_id=823588948]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 6, 1)
 
-[node name="OmniLight3D6" type="OmniLight3D" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="5" unique_id=1768375677]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.01589, 4.466645, -3.8830757)
+[node name="OmniLight3D2" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="1" unique_id=593210828]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.01589, 8.466644, 0.5176058)
+light_energy = 11.642
+
+[node name="OmniLight3D4" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="3" unique_id=657344719]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 10, 15)
+
+[node name="OmniLight3D7" type="OmniLight3D" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="4" unique_id=2126978958]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 10, 3)
 light_color = Color(0.8580337, 0.8394728, 0.7892842, 1)
 light_energy = 44.627
 shadow_enabled = true
 omni_range = 20.0
 omni_attenuation = 2.0
 
-[node name="OmniLight3D7" type="OmniLight3D" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="6" unique_id=1076338165]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.406857, 4.466645, -4.1406326)
+[node name="OmniLight3D8" type="OmniLight3D" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="5" unique_id=636987669]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 3, 1)
 light_color = Color(0.8580337, 0.8394728, 0.7892842, 1)
-light_energy = 44.627
+light_energy = 10.242
 shadow_enabled = true
-omni_range = 20.0
 omni_attenuation = 2.0
+
+[node name="Wall1" parent="World/Room" parent_id_path=PackedInt32Array(1478904478) index="1" unique_id=127119137]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.25, 6, 0)
+size = Vector3(0.5, 12, 41)
+
+[node name="Wall2" parent="World/Room" parent_id_path=PackedInt32Array(1478904478) index="2" unique_id=1093076735]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.25, 6, 0)
+size = Vector3(0.5, 12, 41)
+
+[node name="Wall3" parent="World/Room" parent_id_path=PackedInt32Array(1478904478) index="3" unique_id=1161521888]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 6, 20.25)
+size = Vector3(0.5, 12, 40)
+
+[node name="Wall4" parent="World/Room" parent_id_path=PackedInt32Array(1478904478) index="4" unique_id=1033766136]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 6, -20.25)
+size = Vector3(0.5, 12, 40)
+
+[node name="Ceiling" parent="World/Room" parent_id_path=PackedInt32Array(1478904478) index="5" unique_id=613614166]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.25, 0)
 
 [node name="GridMap" parent="World" parent_id_path=PackedInt32Array(554948861) index="1" unique_id=1447304026]
 data = {
-"cells": PackedInt32Array(65526, 65531, 0, 131062, 65531, 0, 196598, 65531, 0, 262134, 65531, 0, 327670, 65531, 0, 65527, 65531, 0, 131063, 65531, 0, 196599, 65531, 0, 262135, 65531, 0, 327671, 65531, 0, 65528, 65531, 0, 131064, 65531, 0, 196600, 65531, 0, 262136, 65531, 0, 327672, 65531, 0, 196601, 65531, 0, 262137, 65531, 0, 327673, 65531, 0, 196602, 65531, 0, 262138, 65531, 0, 327674, 65531, 0, 65531, 65531, 0, 131067, 65531, 0, 196603, 65531, 0, 262139, 65531, 0, 327675, 65531, 0, 65532, 65531, 0, 131068, 65531, 0, 196604, 65531, 0, 262140, 65531, 0, 327676, 65531, 0, 65533, 65531, 0, 196605, 65531, 0, 262141, 65531, 0, 327677, 65531, 0, 65534, 65531, 0, 131070, 65531, 0, 196606, 65531, 0, 262142, 65531, 0, 327678, 65531, 0, 196607, 65531, 0, 262143, 65531, 0, 327679, 65531, 0, 131072, 65531, 0, 196608, 65531, 0, 262144, 65531, 0, 1, 65531, 0, 65537, 65531, 0, 131073, 65531, 0, 196609, 65531, 0, 262145, 65531, 0, 2, 65531, 0, 65538, 65531, 0, 131074, 65531, 0, 196610, 65531, 0, 262146, 65531, 0, 3, 65531, 0, 65539, 65531, 0, 131075, 65531, 0, 196611, 65531, 0, 262147, 65531, 0, 4, 65531, 0, 65540, 65531, 0, 131076, 65531, 0, 196612, 65531, 0, 262148, 65531, 0, 5, 65531, 0, 65541, 65531, 0, 131077, 65531, 0, 196613, 65531, 0, 262149, 65531, 0, 6, 65531, 0, 65542, 65531, 0, 131078, 65531, 0, 196614, 65531, 0, 262150, 65531, 0, 7, 65531, 0, 65543, 65531, 0, 131079, 65531, 0, 196615, 65531, 0, 262151, 65531, 0, 8, 65531, 0, 65544, 65531, 0, 131080, 65531, 0, 196616, 65531, 0, 262152, 65531, 0, 9, 65531, 0, 65545, 65531, 0, 131081, 65531, 0, 196617, 65531, 0, 262153, 65531, 0, 65533, 65534, 2, 65533, 65535, 1441795, 65534, 65534, 2, 65534, 65535, 1441795, 131069, 65531, 0, 65536, 65531, 6, 0, 65531, 524294, 65530, 65531, 983040, 65529, 65531, 983040, 131066, 65531, 983040, 131065, 65531, 983040, 9, 0, 8, 9, 1, 7)
+"cells": PackedInt32Array(65532, 7, 0, 65532, 8, 0, 65528, 7, 0, 65528, 9, 0, 65528, 8, 0, 65532, 9, 0, 65532, 6, 0, 65528, 6, 0, 131068, 9, 0, 131068, 8, 0, 131068, 7, 0, 131068, 6, 0, 131064, 8, 0, 131064, 7, 0, 131064, 6, 0, 131064, 9, 0, 196600, 6, 786432, 196600, 7, 786432, 196600, 8, 786432, 196600, 9, 786432, 196604, 6, 786432, 196604, 7, 786432, 196604, 8, 786432, 196604, 9, 786432, 262140, 6, 786432, 262140, 7, 786432, 262140, 8, 786432, 262140, 9, 786432, 262136, 6, 786432, 262136, 7, 786432, 262136, 8, 786432, 262136, 9, 786432, 131065, 6, 786432, 131065, 7, 786432, 131065, 8, 786432, 131065, 9, 786432, 131066, 6, 786432, 131066, 7, 786432, 131066, 8, 786432, 131066, 9, 786432, 131067, 6, 786432, 131067, 7, 786432, 131067, 8, 786432, 131067, 9, 786432, 131064, 1, 1310720, 131064, 2, 1310720, 131064, 3, 786432, 131064, 4, 786432, 131064, 5, 786432, 131065, 2, 786432, 131065, 3, 1441799, 131065, 4, 786432, 131065, 5, 786432, 131066, 2, 786432, 131066, 3, 1441799, 131066, 4, 786432, 131066, 5, 786432, 131067, 2, 786432, 131067, 3, 1441799, 131067, 4, 786432, 131067, 5, 786432, 131068, 2, 786432, 131068, 3, 786432, 131068, 4, 786432, 131068, 5, 786432, 196603, 2, 1441792, 196602, 2, 1441792, 196601, 2, 1441792, 196601, 1, 1441792, 196602, 1, 1441792, 196603, 1, 1441792, 196604, 1, 1441792, 196604, 2, 1441792, 196604, 3, 1441792, 196604, 4, 1441792, 196604, 5, 1441792, 262140, 2, 1441792, 262140, 3, 1441792, 262140, 4, 1441792, 262140, 5, 1441792, 196600, 1, 589824, 196600, 2, 589824, 196600, 3, 589824, 196600, 4, 589824, 196600, 5, 589824, 262136, 2, 589824, 262136, 3, 589824, 262136, 4, 589824, 262136, 5, 589824, 327672, 2, 1179648, 327672, 3, 589824, 327672, 4, 589824, 327672, 5, 589824, 327672, 6, 589824, 327672, 7, 589824, 327672, 8, 589824, 327672, 9, 589824, 327676, 2, 589824, 327676, 3, 589824, 327676, 4, 589824, 327676, 5, 589824, 327676, 6, 589824, 327676, 7, 589824, 327676, 8, 589824, 327676, 9, 589824, 196601, 65535, 589824, 196601, 0, 589824, 196602, 65535, 589824, 196602, 0, 589824, 196603, 65535, 589824, 196603, 0, 589824, 196601, 4, 1441794, 196602, 4, 1441794, 196603, 4, 1441794, 196601, 5, 1441795, 196602, 5, 1441795, 196603, 5, 1441795, 196604, 65535, 589824, 196604, 0, 589824, 196600, 65535, 589824, 196600, 0, 589824, 196600, 65534, 589824, 262136, 65534, 589824, 327672, 65534, 589824, 196601, 65534, 589824, 262137, 65534, 589824, 327673, 65534, 589824, 196602, 65534, 589824, 262138, 65534, 589824, 327674, 65534, 589824, 196603, 65534, 589824, 262139, 65534, 589824, 327675, 65534, 589824, 196604, 65534, 589824, 262140, 65534, 589824, 327676, 65534, 589824, 65532, 65534, 589824, 65532, 2, 589824, 65532, 3, 589824, 65532, 4, 589824, 65532, 5, 589824, 131068, 65534, 589824, 65532, 65533, 589824, 131068, 65533, 589824, 196604, 65533, 589824, 262140, 65533, 589824, 327676, 65533, 589824, 65533, 65533, 589824, 131069, 65533, 589824, 196605, 65533, 589824, 262141, 65533, 589824, 327677, 65533, 589824, 65534, 65533, 589824, 131070, 65533, 589824, 196606, 65533, 589824, 262142, 65533, 589824, 327678, 65533, 589824, 65535, 65533, 589824, 131071, 65533, 589824, 196607, 65533, 589824, 262143, 65533, 589824, 327679, 65533, 589824, 0, 65533, 589824, 65536, 65533, 589824, 131072, 65533, 589824, 196608, 65533, 589824, 262144, 65533, 589824, 65533, 3, 524288, 131069, 3, 524288, 196605, 3, 524288, 262141, 3, 524288, 327677, 3, 524288, 65534, 3, 524288, 131070, 3, 524288, 196606, 3, 524288, 262142, 3, 524288, 327678, 3, 524288, 65535, 3, 524288, 131071, 3, 524288, 196607, 3, 524288, 262143, 3, 524288, 327679, 3, 524288, 0, 3, 524288, 65536, 3, 524288, 131072, 3, 524288, 196608, 3, 524288, 262144, 3, 524288, 1, 3, 1310720, 65537, 3, 1310720, 131073, 3, 1310720, 196609, 3, 1310720, 262145, 3, 1310720, 2, 3, 1310720, 65538, 3, 1310720, 131074, 3, 1310720, 196610, 3, 1310720, 262146, 3, 1310720, 3, 3, 1310720, 65539, 3, 1310720, 131075, 3, 1310720, 196611, 3, 1310720, 262147, 3, 1310720, 1, 65533, 1310720, 65537, 65533, 1310720, 131073, 65533, 1310720, 196609, 65533, 1310720, 262145, 65533, 1310720, 2, 65533, 1310720, 65538, 65533, 1310720, 131074, 65533, 1310720, 196610, 65533, 1310720, 262146, 65533, 1310720, 3, 65533, 1310720, 65539, 65533, 1310720, 131075, 65533, 1310720, 196611, 65533, 1310720, 262147, 65533, 1310720, 3, 65534, 1310720, 3, 65535, 1310720, 3, 0, 1310720, 3, 1, 1310720, 3, 2, 1310720, 65539, 65534, 1310720, 65539, 65535, 1310720, 65539, 0, 1310720, 65539, 1, 1310720, 65539, 2, 1310720, 131075, 65534, 1310720, 131075, 65535, 1310720, 131075, 0, 1310720, 131075, 1, 1310720, 131075, 2, 1310720, 196611, 65534, 1310720, 196611, 65535, 1310720, 196611, 0, 1310720, 196611, 1, 1310720, 196611, 2, 1310720, 262147, 65534, 1310720, 262147, 65535, 1310720, 262147, 0, 1310720, 262147, 1, 1310720, 262147, 2, 1310720, 65529, 2, 1310720, 65530, 2, 1310720, 65531, 2, 1310720, 65528, 65534, 1310720, 131064, 65534, 1310720, 65529, 65534, 1310720, 131065, 65534, 1310720, 65530, 65534, 1310720, 131066, 65534, 1310720, 65531, 65534, 1310720, 131067, 65534, 1310720, 65528, 65535, 1310720, 65528, 0, 1310720, 65528, 1, 1310720, 65528, 2, 1310720, 131064, 65535, 1310720, 131064, 0, 1310720, 327672, 65535, 1048582, 262136, 65535, 1179654, 262136, 1, 1179648, 327672, 1, 1179648, 65532, 65535, 1179654, 65532, 1, 1179648, 131068, 65535, 1048582, 131068, 1, 1179648, 196599, 65535, 786432, 196599, 0, 786432, 196598, 65535, 786432, 196598, 0, 786432, 196599, 1, 786432, 196598, 1, 786432, 327671, 2, 1179648, 262135, 2, 1179648, 262134, 2, 1179648, 327670, 2, 1179648, 327670, 65534, 1179648, 327671, 65534, 524288, 262134, 65534, 1310720, 262135, 65534, 1507328, 393208, 65534, 589824, 393208, 1, 1179648, 393208, 2, 1179648, 393208, 3, 589824, 393208, 4, 589824, 393208, 5, 589824, 393208, 6, 589824, 393208, 7, 589824, 393208, 8, 589824, 393208, 9, 589824, 393209, 65534, 589824, 393210, 65534, 589824, 393211, 65534, 589824, 393212, 65533, 589824, 393212, 65534, 589824, 393212, 2, 589824, 393212, 3, 589824, 393212, 4, 589824, 393212, 5, 589824, 393212, 6, 589824, 393212, 7, 589824, 393212, 8, 589824, 393212, 9, 589824, 393213, 65533, 589824, 393213, 3, 524288, 393214, 65533, 589824, 393214, 3, 524288, 393215, 65533, 589824, 393215, 3, 524288, 327680, 65533, 589824, 327680, 3, 524288, 327681, 65533, 1310720, 327681, 3, 1310720, 327682, 65533, 1310720, 327682, 3, 1310720, 327683, 65533, 1310720, 327683, 65534, 1310720, 327683, 65535, 1310720, 327683, 0, 1310720, 327683, 1, 1310720, 327683, 2, 1310720, 327683, 3, 1310720, 393208, 65535, 196608, 393208, 0, 196608, 393207, 65534, 0, 393206, 65534, 0, 393207, 2, 0, 393206, 2, 0)
 }
+metadata/_editor_floor_ = Vector3(-4, 1, -2)
 
-[node name="Grate" type="CSGBox3D" parent="World" parent_id_path=PackedInt32Array(554948861) index="2" unique_id=268046270]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.499, 2.5, 12)
-use_collision = true
-size = Vector3(0.001, 5, 9)
-material = ExtResource("2_oc4kc")
+[node name="Lever" parent="World" parent_id_path=PackedInt32Array(554948861) index="2" unique_id=470289266 instance=ExtResource("2_yoc1f")]
+transform = Transform3D(-4.3711385e-08, -1, 4.371139e-08, 0, -4.371139e-08, -1, 1, -4.371139e-08, 0, 6, 2, 1)
 
-[node name="WeightButton" parent="World" parent_id_path=PackedInt32Array(554948861) index="3" unique_id=1910623683 instance=ExtResource("2_6iamk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, -3)
+[node name="Door" parent="World" parent_id_path=PackedInt32Array(554948861) index="3" unique_id=712969499 node_paths=PackedStringArray("activators") instance=ExtResource("3_df4wt")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -7, 0, 1)
+activators = [NodePath("../Lever")]
 
-[node name="WeightButton2" parent="World" parent_id_path=PackedInt32Array(554948861) index="4" unique_id=102215703 instance=ExtResource("2_6iamk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, -3)
+[node name="Door2" parent="World" parent_id_path=PackedInt32Array(554948861) index="4" unique_id=1330383392 node_paths=PackedStringArray("activators") instance=ExtResource("3_df4wt")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -15, 6, 1)
+activators = [NodePath("../Lever")]
 
-[node name="Door" parent="World" parent_id_path=PackedInt32Array(554948861) index="5" unique_id=712969499 node_paths=PackedStringArray("activators", "deactivators") instance=ExtResource("3_nsrm0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -9)
-activators = [NodePath("../WeightButton"), NodePath("../WeightButton2"), NodePath("../Lever")]
-deactivators = [NodePath("../Lever2")]
+[node name="NoBranchZone" parent="World" parent_id_path=PackedInt32Array(554948861) index="5" unique_id=1166222031 instance=ExtResource("4_jogk6")]
+transform = Transform3D(11.965, 0, 0, 0, 11.97, 0, 0, 0, 9.905, 0, 6, 1)
 
-[node name="Lever" parent="World" parent_id_path=PackedInt32Array(554948861) index="6" unique_id=470289266 instance=ExtResource("7_oc4kc")]
-transform = Transform3D(-1, -3.821371e-15, -8.742278e-08, -8.742278e-08, 4.371139e-08, 1, 0, 1, -4.371139e-08, 3, 2, -8)
+[node name="NoBranchZone2" parent="World" parent_id_path=PackedInt32Array(554948861) index="6" unique_id=1880826986 instance=ExtResource("4_jogk6")]
+transform = Transform3D(7.805, 0, 0, 0, 3.975, 0, 0, 0, 5.993, -10.001773, 2.0043736, 1.0025952)
 
-[node name="Lever2" parent="World" parent_id_path=PackedInt32Array(554948861) index="7" unique_id=164143129 instance=ExtResource("7_oc4kc")]
-transform = Transform3D(-1, -3.821371e-15, -8.742278e-08, -8.742278e-08, 4.371139e-08, 1, 0, 1, -4.371139e-08, -4, 2, -8)
+[node name="KMTutorial1" type="Label3D" parent="World" parent_id_path=PackedInt32Array(554948861) index="7" unique_id=188520330]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -11, 6.5, 19.999)
+render_priority = 1
+outline_render_priority = 0
+text = "Mouse → Look"
+font = SubResource("SystemFont_x42e6")
+font_size = 50
+outline_size = 15
 
-[node name="ColoredWall" parent="World" parent_id_path=PackedInt32Array(554948861) index="8" unique_id=1483795033 instance=ExtResource("8_s8va5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 7)
+[node name="GamepadTutorial1" type="Label3D" parent="World" parent_id_path=PackedInt32Array(554948861) index="8" unique_id=1906242574]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -11, 6.5, 19.999)
+render_priority = 1
+outline_render_priority = 0
+text = "      → Look"
+font = SubResource("SystemFont_x42e6")
+font_size = 50
+outline_size = 15
 
-[node name="NoBranchZone" parent="World" parent_id_path=PackedInt32Array(554948861) index="9" unique_id=799290473 instance=ExtResource("9_dga24")]
-transform = Transform3D(8.79, 0, 0, 0, 3.255, 0, 0, 0, 3.6091022, -9.773926, 1.6738157, 4)
+[node name="Sprite3D" type="Sprite3D" parent="World/GamepadTutorial1" index="0" unique_id=424380408]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.47258282, 0, -5.722046e-06)
+pixel_size = 0.004
+texture = ExtResource("5_vhkef")
 
-[node name="NoBranchZone2" parent="World" parent_id_path=PackedInt32Array(554948861) index="10" unique_id=1166222031 instance=ExtResource("9_dga24")]
-transform = Transform3D(10.29, 0, 0, 0, 4.84, 0, 0, 0, 10.830001, 6.643509, 2.4706442, 0)
+[node name="KMTutorial2" type="Label3D" parent="World" parent_id_path=PackedInt32Array(554948861) index="9" unique_id=759259779]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13.999, 6.5, 16)
+render_priority = 1
+outline_render_priority = 0
+text = "WASD → Move"
+font = SubResource("SystemFont_x42e6")
+font_size = 50
+outline_size = 15
+
+[node name="GamepadTutorial2" type="Label3D" parent="World" parent_id_path=PackedInt32Array(554948861) index="10" unique_id=764851299]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13.999, 6.5, 16)
+render_priority = 1
+outline_render_priority = 0
+text = "     → Move"
+font = SubResource("SystemFont_x42e6")
+font_size = 50
+outline_size = 15
+
+[node name="Sprite3D" type="Sprite3D" parent="World/GamepadTutorial2" index="0" unique_id=2117595231]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.47258472, 0, -5.722046e-06)
+pixel_size = 0.004
+texture = ExtResource("6_8gu5g")
+
+[node name="KMTutorial3" type="Label3D" parent="World" parent_id_path=PackedInt32Array(554948861) index="11" unique_id=1584007797]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -8.001, 6.5, 16)
+render_priority = 1
+outline_render_priority = 0
+text = "Space → Jump"
+font = SubResource("SystemFont_x42e6")
+font_size = 50
+outline_size = 15
+
+[node name="GamepadTutorial3" type="Label3D" parent="World" parent_id_path=PackedInt32Array(554948861) index="12" unique_id=410613296]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -8.001, 6.5, 16)
+render_priority = 1
+outline_render_priority = 0
+text = "      → Jump"
+font = SubResource("SystemFont_x42e6")
+font_size = 50
+outline_size = 15
+
+[node name="Sprite3D" type="Sprite3D" parent="World/GamepadTutorial3" index="0" unique_id=1876720990]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.47258472, 0, -5.722046e-06)
+pixel_size = 0.004
+texture = ExtResource("7_625t8")
+
+[node name="Tutorial4" type="Label3D" parent="World" parent_id_path=PackedInt32Array(554948861) index="13" unique_id=398051582]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 5.2465205, 6.001)
+render_priority = 1
+outline_render_priority = 0
+text = "Get to the goal."
+font = SubResource("SystemFont_x42e6")
+font_size = 50
+outline_size = 15
+
+[node name="KMTutorial5" type="Label3D" parent="World" parent_id_path=PackedInt32Array(554948861) index="14" unique_id=176611812]
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, -11, 8.5, -1.999)
+render_priority = 1
+outline_render_priority = 0
+text = "Q → Branch
+But not yet."
+font = SubResource("SystemFont_x42e6")
+font_size = 50
+outline_size = 15
+
+[node name="GamepadTutorial5" type="Label3D" parent="World" parent_id_path=PackedInt32Array(554948861) index="15" unique_id=994609950]
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, -11, 8.5, -1.999)
+render_priority = 1
+outline_render_priority = 0
+text = "  → Branch
+But not yet."
+font = SubResource("SystemFont_x42e6")
+font_size = 50
+outline_size = 15
+
+[node name="Sprite3D" type="Sprite3D" parent="World/GamepadTutorial5" index="0" unique_id=797694678]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6183872, 0.14373112, -5.722046e-06)
+pixel_size = 0.003
+texture = ExtResource("8_8hwef")
+
+[node name="KMTutorial6" type="Label3D" parent="World" parent_id_path=PackedInt32Array(554948861) index="16" unique_id=1232722708]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13.999001, 2.5, 1)
+render_priority = 1
+outline_render_priority = 0
+text = "The past is never final.
+
+F → Pause
+A / D → Scrub Timeline"
+font = SubResource("SystemFont_x42e6")
+font_size = 50
+outline_size = 15
+autowrap_trim_flags = 64
+
+[node name="GamepadTutorial6" type="Label3D" parent="World" parent_id_path=PackedInt32Array(554948861) index="17" unique_id=919359461]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13.999001, 2.5, 1)
+render_priority = 1
+outline_render_priority = 0
+text = "The past is never final.
+
+  → Pause
+  /   → Scrub Timeline"
+font = SubResource("SystemFont_x42e6")
+font_size = 50
+outline_size = 15
+autowrap_trim_flags = 0
+
+[node name="Sprite3D" type="Sprite3D" parent="World/GamepadTutorial6" index="0" unique_id=816935079]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.550889, -0.12478542, -5.722046e-06)
+pixel_size = 0.003
+texture = ExtResource("9_sk3fw")
+
+[node name="Sprite3D2" type="Sprite3D" parent="World/GamepadTutorial6" index="1" unique_id=222198715]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4415573, -0.35011196, -5.722046e-06)
+pixel_size = 0.003
+texture = ExtResource("10_ytkkp")
+
+[node name="Sprite3D3" type="Sprite3D" parent="World/GamepadTutorial6" index="2" unique_id=1782171765]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.90112305, -0.35011196, -5.722046e-06)
+pixel_size = 0.003
+texture = ExtResource("11_h25j0")

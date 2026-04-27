@@ -3,9 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://2xxbqo8hbifw" path="res://assets/models/level_components/lever/lever.glb" id="1_7rqxw"]
 [ext_resource type="Script" uid="uid://v7ax8o7606lf" path="res://scripts/level_components/Lever.gd" id="2_bsmy2"]
 [ext_resource type="Material" uid="uid://d353brxs70bnx" path="res://assets/materials/cel_shading/cel_shading.tres" id="2_vv8ox"]
+[ext_resource type="AudioStream" uid="uid://cfv18no0s1cg8" path="res://assets/audio/sfx/lever.mp3" id="4_s6hr8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vv8ox"]
-size = Vector3(0.84, 0.5, 0.84)
+size = Vector3(0.84, 0.24707031, 0.84)
 
 [sub_resource type="Animation" id="Animation_bsmy2"]
 length = 0.001
@@ -79,6 +80,21 @@ tracks/2/keys = {
 "points": PackedFloat32Array(0, -0.25, 0, 0.1, 0, 1, -0.1, 0, 0, 0),
 "times": PackedFloat32Array(0, 0.5)
 }
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer3D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_s6hr8")
+}],
+"times": PackedFloat32Array(0.06666667)
+}
+tracks/3/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_efc24"]
 _data = {
@@ -90,19 +106,22 @@ _data = {
 script = ExtResource("2_bsmy2")
 interactable = true
 
-[node name="LeverBase" parent="." index="0" unique_id=294089542]
+[node name="LeverBase" parent="." index="0" unique_id=778131986]
 instance_shader_parameters/color = Color(0.8891468, 0.8891468, 0.88914675, 1)
 surface_material_override/0 = ExtResource("2_vv8ox")
 
-[node name="Lever" parent="." index="1" unique_id=126551393]
+[node name="Lever" parent="." index="1" unique_id=547546289]
 transform = Transform3D(1, 0, 0, 0, 0.6156615, 0.7880107, 0, -0.7880107, 0.6156615, 0, 0.057039, 0)
 instance_shader_parameters/color = Color(1, 0, 0, 1)
 instance_shader_parameters/emission = 3.0
 surface_material_override/0 = ExtResource("2_vv8ox")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2" unique_id=918611086]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.123535156, 0)
 shape = SubResource("BoxShape3D_vv8ox")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3" unique_id=1038618350]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="3" unique_id=1780459734]
+bus = &"WorldSFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4" unique_id=1038618350]
 libraries/ = SubResource("AnimationLibrary_efc24")

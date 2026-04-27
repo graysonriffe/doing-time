@@ -22,6 +22,7 @@ volume_db = -8.0
 [node name="NoBranchZoneSFXPlayer" type="AudioStreamPlayer" parent="Audio" unique_id=217125702]
 stream = ExtResource("3_i8lm2")
 volume_db = -15.0
+bus = &"WorldSFX"
 
 [node name="WinSFXPlayer" type="AudioStreamPlayer" parent="Audio" unique_id=423431351]
 stream = ExtResource("3_i8lm2")

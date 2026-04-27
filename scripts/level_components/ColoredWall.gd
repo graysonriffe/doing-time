@@ -18,7 +18,6 @@ const COLOR_COLLISION_LAYERS: Dictionary[WallColor, int] = {
 @export var color: WallColor:
     set(value):
         color = value
-        print("hello")
         _update()
 
 

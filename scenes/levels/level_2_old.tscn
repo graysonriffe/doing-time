@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cuxkc1h24rs01"]
+
+[ext_resource type="PackedScene" uid="uid://ca08rf6sfv4gl" path="res://scenes/levels/level_template.tscn" id="1_j2425"]
+
+[node name="Level2" unique_id=1254966120 instance=ExtResource("1_j2425")]
+
+[node name="GridMap" parent="World" parent_id_path=PackedInt32Array(554948861) index="1" unique_id=1447304026]
+data = {
+"cells": PackedInt32Array(65534, 65533, 8)
+}

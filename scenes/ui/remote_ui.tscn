@@ -242,6 +242,7 @@ layout_mode = 2
 
 [node name="MainPlayButton" type="Button" parent="MainMenu/MainMenuMargin/MainMenuVBox" unique_id=1385226293]
 layout_mode = 2
+focus_neighbor_top = NodePath("../MainQuitButton")
 theme_override_font_sizes/font_size = 100
 text = "Play"
 
@@ -257,6 +258,7 @@ text = "Credits"
 
 [node name="MainQuitButton" type="Button" parent="MainMenu/MainMenuMargin/MainMenuVBox" unique_id=1386404054]
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../MainPlayButton")
 theme_override_font_sizes/font_size = 100
 text = "Quit"
 
@@ -437,10 +439,12 @@ layout_mode = 2
 
 [node name="PauseSettingsButton" type="Button" parent="PauseMenu/PauseMenuMargin/PauseMenuVBox" unique_id=177440470]
 layout_mode = 2
+focus_neighbor_top = NodePath("../PauseExitButton")
 theme_override_font_sizes/font_size = 100
 text = "Settings"
 
 [node name="PauseExitButton" type="Button" parent="PauseMenu/PauseMenuMargin/PauseMenuVBox" unique_id=1746437643]
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../PauseSettingsButton")
 theme_override_font_sizes/font_size = 100
 text = "Exit"
