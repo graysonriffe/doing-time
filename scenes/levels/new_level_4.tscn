@@ -1,0 +1,176 @@
+[gd_scene format=3 uid="uid://c3mf7ntvggloc"]
+
+[ext_resource type="PackedScene" uid="uid://ca08rf6sfv4gl" path="res://scenes/levels/level_template.tscn" id="1_ggdl6"]
+[ext_resource type="PackedScene" uid="uid://dqt20bav1urf8" path="res://scenes/level_components/weight_button.tscn" id="2_psrgs"]
+[ext_resource type="Material" uid="uid://cjgmwi4bxpjhq" path="res://assets/materials/hex_grate/hex_grate.tres" id="3_iuyql"]
+[ext_resource type="PackedScene" uid="uid://c2oilcemslf1l" path="res://scenes/level_components/door.tscn" id="4_n6e17"]
+[ext_resource type="Texture2D" uid="uid://3rhuddx76bmo" path="res://assets/textures/gamepad_left_stick.png" id="5_4vnct"]
+
+[sub_resource type="SystemFont" id="SystemFont_6761a"]
+font_names = PackedStringArray("Consolas")
+
+[node name="LevelTemplate" unique_id=1254966120 instance=ExtResource("1_ggdl6")]
+
+[node name="PlayerStart" parent="." index="2" unique_id=1770252819]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18)
+
+[node name="Goal" parent="." index="3" unique_id=823588948]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 12, -10)
+
+[node name="OmniLight3D" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="0" unique_id=1834058416]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17, 0)
+
+[node name="OmniLight3D13" type="OmniLight3D" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="1" unique_id=1853728915]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 16, -8)
+light_color = Color(0.8580337, 0.8394728, 0.7892842, 1)
+light_energy = 44.627
+shadow_enabled = true
+omni_range = 20.0
+omni_attenuation = 2.0
+
+[node name="OmniLight3D10" type="OmniLight3D" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="2" unique_id=1010804042]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17, 5)
+light_color = Color(0.8580337, 0.8394728, 0.7892842, 1)
+light_energy = 44.627
+shadow_enabled = true
+omni_range = 20.0
+omni_attenuation = 2.0
+
+[node name="OmniLight3D11" type="OmniLight3D" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="3" unique_id=2115665288]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17, 10)
+light_color = Color(0.8580337, 0.8394728, 0.7892842, 1)
+light_energy = 44.627
+shadow_enabled = true
+omni_range = 20.0
+omni_attenuation = 2.0
+
+[node name="OmniLight3D12" type="OmniLight3D" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="4" unique_id=761451314]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17, 15)
+light_color = Color(0.8580337, 0.8394728, 0.7892842, 1)
+light_energy = 44.627
+shadow_enabled = true
+omni_range = 20.0
+omni_attenuation = 2.0
+
+[node name="OmniLight3D2" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="5" unique_id=593210828]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 8, 5)
+
+[node name="OmniLight3D3" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="6" unique_id=266228197]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 8, 0)
+
+[node name="OmniLight3D4" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="7" unique_id=657344719]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 8, 5)
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="8" unique_id=313198177]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3, 18)
+light_color = Color(0.8580337, 0.8394728, 0.7892842, 1)
+light_energy = 16.0
+omni_range = 20.0
+omni_attenuation = 2.0
+
+[node name="OmniLight3D7" type="OmniLight3D" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="9" unique_id=1544381658]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3, 18)
+light_color = Color(0.8580337, 0.8394728, 0.7892842, 1)
+light_energy = 16.0
+omni_range = 20.0
+omni_attenuation = 2.0
+
+[node name="OmniLight3D8" type="OmniLight3D" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="10" unique_id=31756537]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 11, 11)
+light_color = Color(0.8580337, 0.8394728, 0.7892842, 1)
+light_energy = 44.627
+shadow_enabled = true
+omni_range = 20.0
+omni_attenuation = 2.0
+
+[node name="OmniLight3D9" type="OmniLight3D" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="11" unique_id=1348878560]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 11, 11)
+light_color = Color(0.8580337, 0.8394728, 0.7892842, 1)
+light_energy = 44.627
+shadow_enabled = true
+omni_range = 20.0
+omni_attenuation = 2.0
+
+[node name="OmniLight3D5" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="12" unique_id=977711390]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 8, 0)
+
+[node name="WeightButton" parent="." index="5" unique_id=1910623683 instance=ExtResource("2_psrgs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 14)
+
+[node name="Wall1" parent="World/Room" parent_id_path=PackedInt32Array(1478904478) index="1" unique_id=127119137]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.25, 10, 0)
+size = Vector3(0.5, 20, 41)
+
+[node name="Wall2" parent="World/Room" parent_id_path=PackedInt32Array(1478904478) index="2" unique_id=1093076735]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.25, 10, 0)
+size = Vector3(0.5, 20, 41)
+
+[node name="Wall3" parent="World/Room" parent_id_path=PackedInt32Array(1478904478) index="3" unique_id=1161521888]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 10, 20.25)
+size = Vector3(0.5, 20, 40)
+
+[node name="Wall4" parent="World/Room" parent_id_path=PackedInt32Array(1478904478) index="4" unique_id=1033766136]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6.119594e-07, 10, -12.25)
+size = Vector3(0.5, 20, 40)
+
+[node name="Ceiling" parent="World/Room" parent_id_path=PackedInt32Array(1478904478) index="5" unique_id=613614166]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18, 0)
+
+[node name="GridMap" parent="World" parent_id_path=PackedInt32Array(554948861) index="1" unique_id=1447304026]
+data = {
+"cells": PackedInt32Array(196604, 6, 786432, 196605, 6, 786432, 196606, 6, 786432, 196607, 6, 786432, 131072, 6, 786432, 131073, 6, 786432, 131074, 6, 786432, 131075, 6, 786432, 131068, 6, 786432, 131069, 6, 786432, 131070, 6, 786432, 131071, 6, 786432, 65536, 6, 786432, 65537, 6, 786432, 65538, 6, 1376256, 65539, 6, 1376256, 327680, 65533, 1376256, 327680, 65534, 1310720, 393215, 65533, 1376256, 393215, 65534, 1310720, 2, 6, 1376256, 3, 6, 1376256, 65532, 6, 1376256, 65533, 6, 1376256, 2, 5, 1376256, 65538, 5, 1376256, 131074, 5, 1376256, 3, 5, 1376256, 65539, 5, 1376256, 131075, 5, 1376256, 65532, 5, 1376256, 131068, 5, 1376256, 196604, 5, 1376256, 65533, 5, 1376256, 131069, 5, 1376256, 196605, 5, 1376256, 2, 4, 1376256, 65538, 4, 1376256, 131074, 4, 1376256, 3, 4, 1376256, 65539, 4, 1376256, 131075, 4, 1376256, 65532, 4, 1376256, 131068, 4, 1376256, 196604, 4, 1376256, 65533, 4, 1376256, 131069, 4, 1376256, 196605, 4, 1376256, 4, 4, 851968, 65540, 4, 851968, 131076, 4, 851968, 65531, 4, 851968, 131067, 4, 851968, 196603, 4, 851968, 65531, 5, 851968, 131067, 5, 851968, 196603, 5, 851968, 393215, 6, 851968, 327680, 6, 851968, 65533, 7, 851968, 65533, 8, 851968, 65533, 9, 851968, 131069, 7, 851968, 131069, 8, 851968, 131069, 9, 851968, 196605, 7, 1245184, 196605, 8, 851968, 196605, 9, 851968, 2, 7, 851968, 2, 8, 851968, 2, 9, 851968, 65538, 7, 851968, 65538, 8, 851968, 65538, 9, 851968, 131074, 7, 851968, 131074, 8, 851968, 131074, 9, 851968, 262141, 8, 1245184, 262141, 9, 1179648, 262142, 8, 1245184, 262142, 9, 1179648, 196609, 8, 589824, 196609, 9, 1179648, 196610, 8, 1245184, 196610, 9, 1179648, 1, 4, 589824, 1, 5, 589824, 65537, 4, 589824, 65537, 5, 589824, 131073, 4, 589824, 131073, 5, 589824, 65534, 4, 1245184, 65534, 5, 1245184, 131070, 4, 1245184, 131070, 5, 1245184, 196606, 4, 1245184, 196606, 5, 1245184, 196604, 7, 1245184, 262140, 8, 1245184, 327676, 8, 1245184, 393212, 8, 1245184, 327677, 8, 1245184, 393213, 8, 1245184, 327678, 8, 1245184, 393214, 8, 1245184, 262142, 6, 1245184, 262142, 7, 1245184, 327678, 6, 1245184, 327678, 7, 1245184, 393214, 6, 1245184, 393214, 7, 1245184, 196609, 6, 1245184, 196609, 7, 1245184, 262145, 6, 1245184, 262145, 7, 1245184, 327681, 6, 1245184, 327681, 7, 1245184, 131075, 7, 1245184, 262146, 8, 1245184, 327682, 8, 1245184, 196611, 8, 1245184, 262147, 8, 1245184, 327683, 8, 1245184, 262145, 8, 1245184, 327681, 8, 1245184, 262140, 9, 1179648, 327676, 9, 1179648, 393212, 9, 1179648, 327677, 9, 1179648, 393213, 9, 1179648, 327678, 9, 1179648, 393214, 9, 1179648, 262145, 9, 1179648, 327681, 9, 1179648, 262146, 9, 1179648, 327682, 9, 1179648, 65534, 6, 1179648, 1, 6, 1179648, 196611, 9, 1179648, 262147, 9, 1179648, 327683, 9, 1179648, 393214, 65533, 1179648, 327681, 65533, 1179648, 458750, 65533, 1179648, 524286, 65533, 1179648, 393217, 65533, 1179648, 458753, 65533, 1179648, 589822, 65533, 1179648, 589823, 65533, 1179648, 524288, 65533, 1179648, 524289, 65533, 1179648, 393214, 65534, 1310720, 327681, 65534, 1310720, 327678, 65533, 458752, 327679, 65533, 458752, 262144, 65533, 458752, 262145, 65533, 458752, 262142, 65533, 458756, 262143, 65533, 458756, 196608, 65533, 458756, 196609, 65533, 458756, 262145, 65534, 458756, 262144, 65534, 458756, 327679, 65534, 458756, 327678, 65534, 458756, 196606, 7, 720896, 196606, 8, 720896, 196606, 9, 720896, 196607, 7, 720896, 196607, 8, 720896, 196607, 9, 720896, 131072, 7, 720896, 131072, 8, 720896, 131072, 9, 720896, 131073, 7, 720896, 131073, 8, 720896, 131073, 9, 720896, 393215, 7, 720896, 327680, 7, 720896, 458752, 65533, 6, 393216, 65533, 524294, 393215, 65532, 983040, 327680, 65532, 983040, 393214, 65532, 983040, 327681, 65532, 983040, 393213, 65532, 983040, 393217, 65532, 983040, 458753, 65532, 983040, 524289, 65532, 983040, 458749, 65532, 983040, 524285, 65532, 983040, 589821, 65532, 983040, 589821, 65531, 524288, 524285, 65531, 524288, 458749, 65531, 524288, 393213, 65531, 524288, 393211, 65532, 524288, 393214, 65531, 524288, 393215, 65531, 524288, 327680, 65531, 524288, 327681, 65531, 1310720, 393217, 65531, 1310720, 458753, 65531, 1310720, 524289, 65531, 1310720, 524289, 65530, 327680, 589821, 65530, 327680, 524285, 65530, 327680, 458753, 65530, 327680, 393217, 65530, 327680, 458749, 65530, 327680, 393213, 65530, 327680, 327681, 65530, 327680, 327680, 65530, 327680, 393215, 65530, 327680, 393214, 65530, 327680, 65535, 65532, 983040, 0, 65532, 983040, 1, 65532, 983040, 65532, 65532, 983040, 131068, 65532, 983040, 196604, 65532, 983040, 262140, 65532, 983040, 327676, 65532, 983040, 393212, 65532, 983040, 458748, 65532, 983040, 65533, 65532, 983040, 131069, 65532, 983040, 196605, 65532, 983040, 262141, 65532, 983040, 327677, 65532, 983040, 65534, 65532, 983040, 131070, 65532, 983040, 196606, 65532, 983040, 262142, 65532, 983040, 327678, 65532, 983040, 131071, 65532, 983040, 196607, 65532, 983040, 262143, 65532, 983040, 327679, 65532, 983040, 65536, 65532, 983040, 131072, 65532, 983040, 196608, 65532, 983040, 262144, 65532, 983040, 65537, 65532, 983040, 131073, 65532, 983040, 196609, 65532, 983040, 262145, 65532, 983040, 2, 65532, 983040, 65538, 65532, 983040, 131074, 65532, 983040, 196610, 65532, 983040, 262146, 65532, 983040, 327682, 65532, 983040, 393218, 65532, 983040, 3, 65532, 983040, 65539, 65532, 983040, 131075, 65532, 983040, 196611, 65532, 983040, 262147, 65532, 983040, 327683, 65532, 983040, 393219, 65532, 983040, 524284, 65532, 983040, 589820, 65532, 983040, 458754, 65532, 983040, 524290, 65532, 983040, 458755, 65532, 983040, 524291, 65532, 983040, 458749, 65533, 983040, 458748, 65533, 983040, 524285, 65533, 983040, 524284, 65533, 983040, 589821, 65533, 983040, 589820, 65533, 983040, 393218, 65533, 983040, 393219, 65533, 983040, 458755, 65533, 983040, 458754, 65533, 983040, 524290, 65533, 983040, 524291, 65533, 983040)
+}
+metadata/_editor_floor_ = Vector3(-1, 2, -3)
+
+[node name="Grate1" type="CSGBox3D" parent="World" parent_id_path=PackedInt32Array(554948861) index="2" unique_id=937314649]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 5)
+use_collision = true
+size = Vector3(4, 0, 14)
+material = ExtResource("3_iuyql")
+
+[node name="Grate2" type="CSGBox3D" parent="World" parent_id_path=PackedInt32Array(554948861) index="3" unique_id=866354792]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 12)
+use_collision = true
+size = Vector3(4, 4, 0)
+material = ExtResource("3_iuyql")
+
+[node name="ExitDoor" parent="World" parent_id_path=PackedInt32Array(554948861) index="4" unique_id=712969499 node_paths=PackedStringArray("activators") instance=ExtResource("4_n6e17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 12, -5)
+activators = [NodePath("../../WeightButton")]
+
+[node name="KMTutorial1" type="Label3D" parent="World" parent_id_path=PackedInt32Array(554948861) index="5" unique_id=2107086070]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 14.000999)
+render_priority = 1
+outline_render_priority = 0
+text = "Hold CTRL → Crouch"
+font = SubResource("SystemFont_6761a")
+font_size = 50
+outline_size = 15
+autowrap_trim_flags = 64
+
+[node name="GamepadTutorial1" type="Label3D" parent="World" parent_id_path=PackedInt32Array(554948861) index="6" unique_id=241914977]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 14.000999)
+render_priority = 1
+outline_render_priority = 0
+text = "Hold      → Crouch"
+font = SubResource("SystemFont_6761a")
+font_size = 50
+outline_size = 15
+autowrap_trim_flags = 64
+
+[node name="Sprite3D" type="Sprite3D" parent="World/GamepadTutorial1" index="0" unique_id=1518623116]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28012973, 0, -5.722046e-06)
+pixel_size = 0.004
+texture = ExtResource("5_4vnct")
+
+[node name="Tutorial2" type="Label3D" parent="World" parent_id_path=PackedInt32Array(554948861) index="7" unique_id=1930531624]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -5.999)
+render_priority = 1
+outline_render_priority = 0
+text = "What happens when a clone
+uncrouches with
+another clone on top?"
+font = SubResource("SystemFont_6761a")
+font_size = 50
+outline_size = 15
+autowrap_trim_flags = 64

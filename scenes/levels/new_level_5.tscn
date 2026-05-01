@@ -1,0 +1,199 @@
+[gd_scene format=3 uid="uid://c8k36ggpd4pna"]
+
+[ext_resource type="PackedScene" uid="uid://ca08rf6sfv4gl" path="res://scenes/levels/level_template.tscn" id="1_73lr5"]
+[ext_resource type="Material" uid="uid://ychntj2cs7nm" path="res://assets/materials/metal_panels/metal_panels.tres" id="2_7506k"]
+[ext_resource type="PackedScene" uid="uid://c2oilcemslf1l" path="res://scenes/level_components/door.tscn" id="2_iniqp"]
+[ext_resource type="PackedScene" uid="uid://cotbrqkiy4tru" path="res://scenes/level_components/colored_wall.tscn" id="4_lb4ow"]
+[ext_resource type="PackedScene" uid="uid://bsiew2uhh705e" path="res://scenes/level_components/lever.tscn" id="5_lrsad"]
+[ext_resource type="PackedScene" uid="uid://dqt20bav1urf8" path="res://scenes/level_components/weight_button.tscn" id="6_pvs68"]
+[ext_resource type="PackedScene" uid="uid://dqh7qjcvou74b" path="res://scenes/level_components/no_branch_zone.tscn" id="7_maiqb"]
+
+[sub_resource type="SystemFont" id="SystemFont_qytek"]
+font_names = PackedStringArray("Consolas")
+
+[node name="LevelTemplate" unique_id=1254966120 instance=ExtResource("1_73lr5")]
+
+[node name="PlayerStart" parent="." index="2" unique_id=1770252819]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 12)
+
+[node name="Goal" parent="." index="3" unique_id=823588948]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -24)
+
+[node name="OmniLight3D" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="0" unique_id=1834058416]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 12)
+light_energy = 20.0
+shadow_enabled = false
+omni_range = 2.0
+
+[node name="OmniLight3D2" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="1" unique_id=593210828]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 4, -16)
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="2" unique_id=1122796143]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -24)
+light_color = Color(0.8580337, 0.8394728, 0.7892842, 1)
+light_energy = 44.627
+shadow_enabled = true
+omni_range = 20.0
+omni_attenuation = 2.0
+
+[node name="OmniLight3D3" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="3" unique_id=266228197]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 5, 10)
+
+[node name="OmniLight3D4" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="4" unique_id=657344719]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 5, 10)
+
+[node name="OmniLight3D9" type="OmniLight3D" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="5" unique_id=874979714]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 5, 5)
+light_color = Color(0.8580337, 0.8394728, 0.7892842, 1)
+light_energy = 44.627
+shadow_enabled = true
+omni_range = 20.0
+omni_attenuation = 2.0
+
+[node name="OmniLight3D10" type="OmniLight3D" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="6" unique_id=194414940]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 5, 5)
+light_color = Color(0.8580337, 0.8394728, 0.7892842, 1)
+light_energy = 44.627
+shadow_enabled = true
+omni_range = 20.0
+omni_attenuation = 2.0
+
+[node name="OmniLight3D7" type="OmniLight3D" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="7" unique_id=1138433164]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 5, 17)
+light_color = Color(0.8580337, 0.8394728, 0.7892842, 1)
+light_energy = 44.627
+shadow_enabled = true
+omni_range = 20.0
+omni_attenuation = 2.0
+
+[node name="OmniLight3D8" type="OmniLight3D" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="8" unique_id=985809328]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 5, 17)
+light_color = Color(0.8580337, 0.8394728, 0.7892842, 1)
+light_energy = 44.627
+shadow_enabled = true
+omni_range = 20.0
+omni_attenuation = 2.0
+
+[node name="OmniLight3D5" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="9" unique_id=977711390]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 4, -16)
+
+[node name="OmniLight3D11" type="OmniLight3D" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="10" unique_id=838356362]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 4, -6)
+light_color = Color(0.8580337, 0.8394728, 0.7892842, 1)
+light_energy = 44.627
+shadow_enabled = true
+omni_range = 20.0
+omni_attenuation = 2.0
+
+[node name="OmniLight3D12" type="OmniLight3D" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="11" unique_id=228187381]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 4, -6)
+light_color = Color(0.8580337, 0.8394728, 0.7892842, 1)
+light_energy = 44.627
+shadow_enabled = true
+omni_range = 20.0
+omni_attenuation = 2.0
+
+[node name="Floor" parent="World/Room" parent_id_path=PackedInt32Array(1478904478) index="0" unique_id=464194791]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, -4)
+size = Vector3(41, 0.5, 49)
+
+[node name="Wall1" parent="World/Room" parent_id_path=PackedInt32Array(1478904478) index="1" unique_id=127119137]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.25, 5, -4)
+size = Vector3(0.5, 10, 49)
+
+[node name="Wall2" parent="World/Room" parent_id_path=PackedInt32Array(1478904478) index="2" unique_id=1093076735]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.25, 5, -4)
+size = Vector3(0.5, 10, 49)
+
+[node name="Wall3" parent="World/Room" parent_id_path=PackedInt32Array(1478904478) index="3" unique_id=1161521888]
+size = Vector3(0.5, 10, 16)
+
+[node name="Wall4" parent="World/Room" parent_id_path=PackedInt32Array(1478904478) index="4" unique_id=1033766136]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 5, -26.25)
+size = Vector3(0.5, 10, 16)
+
+[node name="Ceiling" parent="World/Room" parent_id_path=PackedInt32Array(1478904478) index="5" unique_id=613614166]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.25, -4)
+size = Vector3(41, 0.5, 49)
+material = ExtResource("2_7506k")
+
+[node name="Door" parent="World/Room" parent_id_path=PackedInt32Array(1478904478) index="6" unique_id=712969499 node_paths=PackedStringArray("activators") instance=ExtResource("2_iniqp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+activators = [NodePath("../Lever")]
+
+[node name="ColoredWall" parent="World/Room" parent_id_path=PackedInt32Array(1478904478) index="7" unique_id=1483795033 instance=ExtResource("4_lb4ow")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 15)
+
+[node name="ColoredWall2" parent="World/Room" parent_id_path=PackedInt32Array(1478904478) index="8" unique_id=1895940121 instance=ExtResource("4_lb4ow")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 9)
+
+[node name="ColoredWall3" parent="World/Room" parent_id_path=PackedInt32Array(1478904478) index="9" unique_id=1227390965 instance=ExtResource("4_lb4ow")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3, 4, 12)
+
+[node name="ColoredWall4" parent="World/Room" parent_id_path=PackedInt32Array(1478904478) index="10" unique_id=1956001534 instance=ExtResource("4_lb4ow")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3, 4, 12)
+
+[node name="ColoredWall5" parent="World/Room" parent_id_path=PackedInt32Array(1478904478) index="11" unique_id=1725487833 instance=ExtResource("4_lb4ow")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -7)
+instance_shader_parameters/color = Color(1, 1, 0, 1)
+collision_layer = 32
+size = Vector3(8, 6, 0)
+color = 1
+
+[node name="ColoredWall6" parent="World/Room" parent_id_path=PackedInt32Array(1478904478) index="12" unique_id=1082895477 instance=ExtResource("4_lb4ow")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -15)
+instance_shader_parameters/color = Color(1, 1, 0, 1)
+collision_layer = 32
+size = Vector3(8, 6, 0)
+color = 1
+
+[node name="ColoredWall7" parent="World/Room" parent_id_path=PackedInt32Array(1478904478) index="13" unique_id=1192807717 instance=ExtResource("4_lb4ow")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4, 3, -11)
+instance_shader_parameters/color = Color(1, 1, 0, 1)
+collision_layer = 32
+size = Vector3(8, 6, 0)
+color = 1
+
+[node name="ColoredWall8" parent="World/Room" parent_id_path=PackedInt32Array(1478904478) index="14" unique_id=2083494245 instance=ExtResource("4_lb4ow")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4, 3, -11)
+instance_shader_parameters/color = Color(1, 1, 0, 1)
+collision_layer = 32
+size = Vector3(8, 6, 0)
+color = 1
+
+[node name="Lever" parent="World/Room" parent_id_path=PackedInt32Array(1478904478) index="15" unique_id=470289266 instance=ExtResource("5_lrsad")]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, -1, 0, 1, 2.9802322e-08, 3, 2, 0)
+
+[node name="Tutorial1" type="Label3D" parent="World/Room" parent_id_path=PackedInt32Array(1478904478) index="16" unique_id=2138467691]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2.5, 0.0010000467)
+render_priority = 1
+outline_render_priority = 0
+text = "Each clone can create
+2 more clones.
+
+Each ☺ in the remote
+represents another
+clone you can create."
+font = SubResource("SystemFont_qytek")
+font_size = 50
+outline_size = 15
+autowrap_trim_flags = 64
+
+[node name="WeightButton" parent="World/Room" parent_id_path=PackedInt32Array(1478904478) index="17" unique_id=1910623683 instance=ExtResource("6_pvs68")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -11)
+
+[node name="WeightButton2" parent="World/Room" parent_id_path=PackedInt32Array(1478904478) index="18" unique_id=335453883 instance=ExtResource("6_pvs68")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -11)
+
+[node name="GridMap" parent="World" parent_id_path=PackedInt32Array(554948861) index="1" unique_id=1447304026]
+data = {
+"cells": PackedInt32Array(65534, 4, 0, 65534, 5, 0, 65534, 6, 0, 65534, 7, 0, 65535, 4, 0, 65535, 5, 0, 65535, 6, 0, 65535, 7, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 1, 4, 0, 1, 5, 0, 1, 6, 0, 1, 7, 0, 65532, 65535, 0, 131068, 65535, 0, 196604, 65535, 0, 262140, 65535, 0, 327676, 65535, 0, 65533, 65535, 0, 131069, 65535, 0, 196605, 65535, 0, 262141, 65535, 0, 327677, 65535, 0, 65534, 65535, 0, 131070, 65535, 0, 196606, 65535, 0, 262142, 65535, 0, 327678, 65535, 0, 196607, 65535, 0, 262143, 65535, 0, 327679, 65535, 0, 131072, 65535, 0, 196608, 65535, 0, 262144, 65535, 0, 1, 65535, 0, 65537, 65535, 0, 131073, 65535, 0, 196609, 65535, 0, 262145, 65535, 0, 2, 65535, 0, 65538, 65535, 0, 131074, 65535, 0, 196610, 65535, 0, 262146, 65535, 0, 3, 65535, 0, 65539, 65535, 0, 131075, 65535, 0, 196611, 65535, 0, 262147, 65535, 0, 65536, 65535, 6, 0, 65535, 524294, 262142, 4, 524288, 262142, 5, 524288, 262142, 6, 524288, 262142, 7, 524288, 262143, 4, 524288, 262143, 5, 524288, 262143, 6, 524288, 262143, 7, 524288, 196608, 4, 524288, 196608, 5, 524288, 196608, 6, 524288, 196608, 7, 524288, 196609, 4, 524288, 196609, 5, 524288, 196609, 6, 524288, 196609, 7, 524288, 1, 3, 851972, 0, 3, 851972, 65535, 3, 851972, 65534, 3, 851972, 2, 7, 589828, 2, 6, 589828, 2, 5, 589828, 2, 4, 589828, 65534, 8, 327684, 65535, 8, 327684, 0, 8, 327684, 1, 8, 327684, 65533, 4, 65540, 65533, 5, 65540, 65533, 6, 65540, 65533, 7, 65540, 65532, 65525, 65536, 131068, 65525, 65536, 196604, 65525, 65536, 65533, 65525, 65536, 131069, 65525, 65536, 196605, 65525, 65536, 65534, 65525, 65536, 131070, 65525, 65536, 196606, 65525, 65536, 196607, 65525, 65536, 131072, 65525, 65536, 1, 65525, 65536, 65537, 65525, 65536, 131073, 65525, 65536, 2, 65525, 65536, 65538, 65525, 65536, 131074, 65525, 65536, 3, 65525, 65536, 65539, 65525, 65536, 131075, 65525, 65536, 65533, 65522, 65536, 65533, 65523, 65536, 65533, 65524, 65536, 131069, 65522, 65536, 131069, 65523, 65536, 131069, 65524, 65536, 196605, 65522, 65536, 196605, 65523, 65536, 196605, 65524, 65536, 2, 65522, 65536, 65538, 65522, 65536, 131074, 65522, 65536, 1, 65523, 65536, 1, 65524, 65536, 65537, 65523, 65536, 65537, 65524, 65536, 131073, 65523, 65536, 131073, 65524, 65536, 0, 65525, 524294, 65536, 65525, 6)
+}
+metadata/_editor_floor_ = Vector3(1, 0, -11)
+
+[node name="NoBranchZone" parent="World" parent_id_path=PackedInt32Array(554948861) index="2" unique_id=1166222031 instance=ExtResource("7_maiqb")]
+transform = Transform3D(8, 0, 0, 0, 5.999, 0, 0, 0, 8, 0, 3, -11)
+
+[node name="Door" parent="World" parent_id_path=PackedInt32Array(554948861) index="3" unique_id=692423318 node_paths=PackedStringArray("activators") instance=ExtResource("2_iniqp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -21)
+activators = [NodePath("../Room/WeightButton"), NodePath("../Room/WeightButton2")]

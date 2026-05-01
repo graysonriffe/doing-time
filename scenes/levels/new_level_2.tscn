@@ -1,0 +1,148 @@
+[gd_scene format=3 uid="uid://h6gadwijtvfv"]
+
+[ext_resource type="PackedScene" uid="uid://ca08rf6sfv4gl" path="res://scenes/levels/level_template.tscn" id="1_fyiey"]
+[ext_resource type="PackedScene" uid="uid://dqt20bav1urf8" path="res://scenes/level_components/weight_button.tscn" id="2_viois"]
+[ext_resource type="PackedScene" uid="uid://c2oilcemslf1l" path="res://scenes/level_components/door.tscn" id="3_52vdq"]
+[ext_resource type="Texture2D" uid="uid://d2ve2ume1eqcp" path="res://assets/textures/gamepad_button_right.png" id="4_oww6w"]
+[ext_resource type="Texture2D" uid="uid://b6v1pefmln3gq" path="res://assets/textures/gamepad_button_left.png" id="5_kfv2w"]
+
+[sub_resource type="SystemFont" id="SystemFont_ve3cu"]
+font_names = PackedStringArray("Consolas")
+
+[sub_resource type="SystemFont" id="SystemFont_vg6ql"]
+font_names = PackedStringArray("Consolas")
+
+[sub_resource type="SystemFont" id="SystemFont_7lg0g"]
+font_names = PackedStringArray("Consolas")
+
+[node name="LevelTemplate" unique_id=1254966120 instance=ExtResource("1_fyiey")]
+
+[node name="PlayerStart" parent="." index="2" unique_id=1770252819]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11)
+
+[node name="Goal" parent="." index="3" unique_id=823588948]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -4)
+
+[node name="OmniLight3D" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="0" unique_id=1834058416]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4666448, 5)
+visible = false
+light_energy = 20.0
+
+[node name="OmniLight3D3" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="2" unique_id=266228197]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7478752, 3.4666448, 12.543691)
+light_energy = 20.0
+
+[node name="OmniLight3D4" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="3" unique_id=657344719]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2384071, 3.4666448, 12.543691)
+light_energy = 20.0
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="4" unique_id=2086186042]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7478752, 3.4666448, 3.5436907)
+light_color = Color(0.8580337, 0.8394728, 0.7892842, 1)
+light_energy = 20.0
+shadow_enabled = true
+omni_range = 20.0
+omni_attenuation = 2.0
+
+[node name="OmniLight3D7" type="OmniLight3D" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="5" unique_id=1455306092]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2384071, 3.4666448, 3.5436907)
+light_color = Color(0.8580337, 0.8394728, 0.7892842, 1)
+light_energy = 20.0
+shadow_enabled = true
+omni_range = 20.0
+omni_attenuation = 2.0
+
+[node name="OmniLight3D5" parent="Lights" parent_id_path=PackedInt32Array(2107385631) index="6" unique_id=977711390]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.59314346, 4.466645, -3.7399511)
+light_energy = 20.0
+
+[node name="WeightButton" parent="." index="5" unique_id=1910623683 instance=ExtResource("2_viois")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+
+[node name="Door" parent="." index="6" unique_id=712969499 node_paths=PackedStringArray("activators") instance=ExtResource("3_52vdq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+activators = [NodePath("../WeightButton")]
+
+[node name="Wall1" parent="World/Room" parent_id_path=PackedInt32Array(1478904478) index="1" unique_id=127119137]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.25, 5, 0)
+
+[node name="Wall2" parent="World/Room" parent_id_path=PackedInt32Array(1478904478) index="2" unique_id=1093076735]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.25, 5, 9.5)
+size = Vector3(0.5, 10, 22)
+
+[node name="Wall3" parent="World/Room" parent_id_path=PackedInt32Array(1478904478) index="3" unique_id=1161521888]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 5, 16.25)
+
+[node name="Wall4" parent="World/Room" parent_id_path=PackedInt32Array(1478904478) index="4" unique_id=1033766136]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 5, -6.25)
+
+[node name="Ceiling" parent="World/Room" parent_id_path=PackedInt32Array(1478904478) index="5" unique_id=613614166]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.25, 0)
+
+[node name="GridMap" parent="World" parent_id_path=PackedInt32Array(554948861) index="1" unique_id=1447304026]
+data = {
+"cells": PackedInt32Array(65534, 65532, 655360, 65534, 65535, 589824, 131070, 65532, 655360, 131070, 65535, 589824, 196606, 65532, 655360, 196606, 65535, 589824, 2, 65531, 589824, 65538, 65531, 589824, 131074, 65531, 589824, 65534, 65531, 589824, 131070, 65531, 589824, 196606, 65531, 589824, 65535, 65531, 589824, 131071, 65531, 589824, 196607, 65531, 589824, 0, 65531, 589824, 65536, 65531, 589824, 131072, 65531, 589824, 1, 65531, 589824, 65537, 65531, 589824, 131073, 65531, 589824, 65532, 65535, 589824, 131068, 65535, 589824, 196604, 65535, 589824, 65533, 65535, 589824, 131069, 65535, 589824, 196605, 65535, 589824, 196607, 65535, 589824, 0, 65535, 524294, 65536, 65535, 6, 131072, 65535, 589824, 1, 65535, 589824, 65537, 65535, 589824, 131073, 65535, 589824, 2, 65535, 589824, 65538, 65535, 589824, 131074, 65535, 589824, 3, 65535, 589824, 65539, 65535, 589824, 131075, 65535, 589824, 3, 65532, 524288, 65539, 65532, 524288, 131075, 65532, 524288, 4, 65532, 524288, 65540, 65532, 524288, 131076, 65532, 524288, 5, 65532, 524288, 65541, 65532, 524288, 131077, 65532, 524288, 65533, 65533, 524288, 65533, 65534, 524288, 131069, 65533, 524288, 131069, 65534, 524288, 196605, 65533, 524288, 196605, 65534, 524288, 4, 65533, 524288, 4, 65534, 524288, 65540, 65533, 524288, 65540, 65534, 524288, 131076, 65533, 524288, 131076, 65534, 524288, 1, 65533, 196608, 1, 65534, 196608, 65537, 65533, 196608, 65537, 65534, 196608, 131073, 65533, 196608, 131073, 65534, 196608)
+}
+metadata/_editor_floor_ = Vector3(1, 0, -4)
+
+[node name="Tutorial1" type="Label3D" parent="World" parent_id_path=PackedInt32Array(554948861) index="2" unique_id=1093197336]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3, 2.5, 15.999001)
+render_priority = 1
+outline_render_priority = 0
+text = "Branch from the timeline.
+
+Create a new you.
+"
+font = SubResource("SystemFont_ve3cu")
+font_size = 50
+outline_size = 15
+autowrap_trim_flags = 0
+
+[node name="KMTutorial2" type="Label3D" parent="World" parent_id_path=PackedInt32Array(554948861) index="3" unique_id=857902566]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2, 2.5, 15.999)
+render_priority = 1
+outline_render_priority = 0
+text = "F → Pause
+
+Q → Branch"
+font = SubResource("SystemFont_vg6ql")
+font_size = 50
+outline_size = 15
+horizontal_alignment = 0
+autowrap_trim_flags = 0
+
+[node name="GamepadTutorial2" type="Label3D" parent="World" parent_id_path=PackedInt32Array(554948861) index="4" unique_id=716912347]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2, 2.5, 15.999)
+render_priority = 1
+outline_render_priority = 0
+text = "  → Pause
+
+  → Branch"
+font = SubResource("SystemFont_vg6ql")
+font_size = 50
+outline_size = 15
+horizontal_alignment = 0
+autowrap_trim_flags = 0
+
+[node name="Sprite3D1" type="Sprite3D" parent="World/GamepadTutorial2" index="0" unique_id=192509008]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07043409, 0.25947452, -5.722046e-06)
+pixel_size = 0.003
+texture = ExtResource("4_oww6w")
+
+[node name="Sprite3D2" type="Sprite3D" parent="World/GamepadTutorial2" index="1" unique_id=299676272]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07160926, -0.2420783, -5.722046e-06)
+pixel_size = 0.003
+texture = ExtResource("5_kfv2w")
+
+[node name="Tutorial3" type="Label3D" parent="World" parent_id_path=PackedInt32Array(554948861) index="5" unique_id=22356898]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2.5, -5.999)
+visible = false
+render_priority = 1
+outline_render_priority = 0
+text = "Clones repeat the actions
+you took in the
+orange part of the timeline."
+font = SubResource("SystemFont_7lg0g")
+font_size = 50
+outline_size = 15
+autowrap_trim_flags = 0
